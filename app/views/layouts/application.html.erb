@@ -1,14 +1,31 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Grapefruit</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
+  <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+  <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+  <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+  <!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 
-</body>
+  <head>
+
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= @title ? @title + " | Grapefruit" : "Grapefruit" %></title>
+
+    <!-- Stylesheets -->
+  	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+
+    <%= yield %>
+
+    <!-- Javascript files -->
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    
+  </body>
 </html>
