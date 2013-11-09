@@ -1,5 +1,4 @@
 Grapefruit::Application.routes.draw do
-  get "courses/new"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -15,6 +14,10 @@ Grapefruit::Application.routes.draw do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
+  resources :courses do
+    resources :lectures
   end
 
   # Example of regular route:

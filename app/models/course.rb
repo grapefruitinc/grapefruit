@@ -16,5 +16,6 @@ class Course < ActiveRecord::Base
 
 	belongs_to :user
 	has_many :lectures, dependent: :destroy
+	has_many :users
 
 end
