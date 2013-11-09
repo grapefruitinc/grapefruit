@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: lectures
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  lecture_number :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  lecture_number: 1
+
+two:
+  name: MyString
+  lecture_number: 1
