@@ -20,9 +20,9 @@
 
     <div class="login">
 
-        <%= render "login_form" %>
+        <%= render :file => "devise/sessions/new" %>
 
-        <a href="" class="button new-user">Join Grapefruit!</a>
+        <%= link_to 'Join Grapefruit!', new_user_registration_path, :class => "button new-user" %>
 
     </div>
 
