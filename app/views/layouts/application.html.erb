@@ -22,7 +22,7 @@
 
   <body>
 
-    <%= yield %>
+    <%= content_for?(:content) ? yield(:content) : yield %>
 
     <!-- Javascript files -->
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>

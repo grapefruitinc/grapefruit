@@ -1,0 +1,12 @@
+div.main-content{
+    @include grid-row;
+}
+form{
+    legend{
+        font-size: 1.5em;
+    }
+}
+.button{
+    box-shadow: none;
+    transition: none;
+}

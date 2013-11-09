@@ -1,0 +1,73 @@
+// Place all the styles related to the Guest controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.main-container{
+    background-color: #fff;
+}
+
+div.main-content{
+
+    padding-top: 3em;
+    min-height: 500px;
+
+    div.logo{
+        @include grid-column(12);
+        margin-bottom: 2em;
+    }
+
+    div.content{
+        @include grid-row;
+        @include grid-column(12);
+    }
+
+    div.landing{
+
+        div.description{
+            @include grid-column(8);
+            padding-right: 3em;
+
+            span.opening{
+                @include label(.3em, 1.5em, $secondary-color, true);
+                font-weight: normal;
+            }
+        }
+
+        div.login{
+            @include grid-column(4);
+            a.new-user:link, a.new-user:visited{
+                width: 100%;
+                background-color: $grapefruit-orange-color;
+            }
+            a.new-user:hover{
+                background-color: lighten($grapefruit-orange-color, 10%);
+            }
+        }
+
+    }
+
+    form.login-form{
+        input[type="submit"]{
+            margin-bottom: 0px;
+        }
+    }
+
+}
+
+footer{
+    background-color: #fff;
+    padding-top: 1em;
+    color: lighten($body-font-color, 30%);
+    text-align: center;
+
+    div.school-logo{
+        background-color: $rpi-red-color;
+        padding: .5em 0em;
+    }
+
+    p.under-school-logo{
+        background-color: $body-bg;
+        padding-top: .8em;
+    }
+
+}

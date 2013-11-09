@@ -63,9 +63,11 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-// $body-bg: #fff;
+   $body-bg: #eee;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+   @import url("http://fonts.googleapis.com/css?family=Roboto");
+   $body-font-family: "Roboto", sans-serif;
+
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -83,6 +85,8 @@ $default-float: left;
 // $secondary-color: #e9e9e9;
 // $alert-color: #c60f13;
 // $success-color: #5da423;
+   $rpi-red-color: #d81d05;
+   $grapefruit-orange-color: #ff7f00;
 
 // Make sure border radius matches unless we want it different.
 
@@ -172,7 +176,7 @@ $default-float: left;
 
 // Control header font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+   $header-font-family: $body-font-family;
 // $header-font-weight: bold;
 // $header-font-style: normal;
 // $header-font-color: #222;
@@ -224,8 +228,8 @@ $default-float: left;
 // Style anchors
 
 // $anchor-text-decoration: none;
-// $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: darken($primary-color, 5%);
+  $anchor-font-color: #0086A6; // $primary-color
+  $anchor-font-color-hover: darken($anchor-font-color, 5%);
 
 // Style the <hr> element
 
@@ -309,8 +313,8 @@ $default-float: left;
 // $input-border-style: solid;
 // $input-border-width: 1px;
 // $input-disabled-bg: #ddd;
-// $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-// $input-include-glowing-effect: true;
+  $input-box-shadow: none; //inset 0 1px 2px rgba(0,0,0,0.1);
+  $input-include-glowing-effect: false;
 
 // We use these to style the fieldset border and spacing.
 
@@ -347,7 +351,7 @@ $default-float: left;
 
 // We use this to style the glowing effect of inputs when focused
 
-// $glowing-effect-fade-time: 0.45s;
+ $glowing-effect-fade-time: 0s;
 // $glowing-effect-color: $input-focus-border-color;
 
 //
@@ -384,7 +388,7 @@ $default-float: left;
 
 // We use these to control button border styles.
 
-// $button-border-width: 1px;
+   $button-border-width: 0px;
 // $button-border-style: solid;
 
 // We use this to set the default radius used throughout the core.
