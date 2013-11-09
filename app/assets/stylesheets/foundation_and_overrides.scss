@@ -87,6 +87,7 @@ $default-float: left;
 // $success-color: #5da423;
    $rpi-red-color: #d81d05;
    $grapefruit-orange-color: #ff7f00;
+   $alert-color: darken($rpi-red-color, 10%);
 
 // Make sure border radius matches unless we want it different.
 
@@ -513,7 +514,7 @@ $default-float: left;
 // We use these to control border styles.
 
 // $alert-border-style: solid;
-// $alert-border-width: 1px;
+ $alert-border-width: 0px;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
 // $alert-bottom-margin: em-calc(20);
 

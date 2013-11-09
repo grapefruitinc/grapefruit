@@ -48,8 +48,14 @@ div.main-content{
 
     form.login-form{
         input[type="submit"]{
-            margin-bottom: 0px;
+            margin-bottom: .8em;
         }
+    }
+    div.login-form-container{
+        @include grid-column(5, $center: true);
+    }
+    div.register{
+        @include grid-column(5, $center: true);
     }
 
 }
