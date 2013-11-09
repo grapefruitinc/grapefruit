@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
   def create
   	@course = Course.new(params[:course])
   	if @course.save
-  		flash[:success] = "Course created"
+  		flash[:success] = "Course created!"
   		redirect_to @course
   	else
   		render 'new'
