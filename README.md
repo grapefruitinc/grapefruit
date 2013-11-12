@@ -13,3 +13,8 @@ be accessing it.
 3. bundle install
 
 4. rake db:migrate
+
+### Contributing
+Please use spaced-tabs (don't use real tabs!! Sublime Text 2 and any decent editor
+will have an option to replace tabs with spaces).
+2 space tabs please.
