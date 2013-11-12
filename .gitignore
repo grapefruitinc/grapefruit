@@ -17,3 +17,6 @@
 
 # Ignore compiled files
 /public/assets
+
+# Ignore the database config (keep the example)
+/config/database.yml
