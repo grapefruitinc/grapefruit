@@ -2,20 +2,21 @@
 #
 # Table name: courses
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  instructor_id :integer
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Course < ActiveRecord::Base
 
-	attr_accessible :name
+	# attr_accessible :name
 
 	validates :name, presence: true
 
-	belongs_to :user
-	has_many :lectures, dependent: :destroy
-	has_many :users
+	belongs_to :instructor, class_name: "User"
+	has_and_belongs_to_many :students, class_name: "User"
+  has_many :lectures, dependent: :destroy
 
 end

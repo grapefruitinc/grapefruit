@@ -1,29 +1,36 @@
 <div class="landing">
+  
+  <div class="description">
+    <h2>Learn at Rensselaer. Everywhere.</h2>
 
-    <div class="description">
+    <p>
+      Grapefruit is an open-source initiative pioneered by <%= link_to 'RCOS', 'http://rcos.rpi.edu', :target => '_blank' %> to bring Rensselaer courses to your laptop, desktop, phone, or even your toaster.
+    </p>
 
-        <h2>Learn at Rensselaer. Everywhere.</h2>
+    <p>
+      <span class="opening">Opening Summer 2014</span>
+    </p>
+  </div>
 
-        <p>
+  <div class="login">
+    <% if current_user %>
+      <h1>MEOW</h1>
+      <p>
+        <%= link_to "View All Courses", courses_path %>
+      </p>
 
-            Grapefruit is an open-source initiative pioneered by <%= link_to 'RCOS', 'http://rcos.rpi.edu', :target => '_blank' %> to bring Rensselaer courses to everyone's laptop.
+      <p>
+        <%= link_to "Create New Course", new_course_path %>
+      </p>
 
-        </p>
-
-        <p>
-            
-            <span class="opening">Opening Summer 2014</span>
-
-        </p>
-
-    </div>
-
-    <div class="login">
-
-        <%= render :file => "devise/sessions/new" %>
-
-        <%= link_to 'Join Grapefruit!', new_user_registration_path, :class => "button new-user" %>
-
-    </div>
+      <p>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      </p>
+    <% else %>
+      <%= render :file => "devise/sessions/new" %>
+    
+      <%= link_to 'Join Grapefruit!', new_user_registration_path, :class => "button new-user" %>
+    <% end %>
+  </div>
 
 </div>

@@ -18,8 +18,13 @@
 #
 
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable
+
+  has_many :instructed_courses, class_name: "Course", foreign_key: "instructor_id"
+  has_and_belongs_to_many :student_courses, class_name: "Course", foreign_key: "student_id"
+
 end

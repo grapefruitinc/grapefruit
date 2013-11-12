@@ -1,2 +1,18 @@
-<h1>Courses#new</h1>
-<p>Find me in app/views/courses/new.html.erb</p>
+<div class="landing">
+  
+  <div class="description">
+    <h2>Create a New Course</h2>
+  </div>
+
+  <div class="login">
+    <%= form_for(@course) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div><%= f.label :name %><br />
+      <%= f.text_field :name, :autofocus => true %></div>
+
+      <div><%= f.submit "Create Course" %></div>
+    <% end %>
+  </div>
+
+</div>
