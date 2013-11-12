@@ -1,11 +1,29 @@
 div.main-content{
     @include grid-row;
 }
+
+/**
+    forms
+**/
 form{
     legend{
         font-size: 1.5em;
     }
 }
+div.alert{
+    @include alert($alert-color);
+}
+div#error_explanation{
+    @include alert($alert-color);
+    h2{
+        font-size: 1em;
+        color: #eee;
+    }
+}
+
+/**
+    buttons
+**/
 .button{
     box-shadow: none;
     transition: none;
