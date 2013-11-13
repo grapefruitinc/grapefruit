@@ -67,7 +67,7 @@ footer{
     text-align: center;
 
     div.school-logo{
-        background-color: $rpi-red-color;
+        background-color: darken(adjust-saturation($rpi-red-color, -50%), 10%);
         padding: .5em 0em;
     }
 

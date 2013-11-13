@@ -16,4 +16,17 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+
+  $(document).foundation();   
+
+  var flash = $("div#top-flash div.alert-box");
+
+  var current_flash_color = flash.css("backgroundColor");
+  var highlight_flash_color = flash.parent().css("backgroundColor"); 
+    
+  flash.stop().delay(280)
+    .animate({backgroundColor: highlight_flash_color}, 200)
+    .animate({ backgroundColor: current_flash_color}, 300);  
+
+});

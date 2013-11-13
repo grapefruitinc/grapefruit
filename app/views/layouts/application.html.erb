@@ -30,16 +30,11 @@
 
   <body>
 
-    <!-- TODO: this needs to be changed to the foundation equivalent -->
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <%= content_tag(:div, flash[:error], :class => 'alert alert-error',) if flash[:error] %>
-          <%= content_tag(:div, flash[:notice], :class => 'alert alert-warning') if flash[:notice] %>
-          <%= content_tag(:div, flash[:alert], :class => 'alert alert-info') if flash[:alert] %>
-          <%= content_tag(:div, flash[:success], :class => 'alert alert-success') if flash[:success] %>
-        </div>
-      </div>
+    <div id="top-flash">
+          <%= content_tag(:div, flash[:error], :class => 'alert-box',) if flash[:error] %>
+          <%= content_tag(:div, flash[:notice], :class => 'alert-box secondary') if flash[:notice] %>
+          <%= content_tag(:div, flash[:alert], :class => 'alert-box') if flash[:alert] %>
+          <%= content_tag(:div, flash[:success], :class => 'alert-box success') if flash[:success] %>
     </div>
 
     <%= content_for?(:content) ? yield(:content) : yield %>
