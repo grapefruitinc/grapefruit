@@ -1,0 +1,2 @@
+class CapsulesController < ApplicationController
+end

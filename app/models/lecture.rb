@@ -16,6 +16,6 @@ class Lecture < ActiveRecord::Base
 	validates :name, presence: true
 	validates :lecture_number, presence: true
 
-	belongs_to :course
+	belongs_to :capsule
 	
 end

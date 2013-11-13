@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: capsules
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -8,10 +8,10 @@
 #  updated_at :datetime
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+class Capsule < ActiveRecord::Base
 
-one:
-  name: MyString
+	validates :name, presence: true
 
-two:
-  name: MyString
+	belongs_to :course
+	
+end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: capsules
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
