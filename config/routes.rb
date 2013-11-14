@@ -3,7 +3,15 @@ Grapefruit::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'guest#landing'
+
+  devise_scope :user do
+    authenticated :user do
+      root 'home#dashboard', :as => "authenticated_root"
+    end
+    unauthenticated :user do
+      root 'guest#landing'
+    end
+  end
 
   get 'about' => 'guest#about'
   get 'tos' => 'guest#tos'

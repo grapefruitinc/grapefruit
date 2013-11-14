@@ -1,0 +1,19 @@
+<% content_for :content do %>
+
+  <div class="main-content">
+    
+    <h1>Welcome</h1>
+
+    <p>
+      <%= yield %>
+    </p>
+
+    <p>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </p>
+
+  </div>
+
+<% end %>
+
+<%= render template: 'layouts/application' %>

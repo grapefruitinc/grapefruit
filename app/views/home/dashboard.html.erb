@@ -1,0 +1,5 @@
+<% if can? :manage_admins, User %>
+  <p>You can manage admins! :)</p>
+<% else %> 
+  <p>You are a regular user.</p>
+<% end %>
