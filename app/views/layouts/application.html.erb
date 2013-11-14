@@ -13,9 +13,6 @@
 
     <title><%= raw full_title(yield(:title)) %></title>
 
-    <!-- Stylesheets -->
-    <%= stylesheet_link_tag params[:controller], media: "all", "data-turbolinks-track" => true %>
-
     <%= csrf_meta_tags %>
 
     <% if content_for?(:meta_description) %>
@@ -25,6 +22,8 @@
     <% if content_for?(:meta_keywords) %>
       <meta name="keywords" content="<%= yield(:meta_keywords) %>">
     <% end %>
+
+    <%= content_for?(:stylesheets) ? yield(:stylesheets) : yield %>
 
   </head>
 
