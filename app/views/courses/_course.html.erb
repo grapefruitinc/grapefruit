@@ -1,3 +1,1 @@
-<li>Course name: <%= course.name %></li>
-
-<%= link_to "Go Back Home", root_path %>
+<li>Course name: <%= link_to course.name, course_path(course) %></li>
