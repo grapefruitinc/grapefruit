@@ -1,24 +1,24 @@
 class ProblemSetsController < ApplicationController
 	def new
-  	@pset = ProblemSet.new
+  	@problemset = ProblemSet.new
   end
 
   def show
-  	@pset = ProblemSet.find(params[:id])
+  	@problemset = ProblemSet.find(params[:id])
   end
 
   def create
-  	@pset = ProblemSet.new(params[:pset])
-  	if @pset.save
+  	@problemset = ProblemSet.new(params[:problemset])
+  	if @problemset.save
   		flash[:success] = "Problem set created!"
-  		redirect_to @pset
+  		redirect_to @problemset
   	else
   		render 'new'
   end
 
   def destroy
-  	@pset = @pset.find(params[:id])
-  	@pset.destroy
+  	@problemset = @problemset.find(params[:id])
+  	@problemset.destroy
   	redirect_to :back
   end
 end

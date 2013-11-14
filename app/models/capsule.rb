@@ -13,5 +13,7 @@ class Capsule < ActiveRecord::Base
 	validates :name, presence: true
 
 	belongs_to :course
+	has_many :lectures, dependent: :destroy
+	has_many :problemsets, dependent: :destroy
 	
 end
