@@ -5,6 +5,9 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    ### Should chnage created_at to a more user-determined statistic ###
+    @capsules = @course.capsules.order("created_at DESC")
+    @capsules.build
   end
 
   def new

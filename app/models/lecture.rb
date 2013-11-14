@@ -7,6 +7,7 @@
 #  lecture_number :integer
 #  created_at     :datetime
 #  updated_at     :datetime
+#  capsule_id     :integer
 #
 
 class Lecture < ActiveRecord::Base

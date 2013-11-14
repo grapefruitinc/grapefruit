@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114110959) do
+ActiveRecord::Schema.define(version: 20131114153827) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
   end
 
   create_table "courses", force: true do |t|
@@ -35,12 +36,14 @@ ActiveRecord::Schema.define(version: 20131114110959) do
     t.integer  "lecture_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "capsule_id"
   end
 
   create_table "problem_sets", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "capsule_id"
   end
 
   create_table "users", force: true do |t|

@@ -1,0 +1,18 @@
+<div class="landing">
+  
+  <div class="description">
+    <h2>Add a Capsule</h2>
+  </div>
+
+  <div class="login">
+    <%= form_for(@capsule) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div><%= f.label :name %><br />
+      <%= f.text_field :name, :autofocus => true %></div>
+
+      <div><%= f.submit "Add Capsule" %></div>
+    <% end %>
+  </div>
+
+</div>
