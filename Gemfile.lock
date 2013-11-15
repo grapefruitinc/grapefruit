@@ -31,6 +31,7 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
+    cancan (1.6.10)
     chunky_png (1.2.9)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -46,7 +47,7 @@ GEM
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
     daemons (1.1.9)
-    devise (3.2.0)
+    devise (3.2.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -72,10 +73,8 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     mysql2 (0.3.14)
-    orm_adapter (0.4.0)
+    orm_adapter (0.5.0)
     polyglot (0.3.3)
-    protected_attributes (1.0.5)
-      activemodel (>= 4.0.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -140,12 +139,12 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  cancan
   compass-rails (~> 2.0.alpha.0)
   devise
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
-  protected_attributes
   rails (= 4.0.1)
   sass-rails (~> 4.0.0)
   sdoc

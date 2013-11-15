@@ -17,7 +17,9 @@ gem 'zurb-foundation'
 
 # devise for authentication
 gem 'devise'
-gem 'protected_attributes'
+
+# cancan for permissions
+gem 'cancan'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
