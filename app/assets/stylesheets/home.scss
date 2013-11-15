@@ -1,1 +1,12 @@
 @import "application";
+
+body{
+  background-color: #fff;
+}
+
+div.top-bar-container{
+  background-color: $topbar-bg-color;
+  nav.top-bar{
+    @include grid-row;
+  }
+}
