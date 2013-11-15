@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
     ### Should chnage created_at to a more user-determined statistic ###
     @capsules = @course.capsules.order("created_at DESC")
     @capsules.build
+    puts @capsules
   end
 
   def new

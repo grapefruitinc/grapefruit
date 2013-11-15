@@ -13,7 +13,7 @@ class CapsulesController < ApplicationController
   	@capsule = @course.capsules.new(capsule_params)
   	if @capsule.save
   		flash[:success] = "Capsule created!"
-  		redirect_to course_capsule_path(@capsule)
+  		redirect_to [@course, @capsule]
   	else
   		render 'new'
     end
