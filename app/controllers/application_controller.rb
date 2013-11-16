@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
   		redirect_to root_path
   	end
   end
+
+  def get_capsule
+    @capsule = Capsule.find(params[:capsule_id] || params[:id])
+    unless @capsule.present?
+      flash[:error] = "Invalid capsule!"
+      redirect_to root_path
+    end
+  end
+
 end

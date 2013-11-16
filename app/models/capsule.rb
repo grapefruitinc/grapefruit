@@ -15,6 +15,6 @@ class Capsule < ActiveRecord::Base
 
 	belongs_to :course
 	has_many :lectures, dependent: :destroy
-	has_many :problemsets, dependent: :destroy
+	has_many :problem_sets, dependent: :destroy
 	
 end

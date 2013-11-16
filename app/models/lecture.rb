@@ -12,8 +12,6 @@
 
 class Lecture < ActiveRecord::Base
 
-	# attr_accessible :name, :lecture_number
-
 	validates :name, presence: true
 	validates :lecture_number, presence: true
 

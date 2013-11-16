@@ -1,3 +1,10 @@
 <h1>You are viewing "<%= @capsule.name %>"</h1>
-
+<p><%= link_to "Add Lecture", new_course_capsule_lecture_path(@course, @capsule) %></p>
+<p><%= link_to "Add Problem Set", new_course_capsule_problem_set_path(@course, @capsule) %></p>
+<div>
+	<ul>
+		<%= render @lectures %>
+		<%= render @problem_sets %>
+	</ul>
+</div>
 <%= link_to "Go Back Home", root_path %>
