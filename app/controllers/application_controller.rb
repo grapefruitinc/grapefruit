@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-<<<<<<< HEAD
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -20,7 +19,8 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :password, :password_confirmation, :current_password)
     end
     
-=======
+  end
+
   def get_course
   	@course = Course.find(params[:course_id] || params[:id])
   	unless @course.present?
@@ -35,7 +35,6 @@ class ApplicationController < ActionController::Base
       flash[:error] = "Invalid capsule!"
       redirect_to root_path
     end
->>>>>>> course_capsule
   end
 
 end
