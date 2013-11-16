@@ -34,6 +34,34 @@ div.main-content{
   nav.breadcrumbs{
     margin-bottom: 1em;
   }
+  table.listing{
+    width: 50%;
+    border-spacing:0;
+    border-collapse:collapse;
+    padding:0px;
+    th{
+      padding-left: 1.5em;
+    }
+    td{
+      padding:0px;
+      a, span{
+        width: 100%;
+        line-height: 2.5em;
+        display:inline-block;
+        padding-left: 1em;
+      }
+      span{/* when there are no elements */
+        color: $grey-text-color;
+      }
+    }
+    td.center{
+      text-align: center;
+      border-left: 1px solid #ddd;
+    }
+  }
+  div.landing{
+    @include grid-column(6);
+  }
 }
 
 form.registration_edit_form{

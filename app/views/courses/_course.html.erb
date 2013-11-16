@@ -1,1 +1,8 @@
-<li>Course name: <%= link_to course.name, course_path(course) %></li>
+<tr>
+  <td width="80%">
+    <%= link_to course.name, course_path(course) %>
+  </td>
+  <td class="center">
+     <%= course.students.count %>
+  </td>
+</tr>

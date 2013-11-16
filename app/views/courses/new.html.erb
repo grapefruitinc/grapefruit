@@ -1,7 +1,12 @@
+<%= breadcrumbs([
+      link_to('All Courses', courses_path),
+      link_to('Create New Course', void, :class => "current")
+    ]) %>
+
 <div class="landing">
   
   <div class="description">
-    <h2>Create a New Course</h2>
+    <h3>Create New Course</h3>
   </div>
 
   <div class="login">
@@ -11,7 +16,7 @@
       <div><%= f.label :name %><br />
       <%= f.text_field :name, :autofocus => true %></div>
 
-      <div><%= f.submit "Create Course", :class => "button" %></div>
+      <div><%= f.submit "Create Course", :class => "button small" %></div>
     <% end %>
   </div>
 

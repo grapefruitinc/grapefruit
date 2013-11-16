@@ -89,6 +89,7 @@ $default-float: left;
    $grapefruit-orange-color: #ff7f00;
    $alert-color: darken($rpi-red-color, 10%);
    $dark-blue-color: #00748F;
+   $grey-text-color: #777;
 
 // Make sure border radius matches unless we want it different.
 
@@ -231,7 +232,7 @@ $default-float: left;
 
 // $anchor-text-decoration: none;
   $anchor-font-color: #0086A6; // $primary-color
-  $anchor-font-color-hover: darken($anchor-font-color, 5%);
+  $anchor-font-color-hover: darken($anchor-font-color, 12%);
 
 // Style the <hr> element
 

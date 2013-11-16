@@ -1,1 +1,5 @@
-<li>Lecture name: <%= link_to lecture.name, [@course, @capsule, lecture] %></li>
+<tr>
+  <td>
+    <%= link_to "##{lecture.lecture_number}: #{lecture.name}", [@course, @capsule, lecture] %>
+  </td>
+</tr>

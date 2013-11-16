@@ -1,3 +1,4 @@
-<h1>You are viewing "<%= @problem_set.name %>"</h1>
+<%= link_to "Back to " + @capsule.name, [@course, @capsule], :class => "button small" %>
 
-<%= link_to "Go Back Home", root_path %>
+<h2><%= @problem_set.name %></h2>
+<p>Some ridiculously hard problems here...</p>
