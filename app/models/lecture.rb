@@ -7,15 +7,14 @@
 #  lecture_number :integer
 #  created_at     :datetime
 #  updated_at     :datetime
+#  capsule_id     :integer
 #
 
 class Lecture < ActiveRecord::Base
 
-	# attr_accessible :name, :lecture_number
-
 	validates :name, presence: true
 	validates :lecture_number, presence: true
 
-	belongs_to :course
+	belongs_to :capsule
 	
 end

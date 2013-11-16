@@ -1,0 +1,21 @@
+<div class="landing">
+  
+  <div class="description">
+    <h2>Add a Lecture</h2>
+  </div>
+
+  <div class="login">
+    <%= form_for [@course, @capsule, @lecture] do |f| %>
+      <%= devise_error_messages! %>
+
+      <div><%= f.label :name %><br />
+      <%= f.text_field :name, :autofocus => true %></div>
+
+      <div><%= f.label :lecture_number %><br />
+      <%= f.text_field :lecture_number %></div>
+
+      <div><%= f.submit "Add Lecture" %></div>
+    <% end %>
+  </div>
+
+</div>

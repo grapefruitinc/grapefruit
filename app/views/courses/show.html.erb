@@ -1,3 +1,9 @@
 <h1>You are viewing "<%= @course.name %>"</h1>
+<p><%= link_to "Add Capsule", new_course_capsule_path(@course) %></p>
+<div>
+	<ul>
+		<%= render @capsules %>
+	</ul>
+</div>
 
 <%= link_to "Go Back Home", root_path %>

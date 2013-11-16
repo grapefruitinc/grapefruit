@@ -2,11 +2,10 @@
 #
 # Table name: courses
 #
-#  id            :integer          not null, primary key
-#  name          :string(255)
-#  instructor_id :integer
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Course < ActiveRecord::Base
@@ -17,6 +16,6 @@ class Course < ActiveRecord::Base
 
 	belongs_to :instructor, class_name: "User"
 	has_and_belongs_to_many :students, class_name: "User"
-  has_many :lectures, dependent: :destroy
+  has_many :capsules, dependent: :destroy
 
 end

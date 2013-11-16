@@ -25,7 +25,10 @@ Grapefruit::Application.routes.draw do
   end
 
   resources :courses do
-    resources :lectures
+    resources :capsules do
+      resources :lectures
+      resources :problem_sets
+    end
   end
 
   # Example of regular route:

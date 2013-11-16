@@ -1,11 +1,12 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: capsules
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  course_id  :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
