@@ -11,7 +11,12 @@ class ApplicationController < ActionController::Base
 
     # place permitted fields for registration here
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email, :password, :password_confirmation)
+      u.permit(:name, :email, :password, :password_confirmation)
+    end
+
+    # place permitted fields for editing here
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:name, :email, :password, :password_confirmation, :current_password)
     end
     
   end

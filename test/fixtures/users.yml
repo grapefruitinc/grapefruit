@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  is_admin               :boolean
+#  name                   :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

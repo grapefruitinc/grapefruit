@@ -5,23 +5,21 @@
 <% content_for :content do %>
 
   <div class="top-bar-container">
-    <nav class="top-bar">
-    
+    <nav class="top-bar" data-options="is_hover:false">
       <ul class="title-area">
         <%= image_tag 'grapefruit_logo-topbar.png' %>
       </ul>
-
+      
       <section class="top-bar-section">
             <ul class="right">
 
-              <li class="has-dropdown not-click">
-                <a href="#">Library</a>
+              <li class="has-dropdown click">
+                <a href="#">
+                  <%= current_user.display_identifier %>
+                </a>
                 <ul class="dropdown"><li class="title back js-generated"><h5><a href="#">Back</a></h5></li>
-                  <li class=""><a href="http://patterntap.com">Pattern Tap</a></li>
-                  <li class=""><a href="http://www.zurb.com/word">Word</a></li>
-                  <li class=""><a href="http://www.zurb.com/responsive">Responsive</a></li>
-                  <li class=""><a href="http://www.zurb.com/playground">Playground</a></li>
-                  <li class=""><a href="http://www.zurb.com/quips">Quips</a></li>
+                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
                 </ul>
               </li>
       
@@ -31,17 +29,7 @@
   </div>
 
   <div class="main-content">
-    
-    <h1>Welcome</h1>
-
-    <p>
-      <%= yield %>
-    </p>
-
-    <p>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    </p>
-
+    <%= yield %>
   </div>
 
 <% end %>

@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  is_admin               :boolean
+#  name                   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -27,5 +28,9 @@ class User < ActiveRecord::Base
 
   has_many :instructed_courses, class_name: "Course", foreign_key: "instructor_id"
   has_and_belongs_to_many :student_courses, class_name: "Course", foreign_key: "student_id"
+
+  def display_identifier
+    !self.name.empty? ? self.name.split(" ").first : self.email
+  end
 
 end

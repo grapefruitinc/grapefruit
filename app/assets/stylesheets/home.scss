@@ -5,8 +5,32 @@ body{
 }
 
 div.top-bar-container{
+
   background-color: $topbar-bg-color;
+
   nav.top-bar{
+
     @include grid-row;
+
+    ul > li.has-dropdown a::after { /* this should be a configurable variable */
+      border-color: lighten($topbar-dropdown-link-color, 20%) transparent transparent transparent;
+    }
+
+    ul.dropdown li a:hover{ /* it's beyond me why this color isn't in variables.scss */
+      background-color: $dark-blue-color; color: #fff;
+    }
+
+  }
+
+}
+
+form.registration_edit_form{
+  margin-top: 1em;
+  @include grid-column(5);
+  legend{
+    font-size: 1em;font-weight:normal;
+  }
+  fieldset.highlight{
+    border-color: lighten($grapefruit-orange-color, 15%);
   }
 }
