@@ -13,7 +13,7 @@
 <table class="listing">
   <thead>
     <th>
-      Lectures
+      Lectures <%= "(None found)" if @lectures.empty? %>
     </th>
   </thead>
   <%= render @lectures %>
@@ -22,7 +22,7 @@
 <table class="listing">
   <thead>
     <th>
-      Problem Sets
+      Problem Sets <%= "(None found)" if @problem_sets.empty? %>
     </th>
   </thead>
   <%= render @problem_sets %>

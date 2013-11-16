@@ -2,6 +2,7 @@ class ProblemSetsController < ApplicationController
 
   before_filter :get_course
   before_filter :get_capsule
+  before_filter :authenticate_user!
 
   layout "home"
 
