@@ -1,10 +1,18 @@
 class CoursesController < ApplicationController
+
+  layout "home"
+
+  before_filter :authenticate_user!
+  
   def index
     @courses = Course.all
   end
 
   def show
     @course = Course.find(params[:id])
+    ### Should chnage created_at to a more user-determined statistic ###
+    @capsules = @course.capsules.order("created_at DESC")
+    @capsules.build
   end
 
   def new

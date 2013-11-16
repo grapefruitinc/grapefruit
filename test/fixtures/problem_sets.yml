@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: problem_sets
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)

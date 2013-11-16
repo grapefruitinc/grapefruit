@@ -1,5 +1,23 @@
-<h1>View All Courses</h1>
+<%= breadcrumbs([link_to('All Courses', courses_path, :class => "current")]) %>
 
-<ul>
-  <%= render @courses %>
-</ul>
+<h3>All Courses</h3>
+
+<div><%= link_to "Create New Course", new_course_path, :class => "button small" %></div>
+
+<table class="listing">
+  <thead>
+    <th width="60%">Course</th>
+    <th>Enrolled Students</th>
+  </thead>
+  <tbody>
+    <% if @courses.empty? %>
+      <tr>
+        <td colspan='2' class="center">
+        <span>No courses found</span>
+        </td>
+      </tr>
+    <% else %>
+        <%= render @courses %>
+    <% end %>
+  </tbody>
+</table>

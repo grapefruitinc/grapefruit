@@ -1,5 +1,7 @@
+<h3>Hi <%= current_user.display_identifier %>!</h3>
+
 <% if can? :manage_admins, User %>
-  <p>You can manage admins! :)</p>
+  <p>You have administrator permissions.</p>
 <% else %> 
   <p>You are a regular user.</p>
 <% end %>

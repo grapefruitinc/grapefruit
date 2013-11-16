@@ -11,9 +11,30 @@ class ApplicationController < ActionController::Base
 
     # place permitted fields for registration here
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email, :password, :password_confirmation)
+      u.permit(:name, :email, :password, :password_confirmation)
+    end
+
+    # place permitted fields for editing here
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:name, :email, :password, :password_confirmation, :current_password)
     end
     
+  end
+
+  def get_course
+  	@course = Course.find(params[:course_id] || params[:id])
+  	unless @course.present?
+  		flash[:error] = "Invalid course!"
+  		redirect_to root_path
+  	end
+  end
+
+  def get_capsule
+    @capsule = Capsule.find(params[:capsule_id] || params[:id])
+    unless @capsule.present?
+      flash[:error] = "Invalid capsule!"
+      redirect_to root_path
+    end
   end
 
 end

@@ -1,3 +1,22 @@
-<h1>You are viewing "<%= @course.name %>"</h1>
+<%=
+  breadcrumbs([
+    link_to('All Courses', courses_path),
+    link_to(@course.name, "javascript:void(0)", :class => "current")
+  ])
+%>
 
-<%= link_to "Go Back Home", root_path %>
+<h3><%= @course.name %></h3>
+<div><%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %></div>
+
+<table class="listing">
+	<tbody>
+		<%= render @capsules %>
+    <% if @capsules.empty? %>
+      <tr>
+        <td>
+          <span>No capsules found.</span>
+        </td>
+      </tr> 
+    <% end %>
+	</tbody>
+</table>

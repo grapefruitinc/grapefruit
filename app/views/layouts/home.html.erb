@@ -5,43 +5,27 @@
 <% content_for :content do %>
 
   <div class="top-bar-container">
-    <nav class="top-bar">
-    
+    <nav class="top-bar" data-options="is_hover:false">
       <ul class="title-area">
-        <%= image_tag 'grapefruit_logo-topbar.png' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'grapefruit_logo-topbar.png' %>
+        <% end %>
       </ul>
-
+      
       <section class="top-bar-section">
             <ul class="right">
 
-              <li class="has-dropdown not-click">
-                <a href="#">Library</a>
-                <ul class="dropdown"><li class="title back js-generated"><h5><a href="#">Back</a></h5></li>
-                  <li class=""><a href="http://patterntap.com">Pattern Tap</a></li>
-                  <li class=""><a href="http://www.zurb.com/word">Word</a></li>
-                  <li class=""><a href="http://www.zurb.com/responsive">Responsive</a></li>
-                  <li class=""><a href="http://www.zurb.com/playground">Playground</a></li>
-                  <li class=""><a href="http://www.zurb.com/quips">Quips</a></li>
-                </ul>
-              </li>
-      
+              <li><%= link_to "Courses", courses_path, :class => ("active" if params[:controller] == "courses") %></li>
+              <li><%= link_to "Profile", edit_user_registration_path, :class => ("active" if params[:controller] == "devise/registrations") %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, :class => "secondary", method: :delete %></li>
+
             </ul>
           </section>
     </nav>
   </div>
 
   <div class="main-content">
-    
-    <h1>Welcome</h1>
-
-    <p>
-      <%= yield %>
-    </p>
-
-    <p>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    </p>
-
+    <%= yield %>
   </div>
 
 <% end %>
