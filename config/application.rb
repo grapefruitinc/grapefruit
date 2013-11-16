@@ -21,6 +21,7 @@ module Grapefruit
     # config.i18n.default_locale = :de
     config.to_prepare do
         Devise::SessionsController.layout "guest"
+        Devise::RegistrationsController.layout "guest"
     end
 
   end

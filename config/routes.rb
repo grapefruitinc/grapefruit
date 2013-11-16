@@ -16,6 +16,13 @@ Grapefruit::Application.routes.draw do
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
+  resources :courses do
+    resources :capsules do
+      resources :lectures
+      resources :problem_sets
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
