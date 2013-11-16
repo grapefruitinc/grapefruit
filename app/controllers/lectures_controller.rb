@@ -1,6 +1,9 @@
 class LecturesController < ApplicationController
+
   before_filter :get_course
   before_filter :get_capsule
+
+  layout "home"
 
 	def new
   	@lecture = @capsule.lectures.new

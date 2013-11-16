@@ -1,4 +1,7 @@
 class CapsulesController < ApplicationController
+
+  layout "home"
+  
   before_filter :get_course
 
 	def new

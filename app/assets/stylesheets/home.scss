@@ -16,16 +16,27 @@ div.top-bar-container{
       border-color: lighten($topbar-dropdown-link-color, 20%) transparent transparent transparent;
     }
 
-    ul.dropdown li a:hover{ /* it's beyond me why this color isn't in variables.scss */
-      background-color: $dark-blue-color; color: #fff;
+    ul.right li{
+      a.secondary{
+        color: darken($grapefruit-orange-color, 20%);
+      }
+      a.active{
+        background-color:$dark-blue-color;color:#fff;
+      }
     }
 
   }
 
 }
 
-form.registration_edit_form{
+div.main-content{
   margin-top: 1em;
+  nav.breadcrumbs{
+    margin-bottom: 1em;
+  }
+}
+
+form.registration_edit_form{
   @include grid-column(5);
   legend{
     font-size: 1em;font-weight:normal;

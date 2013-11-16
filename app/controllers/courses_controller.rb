@@ -1,4 +1,9 @@
 class CoursesController < ApplicationController
+
+  layout "home"
+
+  before_filter :authenticate_user!
+  
   def index
     @courses = Course.all
   end

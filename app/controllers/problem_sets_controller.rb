@@ -1,6 +1,9 @@
-class LecturesController < ApplicationController
+class ProblemSetsController < ApplicationController
+
   before_filter :get_course
   before_filter :get_capsule
+
+  layout "home"
 
   def new
     @problem_set = @capsule.problem_sets.new

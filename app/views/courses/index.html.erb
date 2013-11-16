@@ -1,4 +1,8 @@
-<h1>View All Courses</h1>
+<h3>All Courses</h3>
+
+<p>
+  <%= link_to "Create New Course", new_course_path, :class => "button small" %>
+</p>
 
 <ul>
   <%= render @courses %>

@@ -7,22 +7,18 @@
   <div class="top-bar-container">
     <nav class="top-bar" data-options="is_hover:false">
       <ul class="title-area">
-        <%= image_tag 'grapefruit_logo-topbar.png' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'grapefruit_logo-topbar.png' %>
+        <% end %>
       </ul>
       
       <section class="top-bar-section">
             <ul class="right">
 
-              <li class="has-dropdown click">
-                <a href="#">
-                  <%= current_user.display_identifier %>
-                </a>
-                <ul class="dropdown"><li class="title back js-generated"><h5><a href="#">Back</a></h5></li>
-                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </li>
-      
+              <li><%= link_to "Courses", courses_path, :class => ("active" if params[:controller] == "courses") %></li>
+              <li><%= link_to "Profile", edit_user_registration_path, :class => ("active" if params[:controller] == "devise/registrations") %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, :class => "secondary", method: :delete %></li>
+
             </ul>
           </section>
     </nav>

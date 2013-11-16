@@ -1,9 +1,12 @@
-<h1>You are viewing "<%= @course.name %>"</h1>
-<p><%= link_to "Add Capsule", new_course_capsule_path(@course) %></p>
+<nav class="breadcrumbs">
+  <%= link_to "All Courses", courses_path %>
+  <a class="current" href="javascript:void(0)"><%= @course.name %></a>
+</nav>
+
+<h2><%= @course.name %></h2>
+<p><%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %></p>
 <div>
 	<ul>
 		<%= render @capsules %>
 	</ul>
 </div>
-
-<%= link_to "Go Back Home", root_path %>

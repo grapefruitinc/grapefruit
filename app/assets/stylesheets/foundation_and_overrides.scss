@@ -1296,7 +1296,7 @@ $default-float: left;
 // $topbar-link-font-size: em-calc(13);
 // $topbar-link-hover-lightness: -30%; // Darken by 30%
  $topbar-link-bg-hover: darken($topbar-bg-color, 10%);//darken($topbar-bg-color, 3%);
-// $topbar-link-bg-active: darken($topbar-bg-color, 3%);
+ $topbar-link-bg-active:#C5E3EA;// darken($topbar-bg-color, 3%);
 
 // $topbar-dropdown-label-color: #555;
 // $topbar-dropdown-label-text-transform: uppercase;
