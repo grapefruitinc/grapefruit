@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114153827) do
+ActiveRecord::Schema.define(version: 20131116160549) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20131114153827) do
     t.datetime "updated_at"
     t.integer  "course_id"
   end
+
   create_table "courses", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
