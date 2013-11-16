@@ -6,10 +6,18 @@
 
 <table class="listing">
   <thead>
-    <th>Course</th>
+    <th width="60%">Course</th>
     <th>Enrolled Students</th>
   </thead>
   <tbody>
-    <%= render @courses %>
+    <% if @courses.empty? %>
+      <tr>
+        <td colspan='2' class="center">
+        <span>No courses found</span>
+        </td>
+      </tr>
+    <% else %>
+        <%= render @courses %>
+    <% end %>
   </tbody>
 </table>

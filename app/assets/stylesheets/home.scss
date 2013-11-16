@@ -4,6 +4,13 @@ body{
   background-color: #fff;
 }
 
+div#top-flash{
+  div.alert-box{
+    @include alert(lighten(#0A7790, 10%));
+    margin-bottom: 0px;
+  }
+}
+
 div.top-bar-container{
 
   background-color: $topbar-bg-color;
