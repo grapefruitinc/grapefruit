@@ -32,6 +32,6 @@ class LecturesController < ApplicationController
 
 private
   def lecture_params
-    params.require(:lecture).permit(:name, :lecture_number)
+    params.require(:lecture).permit(:name, :lecture_number, :mediasite_url)
   end
 end

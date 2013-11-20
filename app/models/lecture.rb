@@ -8,6 +8,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  capsule_id     :integer
+#  mediasite_url  :string(255)
 #
 
 class Lecture < ActiveRecord::Base

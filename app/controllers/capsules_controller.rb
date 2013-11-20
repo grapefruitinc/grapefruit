@@ -11,8 +11,8 @@ class CapsulesController < ApplicationController
 
   def show
   	@capsule = @course.capsules.find(params[:id])
-    @lectures = @capsule.lectures.order("created_at DESC")
-    @problem_sets = @capsule.problem_sets.order("created_at DESC")
+    @lectures = @capsule.lectures.order("created_at ASC")
+    @problem_sets = @capsule.problem_sets.order("created_at ASC")
     @lectures.build
     @problem_sets.build
   end
