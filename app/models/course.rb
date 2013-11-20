@@ -2,15 +2,15 @@
 #
 # Table name: courses
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  instructor_id :integer
+#  student_id    :integer
 #
 
 class Course < ActiveRecord::Base
-
-	# attr_accessible :name
 
 	validates :name, presence: true
 

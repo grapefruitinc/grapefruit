@@ -6,6 +6,7 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  capsule_id :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
