@@ -38,6 +38,7 @@ div.top-bar-container{
 
 div.main-content{
   margin-top: 1em;
+  min-height: 400px;
   nav.breadcrumbs{
     margin-bottom: 1em;
   }
@@ -79,4 +80,12 @@ form.registration_edit_form{
   fieldset.highlight{
     border-color: lighten($grapefruit-orange-color, 15%);
   }
+}
+
+footer{
+  img{
+    margin-bottom: .8em;
+  }
+  text-align: center;
+  font-size: .8em;
 }

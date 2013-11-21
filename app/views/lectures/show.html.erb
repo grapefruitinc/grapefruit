@@ -2,3 +2,6 @@
 
 <h2><%= @lecture.name %></h2>
 <p>Some great lecture content here...</p>
+<% if @lecture.mediasite_url %>
+  <iframe style="width:60%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= @lecture.mediasite_url %>"></iframe>
+<% end %>

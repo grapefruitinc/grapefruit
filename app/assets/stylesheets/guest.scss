@@ -24,6 +24,25 @@ div.main-content{
         div.description{
             @include grid-column(8);
             padding-right: 3em;
+            background-image: url('/assets/empac-small.png');
+            border-radius: 5px;
+
+            p, h2, a{
+              color: white;
+            }
+
+            h2, p{
+              text-shadow: 0px 0px 2px #555;
+            }
+
+            a:hover{
+              text-decoration: underline;
+            }
+
+            p.center{
+              text-align: center;
+              padding-top: 3.5em;
+            }
 
             span.opening{
                 @include label(.3em, 1.5em, $secondary-color, true);
@@ -47,6 +66,9 @@ div.main-content{
     form.login-form{
         input[type="submit"]{
             margin-bottom: .8em;
+        }
+        fieldset{
+          margin-top: 0px;
         }
     }
     div.login-form-container{
