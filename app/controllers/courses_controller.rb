@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
+  
+  before_filter :authenticate_user!
 
   layout "home"
-
-  before_filter :authenticate_user!
   
   def index
     @courses = Course.all
@@ -10,9 +10,14 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    ### Should chnage created_at to a more user-determined statistic ###
+    ### Should change created_at to a more user-determined statistic ###
     @capsules = @course.capsules.order("created_at DESC")
     @capsules.build
+
+    @course_user = @course.course_user(current_user)
+    unless @course_user.present?
+      @course_user = CourseUser.new
+    end
   end
 
   def new
@@ -20,7 +25,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(course_params)
+    @course = current_user.instructed_courses.build(course_params)
     if @course.save
       flash[:success] = "Course created!"
       redirect_to @course

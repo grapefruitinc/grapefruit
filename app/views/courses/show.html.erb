@@ -6,7 +6,23 @@
 %>
 
 <h3><%= @course.name %></h3>
-<div><%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %></div>
+<% if current_user == @course.instructor %>
+  <p>
+    Welcome back instructor!
+  </p>
+  
+  <div><%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %></div>
+<% elsif @course.students.include?(current_user) %>
+  <p>
+    You are attending this course.
+  </p>
+<% elsif !@course.students.include?(current_user) %>
+  <%= form_for [@course, @course_user] do |f| %>
+    <%= f.hidden_field :course_id, :value => @course.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "Join Course", class: "button small" %>
+  <% end %>
+<% end %>
 
 <table class="listing">
 	<tbody>

@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
          :recoverable, :trackable, :validatable
 
   has_many :instructed_courses, class_name: "Course", foreign_key: "instructor_id"
-  has_and_belongs_to_many :student_courses, class_name: "Course", foreign_key: "student_id"
+
+  has_many :course_users, dependent: :destroy
+  has_many :student_courses, class_name: "Course", through: :course_users, source: :course, dependent: :destroy
 
   def display_identifier
     !self.name.empty? ? self.name.split(" ").first : self.email

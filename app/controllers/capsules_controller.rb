@@ -1,9 +1,9 @@
 class CapsulesController < ApplicationController
-
-  layout "home"
   
   before_filter :get_course
   before_filter :authenticate_user!
+
+  layout "home"
 
 	def new
   	@capsule = @course.capsules.new
