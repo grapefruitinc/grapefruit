@@ -46,6 +46,8 @@ end
 
 group :development do
 	gem 'annotate'
+  # optional, makes git deployment easy.
+  # gem 'git-deploy'
 end
 
 # Use ActiveModel has_secure_password
