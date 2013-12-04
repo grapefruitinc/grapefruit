@@ -1,4 +1,4 @@
-<h3>Hi <%= current_user.display_identifier %>!</h3>
+<h3>Welcome <%= current_user.display_identifier %>!</h3>
 
 <% if can? :manage_admins, User %>
   <p>You have administrator permissions.</p>

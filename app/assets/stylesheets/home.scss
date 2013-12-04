@@ -1,9 +1,5 @@
 @import "application";
 
-body{
-  background-color: #fff;
-}
-
 div#top-flash{
   div.alert-box{
     @include alert(lighten(#0A7790, 10%));
@@ -11,11 +7,17 @@ div#top-flash{
   }
 }
 
+div.non-footer-container{
+  background-color:#fff;
+}
+
 div.top-bar-container{
 
   background-color: $topbar-bg-color;
 
   nav.top-bar{
+
+    margin-bottom: 0px;
 
     @include grid-row;
 
@@ -83,9 +85,5 @@ form.registration_edit_form{
 }
 
 footer{
-  img{
-    margin-bottom: .8em;
-  }
-  text-align: center;
   font-size: .8em;
 }
