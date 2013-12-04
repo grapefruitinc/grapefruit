@@ -53,6 +53,9 @@ group :development do
   # gem 'git-deploy'
 end
 
+# Video Controls
+gem 'youtube_it'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
