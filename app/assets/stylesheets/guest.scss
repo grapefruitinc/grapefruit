@@ -24,7 +24,6 @@ div.main-content{
         div.description{
             @include grid-column(8);
             padding-right: 3em;
-            background-image: url('/assets/empac-small.png');
             border-radius: 5px;
 
             p, h2, a{
