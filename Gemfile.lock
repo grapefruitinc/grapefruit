@@ -48,6 +48,7 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
+    daemon_controller (1.1.7)
     daemons (1.1.9)
     devise (3.2.1)
       bcrypt-ruby (~> 3.0)
@@ -76,6 +77,10 @@ GEM
     multi_json (1.8.2)
     mysql2 (0.3.14)
     orm_adapter (0.5.0)
+    passenger (4.0.27)
+      daemon_controller (>= 1.1.0)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -148,6 +153,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
+  passenger
   rails (= 4.0.1)
   sass-rails (~> 4.0.0)
   sdoc
