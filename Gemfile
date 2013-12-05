@@ -30,9 +30,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# WEBrick is so 2007
-gem 'thin'
-
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -49,8 +46,13 @@ end
 
 group :development do
 	gem 'annotate'
+  gem 'thin'
   # optional, makes git deployment easy.
   # gem 'git-deploy'
+end
+
+group :production do
+  gem 'passenger'
 end
 
 # Use ActiveModel has_secure_password
