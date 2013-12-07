@@ -2,17 +2,14 @@
 
 <h2><%= @lecture.name %></h2>
 
-<% if current_user == @course.instructor %>
- <div><%= link_to "Add Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), :class => "button small" %></div>
-<% end %>
-
+<div>
 <%= render @videos %>
 <% if @videos.empty? %>
-  <tr>
-    <td>
-      <span>No videos found.</span>
-    </td>
-  </tr> 
+  <p>No videos found.</p>
+<% end %>
+</div>
+<% if current_user == @course.instructor %>
+ <div><%= link_to "Add Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), :class => "button small" %></div>
 <% end %>
 
 <% if @lecture.mediasite_url %>

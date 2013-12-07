@@ -16,6 +16,7 @@ class VideoAccompaniesController < ApplicationController
       redirect_to [@course, @capsule, @lecture]
     else
       redirect_to(request.fullpath)
+    end
   end
 
   def destroy

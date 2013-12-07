@@ -7,6 +7,7 @@
 #  time       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  video_id   :integer
 #
 
 class VideoAccompany < ActiveRecord::Base

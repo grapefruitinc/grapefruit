@@ -1,1 +1,8 @@
-<%= link_to "#{video.title}", [@course, @capsule, @lecture, video] %>
+<div>
+<% if video.description.length < 20 %>
+  <p><%=video.title%> : <%=video.description %></p>
+<% else %>
+  <p><%=video.title%> : <%=video.description[0..20] %>...</p>
+<% end %>
+<p>file: <%=video.file%>.</p>
+</div>

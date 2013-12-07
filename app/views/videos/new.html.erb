@@ -1,0 +1,42 @@
+<%= breadcrumbs([
+      link_to("All Courses", courses_path),
+      link_to(@course.name, course_path(@course)),
+      link_to(@capsule.name, [@course, @capsule]),
+      link_to(@lecture.name, [@course, @capsule, @lecture]),
+      link_to('Add Video', void, :class => "current")
+    ])
+%>
+<div class="landing">
+  
+  <div class="description">
+    <h3>Create New Video</h3>
+  </div>
+
+  <div class="login">
+
+   <!--  <%= form_tag [@course, @capsule, @lecture, @video], :multipart => true do %>
+      <div><%= label_tag :title %><br />
+      <%= text_field_tag :title %></div>
+      <div><%= label_tag :description %><br />
+      <%= text_area_tag :description %></div>
+       <div><%= label_tag :file %><br />
+      <%= file_field_tag :file %></div>
+      <%= submit_tag "Add video", :class => "button small" %>
+    <% end %>    -->
+
+    <%= form_for [@course, @capsule, @lecture, @video], :multipart => true do |f| %>
+      <%= devise_error_messages! %>
+
+      <div><%= f.label :title %><br />
+      <%= f.text_field :title, :autofocus => true %></div>
+      <div><%= f.label :description %><br />
+      <%= f.text_area :description %></div>
+      <div><%= f.label :file %><br />
+      <%= f.file_field :file %></div>
+
+      <div><%= f.submit "Add Video", :class => "button small" %></div>
+    <% end %>
+  </div>
+
+</div>
+

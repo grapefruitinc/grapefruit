@@ -7,6 +7,8 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  description :text
+#  lecture_id  :integer
+#  file        :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

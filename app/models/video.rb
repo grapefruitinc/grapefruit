@@ -7,11 +7,13 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  description :text
+#  lecture_id  :integer
+#  file        :string(255)
 #
 
 class Video < ActiveRecord::Base
-  validates :name, presence: true
+  validates :title, presence: true
   validates :description, presence: true
-
+  
   belongs_to :lecture
 end
