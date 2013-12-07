@@ -24,7 +24,6 @@ div.main-content{
         div.description{
             @include grid-column(8);
             padding-right: 3em;
-            background-image: url('/assets/empac-small.png');
             border-radius: 5px;
 
             p, h2, a{
@@ -76,24 +75,6 @@ div.main-content{
     }
     div.register{
         @include grid-column(5, $center: true);
-    }
-
-}
-
-footer{
-    background-color: #fff;
-    padding-top: 1em;
-    color: lighten($body-font-color, 30%);
-    text-align: center;
-
-    div.school-logo{
-        background-color: darken(adjust-saturation($rpi-red-color, -50%), 10%);
-        padding: .5em 0em;
-    }
-
-    p.under-school-logo{
-        background-color: $body-bg;
-        padding-top: .8em;
     }
 
 }

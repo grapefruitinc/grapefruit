@@ -35,3 +35,24 @@ div#error_explanation{
     box-shadow: none;
     transition: none;
 }
+
+/**
+  footer
+**/
+footer{
+    background-color: #fff;
+    padding-top: 1em;
+    color: lighten($body-font-color, 30%);
+    text-align: center;
+
+    div.school-logo{
+        background-color: darken(adjust-saturation($rpi-red-color, -50%), 10%);
+        padding: .5em 0em;
+    }
+
+    p.under-school-logo{
+        background-color: $body-bg;
+        padding-top: .8em;
+    }
+
+}

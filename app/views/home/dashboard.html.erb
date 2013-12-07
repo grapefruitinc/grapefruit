@@ -1,7 +1,35 @@
-<h3>Hi <%= current_user.display_identifier %>!</h3>
+<h3>Welcome <%= current_user.display_identifier %>!</h3>
 
 <% if can? :manage_admins, User %>
   <p>You have administrator permissions.</p>
-<% else %> 
-  <p>You are a regular user.</p>
 <% end %>
+
+<% if not @instructed_courses.empty? %>
+<table class="listing">
+  <thead>
+    <th width="60%">Courses You Instruct</th>
+    <th># Students</th>
+  </thead>
+  <tbody>
+      <%= render @instructed_courses %>
+  </tbody>
+</table>
+<% end %>
+
+<table class="listing">
+  <thead>
+    <th width="60%">Enrolled Courses</th>
+    <th># Students</th>
+  </thead>
+  <tbody>
+    <% if @enrolled_courses.empty? %>
+      <tr>
+        <td colspan='2' class="center">
+        <span>You are not enrolled in any courses.</span>
+        </td>
+      </tr>
+    <% else %>
+        <%= render @enrolled_courses %>
+    <% end %>
+  </tbody>
+</table>
