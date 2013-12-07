@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: video_accompanies
+#
+#  id         :integer          not null, primary key
+#  content    :text
+#  time       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  time: MyString
+
+two:
+  content: MyText
+  time: MyString

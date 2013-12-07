@@ -12,6 +12,9 @@ class LecturesController < ApplicationController
 
   def show
   	@lecture = @capsule.lectures.find(params[:id])
+    @videos = @lecture.videos.order("created_at DESC")
+    @videos.build
+
   end
 
   def create

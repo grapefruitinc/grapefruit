@@ -17,5 +17,8 @@ class Lecture < ActiveRecord::Base
 	validates :lecture_number, presence: true
 
 	belongs_to :capsule
+
+  has_many :videos
+  has_many :video_accompanys
 	
 end

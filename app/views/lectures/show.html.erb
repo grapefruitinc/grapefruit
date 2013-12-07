@@ -1,7 +1,20 @@
 <%= link_to "Back to " + @capsule.name, [@course, @capsule], :class => "button small" %>
 
 <h2><%= @lecture.name %></h2>
-<p>Some great lecture content here...</p>
+
+<% if current_user == @course.instructor %>
+ <div><%= link_to "Add Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), :class => "button small" %></div>
+<% end %>
+
+<%= render @videos %>
+<% if @videos.empty? %>
+  <tr>
+    <td>
+      <span>No videos found.</span>
+    </td>
+  </tr> 
+<% end %>
+
 <% if @lecture.mediasite_url %>
   <iframe style="width:60%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= @lecture.mediasite_url %>"></iframe>
 <% end %>

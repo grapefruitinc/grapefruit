@@ -37,4 +37,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_lecture
+    @lecture = Lecture.find(params[:lecture_id] || params[:id])
+    unless @lecture.present?
+      flash[:error] = "Invalid lecture!"
+      redirect_to root_path
+    end
+  end
+
+  def get_video
+    @video = Video.find(params[:video_id] || params[:id])
+    unless @video.present?
+      flash[:error] = "Invalid lecture!"
+      redirect_to root_path
+    end
+  end
+
 end

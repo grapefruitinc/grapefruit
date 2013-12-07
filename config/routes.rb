@@ -28,7 +28,11 @@ Grapefruit::Application.routes.draw do
     resources :course_users, only: [:create]
     
     resources :capsules do
-      resources :lectures
+      resources :lectures do
+        resources :videos do
+          resources :video_accompanies
+        end
+      end
       resources :problem_sets
     end
   end
