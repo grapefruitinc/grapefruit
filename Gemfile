@@ -21,6 +21,9 @@ gem 'devise'
 # cancan for permissions
 gem 'cancan'
 
+# carrierwave for file uploads
+gem 'carrierwave'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

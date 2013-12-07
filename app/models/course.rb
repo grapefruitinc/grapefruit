@@ -4,9 +4,11 @@
 #
 #  id            :integer          not null, primary key
 #  name          :string(255)
-#  instructor_id :integer
 #  created_at    :datetime
 #  updated_at    :datetime
+#  instructor_id :integer
+#  student_id    :integer
+#  document_id   :integer
 #
 
 class Course < ActiveRecord::Base
@@ -17,6 +19,7 @@ class Course < ActiveRecord::Base
   has_many :course_users, dependent: :destroy
   has_many :students, class_name: "User", through: :course_users, source: :user
   has_many :capsules, dependent: :destroy
+  has_many :documents, dependent: :destroy
 
   # Student definitions
   # ========================================================

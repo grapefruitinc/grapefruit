@@ -8,13 +8,13 @@
 <h3><%= @course.name %></h3>
 <% if current_user == @course.instructor %>
   <p>
-    Welcome back instructor!
+    You are intructing this course.
   </p>
   
   <div><%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %></div>
 <% elsif @course.students.include?(current_user) %>
   <p>
-    You are attending this course.
+    You are enrolled in this course.
   </p>
 <% elsif !@course.students.include?(current_user) %>
   <%= form_for [@course, @course_user] do |f| %>
@@ -25,6 +25,9 @@
 <% end %>
 
 <table class="listing">
+  <thead>
+    <th>Capsules</th>
+  </thead>
 	<tbody>
 		<%= render @capsules %>
     <% if @capsules.empty? %>

@@ -9,12 +9,15 @@
 #  updated_at     :datetime
 #  capsule_id     :integer
 #  mediasite_url  :string(255)
+#  document_id    :integer
 #
 
 class Lecture < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :lecture_number, presence: true
+  
+  has_many :documents, dependent: :destroy
 
 	belongs_to :capsule
 	
