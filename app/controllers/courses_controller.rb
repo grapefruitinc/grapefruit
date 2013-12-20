@@ -14,6 +14,8 @@ class CoursesController < ApplicationController
     @capsules = @course.capsules.order("created_at DESC")
     @capsules.build
 
+    @documents = @course.documents
+
     @course_user = @course.course_user(current_user)
     unless @course_user.present?
       @course_user = CourseUser.new

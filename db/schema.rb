@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207174929) do
+ActiveRecord::Schema.define(version: 20131207181822) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_id"
-    t.integer  "document_id"
   end
 
   create_table "course_users", force: true do |t|
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 20131207174929) do
     t.datetime "updated_at"
     t.integer  "instructor_id"
     t.integer  "student_id"
-    t.integer  "document_id"
   end
 
   create_table "courses_users", force: true do |t|
@@ -47,6 +45,9 @@ ActiveRecord::Schema.define(version: 20131207174929) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
+    t.integer  "capsule_id"
+    t.integer  "lecture_id"
   end
 
   create_table "lectures", force: true do |t|
@@ -56,7 +57,6 @@ ActiveRecord::Schema.define(version: 20131207174929) do
     t.datetime "updated_at"
     t.integer  "capsule_id"
     t.string   "mediasite_url"
-    t.integer  "document_id"
   end
 
   create_table "problem_sets", force: true do |t|
