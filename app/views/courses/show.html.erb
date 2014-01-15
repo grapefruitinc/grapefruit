@@ -50,13 +50,15 @@
 
 <table class="listing">
   <thead>
-    <th>Course Files</th>
+    <th>File</th>
+    <th>Description</th>
+    <th>Actions</th>
   </thead>
   <tbody>
     <%= render @documents %>
     <% if @documents.empty? %>
       <tr>
-        <td>
+        <td colspan="3">
           <span>No course files uploaded.</span>
         </td>
       </tr> 

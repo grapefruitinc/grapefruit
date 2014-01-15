@@ -29,6 +29,11 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    @document = @course.documents.find(params[:id])
+    name = @document[:file]
+    @document.destroy
+    flash[:success] = "#{name} was deleted!"
+    redirect_to course_path(@course)
   end
 
   private

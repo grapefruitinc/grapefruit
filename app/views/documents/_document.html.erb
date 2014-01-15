@@ -2,4 +2,9 @@
   <td>
     <%= link_to document[:file], document.file.url %>
   </td>
+  <td>
+    <%= document.description %>
+  <td>
+    <%= link_to 'Delete', [@course, document], :method => :delete %>
+  </td>
 </tr>
