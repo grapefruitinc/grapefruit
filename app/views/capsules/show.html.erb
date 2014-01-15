@@ -1,3 +1,5 @@
+<% page_title (@capsule.name + ' :: ' + @course.name) %>
+
 <nav class="breadcrumbs">
   <%= link_to "All Courses", courses_path %>
   <%= link_to @course.name, course_path(@course) %>
