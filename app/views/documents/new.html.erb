@@ -13,9 +13,13 @@
   <div class="login">
     <%= form_for [@course, @document] do |f| %>
 
-      <%= devise_error_messages! %>
+      <% @document.errors.full_messages.each do |message| %>
+        <p>Error: <%= message %></p> <!-- TODO: style this -->
+      <% end %>
 
-      <%= f.file_field :file, :placeholder => "File Name" %>
+      <%= f.file_field :file %>
+
+      <%= f.text_field :description, :placeholder => "Optional Description" %>
 
       <div><%= f.submit "Add File", :class => "button small" %></div>
 

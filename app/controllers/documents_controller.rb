@@ -14,18 +14,12 @@ class DocumentsController < ApplicationController
     @document = @course.documents.new(document_params)
 
     if @document.save
-      uploader = DocumentUploader.new
-      uploader.store!(@document.file)
-
       flash[:success] = "File added!"
       redirect_to course_path(@course)
     else
       render 'new'
     end
 
-  end
-
-  def show
   end
 
   def destroy
@@ -38,7 +32,7 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.fetch(:file, {})
+    params.require(:document).permit(:file, :description)
   end
 
 end
