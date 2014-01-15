@@ -47,3 +47,21 @@
     <% end %>
 	</tbody>
 </table>
+
+<table class="listing">
+  <thead>
+    <th>Course Files</th>
+  </thead>
+  <tbody>
+    <%= render @documents %>
+    <% if @documents.empty? %>
+      <tr>
+        <td>
+          <span>No course files uploaded.</span>
+        </td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+</div>
