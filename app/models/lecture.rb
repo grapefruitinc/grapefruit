@@ -9,7 +9,6 @@
 #  updated_at     :datetime
 #  capsule_id     :integer
 #  mediasite_url  :string(255)
-#  document_id    :integer
 #
 
 class Lecture < ActiveRecord::Base

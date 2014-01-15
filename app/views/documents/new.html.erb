@@ -1,0 +1,25 @@
+<%= breadcrumbs([
+      link_to('All Courses', courses_path),
+      link_to(@course.name, course_path(@course)),
+      link_to('Add File', void, :class => "current")
+    ]) %>
+
+<div class="landing">
+  
+  <div class="description">
+    <h2>Add File</h2>
+  </div>
+
+  <div class="login">
+    <%= form_for [@course, @document] do |f| %>
+
+      <%= devise_error_messages! %>
+
+      <%= f.file_field :file, :placeholder => "File Name" %></div>
+
+      <div><%= f.submit "Add File", :class => "button small" %></div>
+
+    <% end %>
+  </div>
+
+</div>
