@@ -15,6 +15,9 @@ gem 'sass-rails', '~> 4.0.0'
 gem "compass-rails", "~> 2.0.alpha.0"
 gem 'zurb-foundation'
 
+# config for configuraiton files and YAML
+gem 'rails_config'
+
 # devise for authentication
 gem 'devise'
 

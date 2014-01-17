@@ -10,9 +10,11 @@
 etc. Create the database in question and apply all permissions to the user that will 
 be accessing it.
 
-3. bundle install
+3. Copy config/config-demo.yml to config/config.yml and replace the username and password fields with youtube account information for the master youtube account that holds lecture videos
 
-4. rake db:migrate
+4. bundle install
+
+5. rake db:migrate
 
 ### Administration
 

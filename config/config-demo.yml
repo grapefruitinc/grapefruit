@@ -1,0 +1,14 @@
+defaults: &defaults
+  youtube:
+    username: "YOUTUBE USERNAME"
+    password: "YOUTUBE PASSWORD"
+    dev_key: "YOUTUBE DEVKEY"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

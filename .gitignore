@@ -20,6 +20,7 @@
 
 # Ignore the database config (keep the example)
 /config/database.yml
+/config/config.yml
 
 #DS_STORE
 */*.DS_STORE

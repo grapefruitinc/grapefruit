@@ -13,17 +13,7 @@
   </div>
 
   <div class="login">
-
-   <!--  <%= form_tag [@course, @capsule, @lecture, @video], :multipart => true do %>
-      <div><%= label_tag :title %><br />
-      <%= text_field_tag :title %></div>
-      <div><%= label_tag :description %><br />
-      <%= text_area_tag :description %></div>
-       <div><%= label_tag :file %><br />
-      <%= file_field_tag :file %></div>
-      <%= submit_tag "Add video", :class => "button small" %>
-    <% end %>    -->
-
+  
     <%= form_for [@course, @capsule, @lecture, @video], :multipart => true do |f| %>
       <%= devise_error_messages! %>
 

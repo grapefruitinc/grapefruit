@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
-
   require 'youtube_it'
+  require 'yaml'
 
   before_filter :authenticate_user!
   before_filter :get_course
@@ -19,9 +19,10 @@ class VideosController < ApplicationController
 
   def create
     @video = @lecture.videos.new(video_params)
+    @video[:file] = video_params[:file].tempfile.path
     if @video.save
-      # client = YouTubeIt::Client.new(:dev_key => "AIzaSyDGt4yhelYivEYFHhb_Al8HB2t3aDylq1k")
-      # client.video_upload("http://media.railscasts.com/assets/episodes/videos/412-fast-rails-commands.mp4", :title => "test",:description => 'some description', :category => 'People',:keywords => %w[cool blah test])
+      client = getYoutubeClient()
+      client.video_upload(File.open(@video[:file]), :title => @video[:title], :description => @video[:description], :category => 'People',:keywords => %w[grapefruit lecture video])
       flash[:success] = "Video created!"
       redirect_to [@course, @capsule, @lecture]
     else
@@ -38,5 +39,13 @@ class VideosController < ApplicationController
 private
   def video_params
     params.require(:video).permit(:title, :description, :file)
+  end
+
+  def getYoutubeClient
+    config = YAML.load("/config/config.yml")[RAILS_ENV]
+    username = config['youtube']['username']
+    password = config['youtube']['password']
+    dev_key = config['youtube']['dev_key']
+    client = YouTubeIt::Client.new(:username => username, :password => password, :dev_key => dev_key)
   end
 end
