@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   has_many :student_courses, class_name: "Course", through: :course_users, source: :course, dependent: :destroy
 
   def display_identifier
-    !self.name.empty? ? self.name.split(" ").first : self.email
+    !self.name.blank? ? self.name.split(" ").first : self.email
   end
 
 end
