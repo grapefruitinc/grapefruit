@@ -37,7 +37,7 @@
         user.instructed_courses.include? course
       end
       can :manage, Document do |document|
-        user.instructed_courses.include? Course.find(document.course_id)
+        user.instructed_courses.include? document.course
       end
       can :manage, Capsule do |capsule|
         user.instructed_courses.include? capsule.course

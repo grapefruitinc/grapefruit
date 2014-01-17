@@ -14,6 +14,10 @@
 
 class Document < ActiveRecord::Base
 
+  belongs_to :course
+  belongs_to :capsule
+  belongs_to :lecture
+
   mount_uploader :file, DocumentUploader
 
   validates :file, presence: true

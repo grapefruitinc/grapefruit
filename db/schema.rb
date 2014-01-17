@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207181822) do
+ActiveRecord::Schema.define(version: 20140117025421) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
