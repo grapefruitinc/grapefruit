@@ -7,11 +7,11 @@
   ])
 %>
 
-<h3><%= @course.name %></h3>
+<h3 class="course-name"><%= @course.name %></h3>
 
 <% if current_user == @course.instructor %>
 
-  <p>You are intructing this course.</p>
+  <span class="instructing">You are instructing this course.</span>
   
   <div>
     <%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %>
@@ -22,7 +22,7 @@
   
   <p>You are enrolled in this course.</p>
 
-<% elsif !@course.students.include?(current_user) %>
+<% else %>
 
   <%= form_for [@course, @course_user] do |f| %>
     <%= f.hidden_field :course_id, :value => @course.id %>
@@ -48,24 +48,4 @@
 	</tbody>
 </table>
 
-<table class="listing">
-  <thead>
-    <th>File</th>
-    <th>Description</th>
-    <% if can? :manage, @course %>
-      <th>Actions</th>
-    <% end %>
-  </thead>
-  <tbody>
-    <%= render @documents %>
-    <% if @documents.empty? %>
-      <tr>
-        <td colspan="3">
-          <span>No course files uploaded.</span>
-        </td>
-      </tr> 
-    <% end %>
-  </tbody>
-</table>
-
-</div>
+<%= render "documents/documents", container: @course %>
