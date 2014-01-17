@@ -19,14 +19,21 @@ class VideosController < ApplicationController
 
   def create
     @video = @lecture.videos.new(video_params)
-    @video[:file] = video_params[:file].tempfile.path
-    if @video.save
-      client = getYoutubeClient()
-      client.video_upload(File.open(@video[:file]), :title => @video[:title], :description => @video[:description], :category => 'People', :keywords => %w[rensselaer grapefruit lecture video])
-      flash[:success] = "Video created!"
-      redirect_to [@course, @capsule, @lecture]
+    if @video[:file]
+      @video[:file] = video_params[:file].tempfile.path
+      if @video.save
+        client = getYoutubeClient()
+        upload = client.video_upload(File.open(@video[:file]), :title => @video[:title], :description => @video[:description], :category => 'People', :keywords => %w[rensselaer grapefruit lecture video])
+        @video.youtube_id = upload.video_id.split(':')[-1]
+        @video.save
+        flash[:success] = "Video created!"
+        redirect_to [@course, @capsule, @lecture]
+      else
+        redirect_to root_path
+      end
     else
-      redirect_to root_path
+      flash[:error] = "Please select a video to upload!"
+      redirect_to :back
     end
   end
 

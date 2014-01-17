@@ -9,6 +9,7 @@
 #  description :text
 #  lecture_id  :integer
 #  file        :string(255)
+#  youtube_id  :string(255)
 #
 
 class Video < ActiveRecord::Base

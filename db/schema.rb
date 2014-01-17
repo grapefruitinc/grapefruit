@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207200456) do
+ActiveRecord::Schema.define(version: 20140117211624) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20131207200456) do
     t.text     "description"
     t.integer  "lecture_id"
     t.string   "file"
+    t.string   "youtube_id"
   end
 
 end
