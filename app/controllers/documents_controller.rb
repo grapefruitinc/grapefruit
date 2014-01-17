@@ -33,7 +33,8 @@ class DocumentsController < ApplicationController
     redirect_to course_path(@course)
   end
 
-  private
+private
+
   def document_params
     params.require(:document).permit(:file, :description)
   end
