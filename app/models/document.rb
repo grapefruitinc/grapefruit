@@ -14,12 +14,18 @@
 
 class Document < ActiveRecord::Base
 
+  # Files
+  # ========================================================
+  mount_uploader :file, DocumentUploader
+
+  # Validations
+  # ========================================================
+  validates :file, presence: true
+
+  # Relationships
+  # ========================================================
   belongs_to :course
   belongs_to :capsule
   belongs_to :lecture
-
-  mount_uploader :file, DocumentUploader
-
-  validates :file, presence: true
   
 end

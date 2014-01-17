@@ -8,8 +8,8 @@
 <h3><%= @capsule.name %></h3>
 
 <div>
-  <%= link_to "Add Lecture", new_course_capsule_lecture_path(@course, @capsule), :class => "button small" %>
-  <%= link_to "Add Problem Set", new_course_capsule_problem_set_path(@course, @capsule), :class => "button small" %>
+  <%= link_to "Add Lecture", new_course_capsule_lecture_path(@course, @capsule), class: "button small" %>
+  <%= link_to "Add Problem Set", new_course_capsule_problem_set_path(@course, @capsule), class: "button small" %>
 </div>
 
 <table class="listing">

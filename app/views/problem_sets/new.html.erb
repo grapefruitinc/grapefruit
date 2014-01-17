@@ -2,7 +2,7 @@
       link_to("All Courses", courses_path),
       link_to(@course.name, course_path(@course)),
       link_to(@capsule.name, [@course, @capsule]),
-      link_to('Add Problem Set', void, :class => "current")
+      link_to('Add Problem Set', void, class: "current")
     ])
 %>
 
@@ -16,9 +16,9 @@
     <%= form_for [@course, @capsule, @problem_set] do |f| %>
       <%= devise_error_messages! %>
 
-      <%= f.text_field :name, :placeholder => "Name", :autofocus => true %></div>
+      <%= f.text_field :name, placeholder: "Name", autofocus: true %></div>
 
-      <div><%= f.submit "Add Problem Set", :class => "button small" %></div>
+      <div><%= f.submit "Add Problem Set", class: "button small" %></div>
     <% end %>
   </div>
 

@@ -10,9 +10,13 @@
 #
 
 class Capsule < ActiveRecord::Base
+  
+  # Validations
+  # ========================================================
+  validates :name, presence: true
 
-	validates :name, presence: true
-
+  # Relationships
+  # ========================================================
 	belongs_to :course
 	has_many :lectures, dependent: :destroy
 	has_many :problem_sets, dependent: :destroy

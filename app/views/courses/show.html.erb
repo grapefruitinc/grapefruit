@@ -3,7 +3,7 @@
 <%=
   breadcrumbs([
     link_to('All Courses', courses_path),
-    link_to(@course.name, "javascript:void(0)", :class => "current")
+    link_to(@course.name, "javascript:void(0)", class: "current")
   ])
 %>
 
@@ -14,8 +14,8 @@
   <span class="instructing">You are instructing this course.</span>
   
   <div>
-    <%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %>
-    <%= link_to "Add File", new_course_document_path(@course), :class => "button small" %>
+    <%= link_to "Add Capsule", new_course_capsule_path(@course), class: "button small" %>
+    <%= link_to "Add File", new_course_document_path(@course), class: "button small" %>
   </div>
 
 <% elsif @course.students.include?(current_user) %>
@@ -25,8 +25,8 @@
 <% else %>
 
   <%= form_for [@course, @course_user] do |f| %>
-    <%= f.hidden_field :course_id, :value => @course.id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :course_id, value: @course.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Join Course", class: "button small" %>
   <% end %>
 
