@@ -52,7 +52,9 @@
   <thead>
     <th>File</th>
     <th>Description</th>
-    <th>Actions</th>
+    <% if can? :manage, @course %>
+      <th>Actions</th>
+    <% end %>
   </thead>
   <tbody>
     <%= render @documents %>

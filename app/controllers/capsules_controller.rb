@@ -7,6 +7,7 @@ class CapsulesController < ApplicationController
 
 	def new
   	@capsule = @course.capsules.new
+    authorize! :create, @capsule
   end
 
   def show
@@ -19,6 +20,7 @@ class CapsulesController < ApplicationController
 
   def create
   	@capsule = @course.capsules.new(capsule_params)
+    authorize! :create, @capsule
   	if @capsule.save
   		flash[:success] = "Capsule created!"
   		redirect_to [@course, @capsule]
@@ -29,6 +31,7 @@ class CapsulesController < ApplicationController
 
   def destroy
   	@capsule = @capsule.find(params[:id])
+    authorize! :delete, @capsule
   	@capsule.destroy
   	redirect_to :back
   end

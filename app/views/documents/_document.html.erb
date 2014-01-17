@@ -4,7 +4,10 @@
   </td>
   <td>
     <%= document.description %>
-  <td>
-    <%= link_to 'Delete', [@course, document], :method => :delete %>
   </td>
+  <% if can? :delete, document %>
+    <td>
+      <%= link_to 'Delete', [@course, document], :method => :delete %>
+    </td>
+  <% end %>
 </tr>

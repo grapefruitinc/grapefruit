@@ -7,12 +7,14 @@ class DocumentsController < ApplicationController
 
   def new
     @document = @course.documents.new
+    authorize! :create, @document
   end
 
   def create
 
     @document = @course.documents.new(document_params)
-
+    authorize! :create, @document
+    
     if @document.save
       flash[:success] = "File added!"
       redirect_to course_path(@course)
@@ -24,6 +26,7 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document = @course.documents.find(params[:id])
+    authorize! :delete, @document
     name = @document[:file]
     @document.destroy
     flash[:success] = "#{name} was deleted!"
