@@ -24,3 +24,7 @@
 
 #DS_STORE
 */*.DS_STORE
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
