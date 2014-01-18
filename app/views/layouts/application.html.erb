@@ -30,10 +30,10 @@
   <body>
 
     <div id="top-flash">
-      <%= content_tag(:div, flash[:error], :class => 'alert-box',) if flash[:error] %>
-      <%= content_tag(:div, flash[:notice], :class => 'alert-box secondary') if flash[:notice] %>
-      <%= content_tag(:div, flash[:alert], :class => 'alert-box') if flash[:alert] %>
-      <%= content_tag(:div, flash[:success], :class => 'alert-box success') if flash[:success] %>
+      <%= content_tag(:div, flash[:error], class: 'alert-box',) if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], class: 'alert-box secondary') if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], class: 'alert-box') if flash[:alert] %>
+      <%= content_tag(:div, flash[:success], class: 'alert-box success') if flash[:success] %>
     </div>
 
     <%= content_for?(:content) ? yield(:content) : yield %>

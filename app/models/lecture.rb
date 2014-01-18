@@ -12,10 +12,14 @@
 #
 
 class Lecture < ActiveRecord::Base
-
-	validates :name, presence: true
-	validates :lecture_number, presence: true
   
+  # Validations
+  # ========================================================
+  validates :name, presence: true
+  validates :lecture_number, presence: true
+  
+  # Relationships
+  # ========================================================
   has_many :documents, dependent: :destroy
 
 	belongs_to :capsule

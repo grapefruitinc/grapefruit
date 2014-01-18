@@ -3,7 +3,7 @@
       (link_to(@course.name, course_path(@course)) if @course) || "",
       (link_to(@capsule.name, course_capsule_path(@course, @capsule)) if @capsule) || "",
       (link_to(@lecture.name, course_capsule_lecture_path(@course, @capsule, @lecture)) if @lecture) || "",
-      link_to('Add File', void, :class => "current")
+      link_to('Add File', void, class: "current")
     ]) %>
 
 <div class="landing">
@@ -21,9 +21,9 @@
 
       <%= f.file_field :file %>
 
-      <%= f.text_field :description, :placeholder => "Optional Description" %>
+      <%= f.text_field :description, placeholder: "Optional Description" %>
 
-      <div><%= f.submit "Add File", :class => "button small" %></div>
+      <div><%= f.submit "Add File", class: "button small" %></div>
 
     <% end %>
   </div>

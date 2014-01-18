@@ -4,7 +4,7 @@
     <h2>Learn at Rensselaer. Everywhere.</h2>
 
     <p>
-      Grapefruit is an open-source initiative pioneered by <%= link_to 'RCOS', 'http://rcos.rpi.edu', :target => '_blank' %> to bring Rensselaer courses to your laptop, desktop, phone, or even your toaster.
+      Grapefruit is an open-source initiative pioneered by <%= link_to 'RCOS', 'http://rcos.rpi.edu', target: '_blank' %> to bring Rensselaer courses to your laptop, desktop, phone, or even your toaster.
     </p>
 
     <p class="center">
@@ -27,9 +27,9 @@
         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
       </p>
     <% else %>
-      <%= render :file => "devise/sessions/new" %>
+      <%= render file: "devise/sessions/new" %>
     
-      <%= link_to 'Join Grapefruit!', new_user_registration_path, :class => "button new-user" %>
+      <%= link_to 'Join Grapefruit!', new_user_registration_path, class: "button new-user" %>
     <% end %>
   </div>
 

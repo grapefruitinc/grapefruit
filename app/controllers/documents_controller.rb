@@ -62,7 +62,8 @@ class DocumentsController < ApplicationController
     end
   end
 
-  private
+private
+
   def document_params
     params.require(:document).permit(:file, :description)
   end

@@ -6,6 +6,8 @@ class CoursesController < ApplicationController
   
   def index
     @courses = Course.all
+    @instructed_courses = current_user.instructed_courses
+    @enrolled_courses = current_user.student_courses
   end
 
   def show
@@ -43,7 +45,9 @@ class CoursesController < ApplicationController
   end
 
 private
+
   def course_params
     params.require(:course).permit(:name)
   end
+  
 end
