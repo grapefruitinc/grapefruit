@@ -5,6 +5,8 @@ class VideoTextsController < ApplicationController
   before_filter :get_lecture
   before_filter :get_video
 
+  layout "home"
+
   def show
     @video_text = @video.video_texts.find(params[:id])
   end
@@ -17,7 +19,7 @@ class VideoTextsController < ApplicationController
     @video_text = @video.video_texts.new(video_text_params)
     if @video_text.save
       flash[:success] = "Accompany content added!"
-      redirect_to [@course, @capsule, @lecture, @video]
+      redirect_to [@course, @capsule, @lecture]
     else
       redirect_to(request.fullpath)
     end

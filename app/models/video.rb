@@ -17,4 +17,5 @@ class Video < ActiveRecord::Base
   validates :description, presence: true
   
   belongs_to :lecture
+  has_many :video_texts
 end

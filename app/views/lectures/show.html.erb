@@ -9,13 +9,18 @@
 <h2><%= @lecture.name %></h2>
 
 <div>
-<%= render @videos %>
+<% @videos.each do |video| %>
+  <%= render video %>
+  <% if @videos.length > 1 %> 
+    <div class="custom-hr"></div>
+  <% end %>
+<% end %>
 <% if @videos.empty? %>
   <p>No videos found.</p>
 <% end %>
 </div>
 <% if current_user == @course.instructor %>
- <div><%= link_to "Add Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), :class => "button small" %></div>
+ <div><%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), :class => "button small" %></div>
 <% end %>
 
 <% if @lecture.mediasite_url %>

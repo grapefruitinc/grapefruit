@@ -1,10 +1,31 @@
-<%= form_for [@course, @capsule, @lecture, @video_text] do |f| %>
-  <%= devise_error_messages! %>
+<%= breadcrumbs([
+      link_to("All Courses", courses_path),
+      link_to(@course.name, course_path(@course)),
+      link_to(@capsule.name, [@course, @capsule]),
+      link_to(@lecture.name, [@course, @capsule, @lecture]),
+      link_to('Add Video Text', void, :class => "current")
+    ])
+%>
+<div class="landing">
+  
+  <div class="description">
+    <h3>Create New Video Text</h3>
+  </div>
 
-  <div><%= f.label :content %><br />
-  <%= f.text_field :content, :autofocus => true %></div>
-  <div><%= f.label :time %><br />
-  <%= f.text_field :time %></div>
+  <div class="login">
+  
+    <%= form_for [@course, @capsule, @lecture, @video, @video_text] do |f| %>
+      <%= devise_error_messages! %>
 
-  <div><%= f.submit "Add Video", :class => "button small" %></div>
-<% end %>
+      <div><%= f.label :content %><br />
+      <%= f.text_area :content, :size => "30x10", :autofocus => true %></div>
+      <div><%= f.label :time %>
+      <small>Start time in seconds for the video to show up</small> <br />
+      <%= f.text_field :time %></div>
+
+      <div><%= f.submit "Add Video", :class => "button small" %></div>
+    <% end %>
+  </div>
+
+</div>
+
