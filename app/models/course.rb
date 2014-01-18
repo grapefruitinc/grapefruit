@@ -4,9 +4,10 @@
 #
 #  id            :integer          not null, primary key
 #  name          :string(255)
-#  instructor_id :integer
 #  created_at    :datetime
 #  updated_at    :datetime
+#  instructor_id :integer
+#  student_id    :integer
 #
 
 class Course < ActiveRecord::Base
