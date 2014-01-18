@@ -26,21 +26,23 @@ Grapefruit::Application.routes.draw do
   end
 
   resources :courses do
+
+    resources :documents, :shallow => true
     
     resources :course_users, only: [:create]
 
-    resources :documents
-    
     resources :capsules do
 
-      resources :documents
+      resources :documents, :shallow => true
 
       resources :lectures do
-        resources :documents
+        resources :documents, :shallow => true
       end
 
       resources :problem_sets
+
     end
+
   end
 
   # Example of regular route:

@@ -1,23 +1,25 @@
 class DocumentsController < ApplicationController
 
-  before_filter :get_course
+  before_filter :get_owners
+  before_filter :get_container
   before_filter :authenticate_user!
 
   layout "home"
 
   def new
-    @document = @course.documents.new
+    @document = @container.documents.new
     authorize! :create, @document
   end
 
   def create
 
-    @document = @course.documents.new(document_params)
+    @document = @container.documents.new(document_params)
+
     authorize! :create, @document
     
     if @document.save
       flash[:success] = "File added!"
-      redirect_to course_path(@course)
+      redirect_to @redirect
     else
       render 'new'
     end
@@ -25,12 +27,39 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    @document = @course.documents.find(params[:id])
+    @document = @container.documents.find(params[:id])
     authorize! :delete, @document
     name = @document[:file]
     @document.destroy
     flash[:success] = "#{name} was deleted!"
-    redirect_to course_path(@course)
+    redirect_to @redirect
+  end
+
+  private
+  def get_owners
+    if params[:course_id]
+       get_course
+     end
+    if params[:capsule_id]
+      get_capsule
+    end
+    if params[:lecture_id]
+      get_lecture
+    end
+  end
+
+  private
+  def get_container
+    if @lecture
+      @container = @lecture
+      @redirect = course_capsule_lecture_path(@course, @capsule, @lecture)
+    elsif @capsule
+      @container = @capsule
+      @redirect = course_capsule_path(@course, @capsule)
+    elsif @course
+      @container = @course
+      @redirect = course_path(@course)
+    end
   end
 
   private

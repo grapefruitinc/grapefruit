@@ -1,6 +1,9 @@
 <% page_title @lecture.name %>
 
 <%= link_to "Back to " + @capsule.name, [@course, @capsule], :class => "button small" %>
+<%= link_to "Add File", new_course_capsule_lecture_document_path(@course, @capsule, @lecture), :class => "button small" %>
+
+<%= render "documents/documents", container: @lecture %>
 
 <h2><%= @lecture.name %></h2>
 <p>Some great lecture content here...</p>

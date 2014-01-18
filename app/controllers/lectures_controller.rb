@@ -12,6 +12,7 @@ class LecturesController < ApplicationController
 
   def show
   	@lecture = @capsule.lectures.find(params[:id])
+    @documents = @lecture.documents
   end
 
   def create

@@ -33,15 +33,29 @@
       can :manage_admins, User
       can :manage, :all
     else
+
       can :manage, Course do |course|
-        user.instructed_courses.include? course
+        course.instructor == user
       end
-      can :manage, Document do |document|
-        user.instructed_courses.include? document.course
-      end
+
       can :manage, Capsule do |capsule|
-        user.instructed_courses.include? capsule.course
+        capsule.course.instructor == user
       end
+
+      can :manage, Lecture do |lecture|
+        lecture.capsule.course.instructor == user
+      end
+
+      can :manage, Document do |document|
+        if document.course
+          document.course.instructor == user
+        elsif document.capsule
+          document.capsule.course.instructor == user
+        else
+          document.lecture.capsule.course.instructor == user
+        end
+      end
+
     end
 
   end
