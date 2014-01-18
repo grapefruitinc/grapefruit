@@ -27,12 +27,19 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    @document = @container.documents.find(params[:id])
+    @document = Document.find(params[:id])
     authorize! :delete, @document
     name = @document[:file]
+    if @document.lecture
+      redirect = course_capsule_lecture_path(@document.lecture.capsule.course, @document.lecture.capsule, @document.lecture)
+    elsif @document.capsule
+      redirect = course_capsule_path(@document.capsule.course, @document.capsule)
+    else
+      redirect = course_path(@document.course)
+    end
     @document.destroy
     flash[:success] = "#{name} was deleted!"
-    redirect_to @redirect
+    redirect_to redirect
   end
 
   private
