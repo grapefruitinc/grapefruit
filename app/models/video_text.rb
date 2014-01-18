@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: video_accompanies
+# Table name: video_texts
 #
 #  id         :integer          not null, primary key
 #  content    :text
@@ -10,7 +10,7 @@
 #  video_id   :integer
 #
 
-class VideoAccompany < ActiveRecord::Base
+class VideoText < ActiveRecord::Base
 
   validates :content, presence: true
   validates :time, presence: true

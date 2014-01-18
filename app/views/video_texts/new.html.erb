@@ -1,0 +1,10 @@
+<%= form_for [@course, @capsule, @lecture, @video_text] do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :content %><br />
+  <%= f.text_field :content, :autofocus => true %></div>
+  <div><%= f.label :time %><br />
+  <%= f.text_field :time %></div>
+
+  <div><%= f.submit "Add Video", :class => "button small" %></div>
+<% end %>

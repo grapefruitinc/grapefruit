@@ -14,7 +14,6 @@ class LecturesController < ApplicationController
   	@lecture = @capsule.lectures.find(params[:id])
     @videos = @lecture.videos.order("created_at ASC")
     @videos.build
-
   end
 
   def create

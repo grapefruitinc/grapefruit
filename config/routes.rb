@@ -30,7 +30,7 @@ Grapefruit::Application.routes.draw do
     resources :capsules do
       resources :lectures do
         resources :videos do
-          resources :video_accompanies
+          resources :video_texts
         end
       end
       resources :problem_sets

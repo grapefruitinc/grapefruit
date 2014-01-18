@@ -1,3 +1,10 @@
-<div>
+<div class="row">
+  <div class="columns large-8">
   <p><iframe width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>" frameborder="0" allowfullscreen></iframe></p>
+  </div>
+  <div class="columns large-4">
+   <% if current_user == @course.instructor %>
+     <div><%= link_to "Add Accompany Content", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, @video), :class => "button small" %></div>
+    <% end %>
+  </div>
 </div>

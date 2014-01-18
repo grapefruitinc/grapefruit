@@ -19,6 +19,5 @@ class Lecture < ActiveRecord::Base
 	belongs_to :capsule
 
   has_many :videos
-  has_many :video_accompanys
 	
 end

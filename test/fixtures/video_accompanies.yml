@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: video_accompanies
+# Table name: video_texts
 #
 #  id         :integer          not null, primary key
 #  content    :text
