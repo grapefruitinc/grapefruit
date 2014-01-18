@@ -7,7 +7,6 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  instructor_id :integer
-#  student_id    :integer
 #
 
 class Course < ActiveRecord::Base
