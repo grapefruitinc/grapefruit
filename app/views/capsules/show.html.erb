@@ -3,7 +3,7 @@
 <nav class="breadcrumbs">
   <%= link_to "All Courses", courses_path %>
   <%= link_to @course.name, course_path(@course) %>
-  <a class="current" href="javascript:void(0)"><%= @capsule.name %></a>
+  <%= link_to @capsule.name, void, class: "current" %>
 </nav>
 <h3><%= @capsule.name %></h3>
 

@@ -24,4 +24,7 @@
 # Ignore the database config (keep the example)
 /config/database.yml
 
+# Ignore Rails documentation
+/doc/*
+
 */*.DS_STORE

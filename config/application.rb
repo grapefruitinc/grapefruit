@@ -25,5 +25,7 @@ module Grapefruit
     Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "home" : "guest" }
   end
 
+  config.i18n.enforce_available_locales = false
+
   end
 end
