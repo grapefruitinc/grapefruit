@@ -23,6 +23,6 @@
  <div><%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), :class => "button small" %></div>
 <% end %>
 
-<% if @lecture.mediasite_url %>
+<% if @lecture.mediasite_url && @lecture.mediasite_url != '' %>
   <iframe style="width:60%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= @lecture.mediasite_url %>"></iframe>
 <% end %>
