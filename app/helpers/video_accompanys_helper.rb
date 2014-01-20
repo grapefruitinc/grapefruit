@@ -1,0 +1,2 @@
+module VideoAccompanysHelper
+end

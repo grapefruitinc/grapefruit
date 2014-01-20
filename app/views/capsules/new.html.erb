@@ -1,0 +1,23 @@
+<%= breadcrumbs([
+      link_to('All Courses', courses_path),
+      link_to(@course.name, course_path(@course)),
+      link_to('Create Capsule', void, :class => "current")
+    ]) %>
+
+<div class="landing">
+  
+  <div class="description">
+    <h2>Add Capsule</h2>
+  </div>
+
+  <div class="login">
+    <%= form_for [@course, @capsule] do |f| %>
+      <%= devise_error_messages! %>
+      
+      <%= f.text_field :name, :placeholder => "Capsule Name", :autofocus => true %></div>
+
+      <div><%= f.submit "Add Capsule", :class => "button small" %></div>
+    <% end %>
+  </div>
+
+</div>

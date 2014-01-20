@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  description :text
+#  lecture_id  :integer
+#  file        :string(255)
+#  youtube_id  :string(255)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+
+two:
+  title: MyString
+  description: MyString

@@ -1,7 +1,9 @@
+<% if !@login_inset %>
+    <div class="login-form-container content">
+        <% @login = true %>
+<% end %>
+
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "login-form" }) do |f| %>
-    
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <fieldset>
 
@@ -21,4 +23,8 @@
 
     </fieldset>
 
+<% end %>
+
+<% if !@login_inset %>
+    </div>
 <% end %>

@@ -1,0 +1,38 @@
+<%=
+  breadcrumbs([
+    link_to('All Courses', courses_path),
+    link_to(@course.name, "javascript:void(0)", :class => "current")
+  ])
+%>
+
+<h3><%= @course.name %></h3>
+<% if current_user == @course.instructor %>
+  <p>
+    Welcome back instructor!
+  </p>
+  
+  <div><%= link_to "Add Capsule", new_course_capsule_path(@course), :class => "button small" %></div>
+<% elsif @course.students.include?(current_user) %>
+  <p>
+    You are attending this course.
+  </p>
+<% elsif !@course.students.include?(current_user) %>
+  <%= form_for [@course, @course_user] do |f| %>
+    <%= f.hidden_field :course_id, :value => @course.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "Join Course", class: "button small" %>
+  <% end %>
+<% end %>
+
+<table class="listing">
+	<tbody>
+		<%= render @capsules %>
+    <% if @capsules.empty? %>
+      <tr>
+        <td>
+          <span>No capsules found.</span>
+        </td>
+      </tr> 
+    <% end %>
+	</tbody>
+</table>

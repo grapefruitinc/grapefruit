@@ -11,18 +11,39 @@
   	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= @title ? @title + " | Grapefruit" : "Grapefruit" %></title>
-
-    <!-- Stylesheets -->
-  	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <title><%= raw full_title(yield(:title)) %></title>
 
     <%= csrf_meta_tags %>
+
+    <% if content_for?(:meta_description) %>
+      <meta name="description" content="<%= yield(:meta_description) %>">
+    <% end %>
+
+    <% if content_for?(:meta_keywords) %>
+      <meta name="keywords" content="<%= yield(:meta_keywords) %>">
+    <% end %>
+
+    <%= content_for?(:stylesheets) ? yield(:stylesheets) : yield %>
 
   </head>
 
   <body>
 
+    <div id="top-flash">
+      <%= content_tag(:div, flash[:error], :class => 'alert-box',) if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], :class => 'alert-box secondary') if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], :class => 'alert-box') if flash[:alert] %>
+      <%= content_tag(:div, flash[:success], :class => 'alert-box success') if flash[:success] %>
+    </div>
+
     <%= content_for?(:content) ? yield(:content) : yield %>
+
+    <% if Rails.env.development? %>
+      <div class="container">
+        <%= debug(params) %>
+        <!-- <%= debug(session) %> -->
+      </div>
+    <% end %>
 
     <!-- Javascript files -->
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>

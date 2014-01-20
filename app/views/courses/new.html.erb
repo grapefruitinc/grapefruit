@@ -1,0 +1,23 @@
+<%= breadcrumbs([
+      link_to('All Courses', courses_path),
+      link_to('Create New Course', void, :class => "current")
+    ]) %>
+
+<div class="landing">
+  
+  <div class="description">
+    <h3>Create New Course</h3>
+  </div>
+
+  <div class="login">
+    <%= form_for(@course) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div><%= f.label :name %><br />
+      <%= f.text_field :name, :autofocus => true %></div>
+
+      <div><%= f.submit "Create Course", :class => "button small" %></div>
+    <% end %>
+  </div>
+
+</div>

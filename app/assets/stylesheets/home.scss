@@ -1,0 +1,89 @@
+@import "application";
+
+div#top-flash{
+  div.alert-box{
+    @include alert(lighten(#0A7790, 10%));
+    margin-bottom: 0px;
+  }
+}
+
+div.non-footer-container{
+  background-color:#fff;
+}
+
+div.top-bar-container{
+
+  background-color: $topbar-bg-color;
+
+  nav.top-bar{
+
+    margin-bottom: 0px;
+
+    @include grid-row;
+
+    ul > li.has-dropdown a::after { /* this should be a configurable variable */
+      border-color: lighten($topbar-dropdown-link-color, 20%) transparent transparent transparent;
+    }
+
+    ul.right li{
+      a.secondary{
+        color: darken($grapefruit-orange-color, 20%);
+      }
+      a.active{
+        background-color:$dark-blue-color;color:#fff;
+      }
+    }
+
+  }
+
+}
+
+div.main-content{
+  margin-top: 1em;
+  min-height: 400px;
+  nav.breadcrumbs{
+    margin-bottom: 1em;
+  }
+  table.listing{
+    width: 50%;
+    border-spacing:0;
+    border-collapse:collapse;
+    padding:0px;
+    th{
+      padding-left: 1.5em;
+    }
+    td{
+      padding:0px;
+      a, span{
+        width: 100%;
+        line-height: 2.5em;
+        display:inline-block;
+        padding-left: 1em;
+      }
+      span{/* when there are no elements */
+        color: $grey-text-color;
+      }
+    }
+    td.center{
+      text-align: center;
+      border-left: 1px solid #ddd;
+    }
+  }
+  div.landing{
+    @include grid-column(6);
+  }
+}
+
+form.registration_edit_form{
+  @include grid-column(5);
+  legend{
+    font-size: 1em;font-weight:normal;
+  }
+  fieldset.highlight{
+    border-color: lighten($grapefruit-orange-color, 15%);
+  }
+}
+
+footer{
+  font-size: .8em;
+}

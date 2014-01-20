@@ -3,7 +3,15 @@ Grapefruit::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'guest#landing'
+
+  devise_scope :user do
+    authenticated :user do
+      root 'home#dashboard', :as => "authenticated_root"
+    end
+    unauthenticated :user do
+      root 'guest#landing'
+    end
+  end
 
   get 'about' => 'guest#about'
   get 'tos' => 'guest#tos'
@@ -14,6 +22,19 @@ Grapefruit::Application.routes.draw do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
+  resources :courses do
+    resources :course_users, only: [:create]
+    
+    resources :capsules do
+      resources :lectures do
+        resources :videos do
+          resources :video_texts
+        end
+      end
+      resources :problem_sets
+    end
   end
 
   # Example of regular route:

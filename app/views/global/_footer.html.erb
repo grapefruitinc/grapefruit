@@ -1,0 +1,27 @@
+ <footer>
+
+  <p class="nav-links"> 
+      <%= link_to 'About', about_url %> ::  
+
+      <%= link_to 'Contact', contact_url %> ::
+
+      <%= link_to 'Terms of Service', tos_url %>
+
+  </p>
+
+  <div class="school-logo">
+
+      <%= image_tag 'rensselaer_logo-small.png' %>
+
+  </div>
+
+  <p class="under-school-logo">
+
+      Created by the <strong>Grapefruit Team</strong> at 
+      <%= link_to SCHOOL_NAME, SCHOOL_URL, :target => '_blank' %>. 
+
+      Check out our <%= link_to 'Github repository', GITHUB_URL, :target => '_blank' %>!
+
+  </p>
+
+</footer>

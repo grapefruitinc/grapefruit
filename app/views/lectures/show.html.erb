@@ -1,0 +1,28 @@
+<%= breadcrumbs([
+      link_to("All Courses", courses_path),
+      link_to(@course.name, course_path(@course)),
+      link_to(@capsule.name, [@course, @capsule]),
+      link_to(@lecture.name, [@course, @capsule, @lecture], :class => "current"),
+    ])
+%>
+
+<h2><%= @lecture.name %></h2>
+
+<div>
+<% @videos.each do |video| %>
+  <%= render video %>
+  <% if @videos.length > 1 %> 
+    <div class="custom-hr"></div>
+  <% end %>
+<% end %>
+<% if @videos.empty? %>
+  <p>No videos found.</p>
+<% end %>
+</div>
+<% if current_user == @course.instructor %>
+ <div><%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), :class => "button small" %></div>
+<% end %>
+
+<% if @lecture.mediasite_url %>
+  <iframe style="width:60%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= @lecture.mediasite_url %>"></iframe>
+<% end %>

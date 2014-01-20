@@ -15,8 +15,14 @@ gem 'sass-rails', '~> 4.0.0'
 gem "compass-rails", "~> 2.0.alpha.0"
 gem 'zurb-foundation'
 
+# config for configuraiton files and YAML
+gem 'rails_config'
+
 # devise for authentication
 gem 'devise'
+
+# cancan for permissions
+gem 'cancan'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -27,18 +33,32 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# WEBrick is so 2007
-gem 'thin'
-
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# ActiveRecord extensions
+gem "activerecord-import", ">= 0.4.0"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development do
+	gem 'annotate'
+  gem 'thin'
+  # optional, makes git deployment easy.
+  # gem 'git-deploy'
+end
+
+# Video Controls
+gem 'youtube_it'
+
+group :production do
+  gem 'passenger'
 end
 
 # Use ActiveModel has_secure_password

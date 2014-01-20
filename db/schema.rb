@@ -11,7 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109053437) do
+ActiveRecord::Schema.define(version: 20140118001231) do
+
+  create_table "capsules", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "course_id"
+  end
+
+  create_table "course_users", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "instructor_id"
+    t.integer  "student_id"
+  end
+
+  create_table "courses_users", force: true do |t|
+    t.integer "course_id"
+    t.integer "user_id"
+  end
+
+  create_table "lectures", force: true do |t|
+    t.string   "name"
+    t.integer  "lecture_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "capsule_id"
+    t.string   "mediasite_url"
+  end
+
+  create_table "problem_sets", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "capsule_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -26,9 +69,29 @@ ActiveRecord::Schema.define(version: 20131109053437) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_admin"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "video_texts", force: true do |t|
+    t.text     "content"
+    t.string   "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "video_id"
+  end
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "lecture_id"
+    t.string   "file"
+    t.string   "youtube_id"
+  end
 
 end

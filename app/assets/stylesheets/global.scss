@@ -1,12 +1,68 @@
+div#top-flash{
+    text-align: center;
+    background-color: orange;
+    div.alert-box{
+        margin-bottom: 0px;
+    }
+}
 div.main-content{
     @include grid-row;
 }
+
+/**
+    forms
+**/
 form{
     legend{
         font-size: 1.5em;
     }
 }
+div.alert-box{
+    @include alert($alert-color);
+}
+div#error_explanation{
+    @include alert($alert-color);
+    h2{
+        font-size: 1em;
+        color: #eee;
+    }
+}
+
+/**
+    buttons
+**/
 .button{
     box-shadow: none;
     transition: none;
+}
+
+/**
+    elements
+**/
+.custom-hr {
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5em;
+}
+
+/**
+  footer
+**/
+footer{
+    background-color: #fff;
+    padding-top: 1em;
+    color: lighten($body-font-color, 30%);
+    text-align: center;
+
+    div.school-logo{
+        background-color: darken(adjust-saturation($rpi-red-color, -50%), 10%);
+        padding: .5em 0em;
+    }
+
+    p.under-school-logo{
+        background-color: $body-bg;
+        padding-top: .8em;
+    }
+
 }

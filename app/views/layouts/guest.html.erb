@@ -1,3 +1,7 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "guest", "data-turbolinks-track" => true %>
+<% end %>
+
 <% content_for :content do %>
 
     <div class="main-container">
@@ -5,7 +9,7 @@
         <div class="main-content">
 
             <div class="logo">
-                <a href='<%= url_for root_url %>'>
+                <a href='<%= root_path %>'>
                     <%= image_tag('grapefruit_logo-small.png') %>
                 </a>
             </div>
@@ -16,35 +20,7 @@
 
     </div>
 
-
-    <footer>
-
-            <p class="nav-links"> 
-                <%= link_to 'About', about_url %> ::  
-
-                <%= link_to 'Contact', contact_url %> ::
-
-                <%= link_to 'Terms of Service', tos_url %>
-
-            </p>
-
-            <div class="school-logo">
-
-                <%= image_tag 'rensselaer_logo-small.png' %>
-
-            </div>
-
-            <p class="under-school-logo">
-
-                Created by the <strong>Grapefruit Team</strong> at 
-                <%= link_to SCHOOL_NAME, SCHOOL_URL, :target => '_blank' %>. 
-
-                Check out our <%= link_to 'Github repository', GITHUB_URL, :target => '_blank' %>!
-
-            </p>
-
-    </footer>
-
+    <%= render "global/footer" %>
 
 <% end %>
 

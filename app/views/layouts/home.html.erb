@@ -1,0 +1,39 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "home", "data-turbolinks-track" => true %>
+<% end %>
+
+<% content_for :content do %>
+
+  <div class="non-footer-container">
+
+    <div class="top-bar-container">
+      <nav class="top-bar" data-options="is_hover:false">
+        <ul class="title-area">
+          <%= link_to root_path do %>
+            <%= image_tag 'grapefruit_logo-topbar.png' %>
+          <% end %>
+        </ul>
+        
+        <section class="top-bar-section">
+              <ul class="right">
+
+                <li><%= link_to "Courses", courses_path, :class => ("active" if params[:controller] == "courses") %></li>
+                <li><%= link_to "Profile", edit_user_registration_path, :class => ("active" if params[:controller] == "devise/registrations") %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, :class => "secondary", method: :delete %></li>
+
+              </ul>
+            </section>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <%= yield %>
+    </div>
+
+  </div>
+
+  <%= render "global/footer" %>
+
+<% end %>
+
+<%= render template: 'layouts/application' %>
