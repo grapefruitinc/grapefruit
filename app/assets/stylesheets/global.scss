@@ -49,6 +49,11 @@ div#error_explanation{
 /**
     videos
 **/
+.list-nostyle, .list-nostyle li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 .video-wrapper {
     margin-bottom: 20px;
     position: relative;

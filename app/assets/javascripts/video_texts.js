@@ -1,13 +1,17 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-var tag = document.createElement('script');
-tag.src = "//www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+setupYoutube();
 var player, YTReady;
 var playbackTime;
 var players = new Array();
+
+function setupYoutube(){
+  var tag = document.createElement('script');
+  tag.src = "//www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
 
 function addPlayers() {
   $('.video-wrapper iframe').each(function() {
@@ -50,6 +54,8 @@ function onPlayerStateChange(event) {
   }
 }
 
-$('.video-button').click(function() {
-  console.log($(this).closest('.video-texts'));
+$('.video-button.replay').click(function() {
+  $(this).closest('.row').find('.show').removeClass('show');
+  playerNumber = $(this).closest('.row').parent().index();
+  players[playerNumber].seekTo(0);
 });

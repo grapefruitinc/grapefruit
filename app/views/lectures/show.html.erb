@@ -9,12 +9,16 @@
 <h2><%= @lecture.name %></h2>
 
 <div>
+<ul class="list-nostyle">
 <% @videos.each do |video| %>
+  <li>
   <%= render video %>
   <% if @videos.length > 1 %> 
     <div class="custom-hr"></div>
   <% end %>
+  </li>
 <% end %>
+</ul>
 <% if @videos.empty? %>
   <p>No videos found.</p>
 <% end %>
