@@ -7,18 +7,21 @@ class CapsulesController < ApplicationController
 
 	def new
   	@capsule = @course.capsules.new
+    authorize! :create, @capsule
   end
 
   def show
   	@capsule = @course.capsules.find(params[:id])
     @lectures = @capsule.lectures.order("created_at ASC")
     @problem_sets = @capsule.problem_sets.order("created_at ASC")
+    @documents = @capsule.documents
     @lectures.build
     @problem_sets.build
   end
 
   def create
   	@capsule = @course.capsules.new(capsule_params)
+    authorize! :create, @capsule
   	if @capsule.save
   		flash[:success] = "Capsule created!"
   		redirect_to [@course, @capsule]
@@ -29,6 +32,7 @@ class CapsulesController < ApplicationController
 
   def destroy
   	@capsule = @capsule.find(params[:id])
+    authorize! :delete, @capsule
   	@capsule.destroy
   	redirect_to :back
   end

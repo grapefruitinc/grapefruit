@@ -10,9 +10,13 @@
 #
 
 class ProblemSet < ActiveRecord::Base
+  
+  # Validations
+  # ========================================================
+  validates :name, presence: true
 
-	validates :name, presence: true
-
+  # Relationships
+  # ========================================================
 	belongs_to :capsule
 
 end

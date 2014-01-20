@@ -74,6 +74,18 @@ div.main-content{
   }
 }
 
+h3.course-name{
+  margin-bottom: 1em;
+}
+h3.course-name, span.instructing{
+  display:inline-block;
+}
+span.instructing{
+  @include label($bg: $success-color, $padding: .4em, $radius: 2px);
+  vertical-align: text-bottom;
+  margin-left: .5em; 
+}
+
 form.registration_edit_form{
   @include grid-column(5);
   legend{

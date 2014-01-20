@@ -1,4 +1,6 @@
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "registration_edit_form" }) do |f| %>
+<% page_title 'Profile' %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "registration_edit_form" }) do |f| %>
 
   <h3>Edit Profile</h3>
 
@@ -8,9 +10,9 @@
 
     <legend>Contact Information</legend>
     
-    <%= f.text_field :name, :placeholder => "Name", :autofocus => true %>
+    <%= f.text_field :name, placeholder: "Name", autofocus: true %>
 
-    <%= f.email_field :email, :placeholder => "Email Address" %>
+    <%= f.email_field :email, placeholder: "Email Address" %>
 
   </fieldset>
 
@@ -22,25 +24,17 @@
 
     <legend>Change Password <small>(leave blank if you don't want to change it)</small></legend>
   
-    <%= f.password_field :password, :placeholder => "Password", :autocomplete => "off" %>
+    <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
 
-    <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %>
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
 
   </fieldset>
 
   <fieldset class="highlight">
     <legend>Confirm changes with your current password.</legend>
-    <%= f.password_field :current_password, :placeholder => "Current Password" %>
+    <%= f.password_field :current_password, placeholder: "Current Password" %>
   </fieldset>
 
-  <%= f.submit "Update", :class => "button" %>
+  <%= f.submit "Update", class: "button" %>
 
 <% end %>
-
-<!--
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>
--->

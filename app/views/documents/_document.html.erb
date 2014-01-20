@@ -1,0 +1,13 @@
+<tr>
+  <td>
+    <%= link_to document[:file], document.file.url %>
+  </td>
+  <td>
+    <%= document.description %>
+  </td>
+  <% if can? :delete, document %>
+    <td>
+      <%= link_to 'Delete', document, confirm: ("Are you sure you want to delete " + document[:file] + "?"), :method => :delete %>
+    </td>
+  <% end %>
+</tr>

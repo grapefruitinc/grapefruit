@@ -1,4 +1,5 @@
 Grapefruit::Application.routes.draw do
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -25,16 +26,26 @@ Grapefruit::Application.routes.draw do
   end
 
   resources :courses do
-    resources :course_users, only: [:create]
+
+    resources :documents, :shallow => true
     
+    resources :course_users, only: [:create]
+
     resources :capsules do
+
+      resources :documents, :shallow => true
+
       resources :lectures do
+        resources :documents, :shallow => true
         resources :videos do
           resources :video_texts
         end
       end
+
       resources :problem_sets
+
     end
+
   end
 
   # Example of regular route:

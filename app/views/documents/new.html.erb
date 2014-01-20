@@ -1,0 +1,31 @@
+<%= breadcrumbs([
+      link_to('All Courses', courses_path),
+      (link_to(@course.name, course_path(@course)) if @course) || "",
+      (link_to(@capsule.name, course_capsule_path(@course, @capsule)) if @capsule) || "",
+      (link_to(@lecture.name, course_capsule_lecture_path(@course, @capsule, @lecture)) if @lecture) || "",
+      link_to('Add File', void, class: "current")
+    ]) %>
+
+<div class="landing">
+  
+  <div class="description">
+    <h2>Add File</h2>
+  </div>
+
+  <div class="login">
+    <%= form_for document_form(@document) do |f| %>
+
+      <% @document.errors.full_messages.each do |message| %>
+        <p>Error: <%= message %></p> <!-- TODO: style this -->
+      <% end %>
+
+      <%= f.file_field :file %>
+
+      <%= f.text_field :description, placeholder: "Optional Description" %>
+
+      <div><%= f.submit "Add File", class: "button small" %></div>
+
+    <% end %>
+  </div>
+
+</div>

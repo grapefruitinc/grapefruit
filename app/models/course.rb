@@ -11,13 +11,18 @@
 #
 
 class Course < ActiveRecord::Base
-
+  
+  # Validations
+  # ========================================================
 	validates :name, presence: true
 
+  # Relationships
+  # ========================================================
 	belongs_to :instructor, class_name: "User"
   has_many :course_users, dependent: :destroy
   has_many :students, class_name: "User", through: :course_users, source: :user
   has_many :capsules, dependent: :destroy
+  has_many :documents, dependent: :destroy
 
   # Student definitions
   # ========================================================

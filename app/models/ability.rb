@@ -28,6 +28,35 @@
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
-    can :manage_admins, User if user.is_admin?
+
+    if user.is_admin?
+      can :manage_admins, User
+      can :manage, :all
+    else
+
+      can :manage, Course do |course|
+        course.instructor == user
+      end
+
+      can :manage, Capsule do |capsule|
+        capsule.course.instructor == user
+      end
+
+      can :manage, Lecture do |lecture|
+        lecture.capsule.course.instructor == user
+      end
+
+      can :manage, Document do |document|
+        if document.course
+          document.course.instructor == user
+        elsif document.capsule
+          document.capsule.course.instructor == user
+        else
+          document.lecture.capsule.course.instructor == user
+        end
+      end
+
+    end
+
   end
 end

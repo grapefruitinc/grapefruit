@@ -24,6 +24,9 @@ gem 'devise'
 # cancan for permissions
 gem 'cancan'
 
+# carrierwave for file uploads
+gem 'carrierwave'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -44,6 +47,7 @@ gem "activerecord-import", ">= 0.4.0"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
+  # helpful if you know you won't have an internet connection
   gem 'sdoc', require: false
 end
 

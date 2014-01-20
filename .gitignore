@@ -18,10 +18,15 @@
 # Ignore compiled files
 /public/assets
 
+# Ignore uploads directory
+/public/uploads
+
 # Ignore the database config (keep the example)
 /config/database.yml
 
-#DS_STORE
+# Ignore Rails documentation
+/doc/*
+
 */*.DS_STORE
 
 config/settings.local.yml

@@ -1,0 +1,19 @@
+<table class="listing">
+  <thead>
+    <th>File</th>
+    <th>Description</th>
+    <% if can? :manage, container %>
+      <th>Actions</th>
+    <% end %>
+  </thead>
+  <tbody>
+    <%= render @documents %>
+    <% if @documents.empty? %>
+      <tr>
+        <td colspan="3">
+          <span>No <%= container.class.name.downcase %> files uploaded.</span>
+        </td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>

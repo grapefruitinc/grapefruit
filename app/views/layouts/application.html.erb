@@ -11,7 +11,7 @@
   	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= raw full_title(yield(:title)) %></title>
+    <title><%= full_title(yield(:title)) %></title>
 
     <%= csrf_meta_tags %>
 
@@ -30,10 +30,10 @@
   <body>
 
     <div id="top-flash">
-      <%= content_tag(:div, flash[:error], :class => 'alert-box',) if flash[:error] %>
-      <%= content_tag(:div, flash[:notice], :class => 'alert-box secondary') if flash[:notice] %>
-      <%= content_tag(:div, flash[:alert], :class => 'alert-box') if flash[:alert] %>
-      <%= content_tag(:div, flash[:success], :class => 'alert-box success') if flash[:success] %>
+      <%= content_tag(:div, flash[:error], class: 'alert-box',) if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], class: 'alert-box secondary') if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], class: 'alert-box') if flash[:alert] %>
+      <%= content_tag(:div, flash[:success], class: 'alert-box success') if flash[:success] %>
     </div>
 
     <%= content_for?(:content) ? yield(:content) : yield %>
