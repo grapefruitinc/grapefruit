@@ -32,6 +32,6 @@
   <% end %>
 </div>
 
-<% if @lecture.mediasite_url %>
+<% unless @lecture.mediasite_url.blank? %>
   <iframe style="width:60%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= @lecture.mediasite_url %>"></iframe>
 <% end %>
