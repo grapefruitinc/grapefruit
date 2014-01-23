@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   
   before_filter :authenticate_user!
+  before_filter :get_course, only: [:show, :edit, :update, :destroy]
 
   layout "home"
   
@@ -25,7 +26,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
     ### Should change created_at to a more user-determined statistic ###
     @capsules = @course.capsules.order("created_at DESC")
     @capsules.build
@@ -46,7 +46,7 @@ class CoursesController < ApplicationController
     authorize! :update, @course
     if @course.update_attributes(course_params)
       flash[:success] = "Course updated!"
-      redirect_to user_course_path(@user, @course)
+      redirect_to course_path(@course)
     else
       render "edit"
     end
@@ -54,7 +54,6 @@ class CoursesController < ApplicationController
 
   def destroy
     authorize! :destroy, @course
-    @course = @course.find(params[:id])
     @course.destroy
     redirect_to :back
   end
