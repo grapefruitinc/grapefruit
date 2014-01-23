@@ -22,20 +22,20 @@ class LecturesController < ApplicationController
   end
 
   def show
-    
   	@lecture = @capsule.lectures.find(params[:id])
 
     @videos = @lecture.videos.order("created_at ASC")
     @videos.build
     
     @documents = @lecture.documents
-
   end
 
   def edit
+    authorize! :update, @lecture
   end
 
   def update
+    authorize! :update, @lecture
     if @lecture.update_attributes(lecture_params)
       flash[:success] = "Lecture updated!"
       redirect_to [@course, @capsule, @lecture]
@@ -45,6 +45,7 @@ class LecturesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @lecture
   	@lecture.destroy
   	redirect_to :back
   end

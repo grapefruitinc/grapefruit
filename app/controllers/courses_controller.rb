@@ -4,6 +4,20 @@ class CoursesController < ApplicationController
 
   layout "home"
   
+  def new
+    @course = Course.new
+  end
+
+  def create
+    @course = current_user.instructed_courses.build(course_params)
+    if @course.save
+      flash[:success] = "Course created!"
+      redirect_to @course
+    else
+      render 'new'
+    end
+  end
+
   def index
     @courses = Course.all
     @instructed_courses = current_user.instructed_courses
@@ -24,21 +38,22 @@ class CoursesController < ApplicationController
     end
   end
 
-  def new
-    @course = Course.new
+  def edit
+    authorize! :update, @course
   end
 
-  def create
-    @course = current_user.instructed_courses.build(course_params)
-    if @course.save
-      flash[:success] = "Course created!"
-      redirect_to @course
+  def update
+    authorize! :update, @course
+    if @course.update_attributes(course_params)
+      flash[:success] = "Course updated!"
+      redirect_to user_course_path(@user, @course)
     else
-      render 'new'
+      render "edit"
     end
   end
 
   def destroy
+    authorize! :destroy, @course
     @course = @course.find(params[:id])
     @course.destroy
     redirect_to :back
