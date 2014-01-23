@@ -7,7 +7,7 @@ Grapefruit::Application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'home#dashboard', :as => "authenticated_root"
+      root 'home#dashboard', as: "authenticated_root"
     end
     unauthenticated :user do
       root 'guest#landing'
@@ -20,23 +20,23 @@ Grapefruit::Application.routes.draw do
 
   devise_for :users, :skip => [:sessions]
   as :user do
-    get 'login' => 'devise/sessions#new', :as => :new_user_session
-    post 'login' => 'devise/sessions#create', :as => :user_session
-    delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    get 'login' => 'devise/sessions#new', as: :new_user_session
+    post 'login' => 'devise/sessions#create', as: :user_session
+    delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
   end
 
   resources :courses do
 
-    resources :documents, :shallow => true
+    resources :documents, shallow: true
     
     resources :course_users, only: [:create]
 
     resources :capsules do
 
-      resources :documents, :shallow => true
+      resources :documents, shallow: true
 
       resources :lectures do
-        resources :documents, :shallow => true
+        resources :documents, shallow: true
         resources :videos do
           resources :video_texts
         end
