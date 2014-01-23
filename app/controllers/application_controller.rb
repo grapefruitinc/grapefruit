@@ -22,11 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def get_course
-  	@course = Course.find(params[:course_id] || params[:id])
-  	unless @course.present?
-  		flash[:error] = "Invalid course!"
-  		redirect_to root_path
-  	end
+    @course = Course.find(params[:course_id] || params[:id])
+    unless @course.present?
+      flash[:error] = "Invalid course!"
+      redirect_to root_path
+    end
   end
 
   def get_capsule

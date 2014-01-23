@@ -46,6 +46,10 @@
         lecture.capsule.course.instructor == user
       end
 
+      can :manage, ProblemSet do |problem_set|
+        problem_set.capsule.course.instructor == user
+      end
+
       can :manage, Document do |document|
         if document.course
           document.course.instructor == user
