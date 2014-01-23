@@ -38,7 +38,7 @@ class CapsulesController < ApplicationController
     authorize! :update, @capsule
     if @capsule.update_attributes(capsule_params)
       flash[:success] = "Capsule updated!"
-      redirect_to user_capsule_path(@user, @capsule)
+      redirect_to [@course, @capsule]
     else
       render "edit"
     end

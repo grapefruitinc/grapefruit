@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){
+$(function() {
 
   $(document).foundation();   
 
@@ -26,7 +26,7 @@ $(function(){
   var highlight_flash_color = flash.parent().css("backgroundColor"); 
     
   flash.stop().delay(280)
-    .animate({backgroundColor: highlight_flash_color}, 200)
-    .animate({ backgroundColor: current_flash_color}, 300);  
+    .animate({ backgroundColor: highlight_flash_color }, 200)
+    .animate({ backgroundColor: current_flash_color }, 300);  
 
 });

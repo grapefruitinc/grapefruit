@@ -1,6 +1,8 @@
+<% page_title "Editing #{@course.name}" %>
+
 <%= breadcrumbs([
       link_to('All Courses', courses_path),
-      link_to('Create New Course', void, class: "current")
+      link_to("Edit #{@course.name}", void, class: "current")
     ]) %>
 
 <div class="landing">

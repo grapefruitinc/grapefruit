@@ -24,17 +24,13 @@
   <p>Instructor: <%= @course.instructor.name %> (<%= mail_to @course.instructor.email %>)</p>
 
   <% if @course.students.include?(current_user) %>
-
     <p>You are enrolled in this course.</p>
-
   <% else %>
-
     <%= form_for [@course, @course_user] do |f| %>
       <%= f.hidden_field :course_id, value: @course.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit "Join Course", class: "button small" %>
     <% end %>
-
   <% end %>
 
 <% end %>
