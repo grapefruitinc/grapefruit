@@ -53,3 +53,19 @@
 </table>
 
 <%= render "documents/documents", container: @course %>
+
+<table class="listing">
+  <thead>
+    <th>Recent Discussion (<%= link_to "view all", course_topics_path(@course) %>)</th>
+  </thead>
+  <tbody>
+    <%= render @topics %>
+    <% if @topics.empty? %>
+      <tr>
+        <td>
+          <span>No topics found.</span>
+        </td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>

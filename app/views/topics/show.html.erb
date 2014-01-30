@@ -1,0 +1,47 @@
+<% page_title @topic.name %>
+
+<%=
+  breadcrumbs([
+    link_to('All Courses', courses_path),
+    link_to(@course.name, @course),
+    link_to("Discussion", course_topics_path(@course)),
+    link_to(@topic.name, void, class: "current")
+  ])
+%>
+
+<h3 class="course-name"><%= @topic.name %></h3>
+
+<% if current_user == @topic.author %>
+  <span class="instructing">You created this topic.</span>
+<% else %>
+  <p>Started by: <%= @topic.author.name %> (<%= mail_to @course.instructor.email %>)</p>
+<% end %>
+
+<div class="forum">
+  <% if @replies.current_page == 1 %>
+    <div class="row topic">
+      <div class="small-4 column author">
+        <strong><%= @topic.author.name %></strong> (topic creator)<br>
+        <%= @topic.created_at.strftime("%B %d, %Y") %>
+      </div>
+      <div class="small-8 column body">
+        <%= @topic.body %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= render @replies, topic: @topic, course: @course %>
+</div>
+
+<div class="pages">
+  <%= will_paginate @replies %>
+</div>
+
+<h4>Reply to <%= @topic.name %></h4>
+
+<%= form_for [@course, @topic, @reply] do |f| %>
+  <a name="reply"></a>
+  <%= f.text_area :body, class: "medium" %>
+
+  <div><%= f.submit "Post Reply", class: "button small" %></div>
+<% end %>

@@ -36,6 +36,8 @@ class CoursesController < ApplicationController
     unless @course_user.present?
       @course_user = CourseUser.new
     end
+
+    @topics = @course.topics.paginate(page: 1, per_page: 5)
   end
 
   def edit

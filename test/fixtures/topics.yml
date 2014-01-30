@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  id             :integer          not null, primary key
+#  replies        :integer          default(0)
+#  course_id      :integer
+#  author_id      :integer
+#  last_poster_id :integer
+#  name           :string(255)
+#  body           :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  capsule_id     :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_id: 1
+  title: MyString
+  author_id: 1
+  last_post_id: 1
+  body: MyString
+
+two:
+  course_id: 1
+  title: MyString
+  author_id: 1
+  last_post_id: 1
+  body: MyString

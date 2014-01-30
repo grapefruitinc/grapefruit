@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118001231) do
+ActiveRecord::Schema.define(version: 20140129235603) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
@@ -55,6 +55,27 @@ ActiveRecord::Schema.define(version: 20140118001231) do
 
   create_table "problem_sets", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "capsule_id"
+  end
+
+  create_table "replies", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "topic_id"
+    t.integer  "author_id"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.integer  "replies",        default: 0
+    t.integer  "course_id"
+    t.integer  "author_id"
+    t.integer  "last_poster_id"
+    t.string   "name"
+    t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capsule_id"

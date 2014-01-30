@@ -49,6 +49,7 @@ div.main-content{
     border-spacing:0;
     border-collapse:collapse;
     padding:0px;
+    &.full { width: 100%; }
     th{
       padding-left: 1.5em;
     }
@@ -98,4 +99,34 @@ form.registration_edit_form{
 
 footer{
   font-size: .8em;
+}
+
+.topic,.reply {
+  .author {
+    border: 1px solid gainsboro;
+    background-color: #f6f6f6;
+    color: #666;
+    padding: 1em;
+    line-height: 150%;
+    border-right: 0;
+    strong {
+      color: #222;
+    }
+  }
+  .body {
+    border: 1px solid gainsboro;
+    padding: 1em;
+    min-height: 125px;
+    border-bottom: 0;
+  }
+  &:last-child .body {
+    border-bottom: 1px solid gainsboro;
+  }
+}
+
+textarea.medium {
+  height: 150px;
+}
+textarea.large {
+  height: 300px;
 }

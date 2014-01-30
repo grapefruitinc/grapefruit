@@ -53,4 +53,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_topic
+    @topic = Topic.find(params[:topic_id] || params[:id])
+    unless @topic.present?
+      flash[:error] = "Invalid topic!"
+      redirect_to root_path
+    end
+
+  end
+
 end

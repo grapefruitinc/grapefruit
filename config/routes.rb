@@ -46,6 +46,10 @@ Grapefruit::Application.routes.draw do
 
     end
 
+    resources :topics, only: [:new, :create, :show, :index] do
+      resources :replies, only: [:create]
+    end
+
   end
 
   # Example of regular route:
