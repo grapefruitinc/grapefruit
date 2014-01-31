@@ -22,6 +22,7 @@ class Course < ActiveRecord::Base
   has_many :students, class_name: "User", through: :course_users, source: :user
   has_many :capsules, dependent: :destroy
   has_many :documents, dependent: :destroy
+  has_many :topics, dependent: :destroy
 
   # Student definitions
   # ========================================================

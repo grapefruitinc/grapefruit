@@ -1,0 +1,24 @@
+<% page_title "New Topic in #{@course.name}" %>
+
+<%=
+  breadcrumbs([
+    link_to('All Courses', courses_path),
+    link_to(@course.name, @course),
+    link_to("Topics", [@course, @topic]),
+    link_to("New Topic", void, class: "current")
+  ])
+%>
+
+<h3>New Topic in <%= @course.name %></h3>
+
+<%= form_for [@course, @topic] do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :name %><br>
+  <%= f.text_field :name, autofocus: true %></div>
+
+  <div><%= f.label :body %><br>
+  <%= f.text_area :body, class: "large" %></div>
+
+  <div><%= f.submit "Create Topic", class: "button small" %></div>
+<% end %>
