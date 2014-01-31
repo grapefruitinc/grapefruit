@@ -5,9 +5,7 @@ class RepliesController < ApplicationController
   before_filter :get_course, only: [:show, :create]
 
   def create
-    @reply = current_user.replies.new(params.require(:reply).permit(:body))
-    @reply.course = @course
-    @reply.topic = @topic
+    @reply = current_user.replies.new(reply_params(course: @course, topic: @topic))
     if @reply.valid?
       @topic.add_reply(@reply)
       flash[:success] = "Message posted!"
@@ -18,6 +16,12 @@ class RepliesController < ApplicationController
       flash[:error] = "Please enter a message."
       redirect_to course_topic_path(@course, @topic) + "#reply"
     end
+  end
+
+private
+
+  def reply_params(extra_params = nil)
+    params.require(:reply).permit(:body).merge(extra_params)
   end
 
 end

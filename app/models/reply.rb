@@ -15,10 +15,7 @@ class Reply < ActiveRecord::Base
 
   # Validations
   # ========================================================
-  validates :body, presence: true
-  validates :course_id, presence: true
-  validates :topic_id, presence: true
-  validates :author_id, presence: true
+  validates_presence_of :body, :course_id, :topic_id, :author_id
 
   # Relationships
   # ========================================================
