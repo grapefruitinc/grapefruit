@@ -48,21 +48,29 @@ gem "activerecord-import", ">= 0.4.0"
 # Simple pagination
 gem "will_paginate"
 
+# Video Controls
+gem 'youtube_it'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   # helpful if you know you won't have an internet connection
   gem 'sdoc', require: false
 end
 
+# Test
+group :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'shoulda-matchers'
+end
+
 group :development do
-	gem 'annotate'
+  gem 'annotate'
   gem 'thin'
   # optional, makes git deployment easy.
   # gem 'git-deploy'
 end
-
-# Video Controls
-gem 'youtube_it'
 
 group :production do
   gem 'passenger'
