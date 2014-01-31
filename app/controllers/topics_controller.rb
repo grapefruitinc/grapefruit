@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter :get_topic, only: [:show]
-  before_filter :get_course, only: [:show, :index, :create, :new]
+  before_filter :get_course, only: [:new, :create, :index, :show]
 
   layout "home"
 
@@ -20,9 +20,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = current_user.topics.new(params.require(:topic).permit(:name, :body))
-    @topic.course = @course
-    @topic.last_poster = current_user
+    @topic = current_user.topics.new(topic_params(course: @course, last_poster: current_user))
     if @topic.valid?
       @topic.save
       flash[:success] = "Topic created!"
@@ -31,4 +29,11 @@ class TopicsController < ApplicationController
       render "new"
     end
   end
+
+private
+
+  def topic_params(extra_params = {})
+    params.require(:topic).permit(:name, :body).merge(extra_params)
+  end
+
 end

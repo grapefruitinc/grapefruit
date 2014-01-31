@@ -20,11 +20,7 @@ class Topic < ActiveRecord::Base
 
   # Validations
   # ========================================================
-  validates :name, presence: true
-  validates :body, presence: true
-  validates :course_id, presence: true
-  validates :author_id, presence: true
-  validates :last_poster_id, presence: true
+  validates_presence_of :name, :body, :course_id, :author_id, :last_poster_id
   # Does not require a capsule_id
 
   # Relationships
