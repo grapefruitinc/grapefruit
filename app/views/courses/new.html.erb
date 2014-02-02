@@ -11,12 +11,12 @@
 
   <div class="login">
     <%= form_for(@course) do |f| %>
-      <%= devise_error_messages! %>
 
-      <div><%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %></div>
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
 
-      <div><%= f.submit "Create Course", class: "button small" %></div>
+      <%= f.submit "Create Course", class: "button small" %>
+      
     <% end %>
   </div>
 

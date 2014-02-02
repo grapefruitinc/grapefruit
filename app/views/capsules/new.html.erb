@@ -12,11 +12,11 @@
 
   <div class="login">
     <%= form_for [@course, @capsule] do |f| %>
-      <%= devise_error_messages! %>
-      
+
       <%= f.text_field :name, placeholder: "Capsule Name", autofocus: true %>
 
       <%= f.submit "Add Capsule", class: "button small" %>
+      
     <% end %>
   </div>
 
