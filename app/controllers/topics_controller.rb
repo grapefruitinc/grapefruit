@@ -12,9 +12,11 @@ class TopicsController < ApplicationController
 
   def index
     @topics = @course.topics.paginate(page: params[:page])
+    authorize! :read, @topics
   end
 
   def show
+    authorize! :read, @topic
     @replies = @topic.replies.paginate(page: params[:page], per_page: 10)
     @reply = Reply.new
   end

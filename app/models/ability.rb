@@ -60,6 +60,10 @@
         end
       end
 
+      can :manage, Topic do |topic|
+        topic.course.instructor == user or (user.student_courses? topic.course)
+      end
+
     end
 
   end
