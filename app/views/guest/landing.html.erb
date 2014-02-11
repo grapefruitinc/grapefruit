@@ -1,16 +1,4 @@
 <div class="landing">
-  
-  <div class="description" style="background-image:url('<%= image_path('empac-small.png') %>');">
-    <h2>Learn at Rensselaer. Everywhere.</h2>
-
-    <p>
-      Grapefruit is an open-source initiative pioneered by <%= link_to 'RCOS', 'http://rcos.rpi.edu', target: '_blank' %> to bring Rensselaer courses to your laptop, desktop, phone, or even your toaster.
-    </p>
-
-    <p class="center">
-      <span class="opening">Opening Summer 2014</span>
-    </p>
-  </div>
 
   <div class="login">
     <% if current_user %>
@@ -31,6 +19,18 @@
     
       <%= link_to 'Join Grapefruit!', new_user_registration_path, class: "button new-user" %>
     <% end %>
+  </div>
+  
+  <div class="description" style="background-image:url('<%= image_path('empac-small.png') %>');">
+    <h2>Learn at Rensselaer. Everywhere.</h2>
+
+    <p>
+      Grapefruit is an open-source initiative pioneered by <%= link_to 'RCOS', 'http://rcos.rpi.edu', target: '_blank' %> to bring Rensselaer courses to your laptop, desktop, phone, or even your toaster.
+    </p>
+
+    <p class="center">
+      <span class="opening">Opening Summer 2014</span>
+    </p>
   </div>
 
 </div>
