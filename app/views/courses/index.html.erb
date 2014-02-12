@@ -1,10 +1,19 @@
 <%= breadcrumbs([link_to('All Courses', courses_path, class: "current")]) %>
 
 <div class="row">
-  <h3>All Courses</h3>
+  <div class="page-header">
+    <h3 class="page-header-title">All Courses</h3>
+    <div class="page-header-actions">
+      <%= link_to "Create New Course", new_course_path, class: "button small" %>      
+    </div>
+  </div>
 
-  <div><%= link_to "Create New Course", new_course_path, class: "button small" %></div>
-
+  <% if @courses.empty? %>
+    <h5 class="light">There are no courses listed.</h5>
+  <% else %>
+    <%= render @courses %>
+  <% end %>
+<!-- 
   <table class="listing">
     <thead>
       <th width="60%">Course</th>
@@ -53,4 +62,4 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div> -->
