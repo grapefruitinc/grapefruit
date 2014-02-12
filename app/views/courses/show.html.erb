@@ -35,37 +35,41 @@
 
 <% end %>
 
+<div class="row">
+  <div class="small-6 columns">
+    <table class="listing full">
+      <thead>
+        <th>Capsules</th>
+      </thead>
+      <tbody>
+        <%= render @capsules %>
+        <% if @capsules.empty? %>
+          <tr>
+            <td>
+              <span>No capsules found.</span>
+            </td>
+          </tr> 
+        <% end %>
+      </tbody>
+    </table>
 
-<table class="listing">
-  <thead>
-    <th>Capsules</th>
-  </thead>
-	<tbody>
-		<%= render @capsules %>
-    <% if @capsules.empty? %>
-      <tr>
-        <td>
-          <span>No capsules found.</span>
-        </td>
-      </tr> 
-    <% end %>
-	</tbody>
-</table>
-
-<%= render "documents/documents", container: @course %>
-
-<table class="listing">
-  <thead>
-    <th>Recent Discussion (<%= link_to "view all", course_topics_path(@course) %>)</th>
-  </thead>
-  <tbody>
-    <%= render @topics %>
-    <% if @topics.empty? %>
-      <tr>
-        <td>
-          <span>No topics found.</span>
-        </td>
-      </tr> 
-    <% end %>
-  </tbody>
-</table>
+    <%= render "documents/documents", container: @course, table_class: "listing full" %>
+  </div>
+  <div class="small-6 columns">
+    <table class="listing full">
+      <thead>
+        <th>Recent Discussion (<%= link_to "view all", course_topics_path(@course) %>)</th>
+      </thead>
+      <tbody>
+        <%= render @topics, link_to_post: true %>
+        <% if @topics.empty? %>
+          <tr>
+            <td>
+              <span>No topics found.</span>
+            </td>
+          </tr> 
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
