@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129235603) do
+ActiveRecord::Schema.define(version: 20140212005006) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
@@ -29,14 +29,9 @@ ActiveRecord::Schema.define(version: 20140129235603) do
 
   create_table "courses", force: true do |t|
     t.string   "name"
+    t.integer  "instructor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "instructor_id"
-  end
-
-  create_table "courses_users", force: true do |t|
-    t.integer "course_id"
-    t.integer "user_id"
   end
 
   create_table "documents", force: true do |t|
@@ -84,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140129235603) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capsule_id"
+    t.integer  "last_post_id"
   end
 
   create_table "users", force: true do |t|
@@ -103,8 +99,8 @@ ActiveRecord::Schema.define(version: 20140129235603) do
     t.string   "name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "video_texts", force: true do |t|
     t.text     "content"

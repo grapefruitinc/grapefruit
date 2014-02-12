@@ -1,4 +1,9 @@
-<table class="listing">
+<%
+  # Optional local variables that can be passed in
+  table_class ||= "listing"
+%>
+
+<table class="<%= table_class %>">
   <thead>
     <th>File</th>
     <th>Description</th>
