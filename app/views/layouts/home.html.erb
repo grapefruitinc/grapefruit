@@ -16,7 +16,9 @@
         
         <section class="top-bar-section">
           <ul class="right">
+            <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
             <li><%= link_to "Courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
+            <li><%= link_to "WebWork", void, style: "color: #888" %></li>
             <li><%= link_to "Profile", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
             <li><%= link_to "Logout", destroy_user_session_path, class: "secondary", method: :delete %></li>
           </ul>
