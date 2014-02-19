@@ -1,12 +1,20 @@
-<div class="row">
+<div class="page-header-container">
   <div class="page-header">
-    <h3 class="page-title">Welcome <%= current_user.display_identifier %>!</h3>
-    <% if can? :manage_admins, User %>
-      <p>You have administrator permissions.</p>
-    <% end %>
-    
-  </div>  
+    <div class="page-header-left">
+      <h1 class="title">Welcome <%= current_user.display_identifier %>!</h1>
+      <!-- if @course.description.empty? -->
+      <% if can? :manage_admins, User %>
+        <p class="description">You have administrator permissions. Manage your courses and profile using the links in the upper right hand corner.</p>
+      <% else %>
+        <p class="description">Your personal dashboard to manage your courses and profile.</p>
+      <% end %>
+      <!-- endif -->
+    </div>
+    <div class="page-header-right">
+    </div>
+  </div>
 </div>
+
 
 
 

@@ -1,13 +1,27 @@
 <% page_title @course.name %>
 
-<%=
-  breadcrumbs([
-    link_to('All Courses', courses_path),
-    link_to(@course.name, void, class: "current")
-  ])
-%>
+<div class="page-header-container">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h1 class="title"><%= @course.name %></h1>
+      <% if current_user == @course.instructor %>
+        <p class="description">You are the instructor for this course.</p>
+      <% else %>
+        <p class="description"> { course.description } </p>
+      <% end %>
+    </div>
+    <div class="page-header-right">
+      <ul class="course-details">
+        <li class="course-details-number">CSCI 4960 <h6>COURSE NUMBER</h6></li>
+        <li class="course-details-seats">18/30 <h6>SEATS</h6></li>
 
-<h3 class="course-name"><%= @course.name %></h3>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
 
 <% if current_user == @course.instructor %>
 

@@ -4,3 +4,20 @@
 span.instructing{
   @include label();
 }
+
+.course-details {
+	float: right;
+	li {
+		display: inline-block;
+		padding-right: 1rem;
+		color: white;
+	}
+	h6 {
+		font-weight: lighter;
+		color: rgba(255, 255, 255, 0.8);
+		text-transform: uppercase;
+		font-size: 0.25rem;
+		letter-spacing: 1px;
+	}
+
+}
