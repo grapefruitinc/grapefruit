@@ -5,8 +5,12 @@ span.instructing{
   @include label();
 }
 
+.page-header-right {
+	text-align: right;
+}
+
 .course-details {
-	float: right;
+	display: inline-block;
 	li {
 		display: inline-block;
 		padding-right: 1rem;
@@ -20,4 +24,27 @@ span.instructing{
 		letter-spacing: 1px;
 	}
 
+}
+
+.course-actions {
+	list-style: none;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 2rem;
+	margin-top: 0.3rem;
+	a {
+		border: 2px solid white;
+		color: white;
+		padding: 0.5rem;
+		border-radius: 3px;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: 0.75rem;
+		font-weight: normal;
+		&:hover {
+			background-color: #FFF;
+			color: $topbar-bg-color;
+		}
+	}
 }
