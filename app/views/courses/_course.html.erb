@@ -1,8 +1,14 @@
-<tr>
-  <td>
-    <%= link_to course.name, course_path(course) %>
-  </td>
-  <td class="center">
-     <%= course.students.count %>
-  </td>
-</tr>
+<div class="course-card">
+	<img src="http://i.imgur.com/orf5Zhw.png" alt="" class="course-card-image">
+	<h4 class="course-card-name">
+		<%= link_to course.name, course_path(course) %>
+	</h4>
+	<p class="course-card-description">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, natus aut porro ad explicabo dolorum.
+	</p>
+	<ul class="course-card-details">
+		<li>4 Credits</li>
+		<li>CSCI</li>
+		<li>4960</li>
+	</ul>
+</div>

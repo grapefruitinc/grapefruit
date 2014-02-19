@@ -1,0 +1,17 @@
+.dash-module {
+	@include grid-column(3);
+}
+.dash-module--6 {
+	@include grid-column(6);
+}
+
+.dash-module table {width: 100%; }
+
+.dash-module-title {
+	font-size: 0.8rem;
+	border: 1px solid #e6e6e6;
+	padding: 0.5rem;
+	border-radius: 0.2rem;
+	margin-bottom: -2px;
+	color: #9f9f9f;
+}

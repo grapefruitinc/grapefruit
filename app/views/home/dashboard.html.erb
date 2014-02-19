@@ -1,35 +1,40 @@
-<h3>Welcome <%= current_user.display_identifier %>!</h3>
-
-<% if can? :manage_admins, User %>
-  <p>You have administrator permissions.</p>
-<% end %>
-
-<% if not @instructed_courses.empty? %>
-<table class="listing">
-  <thead>
-    <th width="60%">Courses You Instruct</th>
-    <th># Students</th>
-  </thead>
-  <tbody>
-      <%= render @instructed_courses %>
-  </tbody>
-</table>
-<% end %>
-
-<table class="listing">
-  <thead>
-    <th width="60%">Enrolled Courses</th>
-    <th># Students</th>
-  </thead>
-  <tbody>
-    <% if @enrolled_courses.empty? %>
-      <tr>
-        <td colspan='2' class="center">
-        <span>You are not enrolled in any courses.</span>
-        </td>
-      </tr>
-    <% else %>
-        <%= render @enrolled_courses %>
+<div class="row">
+  <div class="page-header">
+    <h3 class="page-title">Welcome <%= current_user.display_identifier %>!</h3>
+    <% if can? :manage_admins, User %>
+      <p>You have administrator permissions.</p>
     <% end %>
-  </tbody>
-</table>
+    
+  </div>  
+</div>
+
+
+
+<div class="row">
+  <div class="page-header">
+    <h3 class="page-header-title">Enrolled</h3>
+  </div>
+
+  <% if @enrolled_courses.empty? %>
+    <h5 class="light">There are no courses listed.</h5>
+  <% else %>
+    <%= render @enrolled_courses %>
+  <% end %>
+
+</div>
+
+<% if @instructed_courses.empty? %>
+<% else %>
+  <div class="row">
+    <div class="page-header">
+      <h3 class="page-header-title">Courses You Instruct</h3>
+    </div>
+
+    <% if @instructed_courses.empty? %>
+      <h5 class="light">There are no courses listed.</h5>
+    <% else %>
+      <%= render @instructed_courses %>
+    <% end %>
+
+  </div>
+<% end %>

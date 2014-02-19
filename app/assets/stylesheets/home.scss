@@ -42,6 +42,7 @@ div.main-content{
   margin-top: 1em;
   min-height: 400px;
   nav.breadcrumbs{
+    @include grid-column(12);
     margin-bottom: 1em;
   }
   table.listing{

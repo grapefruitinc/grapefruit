@@ -9,6 +9,21 @@ div.main-content{
     @include grid-row;
 }
 
+.page-header {
+    @include grid-column(12);
+}
+
+.top-bar {
+    @include grid-row();
+}
+.title-area {
+    @include grid-column(4);
+}
+.top-bar-section {
+    @include grid-column(8);
+}
+
+
 /**
     forms
 **/
@@ -45,6 +60,40 @@ div#error_explanation{
     border-bottom: 1px solid #eee;
     margin-bottom: 1.5em;
 }
+
+.course-card {
+    @include grid-column(4);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    .course-card-image {
+        border-radius: 4px;
+    }
+    .course-card-name {
+        margin-top: 1rem;
+    }
+    .course-card-details {
+        list-style: none;
+        border-radius: 5px;
+        background-color: #F6F6F6;
+        border: 1px solid #DCDCDC;
+        padding: 0.2rem 0.8rem;
+        opacity: 0.8;
+        li {
+            display: inline-block;
+            width: 32%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            &:first-child {
+                text-align: left;
+            }
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+}
+
 
 /**
   footer
