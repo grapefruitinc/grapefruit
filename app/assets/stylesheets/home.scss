@@ -10,6 +10,9 @@ div#top-flash{
 
 .top-bar-container{
   background-color: $topbar-bg-color;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
   div.top-bar{
     height: auto;
     margin-bottom: 0px;

@@ -6,25 +6,59 @@ div#top-flash{
     }
 }
 div.main-content{
+    padding-top: 3rem;
 }
 
-.page-header {
-    @include grid-column(12);
+.page-header-container {
+    background-color: $topbar-bg-color;
+    padding: 0 0 2rem 0;
+    margin-bottom: 2rem;
+}
+.page-header {@include grid-row();}
+.page-header-left {@include grid-column(8);}
+.page-header-right {@include grid-column(4);}
+
+.page-header-left {
+    .title {
+        margin-bottom: 0;
+        color: white;
+        font-weight: 100;
+    }
+    .description {
+        color: rgba(255, 255, 255, 0.8);
+    }
+} 
+
+.page-header-right {
+    .actions {
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-top: 2rem;
+        li {
+            display: inline-block;
+            text-align: center;
+            color: white;
+            font-weight: 100;
+            border-right: 1px solid white;
+            width: 32%;
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+
 }
 
-.top-bar {
-    @include grid-row();
-}
+
+.top-bar {@include grid-row();}
 .title-area {
     @include grid-column(4);
     height: 50px;
-    margin: 1rem 0 !important;
     img {width: 100px;}
 }
 .nav-area {
     @include grid-column(8);
     height: 50px;
-    margin: 1rem 0;
     ul {float: right; line-height: 1rem;}
     li {margin: 1rem}
     a {

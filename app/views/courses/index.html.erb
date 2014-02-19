@@ -1,4 +1,22 @@
-<%= breadcrumbs([link_to('All Courses', courses_path, class: "current")]) %>
+<div class="page-header-container">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h1 class="title">Courses</h1>
+      <!-- if @course.description.empty? -->
+        <p class="description">See all course offerings at { school.name } </p>
+      <!-- endif -->
+    </div>
+    <div class="page-header-right">
+      <!-- if @user.is_admin? -->
+      <ul class="actions">
+        <li>Search</li>
+        <li>Enroll</li>
+        <li>Grid View</li>
+      </ul>
+      <!-- endif -->
+    </div>
+  </div>
+</div>
 
 
 <div class="row">
