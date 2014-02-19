@@ -7,16 +7,11 @@ div#top-flash{
   }
 }
 
-div.non-footer-container{
-  background-color:#fff;
-}
 
-div.top-bar-container{
-
+.top-bar-container{
   background-color: $topbar-bg-color;
-
-  nav.top-bar{
-
+  div.top-bar{
+    height: auto;
     margin-bottom: 0px;
 
     @include grid-row;
@@ -30,7 +25,8 @@ div.top-bar-container{
         color: darken($grapefruit-orange-color, 20%);
       }
       a.active{
-        background-color:$dark-blue-color;color:#fff;
+        background-color:$dark-blue-color;
+        color:#fff;
       }
     }
 
@@ -39,7 +35,6 @@ div.top-bar-container{
 }
 
 div.main-content{
-  margin-top: 1em;
   min-height: 400px;
   nav.breadcrumbs{
     @include grid-column(12);

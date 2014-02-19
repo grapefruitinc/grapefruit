@@ -6,7 +6,6 @@ div#top-flash{
     }
 }
 div.main-content{
-    @include grid-row;
 }
 
 .page-header {
@@ -18,10 +17,27 @@ div.main-content{
 }
 .title-area {
     @include grid-column(4);
+    height: 50px;
+    margin: 1rem 0 !important;
+    img {width: 100px;}
 }
-.top-bar-section {
+.nav-area {
     @include grid-column(8);
+    height: 50px;
+    margin: 1rem 0;
+    ul {float: right; line-height: 1rem;}
+    li {margin: 1rem}
+    a {
+        color: white;
+        transition: opacity 100ms;
+        opacity: 0.8;
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
+
+nav.horizontal ul li { display: inline-block; }
 
 
 /**
