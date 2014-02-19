@@ -9,16 +9,24 @@
 
 <h2><%= @lecture.name %></h2>
 
-<%= link_to "Add File", new_course_capsule_lecture_document_path(@course, @capsule, @lecture), class: "button small" %>
-<%= link_to "Edit Lecture", edit_course_capsule_lecture_path(@course, @capsule, @lecture), class: "button small" %>
+<% if can? :manage, @course %>
+
+  <%= link_to "Add File", new_course_capsule_lecture_document_path(@course, @capsule, @lecture), class: "button small" %>
+  <%= link_to "Edit Lecture", edit_course_capsule_lecture_path(@course, @capsule, @lecture), class: "button small" %>
+
+<% end %>
 
 <%= render "documents/documents", container: @lecture %>
 
 <div>
   <h3>Videos</h3>
 
-  <% if current_user == @course.instructor %>
+  <% if can? :manage, @course %>
    <div><%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), class: "button small" %></div>
+  <% end %>
+
+  <% if @videos.empty? and @lecture.mediasite_url.blank? %>
+    <p>No videos found.</p>
   <% end %>
   
   <% @videos.each do |video| %>
@@ -26,9 +34,6 @@
     <% if @videos.length > 1 %> 
       <div class="custom-hr"></div>
     <% end %>
-  <% end %>
-  <% if @videos.empty? %>
-    <p>No videos found.</p>
   <% end %>
 </div>
 

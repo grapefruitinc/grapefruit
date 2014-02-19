@@ -15,6 +15,10 @@
 <% if current_user == @course.instructor %>
 
   <span class="instructing">You are instructing this course.</span>
+
+<% end %>
+
+<% if can? :manage, @course %>
   
   <div>
     <%= link_to "Add Capsule", new_course_capsule_path(@course), class: "button small" %>
