@@ -13,6 +13,17 @@ div.main-content{
     @include grid-column(12);
 }
 
+.top-bar {
+    @include grid-row();
+}
+.title-area {
+    @include grid-column(4);
+}
+.top-bar-section {
+    @include grid-column(8);
+}
+
+
 /**
     forms
 **/
@@ -59,7 +70,6 @@ div#error_explanation{
     }
     .course-card-name {
         margin-top: 1rem;
-        a { color: #A60000; }
     }
     .course-card-details {
         list-style: none;
