@@ -4,11 +4,11 @@
 <div class="row">
   <div class="page-header">
     <h3 class="page-header-title">Enrolled</h3>    
-  </div>
-
   <% if @enrolled_courses.empty? %>
-    <h5 class="light">There are no courses listed.</h5>
+    <h5 class="light">You are not enrolled in any courses.</h5>
+  </div>
   <% else %>
+  </div>
     <%= render @enrolled_courses %>
   <% end %>
   <hr>
