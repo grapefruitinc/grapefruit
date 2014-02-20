@@ -4,3 +4,69 @@
 span.instructing{
   @include label();
 }
+
+.page-header-right {
+	text-align: right;
+}
+
+.course-details {
+	display: inline-block;
+	li {
+		display: inline-block;
+		padding-right: 1rem;
+		color: white;
+	}
+	h6 {
+		font-weight: lighter;
+		color: rgba(255, 255, 255, 0.8);
+		text-transform: uppercase;
+		font-size: 0.25rem;
+		letter-spacing: 1px;
+	}
+
+}
+
+.course-actions {
+	list-style: none;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 2rem;
+	margin-top: 0.3rem;
+	li {display: inline-block;}
+	li a {
+		@extend .stateful-button--inactive;
+	}
+}
+
+.course-card {
+    @include grid-column(4);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    .course-card-image {
+        border-radius: 4px;
+    }
+    .course-card-name {
+        margin-top: 1rem;
+    }
+    .course-card-details {
+        list-style: none;
+        border-radius: 5px;
+        background-color: #F6F6F6;
+        border: 1px solid #DCDCDC;
+        padding: 0.2rem 0.8rem;
+        opacity: 0.8;
+        li {
+            display: inline-block;
+            width: 32%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            &:first-child {
+                text-align: left;
+            }
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+}

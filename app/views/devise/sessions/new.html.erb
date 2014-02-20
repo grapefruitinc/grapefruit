@@ -1,21 +1,19 @@
-<% if !@login_inset %>
   <div class="login-form-container content">
     <% @login = true %>
-<% end %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
 
   <fieldset>
 
-    <legend>Login</legend>
+    <legend>Log In</legend>
 
-    <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+    <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "large" %>
 
-    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.password_field :password, placeholder: "Password", class: "large" %>
 
-    <%= f.submit "Login", class: "button" %>
+    <%= f.submit "Log In", class: "button" %>
 
-    <div>
+    <div class="center">
       <%= render "devise/shared/links" %>
     </div>
 
@@ -23,6 +21,4 @@
 
 <% end %>
 
-<% if !@login_inset %>
   </div>
-<% end %>

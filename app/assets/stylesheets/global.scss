@@ -1,3 +1,24 @@
+/**** Utility Classes ****/
+/*********
+Use with extends instead of in the markup directly when possible
+.thingIWantToBold {@extend .bold;}
+*********/
+
+.large {font-size: 120%;}
+.small {font-size: 60%;}
+.white {color: white !important;}
+.black {color: #2d324e !important;}
+.nobottommargin {margin-bottom: 0 !important;}
+.spacer {min-height: 5rem;}
+.center {text-align: center;}
+.light {font-weight: 100;}
+.bold {font-weight: 500;}
+.normal {font-weight: normal;}
+.upper {text-transform: uppercase;}
+
+/***************************/
+
+
 div#top-flash{
     text-align: center;
     background-color: orange;
@@ -5,23 +26,84 @@ div#top-flash{
         margin-bottom: 0px;
     }
 }
-div.main-content{
+
+.top-bar-container{
+  background-color: $topbar-bg-color;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  div.top-bar{
+    height: auto;
+    margin-bottom: 0px;
+    background-color: transparent;
     @include grid-row;
+    ul > li.has-dropdown a::after { /* this should be a configurable variable */
+      border-color: lighten($topbar-dropdown-link-color, 20%) transparent transparent transparent;
+    }
+
+    ul.right li{
+      a.secondary{
+        color: darken($grapefruit-orange-color, 20%);
+      }
+      a.active{
+        background-color:$dark-blue-color;
+        color:#fff;
+      }
+    }
+
+  }
 }
 
-.page-header {
-    @include grid-column(12);
-}
-
-.top-bar {
-    @include grid-row();
-}
 .title-area {
     @include grid-column(4);
+    height: 50px;
+    img {width: 100px;}
 }
-.top-bar-section {
+.nav-area {
     @include grid-column(8);
+    height: 50px;
+    ul {float: right; line-height: 1rem;}
+    li {margin: 1rem}
+    a {
+        color: white;
+        transition: opacity 100ms;
+        opacity: 0.8;
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
+
+nav.horizontal ul li { display: inline-block; }
+
+div.main-content{
+    padding-top: 3rem;
+    background-color: #FFF;
+}
+
+.page-header-container {
+    background-color: $topbar-bg-color;
+    padding: 0 0 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-header {@include grid-row();}
+.page-header-left {@include grid-column(7);}
+.page-header-right {@include grid-column(5); padding-top: 1.5rem;}
+.page-header-full {@include grid-column(12);}
+
+.page-header-left, .page-header-full {
+    .title {
+        margin-bottom: 0;
+        color: white;
+        font-weight: 100;
+    }
+    .description {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+
 
 
 /**
@@ -43,12 +125,52 @@ div#error_explanation{
     }
 }
 
+input[type=text], input[type=email], input[type=password] {
+    border-radius: 4px;
+    &.large {
+        font-size: 1rem;
+    }
+}
+
 /**
     buttons
 **/
 .button{
     box-shadow: none;
     transition: none;
+}
+
+.stateful-button {
+    padding: 0.5rem;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: normal;
+    transition-property: color background-color;
+    transition-duration: 75ms;
+    border: 1px solid white;
+}
+
+.stateful-button--inactive {
+    @extend .stateful-button;
+    background-color: $topbar-bg-color;
+    color: white;
+    &:hover {
+        background-color: #FFF;
+        color: $topbar-bg-color;
+    }
+}
+
+.stateful-button--active {
+    @extend .stateful-button;
+    background-color: white;
+    color: $topbar-bg-color;
+    &:hover {
+        background-color: $topbar-bg-color;
+        color: white;
+    }
 }
 
 /**
@@ -61,37 +183,9 @@ div#error_explanation{
     margin-bottom: 1.5em;
 }
 
-.course-card {
-    @include grid-column(4);
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    .course-card-image {
-        border-radius: 4px;
-    }
-    .course-card-name {
-        margin-top: 1rem;
-    }
-    .course-card-details {
-        list-style: none;
-        border-radius: 5px;
-        background-color: #F6F6F6;
-        border: 1px solid #DCDCDC;
-        padding: 0.2rem 0.8rem;
-        opacity: 0.8;
-        li {
-            display: inline-block;
-            width: 32%;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            &:first-child {
-                text-align: left;
-            }
-            &:last-child {
-                text-align: right;
-            }
-        }
-    }
+section {
+    @include grid-row();
+    & > div {@include grid-column(8, $last-column: true);}
 }
 
 
