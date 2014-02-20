@@ -138,6 +138,7 @@ input[type=text], input[type=email], input[type=password] {
 .button{
     box-shadow: none;
     transition: none;
+    border-radius: $global-radius;
 }
 
 .stateful-button {
