@@ -36,6 +36,7 @@ div.main-content{
         @include grid-row;
         @include grid-column(12);
     }
+
     form.login-form{
         input[type="submit"]{
             margin-bottom: .8em;
