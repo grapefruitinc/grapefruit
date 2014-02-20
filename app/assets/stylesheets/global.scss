@@ -5,50 +5,6 @@ div#top-flash{
         margin-bottom: 0px;
     }
 }
-div.main-content{
-    padding-top: 3rem;
-}
-
-.page-header-container {
-    background-color: $topbar-bg-color;
-    padding: 0 0 2rem 0;
-    margin-bottom: 2rem;
-}
-.page-header {@include grid-row();}
-.page-header-left {@include grid-column(8);}
-.page-header-right {@include grid-column(4);}
-
-.page-header-left {
-    .title {
-        margin-bottom: 0;
-        color: white;
-        font-weight: 100;
-    }
-    .description {
-        color: rgba(255, 255, 255, 0.8);
-    }
-} 
-
-.page-header-right {
-    padding-top: 1.5rem;
-    .actions {
-        border: 1px solid white;
-        border-radius: 5px;
-        li {
-            display: inline-block;
-            text-align: center;
-            color: white;
-            font-weight: 100;
-            border-right: 1px solid white;
-            width: 32%;
-            &:last-child {
-                border-right: none;
-            }
-        }
-    }
-
-}
-
 
 .top-bar {@include grid-row();}
 .title-area {
@@ -72,6 +28,35 @@ div.main-content{
 }
 
 nav.horizontal ul li { display: inline-block; }
+
+div.main-content{
+    padding-top: 3rem;
+    background-color: #FFF;
+}
+
+.page-header-container {
+    background-color: $topbar-bg-color;
+    padding: 0 0 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-header {@include grid-row();}
+.page-header-left {@include grid-column(7);}
+.page-header-right {@include grid-column(5); padding-top: 1.5rem;}
+.page-header-full {@include grid-column(12);}
+
+.page-header-left, .page-header-full {
+    .title {
+        margin-bottom: 0;
+        color: white;
+        font-weight: 100;
+    }
+    .description {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+
 
 
 /**
@@ -101,6 +86,39 @@ div#error_explanation{
     transition: none;
 }
 
+.stateful-button {
+    padding: 0.5rem;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: normal;
+    transition-property: color background-color;
+    transition-duration: 75ms;
+    border: 1px solid white;
+}
+
+.stateful-button--inactive {
+    @extend .stateful-button;
+    background-color: $topbar-bg-color;
+    color: white;
+    &:hover {
+        background-color: #FFF;
+        color: $topbar-bg-color;
+    }
+}
+
+.stateful-button--active {
+    @extend .stateful-button;
+    background-color: white;
+    color: $topbar-bg-color;
+    &:hover {
+        background-color: $topbar-bg-color;
+        color: white;
+    }
+}
+
 /**
     elements
 **/
@@ -111,37 +129,9 @@ div#error_explanation{
     margin-bottom: 1.5em;
 }
 
-.course-card {
-    @include grid-column(4);
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    .course-card-image {
-        border-radius: 4px;
-    }
-    .course-card-name {
-        margin-top: 1rem;
-    }
-    .course-card-details {
-        list-style: none;
-        border-radius: 5px;
-        background-color: #F6F6F6;
-        border: 1px solid #DCDCDC;
-        padding: 0.2rem 0.8rem;
-        opacity: 0.8;
-        li {
-            display: inline-block;
-            width: 32%;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            &:first-child {
-                text-align: left;
-            }
-            &:last-child {
-                text-align: right;
-            }
-        }
-    }
+section {
+    @include grid-row();
+    & > div {@include grid-column(8, $last-column: true);}
 }
 
 

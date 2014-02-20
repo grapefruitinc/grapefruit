@@ -32,19 +32,41 @@ span.instructing{
 	vertical-align: top;
 	line-height: 2rem;
 	margin-top: 0.3rem;
-	a {
-		border: 2px solid white;
-		color: white;
-		padding: 0.5rem;
-		border-radius: 3px;
-		text-align: center;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-size: 0.75rem;
-		font-weight: normal;
-		&:hover {
-			background-color: #FFF;
-			color: $topbar-bg-color;
-		}
+	li {display: inline-block;}
+	li a {
+		@extend .stateful-button--inactive;
 	}
+}
+
+.course-card {
+    @include grid-column(4);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    .course-card-image {
+        border-radius: 4px;
+    }
+    .course-card-name {
+        margin-top: 1rem;
+    }
+    .course-card-details {
+        list-style: none;
+        border-radius: 5px;
+        background-color: #F6F6F6;
+        border: 1px solid #DCDCDC;
+        padding: 0.2rem 0.8rem;
+        opacity: 0.8;
+        li {
+            display: inline-block;
+            width: 32%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            &:first-child {
+                text-align: left;
+            }
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
 }

@@ -8,10 +8,10 @@
     </div>
     <div class="page-header-right">
       <!-- if @user.is_admin? -->
-      <ul class="actions">
-        <li>Search</li>
-        <li>Enroll</li>
-        <li>Grid View</li>
+      <ul class="course-actions">
+        <li><a href="">Search</a></li>
+        <li><a href="">Enroll</a></li>
+        <li><a href="">Grid View</a></li>
       </ul>
       <!-- endif -->
     </div>
@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="row">
+<section>
   <div class="page-header">
     <h3 class="page-header-title">Enrolled</h3>    
   <% if @enrolled_courses.empty? %>
@@ -30,9 +30,9 @@
     <%= render @enrolled_courses %>
   <% end %>
   <hr>
-</div>
+</section>
 
-<div class="row">
+<section>
   <div class="page-header">
     <h3 class="page-header-title">Courses You Instruct</h3>    
   </div>
@@ -40,10 +40,10 @@
     <%= render @instructed_courses %>
   <% end %>
   <hr>
-</div>
+</section>
 
 
-<div class="row">
+<section>
   <div class="page-header">
     <h3 class="page-header-title">Courses Offered</h3>
   </div>
@@ -54,4 +54,4 @@
     <%= render @courses %>
   <% end %>
 
-</div>
+</section>

@@ -1,6 +1,6 @@
 <div class="page-header-container">
   <div class="page-header">
-    <div class="page-header-left">
+    <div class="page-header-full">
       <h1 class="title">Welcome <%= current_user.display_identifier %>!</h1>
       <!-- if @course.description.empty? -->
       <% if can? :manage_admins, User %>
@@ -9,8 +9,6 @@
         <p class="description">Your personal dashboard to manage your courses and profile.</p>
       <% end %>
       <!-- endif -->
-    </div>
-    <div class="page-header-right">
     </div>
   </div>
 </div>

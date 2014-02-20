@@ -14,9 +14,24 @@
       <ul class="course-details">
         <li class="course-details-number">CSCI 4960 <h6>COURSE NUMBER</h6></li>
         <li class="course-details-seats">18/30 <h6>SEATS</h6></li>
+        <li class="course-details-credits">4 <h6>CREDITS</h6></li>
       </ul>
       <ul class="course-actions">
-        <li><a href="#" class="enroll">Enroll</a></li>
+        <% if current_user == @course.instructor %>
+          <li><%= link_to "Add Capsule", new_course_capsule_path(@course), class: "button small" %></li>
+          <li><%= link_to "Add File", new_course_document_path(@course), class: "button small" %></li>
+          <li><%= link_to "Edit Course", edit_course_path(@course), class: "button small" %></li>
+        <% else %>
+          <% if @course.students.include?(current_user) %>
+            <a href="#" class="stateful-button--active">Unenroll</a>
+          <% else %>
+            <%= form_for [@course, @course_user] do |f| %>
+              <%= f.hidden_field :course_id, value: @course.id %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit "Enroll", class: "stateful-button--inactive" %>
+            <% end %>
+          <% end %>
+        <% end %>
       </ul>
     </div>
   </div>
