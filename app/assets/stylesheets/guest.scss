@@ -12,6 +12,7 @@
     background-attachment: fixed;
     background-size: 100%;
     padding: 8rem 0;
+    margin-bottom: 0;
 }
 
 .page-header {
@@ -38,16 +39,35 @@ div.main-content{
     form.login-form{
         input[type="submit"]{
             margin-bottom: .8em;
+            width: 100%;
+            background-color: #2d324e;
+            color: white;
+            border-radius: 4px;
         }
         fieldset{
-          margin-top: 0px;
+          // margin-top: 0px;
+          border: none;
         }
     }
     div.login-form-container{
-        @include grid-column(5, $center: true);
+        background-color: #F1F0F0;
+        border-radius: 10px;
+        border: 20px solid white;
+        margin-top: -5rem;
+        @include grid-column(3, $center: true);
+        padding: 1rem 2rem;
+    }
+    legend {
+        text-align: center;
+        background: none;
     }
     div.register{
         @include grid-column(5, $center: true);
     }
+}
 
+.register-form-container {
+    @extend .login-form-container;
+    margin-top: 0 !important;
+    border: none;
 }
