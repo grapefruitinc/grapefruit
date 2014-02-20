@@ -6,7 +6,33 @@ div#top-flash{
     }
 }
 
-.top-bar {@include grid-row();}
+.top-bar-container{
+  background-color: $topbar-bg-color;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  div.top-bar{
+    height: auto;
+    margin-bottom: 0px;
+    background-color: transparent;
+    @include grid-row;
+    ul > li.has-dropdown a::after { /* this should be a configurable variable */
+      border-color: lighten($topbar-dropdown-link-color, 20%) transparent transparent transparent;
+    }
+
+    ul.right li{
+      a.secondary{
+        color: darken($grapefruit-orange-color, 20%);
+      }
+      a.active{
+        background-color:$dark-blue-color;
+        color:#fff;
+      }
+    }
+
+  }
+}
+
 .title-area {
     @include grid-column(4);
     height: 50px;
