@@ -7,14 +7,14 @@
       <% if current_user == @course.instructor %>
         <p class="description">You are the instructor for this course.</p>
       <% else %>
-        <p class="description"> { course.description } </p>
+        <p class="description"><%= @course.description %></p>
       <% end %>
     </div>
     <div class="page-header-right">
       <ul class="course-details">
-        <li class="course-details-number">CSCI 4960 <h6>COURSE NUMBER</h6></li>
-        <li class="course-details-seats">18/30 <h6>SEATS</h6></li>
-        <li class="course-details-credits">4 <h6>CREDITS</h6></li>
+        <li class="course-details-number"><%= @course.subject %> <%= @course.course_number %> <h6>COURSE NUMBER</h6></li>
+        <li class="course-details-seats"><%= @course.seats_left %> <h6>SEATS</h6></li>
+        <li class="course-details-credits"><%= @course.credits %> <h6>CREDITS</h6></li>
       </ul>
       <ul class="course-actions">
         <% if current_user == @course.instructor %>
@@ -36,9 +36,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <% if current_user == @course.instructor %>
 
@@ -71,8 +68,8 @@
   <thead>
     <th>Capsules</th>
   </thead>
-	<tbody>
-		<%= render @capsules %>
+  <tbody>
+    <%= render @capsules %>
     <% if @capsules.empty? %>
       <tr>
         <td>

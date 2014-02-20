@@ -13,11 +13,15 @@ class Course < ActiveRecord::Base
   
   # Validations
   # ========================================================
-	validates :name, presence: true
+  validates_presence_of :name, :description, :subject, :course_number,
+                        :course_registration_number, :semester, :year
+
+  validates :spots_available, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :credits, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   # Relationships
   # ========================================================
-	belongs_to :instructor, class_name: "User"
+  belongs_to :instructor, class_name: "User"
   has_many :course_users, dependent: :destroy
   has_many :students, class_name: "User", through: :course_users, source: :user
   has_many :capsules, dependent: :destroy
@@ -46,6 +50,12 @@ class Course < ActiveRecord::Base
 
   def course_user(user)
     course_users.find_by_user_id(user)
+  end
+
+  # Outputting
+  # ========================================================
+  def seats_left
+    "#{self.students.count} / #{self.spots_available}"
   end
 
 end
