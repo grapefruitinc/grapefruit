@@ -6,10 +6,8 @@
       <h1 class="title"><%= @course.name %></h1>
       <% if current_user == @course.instructor %>
         <p class="description">You are the instructor for this course.</p>
-        <p class="description"><%= @course.description %></p>
-    <% else %>
-        <p class="description"><%= @course.description %></p>
       <% end %>
+      <p class="description"><%= @course.description %></p>
     </div>
     <div class="page-header-right">
       <ul class="course-details">
