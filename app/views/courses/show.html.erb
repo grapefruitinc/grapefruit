@@ -6,15 +6,14 @@
       <h1 class="title"><%= @course.name %></h1>
       <% if current_user == @course.instructor %>
         <p class="description">You are the instructor for this course.</p>
-      <% else %>
-        <p class="description"> { course.description } </p>
       <% end %>
+      <p class="description"><%= @course.description %></p>
     </div>
     <div class="page-header-right">
       <ul class="course-details">
-        <li class="course-details-number">CSCI 4960 <h6>COURSE NUMBER</h6></li>
-        <li class="course-details-seats">18/30 <h6>SEATS</h6></li>
-        <li class="course-details-credits">4 <h6>CREDITS</h6></li>
+        <li class="course-details-number"><%= @course.subject %> <%= @course.course_number %> <h6>COURSE NUMBER</h6></li>
+        <li class="course-details-seats"><%= @course.seats_left %> <h6>SEATS</h6></li>
+        <li class="course-details-credits"><%= @course.credits %> <h6>CREDITS</h6></li>
       </ul>
       <ul class="course-actions">
         <% if can? :manage, @course %>
@@ -37,40 +36,63 @@
   </div>
 </div>
 
+<% if current_user == @course.instructor %>
 
-    <table class="listing full">
-      <thead>
-        <th>Capsules</th>
-      </thead>
-      <tbody>
-        <%= render @capsules %>
-        <% if @capsules.empty? %>
-          <tr>
-            <td>
-              <span>No capsules found.</span>
-            </td>
-          </tr> 
-        <% end %>
-      </tbody>
-    </table>
+  <span class="instructing">You are instructing this course.</span>
+  
+  <div>
+    <%= link_to "Add Capsule", new_course_capsule_path(@course), class: "button small" %>
+    <%= link_to "Add File", new_course_document_path(@course), class: "button small" %>
+    <%= link_to "Edit Course", edit_course_path(@course), class: "button small" %>
+  </div>
 
-    <%= render "documents/documents", container: @course, table_class: "listing full" %>
-  </div>
-  <div class="small-6 columns">
-    <table class="listing full">
-      <thead>
-        <th>Recent Discussion (<%= link_to "view all", course_topics_path(@course) %>)</th>
-      </thead>
-      <tbody>
-        <%= render @topics, link_to_post: true %>
-        <% if @topics.empty? %>
-          <tr>
-            <td>
-              <span>No topics found.</span>
-            </td>
-          </tr> 
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+<% else %>
+
+  <p>Instructor: <%= @course.instructor.name %> (<%= mail_to @course.instructor.email %>)</p>
+
+  <% if @course.students.include?(current_user) %>
+    <p>You are enrolled in this course.</p>
+  <% else %>
+    <%= form_for [@course, @course_user] do |f| %>
+      <%= f.hidden_field :course_id, value: @course.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Join Course", class: "button small" %>
+    <% end %>
+  <% end %>
+
+<% end %>
+
+
+<table class="listing">
+  <thead>
+    <th>Capsules</th>
+  </thead>
+  <tbody>
+    <%= render @capsules %>
+    <% if @capsules.empty? %>
+      <tr>
+        <td>
+          <span>No capsules found.</span>
+        </td>
+      </tr> 
+    <% end %>
+	</tbody>
+</table>
+
+<%= render "documents/documents", container: @course %>
+
+<table class="listing">
+  <thead>
+    <th>Recent Discussion (<%= link_to "view all", course_topics_path(@course) %>)</th>
+  </thead>
+  <tbody>
+    <%= render @topics %>
+    <% if @topics.empty? %>
+      <tr>
+        <td>
+          <span>No topics found.</span>
+        </td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
