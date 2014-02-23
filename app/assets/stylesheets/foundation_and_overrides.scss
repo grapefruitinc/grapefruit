@@ -63,8 +63,8 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-   $body-bg: #eee;
-// $body-font-color: #222;
+   $body-bg: #eee ;
+  // $body-font-color: #222;
    // @import url("http://fonts.googleapis.com/css?family=Roboto");
    $body-font-family: "effra", sans-serif;
 
@@ -81,17 +81,16 @@ $default-float: left;
 
 // Colors
 
-// $primary-color: #2ba6cb;
 // $secondary-color: #e9e9e9;
-// $alert-color: #c60f13;
 // $success-color: #5da423;
    $rpi-red-color: #d81d05;
    $grapefruit-orange-color: #ff7f00;
-   $alert-color: darken($rpi-red-color, 10%);
    $dark-blue-color: #00748F;
    $grey-text-color: #777;
+   $ethan-red-color: #CA4343;
 
-   $primary-color: $rpi-red-color;
+   $primary-color: #097C7C;
+   $alert-color: lighten($grapefruit-orange-color, 10%);
 
 // Make sure border radius matches unless we want it different.
 
@@ -233,7 +232,7 @@ $default-float: left;
 // Style anchors
 
 // $anchor-text-decoration: none;
-  $anchor-font-color: #0091B3; // $primary-color
+  $anchor-font-color: $primary-color;
   $anchor-font-color-hover: darken($anchor-font-color, 12%);
 
 // Style the <hr> element
@@ -1264,7 +1263,7 @@ $default-float: left;
 
 // Background color for the top bar
 
-  $topbar-bg-color: #CA4343;
+  $topbar-bg-color: $ethan-red-color;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin

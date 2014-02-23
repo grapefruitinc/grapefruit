@@ -7,12 +7,22 @@ div#top-flash{
   }
 }
 
-
-
-
+.nav-area {
+  a {
+    &:hover {
+      border-radius: 0px;
+      background-color: darken($topbar-bg-color, 10%);
+    }
+  }
+}
 
 div.main-content{
   min-height: 400px;
+  overflow: auto;
+
+  section h3{
+    margin-top: 1em;
+  }
 
   table.listing{
     width: 50%;
