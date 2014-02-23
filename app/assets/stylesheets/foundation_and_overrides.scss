@@ -81,18 +81,16 @@ $default-float: left;
 
 // Colors
 
-// $primary-color: #2ba6cb;
 // $secondary-color: #e9e9e9;
-// $alert-color: #c60f13;
 // $success-color: #5da423;
    $rpi-red-color: #d81d05;
    $grapefruit-orange-color: #ff7f00;
-   $alert-color: darken($rpi-red-color, 10%);
    $dark-blue-color: #00748F;
    $grey-text-color: #777;
    $ethan-red-color: #CA4343;
 
    $primary-color: #097C7C;
+   $alert-color: lighten($grapefruit-orange-color, 10%);
 
 // Make sure border radius matches unless we want it different.
 

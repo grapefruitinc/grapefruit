@@ -18,6 +18,11 @@ div#top-flash{
 
 div.main-content{
   min-height: 400px;
+  overflow: auto;
+
+  section h3{
+    margin-top: 1em;
+  }
 
   table.listing{
     width: 50%;

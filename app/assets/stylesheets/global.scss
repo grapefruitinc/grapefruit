@@ -120,9 +120,10 @@ div.alert-box{
 }
 div#error_explanation{
     @include alert($alert-color);
+    border-radius: $global-radius;
     h2{
         font-size: 1em;
-        color: #eee;
+        color: #fff;
     }
 }
 

@@ -33,7 +33,7 @@ div.main-content{
 
     div.content{
         @include grid-row;
-        @include grid-column(8, $offset: 2);
+        @include grid-column(6, $offset: 3);
         padding-top: 1em;
     }
 
