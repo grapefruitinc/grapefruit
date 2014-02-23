@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <%= link_to document[:file], document.file.url %>
+    <%= link_to (if document.description? then document.description else document[:file] end), document.file.url %>
   </td>
   <td>
-    <%= document.description %>
+    <%= document.file.file.extension %>
   </td>
   <% if can? :delete, document %>
     <td>

@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20140220180430) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capsule_id"
+    t.integer  "last_post_id"
   end
 
   create_table "users", force: true do |t|

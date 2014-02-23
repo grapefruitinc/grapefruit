@@ -1,22 +1,9 @@
 <div class="landing">
 
   <div class="login">
-    <% if current_user %>
-      <h1>MEOW</h1>
-      <p>
-        <%= link_to "View All Courses", courses_path %>
-      </p>
 
-      <p>
-        <%= link_to "Create New Course", new_course_path %>
-      </p>
-
-      <p>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-      </p>
-    <% else %>
       <%= render file: "devise/sessions/new" %>
-    <% end %>
+
   </div>
-  
+
 </div>

@@ -14,7 +14,7 @@ student_one = User.create(name: "Maebe Funke", email: "maebe@bluth.com", passwor
 student_two = User.create(name: "George-Michael Bluth", email: "georgemichael@bluth.com", password: "password")
 student_three = User.create(name: "Steve Holt", email: "steve@bluth.com", password: "password")
 
-course_one = Course.create(name: "Calculus Bridge I", instructor: professor_one)
+course_one = Course.create(name: "Calculus Bridge - Pass I", instructor: professor_one)
   c1 = Capsule.create(name: "Functions", course: course_one)
     Lecture.create(name: "Equations of Lines", lecture_number: 1, capsule: c1)
     Lecture.create(name: "Polynomials", lecture_number: 2, capsule: c1)
@@ -46,7 +46,7 @@ course_one = Course.create(name: "Calculus Bridge I", instructor: professor_one)
     Lecture.create(name: "Anti-Derivatives/Indefinite Integrals", lecture_number: 7, capsule: c4)
     Lecture.create(name: "U-Substitution", lecture_number: 8, capsule: c4)
 
-course_two = Course.create(name: "Calculus Bridge II", instructor: professor_one)
+course_two = Course.create(name: "Calculus Bridge - Pass II", instructor: professor_one)
   c5 = Capsule.create(name: "Rational Functions", course: course_two)
     Lecture.create(name: "Limits at Infinity", lecture_number: 1, capsule: c5)
     Lecture.create(name: "Infinite Limits", lecture_number: 2, capsule: c5)
@@ -75,7 +75,7 @@ course_two = Course.create(name: "Calculus Bridge II", instructor: professor_one
     Lecture.create(name: "Maximums and Minimums", lecture_number: 5, capsule: c8)
     Lecture.create(name: "Areas", lecture_number: 6, capsule: c8)
     
-course_three = Course.create(name: "Calculus Bridge III", instructor: professor_one)
+course_three = Course.create(name: "Calculus Bridge - Pass III", instructor: professor_one)
   c9 = Capsule.create(name: "Limits and Continuity", course: course_three)
     Lecture.create(name: "Precise Definition of a Limit", lecture_number: 1, capsule: c9)
     Lecture.create(name: "Formal Limit Laws", lecture_number: 2, capsule: c9)

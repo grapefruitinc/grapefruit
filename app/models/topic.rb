@@ -12,6 +12,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  capsule_id     :integer
+#  last_post_id   :integer
 #
 
 class Topic < ActiveRecord::Base
@@ -37,8 +38,13 @@ class Topic < ActiveRecord::Base
     reply.course_id = self.course_id
     self.last_poster_id = reply.author_id
     self.replies << reply
+    self.last_post_id = reply.id
     update_attribute(:updated_at, Time.now)
     self.save
+  end
+
+  def last_post_page
+    (self.replies.count / 10).floor + 1
   end
 
 end
