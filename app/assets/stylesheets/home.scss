@@ -11,6 +11,7 @@ div#top-flash{
   a {
     &:hover {
       border-radius: 0px;
+      background-color: darken($topbar-bg-color, 10%);
     }
   }
 }
