@@ -57,19 +57,20 @@ div#top-flash{
 .title-area {
     @include grid-column(4);
     height: 50px;
-    img {width: 100px;}
+    img {width: 110px;}
 }
 .nav-area {
     @include grid-column(8);
     height: 50px;
     ul {float: right; line-height: 1rem;}
-    li {margin: 1rem}
     a {
+        padding: 1rem;
         color: white;
-        transition: opacity 100ms;
-        opacity: 0.8;
+        display: inline-block;
+        height: 50px;
         &:hover {
-            opacity: 1;
+          background-color: lighten($topbar-bg-color, 10%);
+          border-radius: 0em 0em .5em .5em; 
         }
     }
 }
@@ -200,7 +201,7 @@ footer{
     text-align: center;
 
     div.school-logo{
-        background-color: $rpi-red-color;
+        background-color: $topbar-bg-color;
         padding: .5em 0em;
     }
 

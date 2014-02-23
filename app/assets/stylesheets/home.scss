@@ -7,9 +7,13 @@ div#top-flash{
   }
 }
 
-
-
-
+.nav-area {
+  a {
+    &:hover {
+      border-radius: 0px;
+    }
+  }
+}
 
 div.main-content{
   min-height: 400px;

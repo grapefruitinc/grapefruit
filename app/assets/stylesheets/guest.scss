@@ -8,18 +8,17 @@
 
 .page-header-container {
     background-image: url('/assets/biotechlargeredcomp.png');
-    background-position: 0% 120%;
+    background-position: 0% 780%;
     background-attachment: fixed;
     background-size: 100%;
-    padding: 8rem 0;
+    padding: 4rem 0 6rem;
     margin-bottom: 0;
 }
 
 .page-header {
     text-align: center;
     h1 {
-        font-size: 6rem;
-        text-shadow: 0px 2px #c9c9c9;
+        font-size: 3.5rem;
         font-weight: normal !important;
     }
 }
@@ -34,14 +33,14 @@ div.main-content{
 
     div.content{
         @include grid-row;
-        @include grid-column(12);
+        @include grid-column(8, $offset: 2);
+        padding-top: 1em;
     }
 
     form.login-form{
         input[type="submit"]{
             margin-bottom: .8em;
             width: 100%;
-            background-color: #2d324e;
             color: white;
             border-radius: 4px;
         }
