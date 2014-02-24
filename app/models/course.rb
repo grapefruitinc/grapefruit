@@ -2,11 +2,19 @@
 #
 # Table name: courses
 #
-#  id            :integer          not null, primary key
-#  name          :string(255)
-#  created_at    :datetime
-#  updated_at    :datetime
-#  instructor_id :integer
+#  id                         :integer          not null, primary key
+#  name                       :string(255)
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  instructor_id              :integer
+#  description                :string(255)
+#  subject                    :string(255)
+#  course_number              :string(255)
+#  course_registration_number :string(255)
+#  semester                   :string(255)
+#  year                       :integer
+#  spots_available            :integer
+#  credits                    :integer
 #
 
 class Course < ActiveRecord::Base
