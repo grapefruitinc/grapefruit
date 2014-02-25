@@ -19,6 +19,8 @@ Use with extends instead of in the markup directly when possible
 /***************************/
 
 
+body {background-color: #FFF;}
+
 div#top-flash{
     text-align: center;
     background-color: orange;
@@ -194,19 +196,9 @@ section {
   footer
 **/
 footer{
-    background-color: #fff;
-    padding-top: 1em;
-    color: lighten($body-font-color, 30%);
+    @include grid-row();
+    border-top: 1px solid rgba(255, 30, 10, 0.2);
     text-align: center;
-
-    div.school-logo{
-        background-color: $rpi-red-color;
-        padding: .5em 0em;
-    }
-
-    p.under-school-logo{
-        background-color: $body-bg;
-        padding-top: .8em;
-    }
-
+    margin-top: 3rem;
+    padding-top: 3rem;
 }
