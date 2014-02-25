@@ -137,7 +137,8 @@ input[type=text], input[type=email], input[type=password] {
 /**
     buttons
 **/
-.button{
+
+.button {
     box-shadow: none;
     transition: none;
     border-radius: $global-radius;
@@ -196,9 +197,35 @@ section {
   footer
 **/
 footer{
-    @include grid-row();
-    border-top: 1px solid rgba(255, 30, 10, 0.2);
-    text-align: center;
+    border-top: 1px solid rgba(0,0,0, 0.1);
+    background-color: #4B5252;
     margin-top: 3rem;
-    padding-top: 3rem;
+    padding: 5rem 0;
+    a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 250ms;
+        &:hover {color: white;}
+    }
+    & > div {@include grid-row();}
+}
+
+.school-logo {
+    @include grid-column(3);
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 1rem;
+    @extend .normal;
+    li {
+        margin-right: 1rem;
+        &:last-child {margin-right: 0;}
+    }
+}
+
+.project-description {
+    @include grid-column(6);
+    color: rgba(255, 255, 255, 0.7);
+    p {@extend .light;}
+
 }
