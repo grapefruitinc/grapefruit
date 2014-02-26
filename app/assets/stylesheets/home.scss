@@ -1,4 +1,14 @@
 @import "application";
+@import "capsules";
+@import "courses";
+@import "dashboard";
+@import "documents";
+@import "lectures";
+@import "problem_sets";
+@import "replies";
+@import "topics";
+@import "video_accompanys";
+@import "videos";
 
 div#top-flash{
   div.alert-box{
