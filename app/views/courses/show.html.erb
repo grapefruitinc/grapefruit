@@ -3,7 +3,7 @@
 <div class="page-header-container">
   <div class="page-header">
     <div class="page-header-left">
-      <h1 class="title"><%= @course.name %></h1>
+      <h2 class="title"><%= @course.name %></h2>
       <% if current_user == @course.instructor %>
         <p class="description">You are the instructor for this course.</p>
       <% end %>
@@ -48,11 +48,9 @@
 
 <% else %>
 
-  <p>Instructor: <%= @course.instructor.name %> (<%= mail_to @course.instructor.email %>)</p>
+  <p>Instructed by <strong><%= @course.instructor.name %></strong> (<%= mail_to @course.instructor.email %>)</p>
 
-  <% if @course.students.include?(current_user) %>
-    <p>You are enrolled in this course.</p>
-  <% else %>
+  <% if not @course.students.include?(current_user) %>
     <%= form_for [@course, @course_user] do |f| %>
       <%= f.hidden_field :course_id, value: @course.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>

@@ -1,7 +1,7 @@
 <div class="page-header-container">
   <div class="page-header">
     <div class="page-header-full">
-      <h1 class="title">Welcome <%= current_user.display_identifier %>!</h1>
+      <h2 class="title">Welcome <%= current_user.display_identifier %>!</h2>
       <!-- if @course.description.empty? -->
       <% if can? :manage_admins, User %>
         <p class="description">You have administrator permissions. Manage your courses and profile using the links in the upper right hand corner.</p>
