@@ -111,11 +111,13 @@ section.course {
     padding: 0.5rem 0;
     .capsule-status {
         margin-right: 0.5rem;
+        font-size: 1rem;
+        float: left;
     }
     .capsule-name {
         @include grid-column(8);
         @extend .normal;
-        font-size: 1rem;
+        font-size: 0.8rem;
         &.active {@extend .bold;}
     }
     .capsule-nav {
@@ -170,6 +172,8 @@ span[class*="status"] {
     .item-status {}
     .item-name {
         font-size: 0.8rem;
+        vertical-align: middle;
+        margin-top: 0;
         @extend .normal;
         display: inline-block;
         color: #97A3A9;
