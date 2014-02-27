@@ -67,3 +67,30 @@ span.instructing{
         }
     }
 }
+
+
+section.course {
+    @include grid-row();
+    margin-top: -2rem;
+    position: relative;
+
+    aside {
+        @include grid-column(2);
+        background-color: #F7F7F7;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+    }
+    .workplace {
+        @include grid-column(10);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        position: absolute;
+        bottom: 0; right: 0;
+        height: 100%;
+        background-color: white;
+    }
+}
+
+.course-accordion {
+    list-style: none;
+    ul {list-style: none;}
+}
