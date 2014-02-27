@@ -71,26 +71,45 @@ span.instructing{
 
 section.course {
     @include grid-row();
-    margin-top: -2rem;
     position: relative;
-
+    background-color: #FFF;
     aside {
-        @include grid-column(2);
+        @include grid-column(3);
         background-color: #F7F7F7;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem;
+        padding: 0;
+        position: absolute;
+        width: 20%;
+        left: -20%;
     }
     .workplace {
-        @include grid-column(10);
+        @include grid-column(12);
+        min-height: 25rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        position: absolute;
-        bottom: 0; right: 0;
-        height: 100%;
-        background-color: white;
+        border-left: none;
+        padding-top: 1rem;
     }
 }
 
 .course-accordion {
     list-style: none;
-    ul {list-style: none;}
+    ul {
+        list-style: none;
+        margin-left: 0;
+    }
+    li {
+        font-weight: lighter;
+        background-color: #fff;
+    }
+    & > li {
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.01);
+        &:first-child {margin-top: -2px;}
+    }
+    h1 {
+        margin-left: 1rem;
+        font-size: 1rem;
+        margin-bottom: 0;
+        padding: 0.5rem 0;
+    }
 }
