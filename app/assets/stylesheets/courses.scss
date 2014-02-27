@@ -73,6 +73,7 @@ section.course {
     @include grid-row();
     position: relative;
     background-color: #FFF;
+    margin-bottom: 4rem;
     aside {
         @include grid-column(3);
         background-color: #F7F7F7;
@@ -106,6 +107,19 @@ section.course {
         border-bottom: 1px solid #F5F5F5;
         &:last-child {border-bottom: 0;}
     }
+    .sectionNumber {
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        border: 1px solid #cfcfcf;
+        display: inline-block;
+        text-align: center;
+        margin-right: 0.5rem;
+        @extend .light;
+        color: #B4B4B4;
+        line-height: 18px;
+        text-shadow: none;
+    }
     & > li {
         font-weight: bold;
         background-color: #F7F7F7;
@@ -115,6 +129,12 @@ section.course {
         &.active {
             height: auto;
             background-color: #E9E9E9;
+            .sectionNumber {
+                background-color: #141414;
+                border: none;
+                color: white;
+                line-height: 20px;
+            }
         }
     }
     h1 {
@@ -130,4 +150,6 @@ section.course {
         font-size: 0.9rem;
         color: #5890AA;
     }
+
+   
 }
