@@ -93,23 +93,41 @@ section.course {
 
 .course-accordion {
     list-style: none;
+    margin: 0;
     ul {
         list-style: none;
-        margin-left: 0;
+        margin: 0;
     }
     li {
         font-weight: lighter;
         background-color: #fff;
+        padding: 1rem 0;
+        cursor: pointer;
+        border-bottom: 1px solid #F5F5F5;
+        &:last-child {border-bottom: 0;}
     }
     & > li {
         font-weight: bold;
-        background-color: rgba(0, 0, 0, 0.01);
-        &:first-child {margin-top: -2px;}
+        background-color: #F7F7F7;
+        height: 2.5rem;
+        overflow: hidden;
+        padding: 0;
+        &.active {
+            height: auto;
+            background-color: #E9E9E9;
+        }
     }
     h1 {
         margin-left: 1rem;
         font-size: 1rem;
         margin-bottom: 0;
         padding: 0.5rem 0;
+        text-shadow: #FFF 1px 0px 0px;
+    }
+    h2 {
+        @extend .normal;
+        margin: 0 0 0 1.3rem;
+        font-size: 0.9rem;
+        color: #5890AA;
     }
 }
