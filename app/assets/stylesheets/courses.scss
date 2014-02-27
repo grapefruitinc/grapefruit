@@ -78,6 +78,7 @@ section.course {
         @include grid-column(3);
         background-color: #F7F7F7;
         border: 1px solid rgba(0, 0, 0, 0.1);
+        border-right: none;
         padding: 0;
         position: absolute;
         width: 20%;
@@ -87,7 +88,6 @@ section.course {
         @include grid-column(12);
         min-height: 25rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        border-left: none;
         padding-top: 1rem;
     }
 }
