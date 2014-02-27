@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20140220180430) do
 
   create_table "courses", force: true do |t|
     t.string   "name"
+    t.integer  "instructor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "instructor_id"
     t.string   "description"
     t.string   "subject"
     t.string   "course_number"
@@ -40,11 +40,6 @@ ActiveRecord::Schema.define(version: 20140220180430) do
     t.integer  "year"
     t.integer  "spots_available"
     t.integer  "credits"
-  end
-
-  create_table "courses_users", force: true do |t|
-    t.integer "course_id"
-    t.integer "user_id"
   end
 
   create_table "documents", force: true do |t|

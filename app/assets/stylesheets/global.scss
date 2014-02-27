@@ -19,6 +19,8 @@ Use with extends instead of in the markup directly when possible
 /***************************/
 
 
+body {background-color: #FFF;}
+
 div#top-flash{
     text-align: center;
     background-color: orange;
@@ -137,7 +139,8 @@ input[type=text], input[type=email], input[type=password] {
 /**
     buttons
 **/
-.button{
+
+.button {
     box-shadow: none;
     transition: none;
     border-radius: $global-radius;
@@ -196,19 +199,35 @@ section {
   footer
 **/
 footer{
-    background-color: #fff;
-    padding-top: 1em;
-    color: lighten($body-font-color, 30%);
-    text-align: center;
-
-    div.school-logo{
-        background-color: $topbar-bg-color;
-        padding: .5em 0em;
+    border-top: 1px solid rgba(0,0,0, 0.1);
+    background-color: #4B5252;
+    margin-top: 3rem;
+    padding: 5rem 0;
+    a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 250ms;
+        &:hover {color: white;}
     }
+    & > div {@include grid-row();}
+}
 
-    p.under-school-logo{
-        background-color: $body-bg;
-        padding-top: .8em;
+.school-logo {
+    @include grid-column(3);
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 1rem;
+    @extend .normal;
+    li {
+        margin-right: 1rem;
+        &:last-child {margin-right: 0;}
     }
+}
+
+.project-description {
+    @include grid-column(6);
+    color: rgba(255, 255, 255, 0.7);
+    p {@extend .light;}
 
 }
