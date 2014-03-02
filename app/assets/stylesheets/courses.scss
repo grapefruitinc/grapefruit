@@ -101,24 +101,31 @@ section.course {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     height: 2.5rem;
     overflow: hidden;
+    .capsule-name {
+        @include grid-column(8);
+        @extend .normal;
+        font-size: 0.8rem;
+        color: #777777;
+    }
     &.active {
         height: auto;
+        .capsule-name {
+            color: black;
+            @extend .bold;
+        }
     }
 }
 
 .capsule-header {
     @include grid-row($behavior: collapse);
     padding: 0.5rem 0;
+    &:hover {
+        cursor: pointer;
+    }
     .capsule-status {
         margin-right: 0.5rem;
         font-size: 1rem;
         float: left;
-    }
-    .capsule-name {
-        @include grid-column(8);
-        @extend .normal;
-        font-size: 0.8rem;
-        &.active {@extend .bold;}
     }
     .capsule-nav {
         @include grid-column(4);
