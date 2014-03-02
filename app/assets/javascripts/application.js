@@ -29,4 +29,33 @@ $(function() {
     .animate({ backgroundColor: highlight_flash_color }, 200)
     .animate({ backgroundColor: current_flash_color }, 300);  
 
+
+  var accordion = $(".course-accordion");
+  var capsule = $(".course-capsule");
+  var capsule_nav_item = $(".capsule-nav li");
+
+  capsule.click(function(){
+  	$this = $(this);
+  	if($this.hasClass("active")){return;}
+  	$this.siblings().removeClass("active").animate({paddingBottom: "0"}, 250);
+  	$this.addClass("active");
+  	$this.animate({
+  		paddingBottom: "10rem"
+  	}, 500, function(){
+  		// all done
+  	});
+  });
+
+
+  capsule_nav_item.click(function(){
+  	id = $(this).attr("data-capsule-controller");
+  	$("ul[data-capsule-receiver].active").animate({
+  		width: "0px"
+  	}, 500, function(){
+  		$(this).removeClass("active");
+  	});
+  	accordion.find("ul[data-capsule-receiver='" + id + "']").addClass("active");
+  });
+
+
 });

@@ -49,12 +49,12 @@
             <span class="capsule-status icon-chevron-right in-progress"></span>
             Functions</h1>
           <ul class="capsule-nav">
-            <li>x</li>
-            <li>x</li>
-            <li>x</li>
+            <li data-capsule-controller="lectures">x</li>
+            <li data-capsule-controller="problems">x</li>
+            <li data-capsule-controller="files">x</li>
           </ul>        
         </div>
-        <ul class="capsule-contents capsule-contents--lectures active">
+        <ul class="capsule-contents capsule-contents--lectures active" data-capsule-receiver="lectures">
           <li class="capsule-item done">
             <span class="item-status icon-tick"></span>
             <h2 class="item-name">Course Content Name</h2>
@@ -71,7 +71,7 @@
           </li>
         </ul>
 
-        <ul class="capsule-contents capsule-contents--problems">
+        <ul class="capsule-contents capsule-contents--problems" data-capsule-receiver="problems">
           <li class="capsule-item">
             <span class="item-status">x</span>
             <h2 class="item-name">Course Content Name</h2>
@@ -88,7 +88,7 @@
           </li>
         </ul>
 
-        <ul class="capsule-contents capsule-contents--files">
+        <ul class="capsule-contents capsule-contents--files" data-capsule-receiver="files">
           <li class="capsule-item">
             <span class="item-status">x</span>
             <h2 class="item-name">Course Content Name</h2>
