@@ -15,15 +15,15 @@ student_two = User.create!(name: "George-Michael Bluth", email: "georgemichael@b
 student_three = User.create!(name: "Steve Holt", email: "steve@bluth.com", password: "password")
 
 course_one = Course.create!(
-  name: "Calculus Bridge - Pass I", 
+  name: "Calculus Bridge - Pass I",
   description: "First pass of Calculus Bridge",
   subject: "MATH",
-  course_number: 101,
+  course_number: 1001,
   course_registration_number: 12345,
   semester: "Fall",
   year: 2014,
   spots_available: 420,
-  credits: 4,
+  credits: 0,
   instructor: professor_one)
   c1 = Capsule.create!(name: "Functions", course: course_one)
     Lecture.create!(name: "Equations of Lines", lecture_number: 1, capsule: c1)
@@ -60,12 +60,12 @@ course_two = Course.create!(
   name: "Calculus Bridge - Pass II",
   description: "Second pass of Calculus Bridge",
   subject: "MATH",
-  course_number: 102,
+  course_number: 1002,
   course_registration_number: 23456,
   semester: "Fall",
   year: 2014,
   spots_available: 420,
-  credits: 4,
+  credits: 0,
   instructor: professor_one)
   c5 = Capsule.create!(name: "Rational Functions", course: course_two)
     Lecture.create!(name: "Limits at Infinity", lecture_number: 1, capsule: c5)
@@ -94,17 +94,18 @@ course_two = Course.create!(
     Lecture.create!(name: "Concavity", lecture_number: 4, capsule: c8)
     Lecture.create!(name: "Maximums and Minimums", lecture_number: 5, capsule: c8)
     Lecture.create!(name: "Areas", lecture_number: 6, capsule: c8)
-    
+
 course_three = Course.create!(
   name: "Calculus Bridge - Pass III",
   description: "Third pass of Calculus Bridge",
   subject: "MATH",
-  course_number: 103,
+  course_number: 1003,
   course_registration_number: 34567,
   semester: "Fall",
   year: 2014,
   spots_available: 420,
-  credits: 4,)
+  credits: 0,
+  instructor: professor_one)
   c9 = Capsule.create!(name: "Limits and Continuity", course: course_three)
     Lecture.create!(name: "Precise Definition of a Limit", lecture_number: 1, capsule: c9)
     Lecture.create!(name: "Formal Limit Laws", lecture_number: 2, capsule: c9)
@@ -131,6 +132,18 @@ course_three = Course.create!(
   c12 = Capsule.create!(name: "The Fundamental Theorem", course: course_three)
     Lecture.create!(name: "Proof of FTC: Part I", lecture_number: 1, capsule: c12)
     Lecture.create!(name: "Proof of FTC: Part II", lecture_number: 2, capsule: c12)
+
+course_four = Course.create!(
+  name: "Computer Science I",
+  description: "An introduction to computer programming algorithm design and analysis. Additional topics include basic computer organization; internal representation of scalar and array data; use of top-down design and subprograms to tackle complex problems; abstract data types. Enrichment material as time allows. Interdisciplinary case studies, numerical and nonnumerical applications. Students who have passed CSCI 1200 cannot register for this course.",
+  subject: "CSCI",
+  course_number: 1100,
+  course_registration_number: 101010,
+  semester: "Fall",
+  year: 2014,
+  spots_available: 420,
+  credits: 4,
+  instructor: professor_one)
 
 CourseUser.create!(course: course_one, user: student_one)
 CourseUser.create!(course: course_one, user: student_two)
