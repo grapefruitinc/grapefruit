@@ -43,7 +43,7 @@ $(function() {
   	$this.animate({
   		height: $this.children("ul.capsule-contents").outerHeight()+(40)
   	}, 250, function(){
-	    $(".capsule-contents").outerHeight($this.outerHeight()-40);
+	    $this.children(".capsule-contents").outerHeight($this.outerHeight()-40);
   	});
   });
 
