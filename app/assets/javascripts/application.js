@@ -34,30 +34,32 @@ $(function() {
   var capsule = $(".course-capsule");
   var capsule_nav_item = $(".capsule-nav li");
 
+  
   capsule.click(function(){
   	$this = $(this);
   	if($this.hasClass("active")){return;}
-  	$this.siblings().removeClass("active").animate({paddingBottom: "0"}, 250);
+  	$this.siblings().removeClass("active").animate({height: "2.5rem"}, 250);
   	$this.addClass("active");
   	$this.animate({
-  		paddingBottom: $this.children("ul.capsule-contents.active").outerHeight()+(32)
-  	}, 500, function(){
-  		// all done
+  		height: $this.children("ul.capsule-contents").outerHeight()+(40)
+  	}, 250, function(){
+	    $(".capsule-contents").outerHeight($this.outerHeight()-40);
   	});
   });
 
 
   capsule_nav_item.click(function(){
   	$this = $(this);
-  	old_index = $(".capsule-contents.active").index()-1;
   	new_index = $this.index();
-  	console.log(old_index);
-  	console.log(new_index);
+  	capsule_contents = $(".course-capsule.active .capsule-contents");
 
-
-  	$(".course-capsule.active .capsule-contents").first().animate({
+  	capsule_contents.removeClass("active").first().animate({
   		marginLeft: ((-100*new_index) + "%")
-  	}, 500);
+  	}, 250);
+
+  	$(".course-capsule.active").removeClass("active");
+  	console.log($(".course-capsule").eq(new_index));
+  	capsule_contents.eq(new_index).addClass("active");
 
   	$this.siblings().removeClass("active");
   	$this.addClass("active");
