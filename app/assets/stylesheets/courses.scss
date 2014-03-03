@@ -78,6 +78,7 @@ section.course {
         @include grid-column(3);
         background-color: #F7F7F7;
         border: 1px solid rgba(0, 0, 0, 0.1);
+        border-right: none;
         padding: 0;
         position: absolute;
         width: 20%;
@@ -87,69 +88,122 @@ section.course {
         @include grid-column(12);
         min-height: 25rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        border-left: none;
         padding-top: 1rem;
     }
 }
 
 .course-accordion {
     list-style: none;
-    margin: 0;
-    ul {
-        list-style: none;
-        margin: 0;
+    margin-bottom: 0;
+}
+
+.course-capsule {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    .capsule-name {
+        @include grid-column(8);
+        @extend .normal;
+        font-size: 0.8rem;
+        color: #777777;
     }
-    li {
-        font-weight: lighter;
-        background-color: #fff;
-        padding: 1rem 0;
-        cursor: pointer;
-        border-bottom: 1px solid #F5F5F5;
-        &:last-child {border-bottom: 0;}
-    }
-    .sectionNumber {
-        width: 20px;
-        height: 20px;
-        border-radius: 20px;
-        border: 1px solid #cfcfcf;
-        display: inline-block;
-        text-align: center;
-        margin-right: 0.5rem;
-        @extend .light;
-        color: #B4B4B4;
-        line-height: 18px;
-        text-shadow: none;
-    }
-    & > li {
-        font-weight: bold;
-        background-color: #F7F7F7;
-        height: 2.5rem;
-        overflow: hidden;
-        padding: 0;
-        &.active {
-            height: auto;
-            background-color: #E9E9E9;
-            .sectionNumber {
-                background-color: #141414;
-                border: none;
-                color: white;
-                line-height: 20px;
-            }
+    .capsule-nav { opacity: 0; }
+    &.active {
+        height: auto;
+        .capsule-nav { opacity: 1; }
+        .capsule-name {
+            color: black;
+            @extend .bold;
         }
     }
-    h1 {
-        margin-left: 1rem;
-        font-size: 1rem;
-        margin-bottom: 0;
-        padding: 0.5rem 0;
-        text-shadow: #FFF 1px 0px 0px;
+}
+
+.capsule-header {
+    @include grid-row($behavior: collapse);
+    padding: 0.5rem 0;
+    &:hover {
+        cursor: pointer;
     }
-    h2 {
-        @extend .normal;
-        margin: 0 0 0 1.3rem;
-        font-size: 0.9rem;
-        color: #5890AA;
+    .capsule-status {
+        margin-right: 0.5rem;
+        font-size: 1rem;
+        float: left;
+    }
+    .capsule-nav {
+        @include grid-column(4);
+        padding-left: 0;
+        text-align: right;
+        margin-left: 0;
+        li {
+            display: inline-block;
+            margin-left: 0.1rem;
+            opacity: 0.5;
+            transition: opacity 200ms;
+            &:hover, &.active {opacity: 1;}
+            &:first-child {margin-left: 0;}
+        }
+    }
+}
+
+.capsule-contents {
+    overflow: hidden;
+    margin-left: 0;
+    background-color: #45535A;
+    list-style: none;
+    width: 100%;
+    padding: 1rem;
+    padding-top: 0.8rem;
+    border-top: 3px solid black;
+    margin-bottom: -7px;
+    display: inline-block;
+    margin-right: -3px;
+    vertical-align: top;
+    .item-status {
+        margin-right: 0.5rem;
+        opacity: 0;
+    }
+}
+
+span[class*="status"] {
+    opacity: 0;
+    &.done {
+        opacity: 1;
+        color: #76C582;            
+    }
+    &.in-progress {
+        opacity: 1;
+        color: #E6A44D;   
     }
 
-   
+}
+
+
+.capsule-item {
+    .item-status {}
+    .item-name {
+        font-size: 0.8rem;
+        vertical-align: middle;
+        margin-top: 0;
+        @extend .normal;
+        display: inline-block;
+        color: #97A3A9;
+    }
+    &.done{
+        .item-status {
+            opacity: 1;
+            color: #76C582;            
+        }
+    }
+    &.in-progress{
+        .item-status {
+            opacity: 1;
+            color: #E6A44D;            
+        }
+        .item-name {
+            color: white;
+            @extend .bold;
+        }
+    }
 }

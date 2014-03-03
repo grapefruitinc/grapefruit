@@ -29,4 +29,42 @@ $(function() {
     .animate({ backgroundColor: highlight_flash_color }, 200)
     .animate({ backgroundColor: current_flash_color }, 300);  
 
+
+  var accordion = $(".course-accordion");
+  var capsule = $(".course-capsule");
+  var capsule_nav_item = $(".capsule-nav li");
+
+  
+  capsule.click(function(){
+  	$this = $(this);
+  	if($this.hasClass("active")){return;}
+  	$this.siblings().removeClass("active").animate({height: "2.5rem"}, 250);
+  	$this.addClass("active");
+  	$this.animate({
+  		height: $this.children("ul.capsule-contents").outerHeight()+(40)
+  	}, 250, function(){
+	    $(".capsule-contents").outerHeight($this.outerHeight()-40);
+  	});
+  });
+
+
+  capsule_nav_item.click(function(){
+  	$this = $(this);
+  	new_index = $this.index();
+  	capsule_contents = $(".course-capsule.active .capsule-contents");
+
+  	capsule_contents.removeClass("active").first().animate({
+  		marginLeft: ((-100*new_index) + "%")
+  	}, 250);
+
+  	$(".course-capsule.active").removeClass("active");
+  	console.log($(".course-capsule").eq(new_index));
+  	capsule_contents.eq(new_index).addClass("active");
+
+  	$this.siblings().removeClass("active");
+  	$this.addClass("active");
+
+  });
+
+
 });
