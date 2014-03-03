@@ -40,7 +40,7 @@ $(function() {
   	$this.siblings().removeClass("active").animate({paddingBottom: "0"}, 250);
   	$this.addClass("active");
   	$this.animate({
-  		paddingBottom: "10rem"
+  		paddingBottom: $this.children("ul.capsule-contents.active").outerHeight()+(32)
   	}, 500, function(){
   		// all done
   	});
@@ -48,13 +48,20 @@ $(function() {
 
 
   capsule_nav_item.click(function(){
-  	id = $(this).attr("data-capsule-controller");
-  	$("ul[data-capsule-receiver].active").animate({
-  		width: "0px"
-  	}, 500, function(){
-  		$(this).removeClass("active");
-  	});
-  	accordion.find("ul[data-capsule-receiver='" + id + "']").addClass("active");
+  	$this = $(this);
+  	old_index = $(".capsule-contents.active").index()-1;
+  	new_index = $this.index();
+  	console.log(old_index);
+  	console.log(new_index);
+
+
+  	$(".course-capsule.active .capsule-contents").first().animate({
+  		marginLeft: ((-100*new_index) + "%")
+  	}, 500);
+
+  	$this.siblings().removeClass("active");
+  	$this.addClass("active");
+
   });
 
 

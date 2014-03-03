@@ -102,6 +102,7 @@ section.course {
     height: 2.5rem;
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
     .capsule-name {
         @include grid-column(8);
         @extend .normal;
@@ -145,23 +146,16 @@ section.course {
     margin-left: 0;
     background-color: #45535A;
     list-style: none;
-    position: absolute;
-    top: 2.5rem;
-    left: 100%;
     width: 100%;
     padding: 1rem;
     padding-top: 0.8rem;
     border-top: 3px solid black;
     margin-bottom: -7px;
+    display: inline-block;
+    margin-right: -3px;
     .item-status {
         margin-right: 0.5rem;
         opacity: 0;
-    }
-    &:first-of-type {
-        left: 0%;
-    }
-    &:last-of-type {
-        left: 200%;
     }
 }
 
