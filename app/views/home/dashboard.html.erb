@@ -16,11 +16,12 @@
 <section>
   <div class="page-header">
     <h3 class="page-header-title">Enrolled</h3>
-  </div>
 
   <% if @enrolled_courses.empty? %>
     <h5 class="light">There are no courses listed.</h5>
+    </div>
   <% else %>
+    </div>
     <%= render @enrolled_courses %>
   <% end %>
 
@@ -28,16 +29,16 @@
 
 <% if @instructed_courses.empty? %>
 <% else %>
-  <div class="row">
+  <section>
     <div class="page-header">
       <h3 class="page-header-title">Courses You Instruct</h3>
-    </div>
-
     <% if @instructed_courses.empty? %>
       <h5 class="light">There are no courses listed.</h5>
+      </div>
     <% else %>
+    </div>
       <%= render @instructed_courses %>
     <% end %>
 
-  </div>
+  </section>
 <% end %>
