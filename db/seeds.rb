@@ -34,11 +34,19 @@ course_one = Course.create!(
     Lecture.create!(name: "The Accumulation Function", lecture_number: 6, capsule: c1)
   c2 = Capsule.create!(name: "Limits", course: course_one)
     Lecture.create!(name: "Description of a Limit", lecture_number: 1, capsule: c2)
-    Lecture.create!(name: "Left and Right Hand Limits", lecture_number: 2, capsule: c2)
+    Lecture.create!(
+      name: "Left and Right Hand Limits",
+      lecture_number: 2,
+      mediasite_url: "https://mediasite.mms.rpi.edu/Mediasite5/Play/0630c92605a646f7ae817552ab9763ca1d",
+      capsule: c2)
     Lecture.create!(name: "Continuity", lecture_number: 3, capsule: c2)
     Lecture.create!(name: "Limits at Infinity", lecture_number: 4, capsule: c2)
   c3 = Capsule.create!(name: "Derivatives", course: course_one)
-    Lecture.create!(name: "Definition of a Derivative", lecture_number: 1, capsule: c3)
+    Lecture.create!(
+      name: "Definition of a Derivative",
+      lecture_number: 1,
+      mediasite_url: "http://mediasite.mms.rpi.edu/Mediasite5/Play/24211bff372b455c92d9fe2a4fe35c3c1d",
+      capsule: c3)
     Lecture.create!(name: "Derivative as a Function", lecture_number: 2, capsule: c3)
     Lecture.create!(name: "Basic Rules", lecture_number: 3, capsule: c3)
     Lecture.create!(name: "Notation and Higher Derivatives", lecture_number: 4, capsule: c3)

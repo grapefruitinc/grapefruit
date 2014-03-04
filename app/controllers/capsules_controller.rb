@@ -4,7 +4,7 @@ class CapsulesController < ApplicationController
   before_filter :get_capsule, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  layout "home"
+  layout "course"
 
   def new
     @capsule = @course.capsules.new
