@@ -1,5 +1,4 @@
-<tr>
-  <td>
-    <%= link_to "##{lecture.lecture_number}: #{lecture.name}", [@course, @capsule, lecture] %>
-  </td>
-</tr>
+<li class="capsule-item">
+  <span class="item-status icon-tick done"></span> <!--- Need logic here to switch icons based on completion -->
+  <h2 class="item-name"><%= lecture.lecture_number %>. <%= lecture.name %></h2>
+</li>

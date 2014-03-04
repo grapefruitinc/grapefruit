@@ -1,5 +1,29 @@
-<tr>
-  <td>
-    <%= link_to capsule.name, [@course, capsule] %>
-  </td>
-</tr>
+
+
+<li class="course-capsule">
+	<div class="capsule-header">
+		<h1 class="capsule-name"><span class="capsule-status"></span>
+			<%= capsule.name %>
+		</h1>
+		<ul class="capsule-nav">
+			<li class="active"><i class="icon-video-outline"></i></li>
+			<li><i class="icon-folder"></i></li>
+			<li><i class="icon-pen"></i></li>
+		</ul>        
+	</div>
+	<ul class="capsule-contents">
+		<%= render capsule.lectures %>
+	</ul>
+	<ul class="capsule-contents">
+		<%= render capsule.problem_sets %>
+	</ul>
+	<ul class="capsule-contents">
+		<!-- render files -->
+	</ul>
+</li>
+
+<!-- 
+<li class="capsule-item">
+	<span class="item-status"></span> Need logic here to switch icons based on completion
+	<h2 class="item-name">< capsule.name %></h2>
+</li> -->

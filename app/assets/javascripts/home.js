@@ -7,7 +7,7 @@
 $(document).scroll(function() {
   var ph = $('div.page-header-container');
   var bar = $('div.top-bar-container');
-  var shadow = "0px 3px 14px 10px #ddd";
+  var shadow = "0px 2px 14px 0px rgba(0, 0, 0, 0.1)";
   var current = $(document).scrollTop();
   if(ph.height != 0){
     var content_offset = ph.offset().top + ph.height() - 21;

@@ -32,39 +32,75 @@ $(function() {
 
   var accordion = $(".course-accordion");
   var capsule = $(".course-capsule");
+  var type = $(".capsule-nav li");
   var capsule_nav_item = $(".capsule-nav li");
 
+  var sidebar = {
+  	init: function(a){
+  		$this = a;
+  	},
+  	self: function(){
+  		console.log($this);
+  	},
+  	coords: [],
+  	updateCoords: function() {
+  		active_capsule = $this.children(".course-capsule.active").index();
+  		active_type = $this.children(".course-capsule.active").children("nav li.active").index();
+  		active_item = $this.children(".course-capsule.active").children(".capsule-item.active").index();
+  		console.log(active_capsule + " " + active_type + " " + active_item);
+  	},
+  	get: function(capsule, type, item){
+  		if(capsule >= $this.children(".course-capsule").length || type > 2){return false;}
+  		type = typeof type !== 'undefined' ? type : 0;
+  		item = typeof item !== 'undefined' ? item : 0;
+
+  		return $this.children(".course-capsule").eq(capsule)
+  					.children(".capsule-contents").eq(type)
+  					.children(".capsule-item").eq(item);
+  	},
+  	navigateToCapsule: function(capsule){
+  		if(capsule >= $this.children(".course-capsule").length){return false;}
+
+  		$capsule = $this.children(".course-capsule").eq(capsule);
+  		if(!($capsule.hasClass("active") || capsule == -1)){
+	  		$capsule.siblings().removeClass("active").animate({height: "2.5rem"}, 250);
+	  		$capsule.addClass("active").animate({
+	  			height: $capsule.children("ul.capsule-contents").outerHeight()+(40)
+	  		}, 250, function(){
+	  		});
+  		}
+  	},
+  	navigateToType: function(type){
+  		console.log(type);
+  		$type = $this.find(".capsule-nav").children().eq(type);
+  		console.log($type);
+
+  		$type.siblings().removeClass("active");
+  		$type.addClass("active");
+  		$capsule.children(".capsule-contents").removeClass("active").first().animate({
+  			marginLeft: ((-100*type) +"%")
+  		}, 250, function(){
+  			$capsule.children(".capsule-item").removeClass("active").eq(0).addClass("active");
+  		});  			
+  	}
+  }
   
-  capsule.click(function(){
-  	$this = $(this);
-  	if($this.hasClass("active")){return;}
-  	$this.siblings().removeClass("active").animate({height: "2.5rem"}, 250);
-  	$this.addClass("active");
-  	$this.animate({
-  		height: $this.children("ul.capsule-contents").outerHeight()+(40)
-  	}, 250, function(){
-	    $(".capsule-contents").outerHeight($this.outerHeight()-40);
-  	});
+
+
+ 
+
+  sidebar.init($(".course-accordion"));
+  sidebar.self();
+
+  capsule.click(function(e){
+  	if(capsule.hasClass("active") && $(e.target).is(".capsule-nav i")){
+  		sidebar.navigateToType($(e.target).parent().index());
+  	} else {
+  		sidebar.navigateToCapsule($(this).index());
+  	}
   });
 
 
-  capsule_nav_item.click(function(){
-  	$this = $(this);
-  	new_index = $this.index();
-  	capsule_contents = $(".course-capsule.active .capsule-contents");
-
-  	capsule_contents.removeClass("active").first().animate({
-  		marginLeft: ((-100*new_index) + "%")
-  	}, 250);
-
-  	$(".course-capsule.active").removeClass("active");
-  	console.log($(".course-capsule").eq(new_index));
-  	capsule_contents.eq(new_index).addClass("active");
-
-  	$this.siblings().removeClass("active");
-  	$this.addClass("active");
-
-  });
 
 
 });
