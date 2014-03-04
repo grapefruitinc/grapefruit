@@ -1,7 +1,3 @@
-.main-content {
-    background-color: #ECEEF3;
-}
-
 span.instructing{
   @include label();
 }
@@ -99,6 +95,12 @@ section.course {
 .course-accordion {
     list-style: none;
     margin-bottom: 0;
+    a{
+      color: #ccc;
+      &:hover{
+        color: #fff;
+      }
+    }
 }
 
 .course-capsule {
