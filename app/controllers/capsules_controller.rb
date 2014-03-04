@@ -2,12 +2,14 @@ class CapsulesController < ApplicationController
   
   before_filter :get_course
   before_filter :get_capsule, only: [:show, :edit, :update, :destroy]
+  before_filter :get_other_capsules, only: [:new, :show]
   before_filter :authenticate_user!
 
   layout "course"
 
   def new
     @capsule = @course.capsules.new
+    @capsule.name = "New Capsule"
     authorize! :create, @capsule
   end
 
@@ -56,4 +58,8 @@ private
     params.require(:capsule).permit(:name)
   end
 
+  def get_other_capsules
+    @capsules = @course.capsules
+  end
+  
 end
