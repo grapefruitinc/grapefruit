@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+rake assets:precompile
+rake db:reset
+touch tmp/restart.txt
