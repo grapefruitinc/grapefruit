@@ -18,11 +18,19 @@ div#top-flash{
 }
 
 .nav-area {
-  a {
+  a{
     &:hover {
       border-radius: 0px;
-      background-color: darken($topbar-bg-color, 10%);
+      background-color: lighten($topbar-bg-color, 10%);
     }
+  }
+  a.active{
+    background-color: $topbar-bg-color;
+    color: white;
+  }
+  a.disabled{
+    background-color: #fff;
+    color: #ccc;
   }
 }
 

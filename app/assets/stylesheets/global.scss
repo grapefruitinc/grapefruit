@@ -30,7 +30,7 @@ div#top-flash{
 }
 
 .top-bar-container{
-  background-color: $topbar-bg-color;
+  background-color: #fff;
   position: fixed;
   width: 100%;
   z-index: 9999;
@@ -95,14 +95,15 @@ div.main-content{
 .page-header-full {@include grid-column(12);}
 
 .page-header-left, .page-header-full {
-    .title {
-        margin-bottom: 0;
-        color: white;
-        font-weight: 100;
-    }
-    .description {
-        color: rgba(255, 255, 255, 0.8);
-    }
+  padding-top: 1em;
+  .title {
+      margin-bottom: 0;
+      color: white;
+      font-weight: 100;
+  }
+  .description {
+      color: rgba(255, 255, 255, 0.8);
+  }
 }
 
 
