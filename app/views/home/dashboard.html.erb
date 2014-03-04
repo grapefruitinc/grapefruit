@@ -6,17 +6,14 @@
       <% if can? :manage_admins, User %>
         <p class="description">You have administrator permissions. Manage your courses and profile using the links in the upper right hand corner.</p>
       <% else %>
-        <p class="description">Your personal dashboard to manage your courses and profile.</p>
+        <p class="description">This is your personal dashboard where you can manage your courses and profile.</p>
       <% end %>
       <!-- endif -->
     </div>
   </div>
 </div>
 
-
-
-
-<div class="row">
+<section>
   <div class="page-header">
     <h3 class="page-header-title">Enrolled</h3>
   </div>
@@ -27,7 +24,7 @@
     <%= render @enrolled_courses %>
   <% end %>
 
-</div>
+</section>
 
 <% if @instructed_courses.empty? %>
 <% else %>

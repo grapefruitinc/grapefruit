@@ -85,17 +85,21 @@ div.main-content{
 
 .page-header-container {
     background-color: $topbar-bg-color;
-    padding: 0 0 2rem 0;
+    padding: 1em 0 2rem 0;
     margin-bottom: 2rem;
 }
 
-.page-header {@include grid-row();}
+.page-header {
+  @include grid-row();
+  .page-header-title{
+    margin-top: 0px;
+  }
+}
 .page-header-left {@include grid-column(7);}
 .page-header-right {@include grid-column(5); padding-top: 1.5rem;}
 .page-header-full {@include grid-column(12);}
 
 .page-header-left, .page-header-full {
-  padding-top: 1em;
   .title {
       margin-bottom: 0;
       color: white;
