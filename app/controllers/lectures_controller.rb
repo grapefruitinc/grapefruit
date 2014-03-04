@@ -5,7 +5,7 @@ class LecturesController < ApplicationController
   before_filter :get_lecture, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  layout "home"
+  layout "course"
 
 	def new
   	@lecture = @capsule.lectures.new
@@ -23,6 +23,7 @@ class LecturesController < ApplicationController
 
   def show
   	@lecture = @capsule.lectures.find(params[:id])
+    @capsules = @lecture.capsule.course.capsules
 
     @videos = @lecture.videos.order("created_at ASC")
     @videos.build

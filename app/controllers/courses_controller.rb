@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :get_course, only: [:show, :edit, :update, :destroy]
 
-  layout "home"
+  layout :get_layout
   
   def new
     @course = Course.new
@@ -66,6 +66,16 @@ private
     params.require(:course).permit(:name, :description, :subject, :course_number,
                                    :course_registration_number, :semester, :year,
                                    :spots_available, :credits)
+  end
+
+  def get_layout
+    case action_name
+    when "new", "create", "index"
+      "home"
+    else
+      "course"
+    end
+
   end
   
 end
