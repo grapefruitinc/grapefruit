@@ -8,17 +8,17 @@
     <div class="top-bar" data-options="is_hover:false">
       <div class="title-area">
         <%= link_to root_path do %>
-          <%= image_tag 'better-gf-logo.png' %>
+          <%= image_tag 'better-gf-logo_red.png' %>
         <% end %>
       </div>
-      
+
       <nav class="nav-area horizontal">
         <ul>
           <!-- Need to change these link destinations -->
           <li><%= link_to "courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
           <li><%= link_to "faq", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
           <li><%= link_to "contact", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
-          <li><%= link_to "login", destroy_user_session_path, class: "secondary", method: :delete %></li>
+          <li><%= link_to "login", new_user_session_path, class: ("active" if params[:controller] == "devise/sessions") %></li>
         </ul>
       </nav>
     </div>
@@ -29,13 +29,12 @@
       <div class="page-header">
         <div class="page-header-full">
           <h1 class="title">Learn at Rensselaer. <b>Everywhere.</b></h1>
-            <p class="description">Grapefruit is an open-source initiative pioneered by RCOS to bring Rensselaer courses to your laptop, desktop, or phone.</p>
         </div>
       </div>
     </div>
         <%= yield %>
   </div>
-      
+
   <%= render "global/footer" %>
 
 <% end %>

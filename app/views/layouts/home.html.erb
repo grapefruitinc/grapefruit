@@ -8,15 +8,15 @@
     <div class="top-bar" data-options="is_hover:false">
       <div class="title-area">
         <%= link_to root_path do %>
-          <%= image_tag 'better-gf-logo.png' %>
+          <%= image_tag 'better-gf-logo_red.png' %>
         <% end %>
       </div>
       
       <nav class="nav-area horizontal">
         <ul>
-         <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
+          <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
           <li><%= link_to "Courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
-          <li><%= link_to "WebWork", void, style: "color: #ccc" %></li>
+          <li><%= link_to "WebWork", void, class: "disabled" %></li>
           <li><%= link_to "Profile", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
           <li><%= link_to "Logout", destroy_user_session_path, class: "secondary", method: :delete %></li>
         </ul>

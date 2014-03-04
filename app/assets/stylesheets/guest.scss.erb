@@ -1,17 +1,15 @@
 @import "application";
 
 .top-bar-container {
-    background-color: transparent;
+    background-color: #fff;
     position: relative;
-    height: 0;
 }
 
 .page-header-container {
-    background-image: url(<%= asset_path 'biotechlargeredcomp.png' %>);
-    background-position: 0% 780%;
-    background-attachment: fixed;
+    background-image: url(<%= asset_path 'happykids.jpeg' %>);
+    background-position: 0% 45%;
     background-size: 100%;
-    padding: 4rem 0 6rem;
+    padding: 4rem 0 10rem;
     margin-bottom: 0;
 }
 
@@ -20,12 +18,13 @@
     h1 {
         font-size: 3.5rem;
         font-weight: normal !important;
+        text-shadow: 1px 1px 3px #222;
     }
 }
 
 div.main-content{
-    padding-top: 0;
-    min-height: 500px;
+    padding: 0em;
+
     div.logo{
         @include grid-column(12);
         margin-bottom: 2em;
@@ -34,7 +33,21 @@ div.main-content{
     div.content{
         @include grid-row;
         @include grid-column(6, $offset: 3);
-        padding-top: 1em;
+        padding: 1em 2em;
+        margin-bottom: 2em;
+        border-radius: 0em 0em 1em 1em;
+        background-color:#fff;
+        float:none;
+    }
+
+    div.landing{
+      text-align: center;
+      p.description{
+        color: $grey-text-color;
+      }
+      a.login{
+        margin-right: 1em;
+      }
     }
 
     form.login-form{
@@ -45,14 +58,12 @@ div.main-content{
             border-radius: 4px;
         }
         fieldset{
-          // margin-top: 0px;
           border: none;
         }
     }
     div.login-form-container{
-        background-color: #F1F0F0;
         border-radius: 10px;
-        border: 20px solid white;
+        border: 20px solid #fff;
         margin-top: -5rem;
         @include grid-column(3, $center: true);
         padding: 1rem 2rem;
@@ -62,7 +73,7 @@ div.main-content{
         background: none;
     }
     div.register{
-        @include grid-column(5, $center: true);
+        @include grid-column(3, $center: true);
     }
 }
 
