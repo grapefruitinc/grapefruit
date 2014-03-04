@@ -30,7 +30,7 @@ div#top-flash{
 }
 
 .top-bar-container{
-  background-color: $topbar-bg-color;
+  background-color: #fff;
   position: fixed;
   width: 100%;
   z-index: 9999;
@@ -67,12 +67,12 @@ div#top-flash{
     ul {float: right; line-height: 1rem;}
     a {
         padding: 1rem;
-        color: white;
+        color: $ethan-red-color;
         display: inline-block;
         height: 50px;
         &:hover {
           background-color: lighten($topbar-bg-color, 10%);
-          border-radius: 0em 0em .5em .5em; 
+          color: white;
         }
     }
 }
@@ -81,29 +81,33 @@ nav.horizontal ul li { display: inline-block; }
 
 div.main-content{
     padding: 3rem 0;
-    background-color: #ECEEF3;
 }
 
 .page-header-container {
     background-color: $topbar-bg-color;
-    padding: 0 0 2rem 0;
+    padding: 1em 0 2rem 0;
     margin-bottom: 2rem;
 }
 
-.page-header {@include grid-row();}
+.page-header {
+  @include grid-row();
+  .page-header-title{
+    margin-top: 0px;
+  }
+}
 .page-header-left {@include grid-column(7);}
 .page-header-right {@include grid-column(5); padding-top: 1.5rem;}
 .page-header-full {@include grid-column(12);}
 
 .page-header-left, .page-header-full {
-    .title {
-        margin-bottom: 0;
-        color: white;
-        font-weight: 100;
-    }
-    .description {
-        color: rgba(255, 255, 255, 0.8);
-    }
+  .title {
+      margin-bottom: 0;
+      color: white;
+      font-weight: 100;
+  }
+  .description {
+      color: rgba(255, 255, 255, 0.8);
+  }
 }
 
 

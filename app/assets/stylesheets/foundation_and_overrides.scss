@@ -61,12 +61,10 @@ $em-base: 16px !default;
 
 // Various global styles
 
-$default-float: left;
+  $default-float: left;
 
-   $body-bg: #eee ;
-  // $body-font-color: #222;
-   // @import url("http://fonts.googleapis.com/css?family=Roboto");
-   $body-font-family: "effra", sans-serif;
+  $body-bg: #fff;
+  $body-font-family: "effra", sans-serif;
 
 // $body-font-weight: normal;
 // $body-font-style: normal;
@@ -86,10 +84,11 @@ $default-float: left;
    $rpi-red-color: #d81d05;
    $grapefruit-orange-color: #ff7f00;
    $dark-blue-color: #00748F;
-   $grey-text-color: #777;
+   $grey-text-color: #666;
    $ethan-red-color: #CA4343;
 
    $primary-color: #097C7C;
+   $success-color: $ethan-red-color;
    $alert-color: lighten($grapefruit-orange-color, 10%);
 
 // Make sure border radius matches unless we want it different.

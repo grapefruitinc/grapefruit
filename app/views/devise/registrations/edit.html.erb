@@ -1,10 +1,16 @@
 <% page_title 'Profile' %>
 
+<div class="page-header-container">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h3 class="title">Edit Your Profile</h3>
+    </div>
+  </div>
+</div>
+
 <section>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "registration_edit_form" }) do |f| %>
-
-    <h3>Edit Profile</h3>
 
     <%= devise_error_messages! %>
 
