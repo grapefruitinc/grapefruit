@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
 //= require_tree .
 
-$(function() {
+$("document").ready(function(){
 
   $(document).foundation();   
 
@@ -85,10 +86,6 @@ $(function() {
   	}
   }
   
-
-
- 
-
   sidebar.init($(".course-accordion"));
   sidebar.self();
 
@@ -99,8 +96,5 @@ $(function() {
   		sidebar.navigateToCapsule($(this).index());
   	}
   });
-
-
-
 
 });
