@@ -16,7 +16,11 @@ student_three = User.create!(name: "Steve Holt", email: "steve@bluth.com", passw
 
 course_one = Course.create!(
   name: "Calculus Bridge - Pass I",
-  description: "First pass of Calculus Bridge",
+  description: "In the first pass, students learn the four components of Calculus:
+functions, limits, derivatives, and integrals. The focus is on gaining
+a conceptual understanding of these core components and how they
+interconnect, while learning basic techniques for polynomial
+functions.",
   subject: "MATH",
   course_number: 1001,
   course_registration_number: 12345,
@@ -66,9 +70,13 @@ course_one = Course.create!(
 
 course_two = Course.create!(
   name: "Calculus Bridge - Pass II",
-  description: "Second pass of Calculus Bridge",
+  description: "In the second pass, students focus on limits, derivatives, and
+integrals, as well as rational functions, trigonometric functions,
+logarithms and exponentials. More techniques and applications are
+developed so that students have the tools they need to use Calculus in
+other subjects.",
   subject: "MATH",
-  course_number: 1002,
+  course_number: 1001,
   course_registration_number: 23456,
   semester: "Fall",
   year: 2014,
@@ -105,9 +113,12 @@ course_two = Course.create!(
 
 course_three = Course.create!(
   name: "Calculus Bridge - Pass III",
-  description: "Third pass of Calculus Bridge",
+  description: "In the third and final pass, students study the deeper theoretical
+underpinnings of Calculus. Limits, derivatives, and integrals are
+presented in a more mathematically rigorous context so as to provide a
+richer view of the Calculus and cement student understanding.",
   subject: "MATH",
-  course_number: 1003,
+  course_number: 1001,
   course_registration_number: 34567,
   semester: "Fall",
   year: 2014,
@@ -143,7 +154,12 @@ course_three = Course.create!(
 
 course_four = Course.create!(
   name: "Computer Science I",
-  description: "An introduction to computer programming algorithm design and analysis. Additional topics include basic computer organization; internal representation of scalar and array data; use of top-down design and subprograms to tackle complex problems; abstract data types. Enrichment material as time allows. Interdisciplinary case studies, numerical and nonnumerical applications. Students who have passed CSCI 1200 cannot register for this course.",
+  description: "An introduction to computer programming algorithm design and
+analysis. Additional topics include basic computer organization;
+internal representation of scalar and array data; use of top-down
+design and subprograms to tackle complex problems; abstract data
+types. Enrichment material as time allows. Interdisciplinary case
+studies, numerical and nonnumerical applications.",
   subject: "CSCI",
   course_number: 1100,
   course_registration_number: 101010,

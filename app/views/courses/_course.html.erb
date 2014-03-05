@@ -4,11 +4,11 @@
 		<%= link_to course.name, course_path(course) %>
 	</h4>
 	<p class="course-card-description">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, natus aut porro ad explicabo dolorum.
+    <%= truncate course.description, length: 85, separator: /\w/, omission: "..." %>
 	</p>
 	<ul class="course-card-details">
-		<li>4 Credits</li>
-		<li>CSCI</li>
-		<li>4960</li>
+		<li><%= course.credits %> credits</li>
+		<li><%= course.subject %></li>
+		<li><%= course.course_number %></li>
 	</ul>
 </div>
