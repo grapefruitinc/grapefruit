@@ -85,7 +85,7 @@ div.main-content{
 
 .page-header-container {
     background-color: $topbar-bg-color;
-    padding: 1em 0 2rem 0;
+    padding: 1em 0 1rem 0;
     margin-bottom: 2rem;
 }
 
@@ -96,7 +96,7 @@ div.main-content{
   }
 }
 .page-header-left {@include grid-column(7);}
-.page-header-right {@include grid-column(5); padding-top: 1.5rem;}
+.page-header-right {@include grid-column(5); padding-top: .5rem;}
 .page-header-full {@include grid-column(12);}
 
 .page-header-left, .page-header-full {
@@ -104,6 +104,9 @@ div.main-content{
       margin-bottom: 0;
       color: white;
       font-weight: 100;
+      a{
+        color: white;
+      }
   }
   .description {
       color: rgba(255, 255, 255, 0.8);

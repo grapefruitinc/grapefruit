@@ -29,6 +29,7 @@ span.instructing{
 	vertical-align: top;
 	line-height: 2rem;
 	margin-top: 0.3rem;
+  margin-bottom: 0em;
 	li {display: inline-block;}
 	li a {
 		@extend .stateful-button--inactive;

@@ -3,7 +3,7 @@
 <div class="page-header-container">
   <div class="page-header">
     <div class="page-header-left">
-      <h2 class="title"><%= @course.name %></h2>
+      <h2 class="title"><%= link_to @course.name, course_path(@course) %></h2>
       <% if current_user == @course.instructor %>
         <p class="description">You are the instructor for this course.</p>
       <% end %> 
