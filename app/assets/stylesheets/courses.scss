@@ -193,6 +193,13 @@ span[class*="status"] {
 
 .capsule-item {
     margin: 0.3rem 0;
+    .capsule-item-empty {
+        text-align: center;
+        @extend .light;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        white-space: normal;
+    }
     .item-status {}
     .item-name, a {
         font-size: 0.8rem;
