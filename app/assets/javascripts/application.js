@@ -79,9 +79,9 @@ $("document").ready(function(){
   		$capsule.children(".capsule-contents").first().animate({
   			marginLeft: ((-100*type) +"%")
   		}, 250, function(){
-	  		$type = $this.find(".capsule-nav li").removeClass("active").eq(type);
-	  		$type.addClass("active");
   		});  			
+  		$type = $this.find(".capsule-nav li").removeClass("active").eq(type);
+  		$type.addClass("active");
   		return this;
   	},
   	navigateToItem: function(item){
