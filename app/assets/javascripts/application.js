@@ -80,7 +80,7 @@ $("document").ready(function(){
   			marginLeft: ((-100*type) +"%")
   		}, 250, function(){
   		});  			
-  		$type = $this.find(".capsule-nav li").removeClass("active").eq(type);
+  		$type = $listing.parent().find(".capsule-nav li").removeClass("active").eq(type);
   		$type.addClass("active");
   		return this;
   	},
