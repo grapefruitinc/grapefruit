@@ -165,7 +165,7 @@ section.course {
     list-style: none;
     width: 100%;
     padding: 1rem;
-    padding-top: 0.8rem;
+    padding-top: 0.5rem;
     border-top: 3px solid black;
     margin-bottom: -7px;
     display: inline-block;
@@ -192,8 +192,16 @@ span[class*="status"] {
 
 
 .capsule-item {
+    margin: 0.3rem 0;
+    .capsule-item-empty {
+        text-align: center;
+        @extend .light;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        white-space: normal;
+    }
     .item-status {}
-    .item-name {
+    .item-name, a {
         font-size: 0.8rem;
         vertical-align: middle;
         margin-top: 0;
@@ -202,6 +210,7 @@ span[class*="status"] {
         color: #97A3A9;
         white-space: normal;
         max-width: 85%;
+        line-height: 1rem;
     }
     &.done{
         .item-status {

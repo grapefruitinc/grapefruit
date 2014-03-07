@@ -60,13 +60,14 @@ $("document").ready(function(){
   					.children(".capsule-item").eq(item);
   	},
   	navigateToCapsule: function(capsule){
-  		if(capsule >= $this.children(".course-capsule").length){return false;}
+  		if(capsule >= $this.children(".course-capsule").length || capsule == -1){return false;}
 
   		$capsule = $this.children(".course-capsule").eq(capsule);
-  		if(!($capsule.hasClass("active") || capsule == -1)){
+
+  		if(!$capsule.hasClass("active")){
 	  		$capsule.siblings().removeClass("active").animate({height: "2.5rem"}, 250);
 	  		$capsule.addClass("active").animate({
-	  			height: $capsule.children("ul.capsule-contents").outerHeight()+(40)
+	  			height: $capsule.children("ul.capsule-contents.active").outerHeight()+(40)
 	  		}, 250, function(){
 	  		});
   		}
@@ -78,10 +79,12 @@ $("document").ready(function(){
 
   		$type.siblings().removeClass("active");
   		$type.addClass("active");
-  		$capsule.children(".capsule-contents").removeClass("active").first().animate({
+		$listing = $capsule.find(".capsule-contents").removeClass("active").eq(type);
+		$listing.addClass("active").css("height", $listing.parent().outerHeight()-40);
+  		$capsule.children(".capsule-contents").first().animate({
   			marginLeft: ((-100*type) +"%")
   		}, 250, function(){
-  			$capsule.children(".capsule-item").removeClass("active").eq(0).addClass("active");
+
   		});  			
   	}
   }

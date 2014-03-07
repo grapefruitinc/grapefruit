@@ -7,18 +7,30 @@
 		</h1>
 		<ul class="capsule-nav">
 			<li class="active"><i class="icon-video-outline"></i></li>
-			<li><i class="icon-folder"></i></li>
 			<li><i class="icon-pen"></i></li>
+			<li><i class="icon-folder"></i></li>
 		</ul>        
 	</div>
-	<ul class="capsule-contents">
+	<ul class="capsule-contents active">
+		<% if capsule.lectures.empty? %>
+		fuck
+		<% else %>
 		<%= render capsule.lectures %>
+		<% end %>
 	</ul>
 	<ul class="capsule-contents">
-		<%= render capsule.problem_sets %>
+		<% if capsule.problem_sets.empty? %>
+			<li class="capsule-item">
+			  <h2 class="capsule-item-empty">Oops, looks like there's nothing here!</h2>
+			</li>
+		<% else %>
+			<%= render capsule.problem_sets %>
+		<% end %>
 	</ul>
 	<ul class="capsule-contents">
-		<!-- render files -->
+		<li class="capsule-item">
+		  <h2 class="capsule-item-empty">Oops, looks like there's nothing here!</h2>
+		</li>
 	</ul>
 </li>
 
