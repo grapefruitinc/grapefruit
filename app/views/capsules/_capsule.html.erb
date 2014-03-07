@@ -13,7 +13,9 @@
 	</div>
 	<ul class="capsule-contents active">
 		<% if capsule.lectures.empty? %>
-		fuck
+			<li class="capsule-item">
+			  <h2 class="capsule-item-empty">Oops, looks like there's nothing here!</h2>
+			</li>
 		<% else %>
 		<%= render capsule.lectures %>
 		<% end %>

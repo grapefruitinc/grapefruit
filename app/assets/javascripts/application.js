@@ -73,9 +73,7 @@ $("document").ready(function(){
   		}
   	},
   	navigateToType: function(type){
-  		console.log(type);
-  		$type = $this.find(".capsule-nav").children().eq(type);
-  		console.log($type);
+  		$type = $this.find(".capsule-nav li").eq(type);
 
   		$type.siblings().removeClass("active");
   		$type.addClass("active");
