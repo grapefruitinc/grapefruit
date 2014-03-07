@@ -48,7 +48,6 @@ $("document").ready(function(){
   		active_capsule = $this.children(".course-capsule.active").index();
   		active_type = $this.children(".course-capsule.active").children("nav li.active").index();
   		active_item = $this.children(".course-capsule.active").children(".capsule-item.active").index();
-  		console.log(active_capsule + " " + active_type + " " + active_item);
   	},
   	get: function(capsule, type, item){
   		if(capsule >= $this.children(".course-capsule").length || type > 2){return false;}
@@ -75,8 +74,6 @@ $("document").ready(function(){
   	},
   	navigateToType: function(type){
   		if(type > 2 || type == -1){return false;}
-
-
 		$listing = $capsule.find(".capsule-contents").removeClass("active").eq(type);
 		$listing.addClass("active").css("height", $listing.parent().outerHeight()-40);
   		$capsule.children(".capsule-contents").first().animate({
@@ -98,7 +95,6 @@ $("document").ready(function(){
   }
   
   sidebar.init($(".course-accordion"));
-  sidebar.self();
 
   capsule.click(function(e){
   	if(capsule.hasClass("active") && $(e.target).is(".capsule-nav i")){
@@ -108,6 +104,5 @@ $("document").ready(function(){
   	}
   });
 
-  sidebar.navigate(0, 0, 5);
 
 });
