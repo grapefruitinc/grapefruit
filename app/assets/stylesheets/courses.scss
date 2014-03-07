@@ -212,6 +212,12 @@ span[class*="status"] {
         max-width: 85%;
         line-height: 1rem;
     }
+    &.active {
+        .item-name {
+            color: white;
+            @extend .bold;            
+        }
+    }
     &.done{
         .item-status {
             opacity: 1;
