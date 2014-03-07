@@ -1,3 +1,26 @@
+/**** Utility Classes ****/
+/*********
+Use with extends instead of in the markup directly when possible
+.thingIWantToBold {@extend .bold;}
+*********/
+
+.large {font-size: 120%;}
+.small {font-size: 60%;}
+.white {color: white !important;}
+.black {color: #2d324e !important;}
+.nobottommargin {margin-bottom: 0 !important;}
+.spacer {min-height: 5rem;}
+.center {text-align: center;}
+.light {font-weight: 100;}
+.bold {font-weight: 500;}
+.normal {font-weight: normal;}
+.upper {text-transform: uppercase;}
+
+/***************************/
+
+
+body {background-color: #FFF;}
+
 div#top-flash{
     text-align: center;
     background-color: orange;
@@ -5,9 +28,93 @@ div#top-flash{
         margin-bottom: 0px;
     }
 }
-div.main-content{
+
+.top-bar-container{
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  div.top-bar{
+    height: auto;
+    margin-bottom: 0px;
+    background-color: transparent;
     @include grid-row;
+    ul > li.has-dropdown a::after { /* this should be a configurable variable */
+      border-color: lighten($topbar-dropdown-link-color, 20%) transparent transparent transparent;
+    }
+
+    ul.right li{
+      a.secondary{
+        color: darken($grapefruit-orange-color, 20%);
+      }
+      a.active{
+        background-color:$dark-blue-color;
+        color:#fff;
+      }
+    }
+
+  }
 }
+
+.title-area {
+    @include grid-column(4);
+    height: 50px;
+    img {width: 110px;}
+}
+.nav-area {
+    @include grid-column(8);
+    height: 50px;
+    ul {float: right; line-height: 1rem;}
+    a {
+        padding: 1rem;
+        color: $ethan-red-color;
+        display: inline-block;
+        height: 50px;
+        &:hover {
+          background-color: lighten($topbar-bg-color, 10%);
+          color: white;
+        }
+    }
+}
+
+nav.horizontal ul li { display: inline-block; }
+
+div.main-content{
+    padding: 3rem 0;
+}
+
+.page-header-container {
+    background-color: $topbar-bg-color;
+    padding: 1em 0 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-header {
+  @include grid-row();
+  .page-header-title{
+    margin-top: 0px;
+  }
+}
+.page-header-left {@include grid-column(7);}
+.page-header-right {@include grid-column(5); padding-top: .5rem;}
+.page-header-full {@include grid-column(12);}
+
+.page-header-left, .page-header-full {
+  .title {
+      margin-bottom: 0;
+      color: white;
+      font-weight: 100;
+      a{
+        color: white;
+      }
+  }
+  .description {
+      color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+
+
 
 /**
     forms
@@ -22,18 +129,61 @@ div.alert-box{
 }
 div#error_explanation{
     @include alert($alert-color);
+    border-radius: $global-radius;
     h2{
         font-size: 1em;
-        color: #eee;
+        color: #fff;
+    }
+}
+
+input[type=text], input[type=email], input[type=password] {
+    border-radius: 4px;
+    &.large {
+        font-size: 1rem;
     }
 }
 
 /**
     buttons
 **/
-.button{
+
+.button {
     box-shadow: none;
     transition: none;
+    border-radius: $global-radius;
+}
+
+.stateful-button {
+    padding: 0.5rem;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: normal;
+    transition-property: color background-color;
+    transition-duration: 75ms;
+    border: 1px solid white;
+}
+
+.stateful-button--inactive {
+    @extend .stateful-button;
+    background-color: $topbar-bg-color;
+    color: white;
+    &:hover {
+        background-color: #FFF;
+        color: $topbar-bg-color;
+    }
+}
+
+.stateful-button--active {
+    @extend .stateful-button;
+    background-color: white;
+    color: $topbar-bg-color;
+    &:hover {
+        background-color: $topbar-bg-color;
+        color: white;
+    }
 }
 
 /**
@@ -46,23 +196,44 @@ div#error_explanation{
     margin-bottom: 1.5em;
 }
 
+section {
+    @include grid-row();
+    & > div {@include grid-column(8, $last-column: true);}
+}
+
+
 /**
   footer
 **/
 footer{
-    background-color: #fff;
-    padding-top: 1em;
-    color: lighten($body-font-color, 30%);
-    text-align: center;
-
-    div.school-logo{
-        background-color: darken(adjust-saturation($rpi-red-color, -50%), 10%);
-        padding: .5em 0em;
+    border-top: 1px solid rgba(0,0,0, 0.1);
+    background-color: #4B5252;
+    padding: 5rem 0;
+    a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 250ms;
+        &:hover {color: white;}
     }
+    & > div {@include grid-row();}
+}
 
-    p.under-school-logo{
-        background-color: $body-bg;
-        padding-top: .8em;
+.school-logo {
+    @include grid-column(3);
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 1rem;
+    @extend .normal;
+    li {
+        margin-right: 1rem;
+        &:last-child {margin-right: 0;}
     }
+}
+
+.project-description {
+    @include grid-column(6);
+    color: rgba(255, 255, 255, 0.7);
+    p {@extend .light;}
 
 }

@@ -7,7 +7,7 @@
 </nav>
 <h3><%= @capsule.name %></h3>
 
-<% if current_user == @course.instructor %>
+<% if can? :manage, @course %>
 
   <div>
     <%= link_to "Add Lecture", new_course_capsule_lecture_path(@course, @capsule), class: "button small" %>

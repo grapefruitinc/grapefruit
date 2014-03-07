@@ -1,14 +1,5 @@
 <% page_title @course.name %>
 
-<%=
-  breadcrumbs([
-    link_to('All Courses', courses_path),
-    link_to(@course.name, void, class: "current")
-  ])
-%>
-
-<h3 class="course-name"><%= @course.name %></h3>
-
 <% if current_user == @course.instructor %>
 
   <span class="instructing">You are instructing this course.</span>
@@ -21,11 +12,9 @@
 
 <% else %>
 
-  <p>Instructor: <%= @course.instructor.name %> (<%= mail_to @course.instructor.email %>)</p>
+  <p>Instructed by <strong><%= @course.instructor.name %></strong> (<%= mail_to @course.instructor.email %>)</p>
 
-  <% if @course.students.include?(current_user) %>
-    <p>You are enrolled in this course.</p>
-  <% else %>
+  <% if not @course.students.include?(current_user) %>
     <%= form_for [@course, @course_user] do |f| %>
       <%= f.hidden_field :course_id, value: @course.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
@@ -35,22 +24,7 @@
 
 <% end %>
 
-
-<table class="listing">
-  <thead>
-    <th>Capsules</th>
-  </thead>
-	<tbody>
-		<%= render @capsules %>
-    <% if @capsules.empty? %>
-      <tr>
-        <td>
-          <span>No capsules found.</span>
-        </td>
-      </tr> 
-    <% end %>
-	</tbody>
-</table>
+<p class="description"><%= @course.description %></p>
 
 <%= render "documents/documents", container: @course %>
 

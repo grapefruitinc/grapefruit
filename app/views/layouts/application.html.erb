@@ -23,8 +23,13 @@
       <meta name="keywords" content="<%= yield(:meta_keywords) %>">
     <% end %>
 
-    <%= content_for?(:stylesheets) ? yield(:stylesheets) : yield %>
+    <%= yield(:stylesheets) if content_for?(:stylesheets) %>
 
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+    <script type="text/javascript" src="//use.typekit.net/tyv1luk.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <link rel="stylesheet" href="http://i.icomoon.io/public/temp/2308c86cd3/UntitledProject1/style.css">
   </head>
 
   <body>
@@ -45,8 +50,5 @@
       </div>
     <% end %>
 
-    <!-- Javascript files -->
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    
   </body>
 </html>

@@ -12,5 +12,5 @@ class GuestController < ApplicationController
 
   def contact
   end
-  
+
 end

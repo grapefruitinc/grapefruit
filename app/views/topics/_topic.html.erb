@@ -1,6 +1,15 @@
+<%
+  # Optional local variables that can be passed in
+  link_to_post ||= false
+%>
+
 <tr>
   <td>
-    <%= link_to topic.name, [@course, topic] %>
+    <% if link_to_post && topic.last_post_id %>
+      <%= link_to topic.name, course_topic_path(@course, topic) + "?page=#{topic.last_post_page}#reply-#{topic.last_post_id}" %>
+    <% else %>
+      <%= link_to topic.name, [@course, topic] %>
+    <% end %>
   </td>
   <% if defined? full %>
     <td><%= topic.replies.count %></td>

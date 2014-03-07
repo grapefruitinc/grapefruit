@@ -4,31 +4,30 @@
 
 <% content_for :content do %>
 
-  <div class="non-footer-container">
-
-    <div class="top-bar-container">
-      <nav class="top-bar" data-options="is_hover:false">
-        <ul class="title-area">
-          <%= link_to root_path do %>
-            <%= image_tag 'grapefruit_logo-topbar.png' %>
-          <% end %>
+  <div class="top-bar-container">
+    <div class="top-bar" data-options="is_hover:false">
+      <div class="title-area">
+        <%= link_to root_path do %>
+          <%= image_tag 'better-gf-logo_red.png' %>
+        <% end %>
+      </div>
+      
+      <nav class="nav-area horizontal">
+        <ul>
+          <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
+          <li><%= link_to "Courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
+          <li><%= link_to "WebWork", void, class: "disabled" %></li>
+          <li><%= link_to "Profile", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, class: "secondary", method: :delete %></li>
         </ul>
-        
-        <section class="top-bar-section">
-          <ul class="right">
-            <li><%= link_to "Courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
-            <li><%= link_to "Profile", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, class: "secondary", method: :delete %></li>
-          </ul>
-        </section>
       </nav>
     </div>
-
-    <div class="main-content">
-      <%= yield %>
-    </div>
-
   </div>
+
+  <div class="main-content">
+    <%= content_for?(:home_content) ? yield(:home_content) : yield %>
+  </div>
+
 
   <%= render "global/footer" %>
 

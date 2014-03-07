@@ -1,0 +1,84 @@
+@import "application";
+
+.top-bar-container {
+    background-color: #fff;
+    position: relative;
+}
+
+.page-header-container {
+    background-image: url(<%= asset_path 'happykids.jpeg' %>);
+    background-position: 0% 45%;
+    background-size: 100%;
+    padding: 4rem 0 10rem;
+    margin-bottom: 0;
+}
+
+.page-header {
+    text-align: center;
+    h1 {
+        font-size: 3.5rem;
+        font-weight: normal !important;
+        text-shadow: 1px 1px 3px #222;
+    }
+}
+
+div.main-content{
+    padding: 0em;
+
+    div.logo{
+        @include grid-column(12);
+        margin-bottom: 2em;
+    }
+
+    div.content{
+        @include grid-row;
+        @include grid-column(6, $offset: 3);
+        padding: 1em 2em;
+        margin-bottom: 2em;
+        border-radius: 0em 0em 1em 1em;
+        background-color:#fff;
+        float:none;
+    }
+
+    div.landing{
+      text-align: center;
+      p.description{
+        color: $grey-text-color;
+      }
+      a.login{
+        margin-right: 1em;
+      }
+    }
+
+    form.login-form{
+        input[type="submit"]{
+            margin-bottom: .8em;
+            width: 100%;
+            color: white;
+            border-radius: 4px;
+        }
+        fieldset{
+          border: none;
+        }
+    }
+    div.login-form-container{
+        border-radius: 10px;
+        border: 20px solid #fff;
+        margin-top: -5rem;
+        @include grid-column(3, $center: true);
+        padding: 1rem 2rem;
+    }
+    legend {
+        text-align: center;
+        background: none;
+    }
+    div.register{
+        @include grid-column(3, $center: true);
+    }
+}
+
+.register-form-container {
+    @extend .login-form-container;
+    margin-top: 0 !important;
+    border: none;
+}
