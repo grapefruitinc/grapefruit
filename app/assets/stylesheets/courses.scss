@@ -29,7 +29,7 @@ span.instructing{
 	vertical-align: top;
 	line-height: 2rem;
 	margin-top: 0.3rem;
-  margin-bottom: 0em;
+    margin-bottom: 0em;
 	li {display: inline-block;}
 	li a {
 		@extend .stateful-button--inactive;
@@ -40,6 +40,7 @@ span.instructing{
     @include grid-column(4);
     margin-bottom: 1rem;
     margin-top: 1rem;
+    position: relative;
     .course-card-image {
         border-radius: 4px;
     }
@@ -66,6 +67,13 @@ span.instructing{
                 text-align: right;
             }
         }
+    }
+    .course-anchor {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0; left: 0; right: 0; bottom: 0;
+        opacity: 0;
     }
 }
 
