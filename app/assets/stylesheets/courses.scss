@@ -2,9 +2,6 @@ span.instructing{
   @include label();
 }
 
-.page-header-right {
-	text-align: right;
-}
 
 .course-details {
 	display: inline-block;
@@ -75,6 +72,11 @@ span.instructing{
         top: 0; left: 0; right: 0; bottom: 0;
         opacity: 0;
     }
+
+    @media #{$medium} {@include grid-column(6);}
+    @media #{$small} {@include grid-column(12);}
+
+
 }
 
 
@@ -148,7 +150,7 @@ section.course {
             text-align: right;
             margin-left: 0;
             display: none;
-            
+
             li {
                 display: inline-block;
                 margin-left: 0.1rem;

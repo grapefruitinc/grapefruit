@@ -103,6 +103,8 @@ div.main-content{
     background-color: $topbar-bg-color;
     padding: 1em 0 1rem 0;
     margin-bottom: 2rem;
+    @media #{$medium} {margin-top: 3rem;}
+
 }
 
 .page-header {
@@ -111,8 +113,20 @@ div.main-content{
     margin-top: 0px;
   }
 }
-.page-header-left {@include grid-column(7);}
-.page-header-right {@include grid-column(5); padding-top: .5rem;}
+.page-header-left {
+  @include grid-column(7);
+  @media #{$small} {@include grid-column(12);}
+}
+.page-header-right {
+  @include grid-column(5);
+  padding-top: .5rem;
+  text-align: right;
+  @media #{$small} {
+    @include grid-column(12);
+    text-align: left;
+    margin-top: -0.5rem;
+  }
+}
 .page-header-full {@include grid-column(12);}
 
 .page-header-left, .page-header-full {
