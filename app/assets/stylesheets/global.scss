@@ -16,6 +16,11 @@ Use with extends instead of in the markup directly when possible
 .normal {font-weight: normal;}
 .upper {text-transform: uppercase;}
 
+
+$small: "screen and (max-width: 34rem)";
+$medium: "screen and (max-width: 50rem)";
+
+
 /***************************/
 
 
@@ -60,6 +65,10 @@ div#top-flash{
     @include grid-column(4);
     height: 50px;
     img {width: 110px;}
+    @media #{$medium} {
+      @include grid-column(12);
+      text-align: center;
+    }
 }
 .nav-area {
     @include grid-column(8);
@@ -75,6 +84,12 @@ div#top-flash{
           color: white;
         }
     }
+    @media #{$medium} {
+      @include grid-column(12);
+      text-align: center;
+      ul {float: none;}
+    }
+
 }
 
 nav.horizontal ul li { display: inline-block; }
@@ -207,7 +222,6 @@ section {
   footer
 **/
 footer{
-    border-top: 1px solid rgba(0,0,0, 0.1);
     background-color: #4B5252;
     padding: 5rem 0;
     a {
@@ -220,6 +234,12 @@ footer{
 
 .school-logo {
     @include grid-column(3);
+    @media #{$medium} {
+      @include grid-column(12);
+      text-align: center;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+    }
 }
 
 .nav-links {
@@ -230,11 +250,16 @@ footer{
         margin-right: 1rem;
         &:last-child {margin-right: 0;}
     }
+    @media #{$medium} {
+      text-align: center;
+    }
 }
 
 .project-description {
     @include grid-column(6);
     color: rgba(255, 255, 255, 0.7);
     p {@extend .light;}
-
+    @media #{$medium} {
+      @include grid-column(12);
+    }
 }
