@@ -23,6 +23,16 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+[class^="icon-"].interactive:hover, [class*=" icon-"].interactive:hover {
+	-webkit-animation: bump 0.3s;
+}
+
+@-webkit-keyframes bump {
+	0% {font-size: 100%;}
+	80% {font-size: 90%;}
+	100% {font-size: 100%;}
+}
+
 .icon-times:before {
 	content: "\e600";
 }

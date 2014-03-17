@@ -49,5 +49,8 @@
       </div>
     <% end %>
 
+    <%= content_for?(:scripts) ? yield(:scripts) : yield %>
+
+
   </body>
 </html>

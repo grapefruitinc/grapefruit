@@ -48,4 +48,16 @@
 
 <% end %>
 
+<% content_for :scripts do %>
+<script>
+capsule_names = $(".capsule-name");
+for (var i = capsule_names.length - 1; i >= 0; i--) {
+  if($(capsule_names[i]).clone().children().remove().end().text().length > 25){
+    $(capsule_names[i]).addClass("long");
+  }
+};
+</script>
+
+<% end %>
+
 <%= render template: 'layouts/home' %>
