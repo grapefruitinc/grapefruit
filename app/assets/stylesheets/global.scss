@@ -24,7 +24,7 @@ $medium: "screen and (max-width: 50rem)";
 /***************************/
 
 
-body {background-color: #4B5252;}
+body {background-color: #4B5252; max-width: 100%;}
 
 div#top-flash{
     text-align: center;
@@ -38,8 +38,9 @@ div#top-flash{
   background-color: #fff;
   position: fixed;
   width: 100%;
+  box-sizing: border-box;
   z-index: 9999;
-  div.top-bar{
+  div.top-bar {
     height: auto;
     margin-bottom: 0px;
     background-color: transparent;
@@ -61,12 +62,43 @@ div#top-flash{
   }
 }
 
+.mobile-nav {
+  display: none;
+  @media #{$medium} {
+    width: 100%;
+    display: block;
+    height: 2.5rem;
+    position: absolute;
+    left:0; right: 0; top: 0.65rem; bottom: 0;
+  };
+}
+
+.mobile-nav-left {
+  @include grid-column(6);  
+  text-align: left;
+}
+.mobile-nav-right {
+  @include grid-column(6);
+  text-align: right;
+}
+
+.mobile-nav [class^="icon-"] {
+  padding: 1rem;
+  background-color: #F8F8F8;
+  border: 1px solid #e9e9e9;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 #e9e9e9;
+  color: #9B9B9B;
+}
+
 .title-area {
     @include grid-column(4);
     height: 50px;
     img {width: 110px;}
     @media #{$medium} {
       @include grid-column(12);
+      height: 4rem;
+      padding: 0.5rem 0;
       text-align: center;
     }
 }
@@ -84,12 +116,7 @@ div#top-flash{
           color: white;
         }
     }
-    @media #{$medium} {
-      @include grid-column(12);
-      text-align: center;
-      ul {float: none;}
-    }
-
+    @media #{$medium} {display: none;}
 }
 
 nav.horizontal ul li { display: inline-block; }
@@ -103,8 +130,6 @@ div.main-content{
     background-color: $topbar-bg-color;
     padding: 1em 0 1rem 0;
     margin-bottom: 2rem;
-    @media #{$medium} {margin-top: 3rem;}
-
 }
 
 .page-header {
@@ -238,6 +263,7 @@ section {
 footer{
     background-color: #4B5252;
     padding: 5rem 0;
+
     a {
         color: rgba(255, 255, 255, 0.8);
         transition: color 250ms;
@@ -248,11 +274,23 @@ footer{
 
 .school-logo {
     @include grid-column(3);
+    position: relative;
+    i {
+      color: white;
+      font-size: 8rem;
+      line-height: 1rem;
+    }
     @media #{$medium} {
       @include grid-column(12);
       text-align: center;
       margin-top: -1rem;
       margin-bottom: 2rem;
+      height: 3rem;
+      i {
+        position: absolute;
+        left: 0; right: 0; bottom: 0; top: 0;        
+      }
+
     }
 }
 
