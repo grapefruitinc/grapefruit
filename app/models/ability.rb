@@ -46,6 +46,10 @@
         lecture.capsule.course.instructor == user
       end
 
+      can :read, Lecture do |lecture|
+        lecture.capsule.course.instructor == user or (user.student_courses.include? lecture.capsule.course)
+      end
+
       can :manage, ProblemSet do |problem_set|
         problem_set.capsule.course.instructor == user
       end
@@ -61,7 +65,7 @@
       end
 
       can :manage, Topic do |topic|
-        topic.course.instructor == user or (user.student_courses? topic.course)
+        topic.course.instructor == user or (user.student_courses.include? topic.course)
       end
 
     end

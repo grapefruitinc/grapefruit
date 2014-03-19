@@ -29,7 +29,7 @@ span.instructing{
 	vertical-align: top;
 	line-height: 2rem;
 	margin-top: 0.3rem;
-  margin-bottom: 0em;
+    margin-bottom: 0em;
 	li {display: inline-block;}
 	li a {
 		@extend .stateful-button--inactive;
@@ -40,6 +40,7 @@ span.instructing{
     @include grid-column(4);
     margin-bottom: 1rem;
     margin-top: 1rem;
+    position: relative;
     .course-card-image {
         border-radius: 4px;
     }
@@ -66,6 +67,13 @@ span.instructing{
                 text-align: right;
             }
         }
+    }
+    .course-anchor {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0; left: 0; right: 0; bottom: 0;
+        opacity: 0;
     }
 }
 
@@ -119,10 +127,37 @@ section.course {
         font-size: 0.8rem;
         color: #777777;
     }
-    .capsule-nav { opacity: 0; }
+    .capsule-header {
+        @include grid-row($behavior: collapse);
+        padding: 0.5rem 0;
+        &:hover {
+            cursor: pointer;
+        }
+        .capsule-status {
+            margin-right: 0.5rem;
+            font-size: 1rem;
+            float: left;
+        }
+        .capsule-nav {
+            @include grid-column(4);
+            padding-left: 0;
+            text-align: right;
+            margin-left: 0;
+            display: none;
+            li {
+                display: inline-block;
+                margin-left: 0.1rem;
+                opacity: 0.5;
+                transition: opacity 200ms;
+                &:hover {opacity: 1;}
+                &.active {opacity: 1;}
+                &:first-child {margin-left: 0;}
+            }
+        }
+    }
     &.active {
         height: auto;
-        .capsule-nav { opacity: 1; }
+        .capsule-nav { display: inline-block; }
         .capsule-name {
             color: black;
             @extend .bold;
@@ -130,33 +165,6 @@ section.course {
     }
 }
 
-.capsule-header {
-    @include grid-row($behavior: collapse);
-    padding: 0.5rem 0;
-    &:hover {
-        cursor: pointer;
-    }
-    .capsule-status {
-        margin-right: 0.5rem;
-        font-size: 1rem;
-        float: left;
-    }
-    .capsule-nav {
-        @include grid-column(4);
-        padding-left: 0;
-        text-align: right;
-        margin-left: 0;
-        li {
-            display: inline-block;
-            margin-left: 0.1rem;
-            opacity: 0.5;
-            transition: opacity 200ms;
-            &:hover {opacity: 1;}
-            &.active {opacity: 1;}
-            &:first-child {margin-left: 0;}
-        }
-    }
-}
 
 .capsule-contents {
     overflow: hidden;
@@ -211,6 +219,12 @@ span[class*="status"] {
         white-space: normal;
         max-width: 85%;
         line-height: 1rem;
+    }
+    &.active {
+        .item-name {
+            color: white;
+            @extend .bold;            
+        }
     }
     &.done{
         .item-status {

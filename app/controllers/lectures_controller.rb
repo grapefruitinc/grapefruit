@@ -22,6 +22,7 @@ class LecturesController < ApplicationController
   end
 
   def show
+    authorize! :show, @lecture
   	@lecture = @capsule.lectures.find(params[:id])
     @capsules = @lecture.capsule.course.capsules
 

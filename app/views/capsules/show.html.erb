@@ -5,6 +5,7 @@
   <%= link_to @course.name, course_path(@course) %>
   <%= link_to @capsule.name, void, class: "current" %>
 </nav>
+
 <h3><%= @capsule.name %></h3>
 
 <% if can? :manage, @course %>

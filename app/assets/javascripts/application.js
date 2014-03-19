@@ -48,7 +48,6 @@ $("document").ready(function(){
   		active_capsule = $this.children(".course-capsule.active").index();
   		active_type = $this.children(".course-capsule.active").children("nav li.active").index();
   		active_item = $this.children(".course-capsule.active").children(".capsule-item.active").index();
-  		console.log(active_capsule + " " + active_type + " " + active_item);
   	},
   	get: function(capsule, type, item){
   		if(capsule >= $this.children(".course-capsule").length || type > 2){return false;}
@@ -71,24 +70,31 @@ $("document").ready(function(){
 	  		}, 250, function(){
 	  		});
   		}
+  		return this;
   	},
   	navigateToType: function(type){
-  		$type = $this.find(".capsule-nav li").eq(type);
-
-  		$type.siblings().removeClass("active");
-  		$type.addClass("active");
+  		if(type > 2 || type == -1){return false;}
 		$listing = $capsule.find(".capsule-contents").removeClass("active").eq(type);
 		$listing.addClass("active").css("height", $listing.parent().outerHeight()-40);
   		$capsule.children(".capsule-contents").first().animate({
   			marginLeft: ((-100*type) +"%")
   		}, 250, function(){
-
   		});  			
+  		$type = $listing.parent().find(".capsule-nav li").removeClass("active").eq(type);
+  		$type.addClass("active");
+  		return this;
+  	},
+  	navigateToItem: function(item){
+  		$this.find(".course-capsule.active .capsule-contents.active")
+			.children().removeClass("active").eq(item).addClass("active");
+		return this;
+  	},
+  	navigate: function(c, p, i){
+  		this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
   	}
   }
   
   sidebar.init($(".course-accordion"));
-  sidebar.self();
 
   capsule.click(function(e){
   	if(capsule.hasClass("active") && $(e.target).is(".capsule-nav i")){
@@ -97,5 +103,6 @@ $("document").ready(function(){
   		sidebar.navigateToCapsule($(this).index());
   	}
   });
+
 
 });
