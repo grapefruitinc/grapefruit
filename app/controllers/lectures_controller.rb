@@ -2,6 +2,7 @@ class LecturesController < ApplicationController
 
   before_filter :get_course
   before_filter :get_capsule
+  before_filter :get_all_course_capsules, only: [:new, :show, :edit]
   before_filter :get_lecture, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
@@ -28,7 +29,7 @@ class LecturesController < ApplicationController
 
     @videos = @lecture.videos.order("created_at ASC")
     @videos.build
-    
+
     @documents = @lecture.documents
   end
 

@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to root_url, alert: exception.message
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   protected
- 
+
   def configure_permitted_parameters
 
     # place permitted fields for registration here
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:name, :email, :password, :password_confirmation, :current_password)
     end
-    
+
   end
 
   def get_course
@@ -63,6 +63,10 @@ class ApplicationController < ActionController::Base
       flash[:error] = "Invalid topic!"
       redirect_to root_path
     end
+  end
+
+  def get_all_course_capsules
+    @capsules = @course.capsules
   end
 
 end

@@ -3,17 +3,21 @@
     <%= video.title %>
     <a class="video-button replay">REPLAY</a>
   </h5>
+
   <div class="columns large-8">
     <div class="video-wrapper">
       <iframe type="text/html" width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>?enablejsapi=1&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
+
   <div class="columns large-4">
     <ul class="video-texts">
-      <%=render video.video_texts.order(time: :asc)%>
+      <%= render video.video_texts.order(time: :asc) %>
     </ul>
-    <% if current_user == @course.instructor %>
-      <div><%= link_to "Add Video Content", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), :class => "button small" %></div>
+    <% if can? :manage, @course %>
+      <div>
+        <%= link_to "Add Video Annotation", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), class: "button small" %>
+      </div>
     <% end %>
   </div>
 </div>

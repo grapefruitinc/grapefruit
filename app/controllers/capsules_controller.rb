@@ -1,8 +1,8 @@
 class CapsulesController < ApplicationController
-  
+
   before_filter :get_course
   before_filter :get_capsule, only: [:show, :edit, :update, :destroy]
-  before_filter :get_other_capsules, only: [:new, :show]
+  before_filter :get_all_course_capsules, only: [:new, :show]
   before_filter :authenticate_user!
 
   layout "course"
@@ -23,7 +23,7 @@ class CapsulesController < ApplicationController
       render 'new'
     end
   end
-  
+
   def show
     @lectures = @capsule.lectures.order("created_at ASC")
     @problem_sets = @capsule.problem_sets.order("created_at ASC")
@@ -58,8 +58,4 @@ private
     params.require(:capsule).permit(:name)
   end
 
-  def get_other_capsules
-    @capsules = @course.capsules
-  end
-  
 end

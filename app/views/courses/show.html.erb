@@ -1,9 +1,8 @@
 <% page_title @course.name %>
 
-<% if current_user == @course.instructor %>
-
+<% if can? :manage, @course %>
   <span class="instructing">You are instructing this course.</span>
-  
+
   <div>
     <%= link_to "Add Capsule", new_course_capsule_path(@course), class: "button small" %>
     <%= link_to "Add File", new_course_document_path(@course), class: "button small" %>
@@ -39,7 +38,7 @@
         <td>
           <span>No topics found.</span>
         </td>
-      </tr> 
+      </tr>
     <% end %>
   </tbody>
 </table>

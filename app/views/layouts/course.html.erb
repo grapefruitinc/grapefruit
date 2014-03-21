@@ -4,9 +4,9 @@
   <div class="page-header">
     <div class="page-header-left">
       <h2 class="title"><%= link_to @course.name, course_path(@course) %></h2>
-      <% if current_user == @course.instructor %>
+      <% if can? :manage, @course %>
         <p class="description">You are the instructor for this course.</p>
-      <% end %> 
+      <% end %>
     </div>
     <div class="page-header-right">
       <ul class="course-details">
@@ -42,7 +42,7 @@
     </ul>
   </aside>
   <div class="workplace">
-    <%= yield %>    
+    <%= yield %>
   </div>
 </section>
 
