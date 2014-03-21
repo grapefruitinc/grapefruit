@@ -73,10 +73,5 @@ private
       "course"
     end
   end
-
-  def get_capsules
-    @capsules = @course.capsules.order("created_at DESC")
-    @capsules.build
-  end
   
 end
