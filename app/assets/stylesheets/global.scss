@@ -89,7 +89,39 @@ div#top-flash{
   border-radius: 3px;
   box-shadow: 0 2px 0 #e9e9e9;
   color: #9B9B9B;
+  transition: background-color 100ms;
+  &:active {
+    // This is the mouse-down event, not "currently shown" state.
+    background-color: #FFF;
+    transition: background-color 100ms;
+  }
+  &.active {
+    color: black;
+    background-color: #F7F7F7;
+    box-shadow: 0 -2px 0 #D5D5D5;
+    border-top: none;
+  }
 }
+
+
+.mobile-sidebar {
+  display: none;
+  @media #{$medium} {
+    display: block;
+    position: absolute;
+    z-index: 999;
+    top: 4rem;
+    width: 90%;
+    background-color: red;
+    &.left {
+      left: -100%;      
+    }
+    &.right {
+      left: 100%;
+    }
+  }
+}
+
 
 .title-area {
     @include grid-column(4);
@@ -314,4 +346,8 @@ footer{
     @media #{$medium} {
       @include grid-column(12);
     }
+}
+
+.icon-seal {
+  font-size: 12rem;
 }

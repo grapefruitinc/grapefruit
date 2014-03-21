@@ -22,8 +22,6 @@
 
       </div>
 
-
-      
       <nav class="nav-area horizontal">
         <ul>
           <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
@@ -36,10 +34,18 @@
     </div>
   </div>
 
+  <aside class="mobile-sidebar left">
+    Here's the left mobile sidebar
+  </aside>
+
+  <aside class="mobile-sidebar right">
+    Here's the right mobile sidebar
+  </aside>
+
+
   <div class="main-content">
     <%= content_for?(:home_content) ? yield(:home_content) : yield %>
   </div>
-
 
   <%= render "global/footer" %>
 
