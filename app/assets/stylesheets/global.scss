@@ -24,7 +24,7 @@ $medium: "screen and (max-width: 50rem)";
 /***************************/
 
 
-body {background-color: #4B5252; max-width: 100%;}
+body {background-color: #4B5252; max-width: 100%; overflow: hidden;}
 
 div#top-flash{
     text-align: center;
