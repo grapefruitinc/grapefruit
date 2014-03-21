@@ -9,6 +9,14 @@
 
 <h2><%= @problem_set.name %></h2>
 
+<% if current_user == @course.instructor %>
 <%= link_to "Edit Problem Set", edit_course_capsule_problem_set_path(@course, @capsule, @problem_set), class: "button small" %>
+<% end %>
 
-<p>Some ridiculously hard problems here...</p>
+<% if @problem_set.webwork_url.present? %>
+
+    <div>
+        <iframe src="<%= course_capsule_problem_set_iframe_path(@course, @capsule, @problem_set) %>" height="500" width="950" style="border: 0;"></iframe>
+    </div>
+
+<% end %>
