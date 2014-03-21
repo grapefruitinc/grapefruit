@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118001231) do
+ActiveRecord::Schema.define(version: 20140303014426) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
@@ -29,15 +29,27 @@ ActiveRecord::Schema.define(version: 20140118001231) do
 
   create_table "courses", force: true do |t|
     t.string   "name"
+    t.integer  "instructor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "instructor_id"
-    t.integer  "student_id"
+    t.text     "description"
+    t.string   "subject"
+    t.string   "course_number"
+    t.string   "course_registration_number"
+    t.string   "semester"
+    t.integer  "year"
+    t.integer  "spots_available"
+    t.integer  "credits"
   end
 
-  create_table "courses_users", force: true do |t|
-    t.integer "course_id"
-    t.integer "user_id"
+  create_table "documents", force: true do |t|
+    t.string   "file"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "course_id"
+    t.integer  "capsule_id"
+    t.integer  "lecture_id"
   end
 
   create_table "lectures", force: true do |t|
@@ -54,6 +66,28 @@ ActiveRecord::Schema.define(version: 20140118001231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capsule_id"
+  end
+
+  create_table "replies", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "topic_id"
+    t.integer  "author_id"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.integer  "replies",        default: 0
+    t.integer  "course_id"
+    t.integer  "author_id"
+    t.integer  "last_poster_id"
+    t.string   "name"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "capsule_id"
+    t.integer  "last_post_id"
   end
 
   create_table "users", force: true do |t|

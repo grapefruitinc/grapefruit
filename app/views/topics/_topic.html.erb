@@ -1,0 +1,23 @@
+<%
+  # Optional local variables that can be passed in
+  link_to_post ||= false
+%>
+
+<tr>
+  <td>
+    <% if link_to_post && topic.last_post_id %>
+      <%= link_to topic.name, course_topic_path(@course, topic) + "?page=#{topic.last_post_page}#reply-#{topic.last_post_id}" %>
+    <% else %>
+      <%= link_to topic.name, [@course, topic] %>
+    <% end %>
+  </td>
+  <% if defined? full %>
+    <td><%= topic.replies.count %></td>
+    <td>
+        <%= topic.author.name %> (<%= distance_of_time_in_words_to_now topic.created_at %> ago)
+    </td>
+    <td>
+        <%= topic.last_poster.name %> (<%= distance_of_time_in_words_to_now topic.updated_at %> ago)
+    </td>
+  <% end %>
+</tr>

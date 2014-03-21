@@ -12,7 +12,7 @@ gem 'mysql2'
 gem 'sass-rails', '~> 4.0.0'
 
 # ZURB Foundation 4.0
-gem "compass-rails", "~> 2.0.alpha.0"
+gem "compass-rails"
 gem 'zurb-foundation'
 
 # config for configuraiton files and YAML
@@ -23,6 +23,9 @@ gem 'devise'
 
 # cancan for permissions
 gem 'cancan'
+
+# carrierwave for file uploads
+gem 'carrierwave'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -35,6 +38,7 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -42,8 +46,12 @@ gem 'jbuilder', '~> 1.2'
 # ActiveRecord extensions
 gem "activerecord-import", ">= 0.4.0"
 
+# Simple pagination
+gem "will_paginate"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
+  # helpful if you know you won't have an internet connection
   gem 'sdoc', require: false
 end
 

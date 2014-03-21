@@ -1,5 +1,4 @@
-<tr>
-  <td>
-    <%= link_to problem_set.name, [@course, @capsule, problem_set] %>
-  </td>
-</tr>
+<li class="capsule-item">
+  <span class="item-status"></span> <!--- Need logic here to switch icons based on completion -->
+  <h2 class="item-name"><%= problem_set.name %></h2>
+</li>

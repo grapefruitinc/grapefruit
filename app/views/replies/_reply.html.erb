@@ -1,0 +1,10 @@
+<div class="row reply">
+  <a name="reply-<%= reply.id %>"></a>
+  <div class="small-4 column author">
+    <strong><%= reply.author.name %></strong><% if reply.author == course.instructor %> (course instructor)<% elsif reply.author == topic.author %> (topic creator)<% end %><br>
+    <%= reply.created_at.strftime("%B %d, %Y") %>
+  </div>
+  <div class="small-8 column body">
+    <%= reply.body %>
+  </div>
+</div>

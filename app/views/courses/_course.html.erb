@@ -1,8 +1,15 @@
-<tr>
-  <td>
-    <%= link_to course.name, course_path(course) %>
-  </td>
-  <td class="center">
-     <%= course.students.count %>
-  </td>
-</tr>
+<div class="course-card">
+	<img src="http://i.imgur.com/orf5Zhw.png" class="course-card-image">
+	<h4 class="course-card-name">
+		<%= link_to course.name, course_path(course) %>
+	</h4>
+	<p class="course-card-description">
+	    <%= truncate course.description, length: 85, separator: /\w/, omission: "..." %>
+	</p>
+	<ul class="course-card-details">
+		<li><%= course.credits %> credits</li>
+		<li><%= course.subject %></li>
+		<li><%= course.course_number %></li>
+	</ul>
+	<a href=<%= course_path(course) %> class="course-anchor"></a>
+</div>

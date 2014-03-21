@@ -1,14 +1,23 @@
+<% page_title (@capsule.name + ' :: ' + @course.name) %>
+
 <nav class="breadcrumbs">
   <%= link_to "All Courses", courses_path %>
   <%= link_to @course.name, course_path(@course) %>
-  <a class="current" href="javascript:void(0)"><%= @capsule.name %></a>
+  <%= link_to @capsule.name, void, class: "current" %>
 </nav>
+
 <h3><%= @capsule.name %></h3>
 
-<div>
-  <%= link_to "Add Lecture", new_course_capsule_lecture_path(@course, @capsule), :class => "button small" %>
-  <%= link_to "Add Problem Set", new_course_capsule_problem_set_path(@course, @capsule), :class => "button small" %>
-</div>
+<% if can? :manage, @course %>
+
+  <div>
+    <%= link_to "Add Lecture", new_course_capsule_lecture_path(@course, @capsule), class: "button small" %>
+    <%= link_to "Add Problem Set", new_course_capsule_problem_set_path(@course, @capsule), class: "button small" %>
+    <%= link_to "Add File", new_course_capsule_document_path(@course, @capsule), class: "button small" %>
+    <%= link_to "Edit Capsule", edit_course_capsule_path(@course, @capsule), class: "button small" %>
+  </div>
+
+<% end %>
 
 <table class="listing">
   <thead>
@@ -27,3 +36,5 @@
   </thead>
   <%= render @problem_sets %>
 </table>
+
+<%= render "documents/documents", container: @capsule %>

@@ -1,35 +1,44 @@
-<h3>Welcome <%= current_user.display_identifier %>!</h3>
+<div class="page-header-container">
+  <div class="page-header">
+    <div class="page-header-full">
+      <h2 class="title">Welcome <%= current_user.display_identifier %>!</h2>
+      <!-- if @course.description.empty? -->
+      <% if can? :manage_admins, User %>
+        <p class="description">You have administrator permissions. Manage your courses and profile using the links in the upper right hand corner.</p>
+      <% else %>
+        <p class="description">This is your personal dashboard where you can manage your courses and profile.</p>
+      <% end %>
+      <!-- endif -->
+    </div>
+  </div>
+</div>
 
-<% if can? :manage_admins, User %>
-  <p>You have administrator permissions.</p>
-<% end %>
+<section>
+  <div class="page-header">
+    <h3 class="page-header-title">Enrolled</h3>
 
-<% if not @instructed_courses.empty? %>
-<table class="listing">
-  <thead>
-    <th width="60%">Courses You Instruct</th>
-    <th># Students</th>
-  </thead>
-  <tbody>
-      <%= render @instructed_courses %>
-  </tbody>
-</table>
-<% end %>
+  <% if @enrolled_courses.empty? %>
+    <h5 class="light">There are no courses listed.</h5>
+    </div>
+  <% else %>
+    </div>
+    <%= render @enrolled_courses %>
+  <% end %>
 
-<table class="listing">
-  <thead>
-    <th width="60%">Enrolled Courses</th>
-    <th># Students</th>
-  </thead>
-  <tbody>
-    <% if @enrolled_courses.empty? %>
-      <tr>
-        <td colspan='2' class="center">
-        <span>You are not enrolled in any courses.</span>
-        </td>
-      </tr>
+</section>
+
+<% if @instructed_courses.empty? %>
+<% else %>
+  <section>
+    <div class="page-header">
+      <h3 class="page-header-title">Courses You Instruct</h3>
+    <% if @instructed_courses.empty? %>
+      <h5 class="light">There are no courses listed.</h5>
+      </div>
     <% else %>
-        <%= render @enrolled_courses %>
+    </div>
+      <%= render @instructed_courses %>
     <% end %>
-  </tbody>
-</table>
+
+  </section>
+<% end %>

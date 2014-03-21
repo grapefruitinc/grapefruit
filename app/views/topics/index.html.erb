@@ -1,0 +1,36 @@
+<% page_title "Discussion in #{@course.name}" %>
+
+<%=
+  breadcrumbs([
+    link_to('All Courses', courses_path),
+    link_to(@course.name, @course),
+    link_to("Discussion", void, class: "current")
+  ])
+%>
+
+<h3>Discussion in <%= @course.name %></h3>
+
+<%= link_to "Create topic", new_course_topic_path(@course, @topic), class: "button small" %>
+
+<table class="listing full">
+  <thead>
+    <th>Title</th>
+    <th>Replies</th>
+    <th>Started By</th>
+    <th>Last Post</th>
+  </thead>
+    <tbody>
+      <% if @topics.empty? %>
+        <tr>
+          <td colspan="4">
+            <span>No topics found.</span>
+          </td>
+        </tr> 
+      <% end %>
+      <%= render @topics, full: true %>
+    </tbody>
+</table>
+
+<div class="pages">
+  <%= will_paginate @topics %>
+</div>

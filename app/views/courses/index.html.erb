@@ -1,23 +1,57 @@
-<%= breadcrumbs([link_to('All Courses', courses_path, :class => "current")]) %>
+<div class="page-header-container">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h1 class="title">Courses</h1>
+      <!-- if @course.description.empty? -->
+        <p class="description">See all course offerings at <%= SCHOOL_NAME %> </p>
+      <!-- endif -->
+    </div>
+    <div class="page-header-right">
+      <!-- if @user.is_admin? -->
+      <ul class="course-actions">
+        <li><a href="">Search</a></li>
+        <li><a href="">Enroll</a></li>
+        <li><a href="">Grid View</a></li>
+      </ul>
+      <!-- endif -->
+    </div>
+  </div>
+</div>
 
-<h3>All Courses</h3>
 
-<div><%= link_to "Create New Course", new_course_path, :class => "button small" %></div>
+<section>
+  <div class="page-header">
+    <h3 class="page-header-title">Enrolled</h3>    
+  <% if @enrolled_courses.empty? %>
+    <h5 class="light">You are not enrolled in any courses.</h5>
+  </div>
+  <% else %>
+  </div>
+    <%= render @enrolled_courses %>
+  <% end %>
+  <hr>
+</section>
 
-<table class="listing">
-  <thead>
-    <th width="60%">Course</th>
-    <th>Enrolled Students</th>
-  </thead>
-  <tbody>
-    <% if @courses.empty? %>
-      <tr>
-        <td colspan='2' class="center">
-        <span>No courses found</span>
-        </td>
-      </tr>
-    <% else %>
-        <%= render @courses %>
-    <% end %>
-  </tbody>
-</table>
+<section>
+  <div class="page-header">
+    <h3 class="page-header-title">Courses You Instruct</h3>    
+  </div>
+  <% unless @instructed_courses.blank? %>
+    <%= render @instructed_courses %>
+  <% end %>
+  <hr>
+</section>
+
+
+<section>
+  <div class="page-header">
+    <h3 class="page-header-title">Courses Offered</h3>
+  </div>
+
+  <% if @courses.empty? %>
+    <h5 class="light">There are no courses listed.</h5>
+  <% else %>
+    <%= render @courses %>
+  <% end %>
+
+</section>

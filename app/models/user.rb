@@ -31,8 +31,11 @@ class User < ActiveRecord::Base
   has_many :course_users, dependent: :destroy
   has_many :student_courses, class_name: "Course", through: :course_users, source: :course, dependent: :destroy
 
+  has_many :replies, foreign_key: "author_id"
+  has_many :topics, foreign_key: "author_id"
+
   def display_identifier
-    !self.name.empty? ? self.name.split(" ").first : self.email
+    !self.name.blank? ? self.name.split(" ").first : self.email
   end
 
 end

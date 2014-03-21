@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <%= link_to (if document.description? then document.description else document[:file] end), 
+          document.file.url,
+          target: "_blank" %>
+  </td>
+  <td>
+    <%= document.file.file.extension %>
+  </td>
+  <% if can? :delete, document %>
+    <td>
+      <%= link_to 'Delete', document, confirm: ("Are you sure you want to delete " + document[:file] + "?"), method: :delete %>
+    </td>
+  <% end %>
+</tr>
