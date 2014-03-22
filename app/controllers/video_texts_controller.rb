@@ -6,7 +6,7 @@ class VideoTextsController < ApplicationController
   before_filter :get_all_course_capsules
   before_filter :get_lecture
   before_filter :get_video
-  before_filter :get_video_text, only: [:show, :edit, :update, :destroy]
+  before_filter :get_video_text, only: [:update, :destroy]
 
   layout "course"
 
@@ -25,10 +25,8 @@ class VideoTextsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def edit
+  def index
+    @video_texts = @video.video_texts
   end
 
   def update

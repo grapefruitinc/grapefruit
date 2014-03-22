@@ -38,7 +38,7 @@ Grapefruit::Application.routes.draw do
       resources :lectures do
         resources :documents, shallow: true
         resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
-          resources :video_texts
+          resources :video_texts, only: [:new, :create, :index, :update, :destroy]
         end
       end
 
