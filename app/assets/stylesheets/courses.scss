@@ -94,12 +94,20 @@ section.course {
         position: absolute;
         width: 20%;
         left: -20%;
+        @media #{$full} {
+            position: relative;
+            left: 0;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        @media #{$medium} {display: none;}
     }
     .workplace {
         @include grid-column(12);
         min-height: 25rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
         padding-top: 1rem;
+        @media #{$full} {@include grid-column(9);}
+        @media #{$medium} {@include grid-column(12);}
         p.description{
           color: $grey-text-color;
         }
@@ -116,6 +124,7 @@ section.course {
       }
     }
 }
+
 
 
 
@@ -264,5 +273,30 @@ span[class*="status"] {
             color: white;
             @extend .bold;
         }
+    }
+}
+
+
+.course-accordion--mobile {
+    .course-capsule {
+        height: 3.3rem;
+    }
+    .capsule-name {
+        font-size: 1.2rem;
+    }
+    .capsule-item {
+        margin: 1rem 0;
+    }
+    .item-status {
+        font-size: 1.3rem;
+        vertical-align: middle;
+        line-height: 1.1rem;
+    }
+    .item-name {
+        font-size: 1.1rem;
+    }
+    .capsule-nav li {
+        font-size: 1.3rem;
+        padding: 0 0.5rem;
     }
 }

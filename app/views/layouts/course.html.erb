@@ -48,7 +48,14 @@
 
 <% end %>
 
+<% content_for :left_sidebar do %>
+<ul class="course-accordion--mobile">
+  <%= render @capsules %>
+</ul>
+<% end %>
+
 <% content_for :scripts do %>
+
 <script>
 capsule_names = $(".capsule-name");
 for (var i = capsule_names.length - 1; i >= 0; i--) {

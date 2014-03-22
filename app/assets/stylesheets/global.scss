@@ -19,6 +19,7 @@ Use with extends instead of in the markup directly when possible
 
 $small: "screen and (max-width: 34rem)";
 $medium: "screen and (max-width: 50rem)";
+$full: "screen and (max-width: 75rem)";
 
 
 /***************************/
@@ -112,7 +113,7 @@ div#top-flash{
     z-index: 999;
     top: 4rem;
     width: 90%;
-    background-color: red;
+    background-color: #F5F5F5;
     &.left {
       left: -100%;      
     }
