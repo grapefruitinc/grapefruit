@@ -1,0 +1,70 @@
+<div class="video-text" id="video-text-<%= video_text.id %>">
+  <h4>Video Annotation <%= video_text_counter + 1 %></h4>
+
+  <%= form_for [@course, @capsule, @lecture, @video, video_text], remote: true do |f| %>
+    <%= devise_error_messages! %>
+
+    <div>
+      <%= f.label :content %><br />
+      <%= f.text_area :content, size: "30x10" %>
+    </div>
+    <div>
+      <%= f.label :time %>
+      <small>Start time in seconds for the video to show up</small> <br />
+      <%= f.text_field :time %>
+    </div>
+
+    <div>
+      <button class="button small alert remove">Remove</button>
+      <button class="button small update">Update</button>
+    </div>
+  <% end %>
+
+  <script>
+    function updateVideoText(e)
+    {
+      e.preventDefault();
+      $target = $(e.currentTarget);
+      console.log($target);
+      $video_text = $target.parent().parent().parent();
+      console.log($video_text);
+      $target.html("Saving...");
+      console.log("Saving");
+
+      $content = $video_text.find("#video_text_content");
+      $time = $video_text.find("#video_text_time");
+
+      base_path = document.URL.replace("/index", "");
+
+      if($video_text.hasClass("new")) {
+        path = base_path + "/video_texts";
+        method = "POST";
+      } else {
+        id = $video_text.attr('id').replace('video_text_', '');
+        path = base_path + "/video_texts/" + id;
+        method = "PUT";
+      }
+
+      $.post(path,
+        {
+          "_method": "PUT",
+          "video_text[content]": $content.val(),
+          "video_text[time]": $time.val()
+        },
+        function(data)
+        {
+          if (data.status == "success")
+          {
+            $target.html("Saved!");
+          }
+          else
+          {
+            $target.html("Oops!").addClass("alert");
+          }
+        }, "json");
+    }
+
+    $(".video-text .update").click(function(e) { updateVideoText(e); });
+  </script>
+
+</div>

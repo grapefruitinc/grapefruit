@@ -6,7 +6,7 @@ class VideoTextsController < ApplicationController
   before_filter :get_all_course_capsules
   before_filter :get_lecture
   before_filter :get_video
-  before_filter :get_video_text, only: [:show, :edit, :update, :destroy]
+  before_filter :get_video_text, only: [:update, :destroy]
 
   layout "course"
 
@@ -18,25 +18,28 @@ class VideoTextsController < ApplicationController
     @video_text = @video.video_texts.new(video_text_params)
 
     if @video_text.save
-      flash[:success] = "Video text added!"
+      flash[:success] = "Video annotation added!"
       redirect_to [@course, @capsule, @lecture]
     else
       redirect_to(request.fullpath)
     end
   end
 
-  def show
-  end
-
-  def edit
+  def index
+    @video_texts = @video.video_texts
   end
 
   def update
     if @video_text.update_attributes(video_text_params)
-      flash[:success] = "Video annotation updated!"
-      redirect_to [@course, @capsule, @lecture]
+      msg = { status: :success, msg: "Video annotation saved!" }
+      # redirect_to [@course, @capsule, @lecture]
     else
-      render :edit
+      msg = { status: :error, msg: "Failed to save!" }
+      # render :edit
+    end
+
+    respond_to do |format|
+      format.json { render json: msg }
     end
   end
 

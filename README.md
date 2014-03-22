@@ -12,10 +12,10 @@ Installation
 1. Go to config and rename database-example.yml to database.yml.
 
 2. Change anything in the config as needed, such as MySQL database names, passwords,
-etc. Create the database in question and apply all permissions to the user that will 
+etc. Create the database in question and apply all permissions to the user that will
 be accessing it.
 
-3. Copy config/settings-demo.local.yml to config/settings.local.yml and replace the username and password fields with youtube account information for the master youtube account that holds lecture videos
+3. Copy config/settings-demo.yml to config/settings.yml and replace the username and password fields with youtube account information for the master youtube account that holds lecture videos
 
 4. bundle install
 
@@ -26,8 +26,8 @@ be accessing it.
 Contributing
 ------------
 
-Please use spaced-tabs (don't use real tabs!! Sublime Text 2 and any decent editor
-will have an option to replace tabs with spaces). 2 space tabs please.
+Please use 2 spaced-tabs (don't use real tabs, Sublime Text 2 and any decent editor
+will have an option to replace tabs with spaces).
 
 Administration
 --------------
