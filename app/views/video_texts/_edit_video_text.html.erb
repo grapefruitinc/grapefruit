@@ -8,7 +8,7 @@
 
     <div class="row">
       <div class="small-6 columns">
-        <h4>Video Annotation <span class="videoTextNumber"></span></h4>
+        <h4>Video Annotation <span class="video-text-number"></span></h4>
       </div>
 
       <div class="small-6 columns text-right">
@@ -20,63 +20,16 @@
     <div class="row">
       <div class="small-6 columns">
         <%= f.label :content %>
-        <%= f.text_area :content, placeholder: "Question", size: "30x10" %>
+        <%= f.text_area :content, placeholder: "Content to display", size: "30x10" %>
       </div>
     </div>
 
     <div class="row">
       <div class="small-6 columns">
         <%= f.label :time %>
-        <%= f.text_field :time, placeholder: "Start time in seconds for the annotation to show up" %>
+        <%= f.text_field :time, placeholder: "Start time in seconds for the annotation to display" %>
       </div>
     </div>
 
   <% end %>
 </div>
-
-<script>
-  function updateVideoText(e)
-  {
-    e.preventDefault();
-    $target = $(e.currentTarget);
-    console.log($target);
-    $video_text = $target.parent().parent().parent();
-    console.log($video_text);
-    $target.html("Saving...");
-    console.log("Saving");
-
-    $content = $video_text.find("#video_text_content");
-    $time = $video_text.find("#video_text_time");
-
-    base_path = document.URL.replace("/index", "");
-
-    if($video_text.hasClass("new")) {
-      path = base_path + "/video_texts";
-      method = "POST";
-    } else {
-      id = $video_text.attr('id').replace('video_text_', '');
-      path = base_path + "/video_texts/" + id;
-      method = "PUT";
-    }
-
-    $.post(path,
-      {
-        "_method": "PUT",
-        "video_text[content]": $content.val(),
-        "video_text[time]": $time.val()
-      },
-      function(data)
-      {
-        if (data.status == "success")
-        {
-          $target.html("Saved!");
-        }
-        else
-        {
-          $target.html("Oops!").addClass("alert");
-        }
-      }, "json");
-  }
-
-  $(".video-text .update").click(function(e) { updateVideoText(e); });
-</script>

@@ -13,14 +13,14 @@
   </div>
 
   <div class="login">
-    <div id="videoTextCreate" style="margin-bottom: 20px;">
+    <div id="video-text-create" style="margin-bottom: 20px;">
       <!-- <div style="padding-bottom: 20px;">Note: enclose mathematical expresses in backticks (`), entered using shift+tilde (~).</div> -->
 
-      <div id="problems">
-        <%= render collection: @video_texts, partial: "edit_video_text", as: :video_text %>
+      <div id="video-texts">
+        <%= render collection: @video.video_texts, partial: "edit_video_text", as: :video_text %>
       </div>
 
-      <button class="button small" id="addVideoText">Add Video Annotation</button>
+      <button class="button small" id="add-video-text">Add Video Annotation</button>
     </div>
   </div>
 

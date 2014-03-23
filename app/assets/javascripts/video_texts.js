@@ -1,6 +1,135 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+// Video texts creation, removal, updating
+jQuery.fn.outerHTML = function(s)
+{
+  return s
+    ? this.before(s).remove()
+    : jQuery("<p>").append(this.eq(0).clone()).html();
+};
 
+// Keeps track of the numbering of the video texts
+numberManager = function(_selector)
+{
+  return {
+    ping: function() {
+      $(_selector).each(function(index) {
+        $(this).html(index + 1);
+      });
+    }
+  };
+}
+
+$(document).ready(function()
+{
+  var $videoTextCreate = $("#video-text-create");
+  var $videoTexts = $videoTextCreate.find("#video-texts");
+
+  if($videoTextCreate.length > 0)
+  {
+    blankVideoText = $(".video-text.new").outerHTML();
+    if ($(".video-text").length > 1)
+    {
+      $(".video-text.new").remove();
+    }
+
+    nm = numberManager(".video-text-number");
+    nm.ping();
+
+    function removeVideoText(e)
+    {
+      e.preventDefault();
+      if (confirm("Are you sure that you want to delete this video annotation?\n\nOnce deleted, it CANNOT be recovered!"))
+      {
+        $target = $(e.currentTarget);
+        $videoText = $target.parent().parent().parent().parent();
+        console.log($target);
+        console.log($videoText);
+
+        if ($videoText.hasClass("new"))
+        {
+          $videoText.remove();
+          nm.ping();
+        }
+        else
+        {
+          $target.html('Removing...');
+          id = $videoText.attr('id').replace('video-text-', '');
+
+          base_path = document.URL.replace("/edit", "");
+          path = base_path + "/" + id;
+
+          $.post(path,
+          {
+            "_method": "DELETE"
+          },
+          function(data)
+          {
+            $videoText.remove();
+            nm.ping();
+          }, "json");
+        }
+      }
+    }
+
+    $(".video-text .remove").click(function(e) { removeVideoText(e); });
+
+    function updateVideoText(e)
+    {
+      e.preventDefault();
+      var $target = $(e.currentTarget);
+      var $videoText = $target.parent().parent().parent().parent();
+      $target.html("Saving...");
+
+      $content = $videoText.find("#video_text_content");
+      $time = $videoText.find("#video_text_time");
+
+      base_path = document.URL
+
+      if ($videoText.hasClass("new"))
+      {
+        path = base_path;
+        method = "POST";
+      }
+      else
+      {
+        id = $videoText.attr('id').replace('video-text-', '');
+        path = base_path + "/" + id;
+        method = "PUT";
+      }
+
+      $.post(path,
+        {
+          "_method": method,
+          "video_text[content]": $content.val(),
+          "video_text[time]": $time.val()
+        },
+        function(data)
+        {
+          if (data.status == "success")
+          {
+            $target.html("Saved!");
+          }
+          else
+          {
+            $target.html("Oops!").addClass("alert");
+          }
+        }, "json");
+    }
+
+    $(".video-text .update").click(function(e) { updateVideoText(e); });
+
+    $("#add-video-text").click(function()
+    {
+      console.log(blankVideoText);
+      $videoTexts.append(blankVideoText);
+      $videoText = $videoTexts.find(".video-text").last();
+      $videoText.find(".remove").click(function(e) { removeVideoText(e); });
+      $videoText.find(".update").click(function(e) { updateVideoText(e); });
+      nm.ping();
+    });
+  }
+});
+
+// Video text displaying
 setupYoutube();
 var player, YTReady;
 var playbackTime;

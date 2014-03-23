@@ -18,15 +18,21 @@ class VideoTextsController < ApplicationController
     @video_text = @video.video_texts.new(video_text_params)
 
     if @video_text.save
-      flash[:success] = "Video annotation added!"
-      redirect_to [@course, @capsule, @lecture]
+      msg = { status: :success, msg: "Video annotation saved!" }
+      # flash[:success] = "Video annotation added!"
+      # redirect_to [@course, @capsule, @lecture]
     else
-      redirect_to(request.fullpath)
+      msg = { status: :error, msg: "Failed to save!" }
+      # redirect_to(request.fullpath)
+    end
+
+    respond_to do |format|
+      format.json { render json: msg }
     end
   end
 
   def index
-    @video_texts = @video.video_texts
+    @video.video_texts.new
   end
 
   def update
@@ -44,8 +50,16 @@ class VideoTextsController < ApplicationController
   end
 
   def destroy
-    @video_text.destroy
-    redirect_to :back
+    if @video_text.destroy
+      msg = { status: :success, msg: "Video annotation deleted!" }
+    else
+      msg = { status: :error, msg: "Failed to delete!" }
+    end
+
+    # redirect_to :back
+    respond_to do |format|
+      format.json { render json: msg }
+    end
   end
 
 private
