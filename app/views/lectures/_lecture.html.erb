@@ -1,4 +1,4 @@
 <li class="capsule-item">
   <span class="item-status icon-tick done"></span> <!--- Need logic here to switch icons based on completion -->
-    <%= link_to "#{lecture.lecture_number}. #{lecture.name}", [lecture.capsule.course, lecture.capsule, lecture], class:"item-name" %>
+    <%= link_to "#{lecture.lecture_number}. #{lecture.name}", [lecture.capsule.course, lecture.capsule, lecture], class:"item-name", data: { lecture_id: lecture.id } %>
 </li>
