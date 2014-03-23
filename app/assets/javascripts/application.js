@@ -19,16 +19,16 @@
 
 $("document").ready(function(){
 
-  $(document).foundation();   
+  $(document).foundation();
 
   var flash = $("div#top-flash div.alert-box");
 
   var current_flash_color = flash.css("backgroundColor");
-  var highlight_flash_color = flash.parent().css("backgroundColor"); 
-    
+  var highlight_flash_color = flash.parent().css("backgroundColor");
+
   flash.stop().delay(280)
     .animate({ backgroundColor: highlight_flash_color }, 200)
-    .animate({ backgroundColor: current_flash_color }, 300);  
+    .animate({ backgroundColor: current_flash_color }, 300);
 
 
   var sidebar = {
@@ -80,7 +80,7 @@ $("document").ready(function(){
   		$capsule.children(".capsule-contents").first().animate({
   			marginLeft: ((-100*type) +"%")
   		}, 250, function(){
-  		});  			
+  		});
   		$type = $listing.parent().find(".capsule-nav li").removeClass("active").eq(type);
   		$type.addClass("active");
   		return this;
@@ -94,7 +94,7 @@ $("document").ready(function(){
   		this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
   	}
   }
-  
+
   $(window).resize(function() {
     if($(".mobile-nav").css("display")!="none"){
       var medium = true;
@@ -118,7 +118,7 @@ $("document").ready(function(){
           sidebar.navigateToCapsule($(this).index());
         }
       });
-      
+
     }
   });
 
@@ -144,7 +144,7 @@ $("document").ready(function(){
         sidebar.navigateToCapsule($(this).index());
       }
     });
-    
+
   }
 
 
