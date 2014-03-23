@@ -13,7 +13,11 @@
 
         <nav class="mobile-nav">
           <div class="mobile-nav-left">
-            <i class="icon-th-menu"></i>
+            <% if content_for?(:left_sidebar) %>
+              <i class="icon-th-menu"></i>
+            <% else %>
+              <i class="icon-th-menu" style="opacity: 0;"></i>            
+            <% end %>
           </div>
           <div class="mobile-nav-right">
             <i class="icon-th-small"></i>          
@@ -39,7 +43,16 @@
   </aside>
 
   <aside class="mobile-sidebar right">
-    <%= yield(:right_sidebar) %>
+    <nav class="">
+      <%= yield(:right_sidebar) %>
+      <ul class="standard-nav">
+        <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
+        <li><%= link_to "Courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
+        <li><%= link_to "WebWork", void, class: "disabled" %></li>
+        <li><%= link_to "Profile", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
+        <li><%= link_to "Logout", destroy_user_session_path, class: "secondary", method: :delete %></li>
+      </ul>
+    </nav>
   </aside>
 
 
@@ -65,6 +78,7 @@ $rightSidebar.height(viewportHeight);
 
 function hide(side){
   $(".title-area").css("box-shadow", "none");
+  $("body").css("position", "relative");
   if(side == "left"){
     $(".mobile-nav-left i").removeClass("active");
     $leftSidebar.animate({
@@ -89,6 +103,7 @@ function hide(side){
 
 function show(side){
   $(".title-area").css("box-shadow", "0px 6px 10px rgba(0, 0, 0, 0.14)");
+  $("body").css("position", "fixed");
   if(side == "left"){
     $(".mobile-nav-left i").addClass("active");
     $leftSidebar.animate({
