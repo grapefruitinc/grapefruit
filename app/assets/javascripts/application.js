@@ -30,20 +30,25 @@ $("document").ready(function(){
     .animate({ backgroundColor: highlight_flash_color }, 200)
     .animate({ backgroundColor: current_flash_color }, 300);  
 
-
-  var accordion = $(".course-accordion");
-  var capsule = $(".course-capsule");
-  var type = $(".capsule-nav li");
-  var capsule_nav_item = $(".capsule-nav li");
+  if($(".mobile-nav").css("display")!="none"){
+    var medium = true;
+    var small = true;
+  }
 
   var sidebar = {
   	init: function(a){
   		$this = a;
+      capsule = $this.find(".course-capsule");
+      type = $this.find(".capsule-nav li");
+      originalHeight = capsule.css("height");
+      marginBump = $this.find(".capsule-header").outerHeight();
   	},
   	self: function(){
   		console.log($this);
   	},
-  	coords: [],
+    capsule: function(){
+      return capsule;
+    },
   	updateCoords: function() {
   		active_capsule = $this.children(".course-capsule.active").index();
   		active_type = $this.children(".course-capsule.active").children("nav li.active").index();
@@ -64,9 +69,9 @@ $("document").ready(function(){
   		$capsule = $this.children(".course-capsule").eq(capsule);
 
   		if(!$capsule.hasClass("active")){
-	  		$capsule.siblings().removeClass("active").animate({height: "2.5rem"}, 250);
+	  		$capsule.siblings().removeClass("active").animate({height: originalHeight}, 250);
 	  		$capsule.addClass("active").animate({
-	  			height: $capsule.children("ul.capsule-contents.active").outerHeight()+(40)
+	  			height: $capsule.children("ul.capsule-contents.active").outerHeight()+(marginBump)
 	  		}, 250, function(){
 	  		});
   		}
@@ -74,8 +79,8 @@ $("document").ready(function(){
   	},
   	navigateToType: function(type){
   		if(type > 2 || type == -1){return false;}
-		$listing = $capsule.find(".capsule-contents").removeClass("active").eq(type);
-		$listing.addClass("active").css("height", $listing.parent().outerHeight()-40);
+  		$listing = $capsule.find(".capsule-contents").removeClass("active").eq(type);
+  		$listing.addClass("active").css("height", $listing.parent().outerHeight()-marginBump);
   		$capsule.children(".capsule-contents").first().animate({
   			marginLeft: ((-100*type) +"%")
   		}, 250, function(){
@@ -94,15 +99,26 @@ $("document").ready(function(){
   	}
   }
   
-  sidebar.init($(".course-accordion"));
-
-  capsule.click(function(e){
-  	if(capsule.hasClass("active") && $(e.target).is(".capsule-nav i")){
-  		sidebar.navigateToType($(e.target).parent().index());
-  	} else {
-  		sidebar.navigateToCapsule($(this).index());
-  	}
-  });
+  if(small || medium){
+    sidebar.init($(".course-accordion--mobile"));
+    $(".course-accordion--mobile .course-capsule").click(function(e){
+      if(sidebar.capsule().hasClass("active") && $(e.target).is(".capsule-nav i")){
+        sidebar.navigateToType($(e.target).parent().index());
+      } else {
+        sidebar.navigateToCapsule($(this).index());
+      }
+    });
+  } else {
+    sidebar.init($(".course-accordion"));
+    sidebar.capsule().click(function(e){
+      if(sidebar.capsule().hasClass("active") && $(e.target).is(".capsule-nav i")){
+        sidebar.navigateToType($(e.target).parent().index());
+      } else {
+        sidebar.navigateToCapsule($(this).index());
+      }
+    });
+    
+  }
 
 
 });
