@@ -30,10 +30,6 @@ $("document").ready(function(){
     .animate({ backgroundColor: highlight_flash_color }, 200)
     .animate({ backgroundColor: current_flash_color }, 300);  
 
-  if($(".mobile-nav").css("display")!="none"){
-    var medium = true;
-    var small = true;
-  }
 
   var sidebar = {
   	init: function(a){
@@ -99,6 +95,37 @@ $("document").ready(function(){
   	}
   }
   
+  $(window).resize(function() {
+    if($(".mobile-nav").css("display")!="none"){
+      var medium = true;
+      var small = true;
+    }
+    if(small || medium){
+      sidebar.init($(".course-accordion--mobile"));
+      $(".course-accordion--mobile .course-capsule").click(function(e){
+        if(sidebar.capsule().hasClass("active") && $(e.target).is(".capsule-nav i")){
+          sidebar.navigateToType($(e.target).parent().index());
+        } else {
+          sidebar.navigateToCapsule($(this).index());
+        }
+      });
+    } else {
+      sidebar.init($(".course-accordion"));
+      sidebar.capsule().click(function(e){
+        if(sidebar.capsule().hasClass("active") && $(e.target).is(".capsule-nav i")){
+          sidebar.navigateToType($(e.target).parent().index());
+        } else {
+          sidebar.navigateToCapsule($(this).index());
+        }
+      });
+      
+    }
+  });
+
+  if($(".mobile-nav").css("display")!="none"){
+    var medium = true;
+    var small = true;
+  }
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
     $(".course-accordion--mobile .course-capsule").click(function(e){
