@@ -3,7 +3,7 @@
       link_to(@course.name, course_path(@course)),
       link_to(@capsule.name, [@course, @capsule]),
       link_to(@lecture.name, [@course, @capsule, @lecture]),
-      link_to('Add Video Text', void, class: "current")
+      link_to('Add/Edit Video Texts to #{@lecture.name}', void, class: "current")
     ])
 %>
 <div class="landing">
@@ -13,7 +13,15 @@
   </div>
 
   <div class="login">
-    <%= render collection: @video_texts, partial: "edit_video_text", as: :video_text %>
+    <div id="videoTextCreate" style="margin-bottom: 20px;">
+      <!-- <div style="padding-bottom: 20px;">Note: enclose mathematical expresses in backticks (`), entered using shift+tilde (~).</div> -->
+
+      <div id="problems">
+        <%= render collection: @video_texts, partial: "edit_video_text", as: :video_text %>
+      </div>
+
+      <button class="button small" id="addVideoText">Add Video Annotation</button>
+    </div>
   </div>
 
 </div>
