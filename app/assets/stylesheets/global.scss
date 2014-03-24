@@ -16,10 +16,16 @@ Use with extends instead of in the markup directly when possible
 .normal {font-weight: normal;}
 .upper {text-transform: uppercase;}
 
+
+$small: "screen and (max-width: 34rem)";
+$medium: "screen and (max-width: 50rem)";
+$full: "screen and (max-width: 75rem)";
+
+
 /***************************/
 
 
-body {background-color: #4B5252;}
+body {background-color: #4B5252; max-width: 100%; overflowch-x: hidden;}
 
 div#top-flash{
     text-align: center;
@@ -33,8 +39,9 @@ div#top-flash{
   background-color: #fff;
   position: fixed;
   width: 100%;
+  box-sizing: border-box;
   z-index: 9999;
-  div.top-bar{
+  div.top-bar {
     height: auto;
     margin-bottom: 0px;
     background-color: transparent;
@@ -56,10 +63,97 @@ div#top-flash{
   }
 }
 
+.mobile-nav {
+  display: none;
+  @media #{$medium} {
+    width: 100%;
+    display: block;
+    height: 2.5rem;
+    position: absolute;
+    left:0; right: 0; top: 0.65rem; bottom: 0;
+  };
+}
+
+.mobile-nav-left {
+  @include grid-column(6);  
+  text-align: left;
+}
+.mobile-nav-right {
+  @include grid-column(6);
+  text-align: right;
+}
+
+.mobile-nav [class^="icon-"] {
+  padding: 1rem;
+  background-color: #F8F8F8;
+  border: 1px solid #e9e9e9;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 #e9e9e9;
+  color: #9B9B9B;
+  transition: background-color 100ms;
+  &:active {
+    // This is the mouse-down event, not "currently shown" state.
+    background-color: #FFF;
+    transition: background-color 100ms;
+  }
+  &.active {
+    color: black;
+    background-color: #F7F7F7;
+    box-shadow: 0 -2px 0 #D5D5D5;
+    border-top: none;
+  }
+}
+
+
+.mobile-sidebar {
+  display: none;
+  @media #{$medium} {
+    display: block;
+    position: fixed;
+    z-index: 999;
+    top: 4rem;
+    width: 90%;
+    background-color: #F5F5F5;
+    overflow-y: scroll;
+    &.left {
+      left: -100%;      
+    }
+    &.right {
+      left: 100%;
+    }
+  }
+}
+
+.mobile-sidebar.right {
+  ul.standard-nav {
+    list-style: none;
+    li {
+      font-size: 1.3rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      a {
+        padding: 1rem;
+        display: block;
+        color: $topbar-bg-color;
+        text-align: center;
+      }
+      &:last-child, &:active, &:hover {
+        background-color: $topbar-bg-color;
+        a { color: white; }
+      }
+    }
+  }
+}
+
 .title-area {
     @include grid-column(4);
     height: 50px;
     img {width: 110px;}
+    @media #{$medium} {
+      @include grid-column(12);
+      height: 4rem;
+      padding: 0.5rem 0;
+      text-align: center;
+    }
 }
 .nav-area {
     @include grid-column(8);
@@ -75,6 +169,7 @@ div#top-flash{
           color: white;
         }
     }
+    @media #{$medium} {display: none;}
 }
 
 nav.horizontal ul li { display: inline-block; }
@@ -86,8 +181,9 @@ div.main-content{
 
 .page-header-container {
     background-color: $topbar-bg-color;
-    padding: 1em 0 1rem 0;
+    padding: 1rem 0;
     margin-bottom: 2rem;
+    @media #{$medium}{padding: 2rem 0;}
 }
 
 .page-header {
@@ -96,8 +192,20 @@ div.main-content{
     margin-top: 0px;
   }
 }
-.page-header-left {@include grid-column(7);}
-.page-header-right {@include grid-column(5); padding-top: .5rem;}
+.page-header-left {
+  @include grid-column(7);
+  @media #{$small} {@include grid-column(12);}
+}
+.page-header-right {
+  @include grid-column(5);
+  padding-top: .5rem;
+  text-align: right;
+  @media #{$small} {
+    @include grid-column(12);
+    text-align: left;
+    margin-top: -0.5rem;
+  }
+}
 .page-header-full {@include grid-column(12);}
 
 .page-header-left, .page-header-full {
@@ -207,9 +315,9 @@ section {
   footer
 **/
 footer{
-    border-top: 1px solid rgba(0,0,0, 0.1);
     background-color: #4B5252;
     padding: 5rem 0;
+
     a {
         color: rgba(255, 255, 255, 0.8);
         transition: color 250ms;
@@ -220,6 +328,24 @@ footer{
 
 .school-logo {
     @include grid-column(3);
+    position: relative;
+    i {
+      color: white;
+      font-size: 8rem;
+      line-height: 1rem;
+    }
+    @media #{$medium} {
+      @include grid-column(12);
+      text-align: center;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      height: 3rem;
+      i {
+        position: absolute;
+        left: 0; right: 0; bottom: 0; top: 0;        
+      }
+
+    }
 }
 
 .nav-links {
@@ -230,11 +356,20 @@ footer{
         margin-right: 1rem;
         &:last-child {margin-right: 0;}
     }
+    @media #{$medium} {
+      text-align: center;
+    }
 }
 
 .project-description {
     @include grid-column(6);
     color: rgba(255, 255, 255, 0.7);
     p {@extend .light;}
+    @media #{$medium} {
+      @include grid-column(12);
+    }
+}
 
+.icon-seal {
+  font-size: 12rem;
 }
