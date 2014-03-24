@@ -1,1 +1,3 @@
-<p><%=video_text.content%></p>
+<li class="video-text" timestart="<%=video_text.time%>">
+  <%= Time.at(video_text.time.to_i).utc.strftime("%H:%M:%S") %>: <%= video_text.content %>
+</li>

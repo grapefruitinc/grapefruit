@@ -13,9 +13,15 @@
 #
 
 class Video < ActiveRecord::Base
+
+  # Validations
+  # ========================================================
   validates :title, presence: true
   validates :description, presence: true
-  
+
+  # Relationships
+  # ========================================================
   belongs_to :lecture
   has_many :video_texts
+
 end
