@@ -25,75 +25,90 @@ $(document).ready(function()
 
   if($videoTextCreate.length > 0)
   {
-    blankVideoText = $(".video-text.new").outerHTML();
+    // Get a copy of a blank problem, used to create new problems
+    var blankVideoText = $(".video-text.new").outerHTML();
+
+    // We don't need to display a blank problem if some already exist
     if ($(".video-text").length > 1)
     {
       $(".video-text.new").remove();
     }
 
-    nm = numberManager(".video-text-number");
+    // Use numberManager to show "Problem #" titles (see number_manager.js, it's dead simple)
+    var nm = numberManager(".video-text-number");
     nm.ping();
 
     function removeVideoText(e)
     {
+      // Make sure nothing is submitted
       e.preventDefault();
-      if (confirm("Are you sure that you want to delete this video annotation?\n\nOnce deleted, it CANNOT be recovered!"))
-      {
-        $target = $(e.currentTarget);
-        $videoText = $target.parent().parent().parent().parent();
-        console.log($target);
-        console.log($videoText);
 
-        if ($videoText.hasClass("new"))
+      var deleteMessage = "Are you sure that you want to delete this video " +
+                          "annotation?\n\nOnce deleted, it CANNOT be recovered!";
+
+      // Confirm deletion
+      if (!confirm(deleteMessage)) return;
+
+      // Figure out the video text that needs to be updated
+      var $target = $(e.currentTarget);
+      var $videoText = $target.parents(".video-text");
+
+      if ($videoText.hasClass("new"))
+      {
+        // Has not been saved to the DB so no need to send an AJAX request
+        $videoText.remove();
+        nm.ping();
+      }
+      else
+      {
+        $target.html('Removing...');
+
+        // returns the id of the video text
+        var id = $videoText.attr('id').replace('video-text-', '');
+
+        var base_path = document.URL.replace("/edit", "");
+        var path = base_path + "/" + id;
+
+        $.post(path,
+        {
+          "_method": "DELETE"
+        },
+        function(data)
         {
           $videoText.remove();
           nm.ping();
-        }
-        else
-        {
-          $target.html('Removing...');
-          id = $videoText.attr('id').replace('video-text-', '');
-
-          base_path = document.URL.replace("/edit", "");
-          path = base_path + "/" + id;
-
-          $.post(path,
-          {
-            "_method": "DELETE"
-          },
-          function(data)
-          {
-            $videoText.remove();
-            nm.ping();
-          }, "json");
-        }
+        }, "json");
       }
     }
 
+    // Bind remove event to any existing video texts
     $(".video-text .remove").click(function(e) { removeVideoText(e); });
 
     function updateVideoText(e)
     {
+      // Make sure nothing is submitted
       e.preventDefault();
+
+      // Figure out the video text that needs to be updated
       var $target = $(e.currentTarget);
-      var $videoText = $target.parent().parent().parent().parent();
+      var $videoText = $target.parents(".video-text");
+
       $target.html("Saving...");
 
-      $content = $videoText.find("#video_text_content");
-      $time = $videoText.find("#video_text_time");
+      var $content = $videoText.find("#video_text_content");
+      var $time = $videoText.find("#video_text_time");
 
-      base_path = document.URL
+      var path = document.URL
 
       if ($videoText.hasClass("new"))
       {
-        path = base_path;
-        method = "POST";
+        var method = "POST";
       }
       else
       {
-        id = $videoText.attr('id').replace('video-text-', '');
-        path = base_path + "/" + id;
-        method = "PUT";
+        var id = $videoText.attr('id').replace('video-text-', '');
+        var path = path + "/" + id;
+        var method = "PUT";
       }
 
       $.post(path,
@@ -107,6 +122,7 @@ $(document).ready(function()
           if (data.status == "success")
           {
             $target.html("Saved!");
+            setTimeout(function() { $target.html("Update"); }, 3000);
           }
           else
           {
@@ -119,11 +135,13 @@ $(document).ready(function()
 
     $("#add-video-text").click(function()
     {
-      console.log(blankVideoText);
       $videoTexts.append(blankVideoText);
       $videoText = $videoTexts.find(".video-text").last();
+
+      // Bind the buttons to the new video annotation
       $videoText.find(".remove").click(function(e) { removeVideoText(e); });
       $videoText.find(".update").click(function(e) { updateVideoText(e); });
+
       nm.ping();
     });
   }
