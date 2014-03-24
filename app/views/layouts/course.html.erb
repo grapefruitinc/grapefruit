@@ -39,6 +39,13 @@
   <aside>
     <ul class="course-accordion">
       <%= render @capsules %>
+      <% if @capsules.empty? %>
+        <li class="course-capsule">
+          <div class="capsule-header">
+            <h1 class="capsule-name">No capsules yet!</h1>
+          </div>
+        </li>
+      <% end %>
     </ul>
   </aside>
   <div class="workplace">
