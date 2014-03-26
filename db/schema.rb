@@ -32,9 +32,7 @@ ActiveRecord::Schema.define(version: 20140303014426) do
     t.integer  "instructor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.string   "slug"
-=======
     t.text     "description"
     t.string   "subject"
     t.string   "course_number"
@@ -43,7 +41,6 @@ ActiveRecord::Schema.define(version: 20140303014426) do
     t.integer  "year"
     t.integer  "spots_available"
     t.integer  "credits"
->>>>>>> master
   end
 
   add_index "courses", ["slug"], name: "index_courses_on_slug", using: :btree
