@@ -1,4 +1,14 @@
 @import "application";
+@import "capsules";
+@import "courses";
+@import "dashboard";
+@import "documents";
+@import "lectures";
+@import "problem_sets";
+@import "replies";
+@import "topics";
+@import "video_accompanys";
+@import "videos";
 
 div#top-flash{
   div.alert-box{
@@ -7,12 +17,30 @@ div#top-flash{
   }
 }
 
-
-
-
+.nav-area {
+  a{
+    &:hover {
+      border-radius: 0px;
+      background-color: lighten($topbar-bg-color, 10%);
+    }
+  }
+  a.active{
+    background-color: $topbar-bg-color;
+    color: white;
+  }
+  a.disabled{
+    background-color: #fff;
+    color: #ccc;
+  }
+}
 
 div.main-content{
   min-height: 400px;
+  overflow: auto;
+
+  section h3{
+    margin-top: 1em;
+  }
 
   table.listing{
     width: 50%;
@@ -57,9 +85,6 @@ form.registration_edit_form{
   }
 }
 
-footer{
-  font-size: .8em;
-}
 
 .topic,.reply {
   .author {

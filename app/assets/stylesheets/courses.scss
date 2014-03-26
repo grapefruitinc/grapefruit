@@ -1,13 +1,7 @@
-// Place all the styles related to the Courses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 span.instructing{
   @include label();
 }
 
-.page-header-right {
-	text-align: right;
-}
 
 .course-details {
 	display: inline-block;
@@ -32,6 +26,7 @@ span.instructing{
 	vertical-align: top;
 	line-height: 2rem;
 	margin-top: 0.3rem;
+    margin-bottom: 0em;
 	li {display: inline-block;}
 	li a {
 		@extend .stateful-button--inactive;
@@ -42,6 +37,7 @@ span.instructing{
     @include grid-column(4);
     margin-bottom: 1rem;
     margin-top: 1rem;
+    position: relative;
     .course-card-image {
         border-radius: 4px;
     }
@@ -68,5 +64,243 @@ span.instructing{
                 text-align: right;
             }
         }
+    }
+    .course-anchor {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0; left: 0; right: 0; bottom: 0;
+        opacity: 0;
+    }
+
+    @media #{$medium} {@include grid-column(6);}
+    @media #{$small} {@include grid-column(12);}
+
+
+}
+
+
+section.course {
+    @include grid-row();
+    position: relative;
+    background-color: #FFF;
+    margin-bottom: 4rem;
+    aside {
+        @include grid-column(3);
+        background-color: #F7F7F7;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-right: none;
+        padding: 0;
+        position: absolute;
+        width: 20%;
+        left: -20%;
+        @media #{$full} {
+            position: relative;
+            left: 0;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        @media #{$medium} {display: none;}
+    }
+    .workplace {
+        @include grid-column(12);
+        min-height: 25rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 1rem;
+        @media #{$full} {@include grid-column(9);}
+        @media #{$medium} {@include grid-column(12);}
+        p.description{
+          color: $grey-text-color;
+        }
+    }
+}
+
+.course-accordion {
+    list-style: none;
+    margin-bottom: 0;
+    a{
+      color: #ccc;
+      &:hover{
+        color: #fff;
+      }
+    }
+}
+
+
+
+
+.course-capsule {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    .capsule-name {
+        @include grid-column(8);
+        @extend .normal;
+        font-size: 0.8rem;
+        color: #777777;
+
+    }
+    .capsule-header {
+        @include grid-row($behavior: collapse);
+        padding: 0.5rem 0;
+        &:hover {
+            cursor: pointer;
+        }
+        .capsule-status {
+            margin-right: 0.5rem;
+            font-size: 1rem;
+            float: left;
+        }
+        .capsule-nav {
+            @include grid-column(4, $last-column: true);
+            float: right;
+            padding-left: 0;
+            text-align: right;
+            margin-left: 0;
+            display: none;
+
+            li {
+                display: inline-block;
+                margin-left: 0.1rem;
+                opacity: 0.5;
+                transition: opacity 200ms;
+                &:hover {opacity: 1;}
+                &.active {opacity: 1;}
+                &:first-child {margin-left: 0;}
+            }
+        }
+    }
+    &.active {
+        height: auto;
+        .capsule-nav { display: inline-block; }
+        .capsule-name {
+            overflow: hidden;
+            color: black;
+            max-width: 60%;
+            @extend .bold;
+            &.long:hover {
+                &:after {content: '';}
+                -webkit-animation: marquee 10s linear infinite;            
+            }
+        }
+    }
+}
+
+@-webkit-keyframes marquee {
+    0%   { text-indent: 0%; }
+    55%  { text-indent: -90%; opacity: 1; }
+    56%  { text-indent: -90%; opacity: 0; }
+    67%  { text-indent: 50%; opacity: 0;}
+    68%  { opacity: 1; }
+    100% { text-indent: 0%; }
+}
+
+
+
+.capsule-contents {
+    overflow: hidden;
+    margin-left: 0;
+    background-color: #45535A;
+    list-style: none;
+    width: 100%;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    border-top: 3px solid black;
+    margin-bottom: -7px;
+    display: inline-block;
+    margin-right: -3px;
+    vertical-align: top;
+    .item-status {
+        margin-right: 0.5rem;
+        opacity: 0;
+    }
+}
+
+span[class*="status"] {
+    opacity: 0;
+    &.done {
+        opacity: 1;
+        color: #76C582;            
+    }
+    &.in-progress {
+        opacity: 1;
+        color: #E6A44D;   
+    }
+
+}
+
+
+.capsule-item {
+    margin: 0.3rem 0;
+    .capsule-item-empty {
+        text-align: center;
+        @extend .light;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        white-space: normal;
+    }
+    .item-status {}
+    .item-name, a {
+        font-size: 0.8rem;
+        vertical-align: middle;
+        margin-top: 0;
+        @extend .normal;
+        display: inline-block;
+        color: #97A3A9;
+        white-space: normal;
+        max-width: 85%;
+        line-height: 1rem;
+    }
+    &.active {
+        .item-name {
+            color: white;
+            @extend .bold;            
+        }
+    }
+    &.done{
+        .item-status {
+            opacity: 1;
+            color: #76C582;            
+        }
+    }
+    &.in-progress{
+        .item-status {
+            opacity: 1;
+            color: #E6A44D;            
+        }
+        .item-name {
+            color: white;
+            @extend .bold;
+        }
+    }
+}
+
+
+.course-accordion--mobile {
+    min-height: 150%;
+    .course-capsule {
+        height: 3.3rem;
+    }
+    .capsule-name {
+        font-size: 1.2rem;
+    }
+    .capsule-item {
+        margin: 1rem 0;
+    }
+    .item-status {
+        font-size: 1.3rem;
+        vertical-align: middle;
+        line-height: 1.1rem;
+    }
+    .item-name {
+        font-size: 1.1rem;
+    }
+    .capsule-nav li {
+        font-size: 1.3rem;
+        padding: 0 0.5rem;
+    }
+    .capsule-item-empty {
+        font-size: 1.5rem;
     }
 }

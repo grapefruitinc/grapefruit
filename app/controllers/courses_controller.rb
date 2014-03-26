@@ -2,8 +2,9 @@ class CoursesController < ApplicationController
   
   before_filter :authenticate_user!
   before_filter :get_course, only: [:show, :edit, :update, :destroy]
+  before_filter :get_capsules, only: [:show, :edit, :update, :destroy]
 
-  layout "home"
+  layout :get_layout
   
   def new
     @course = Course.new
@@ -26,10 +27,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    ### Should change created_at to a more user-determined statistic ###
-    @capsules = @course.capsules.order("created_at DESC")
-    @capsules.build
-
     @documents = @course.documents
 
     @course_user = @course.course_user(current_user)
@@ -63,7 +60,23 @@ class CoursesController < ApplicationController
 private
 
   def course_params
-    params.require(:course).permit(:name)
+    params.require(:course).permit(:name, :description, :subject, :course_number,
+                                   :course_registration_number, :semester, :year,
+                                   :spots_available, :credits)
+  end
+
+  def get_layout
+    case action_name
+    when "new", "create", "index"
+      "home"
+    else
+      "course"
+    end
+  end
+
+  def get_capsules
+    @capsules = @course.capsules.order("created_at DESC")
+    @capsules.build
   end
   
 end

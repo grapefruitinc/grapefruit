@@ -1,6 +1,8 @@
 <tr>
   <td>
-    <%= link_to (if document.description? then document.description else document[:file] end), document.file.url %>
+    <%= link_to (if document.description? then document.description else document[:file] end), 
+          document.file.url,
+          target: "_blank" %>
   </td>
   <td>
     <%= document.file.file.extension %>

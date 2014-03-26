@@ -1,40 +1,50 @@
 <% page_title 'Profile' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "registration_edit_form" }) do |f| %>
+<div class="page-header-container">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h3 class="title">Edit Your Profile</h3>
+    </div>
+  </div>
+</div>
 
-  <h3>Edit Profile</h3>
+<section>
 
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "registration_edit_form" }) do |f| %>
 
-  <fieldset>
+    <%= devise_error_messages! %>
 
-    <legend>Contact Information</legend>
+    <fieldset>
+
+      <legend>Contact Information</legend>
+      
+      <%= f.text_field :name, placeholder: "Name", autofocus: true %>
+
+      <%= f.email_field :email, placeholder: "Email Address" %>
+
+    </fieldset>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <fieldset>
+
+      <legend>Change Password <small>(leave blank if you don't want to change it)</small></legend>
     
-    <%= f.text_field :name, placeholder: "Name", autofocus: true %>
+      <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
 
-    <%= f.email_field :email, placeholder: "Email Address" %>
+      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
 
-  </fieldset>
+    </fieldset>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <fieldset class="highlight">
+      <legend>Confirm changes with your current password.</legend>
+      <%= f.password_field :current_password, placeholder: "Current Password" %>
+    </fieldset>
+
+    <%= f.submit "Update", class: "button" %>
+
   <% end %>
 
-  <fieldset>
-
-    <legend>Change Password <small>(leave blank if you don't want to change it)</small></legend>
-  
-    <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
-
-    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
-
-  </fieldset>
-
-  <fieldset class="highlight">
-    <legend>Confirm changes with your current password.</legend>
-    <%= f.password_field :current_password, placeholder: "Current Password" %>
-  </fieldset>
-
-  <%= f.submit "Update", class: "button" %>
-
-<% end %>
+</section>

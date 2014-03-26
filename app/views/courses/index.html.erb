@@ -3,7 +3,7 @@
     <div class="page-header-left">
       <h1 class="title">Courses</h1>
       <!-- if @course.description.empty? -->
-        <p class="description">See all course offerings at { school.name } </p>
+        <p class="description">See all course offerings at <%= SCHOOL_NAME %> </p>
       <!-- endif -->
     </div>
     <div class="page-header-right">
@@ -18,10 +18,9 @@
   </div>
 </div>
 
-
 <section>
   <div class="page-header">
-    <h3 class="page-header-title">Enrolled</h3>    
+    <h3 class="page-header-title">Enrolled</h3>
   <% if @enrolled_courses.empty? %>
     <h5 class="light">You are not enrolled in any courses.</h5>
   </div>
@@ -32,16 +31,15 @@
   <hr>
 </section>
 
-<section>
-  <div class="page-header">
-    <h3 class="page-header-title">Courses You Instruct</h3>    
-  </div>
-  <% unless @instructed_courses.blank? %>
-    <%= render @instructed_courses %>
-  <% end %>
-  <hr>
-</section>
-
+<% unless @instructed_courses.blank? %>
+  <section>
+    <div class="page-header">
+      <h3 class="page-header-title">Courses You Instruct</h3>
+    </div>
+      <%= render @instructed_courses %>
+    <hr>
+  </section>
+<% end %>
 
 <section>
   <div class="page-header">
