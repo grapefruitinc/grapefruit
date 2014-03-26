@@ -20,7 +20,7 @@ class RepliesController < ApplicationController
 
 private
 
-  def reply_params(extra_params = nil)
+  def reply_params(extra_params = {})
     params.require(:reply).permit(:body).merge(extra_params)
   end
 
