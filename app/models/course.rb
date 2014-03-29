@@ -18,7 +18,8 @@
 #
 
 class Course < ActiveRecord::Base
-  
+  extend FriendlyId
+
   # Validations
   # ========================================================
   validates_presence_of :name, :description, :subject, :course_number,
@@ -35,6 +36,18 @@ class Course < ActiveRecord::Base
   has_many :capsules, dependent: :destroy
   has_many :documents, dependent: :destroy
   has_many :topics, dependent: :destroy
+
+  # Friendly_id definitions
+  # ========================================================
+  friendly_id :name, use: [:slugged, :finders, :history]
+
+  def slug_candidates
+    [
+      :name#,
+      #[:name, :professor],
+      #[:name, :professor, :semester]
+    ]
+  end
 
   # Student definitions
   # ========================================================

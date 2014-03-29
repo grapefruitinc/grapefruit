@@ -49,6 +49,9 @@ gem "activerecord-import", ">= 0.4.0"
 # Simple pagination
 gem "will_paginate"
 
+# Custom URLs. Read more: https://github.com/norman/friendly_id
+gem "friendly_id", ">=5.0.0"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   # helpful if you know you won't have an internet connection
@@ -56,7 +59,7 @@ group :doc do
 end
 
 group :development do
-	gem 'annotate'
+  gem 'annotate'
   gem 'thin'
   # optional, makes git deployment easy.
   # gem 'git-deploy'

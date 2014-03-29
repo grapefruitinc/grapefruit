@@ -70,6 +70,8 @@ GEM
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    friendly_id (5.0.3)
+      activerecord (>= 4.0.0)
     fssm (0.2.10)
     hike (1.2.3)
     i18n (0.6.9)
@@ -195,6 +197,7 @@ DEPENDENCIES
   carrierwave
   compass-rails
   devise
+  friendly_id (>= 5.0.0)
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
