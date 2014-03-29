@@ -38,6 +38,10 @@
         course.instructor == user
       end
 
+      can :read, Course do |course|
+        user.student_courses.include? course
+      end
+
       can :manage, Capsule do |capsule|
         capsule.course.instructor == user
       end
