@@ -14,10 +14,8 @@
 
       <nav class="nav-area horizontal">
         <ul>
-          <!-- Need to change these link destinations -->
-          <li><%= link_to "courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
-          <li><%= link_to "faq", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
-          <li><%= link_to "contact", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
+          <li><%= link_to "about", about_path, class: ("active" if params[:action] == "about") %></li>
+          <li><%= link_to "contact", contact_path, class: ("active" if params[:action] == "contact") %></li>
           <li><%= link_to "login", new_user_session_path, class: ("active" if params[:controller] == "devise/sessions") %></li>
         </ul>
       </nav>
