@@ -18,7 +18,7 @@ Grapefruit::Application.routes.draw do
   get 'tos' => 'guest#tos'
   get 'contact' => 'guest#contact'
 
-  devise_for :users, :skip => [:sessions, :passwords]
+  devise_for :users, :skip => [:sessions, :passwords, :registrations]
 
   as :user do
 
@@ -32,6 +32,13 @@ Grapefruit::Application.routes.draw do
     post 'forgot' => 'devise/passwords#create'
     put 'forgot' => 'devise/passwords#update', as: :user_password
     get 'forgot/change' => 'devise/passwords#edit', as: :edit_user_password
+
+    # registrations
+    get   'join' => 'devise/registrations#new',    as: :new_user_registration
+    post  'join' => 'devise/registrations#create', as: :user_registration
+    get 'cancel'   => 'devise/registrations#cancel', as: :cancel_user_registration
+    get 'settings' => 'devise/registrations#edit',   as: :edit_user_registration
+    put 'join' => 'devise/registrations#update', as: :update_user_registration
 
   end
 
