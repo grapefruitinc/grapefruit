@@ -3,6 +3,12 @@
 .top-bar-container {
     background-color: #fff;
     position: relative;
+  .nav-area {
+    a.active{
+      background-color: $topbar-bg-color;
+      color: #fff;
+    }
+  }
 }
 
 .page-header-container {
@@ -32,7 +38,7 @@ div.main-content{
 
     div.content{
         @include grid-row;
-        @include grid-column(6, $offset: 3);
+        @include grid-column(8, $offset: 2);
         padding: 1em 2em;
         margin-bottom: 2em;
         border-radius: 0em 0em 1em 1em;
