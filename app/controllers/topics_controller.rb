@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   before_filter :get_topic, only: [:show]
   before_filter :get_course, only: [:new, :create, :index, :show]
 
-  layout "home"
+  layout "course"
 
   def new
     @topic = @course.topics.new

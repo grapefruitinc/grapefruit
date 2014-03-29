@@ -4,10 +4,10 @@
 #
 #  id                         :integer          not null, primary key
 #  name                       :string(255)
+#  instructor_id              :integer
 #  created_at                 :datetime
 #  updated_at                 :datetime
-#  instructor_id              :integer
-#  description                :string(255)
+#  description                :text(255)
 #  subject                    :string(255)
 #  course_number              :string(255)
 #  course_registration_number :string(255)

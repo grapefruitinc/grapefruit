@@ -30,6 +30,8 @@ class ApplicationController < ActionController::Base
     unless @course.present?
       flash[:error] = "Invalid course!"
       redirect_to root_path
+    else
+      @capsules = @course.capsules
     end
   end
 
