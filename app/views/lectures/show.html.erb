@@ -22,16 +22,18 @@
   <h3>Videos</h3>
 
   <% if can? :manage, @course %>
-   <div><%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), class: "button small" %></div>
+   <div>
+     <%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), class: "button small" %>
+   </div>
   <% end %>
 
-  <% if @videos.empty? and @lecture.mediasite_url.blank? %>
+  <% if @videos.empty? && @lecture.mediasite_url.blank? %>
     <p>No videos found.</p>
   <% end %>
-  
+
   <% @videos.each do |video| %>
     <%= render video %>
-    <% if @videos.length > 1 %> 
+    <% if @videos.length > 1 %>
       <div class="custom-hr"></div>
     <% end %>
   <% end %>

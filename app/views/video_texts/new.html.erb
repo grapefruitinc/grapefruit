@@ -7,13 +7,13 @@
     ])
 %>
 <div class="landing">
-  
+
   <div class="description">
     <h3>Create New Video Text</h3>
   </div>
 
   <div class="login">
-  
+
     <%= form_for [@course, @capsule, @lecture, @video, @video_text] do |f| %>
       <%= devise_error_messages! %>
 
@@ -23,7 +23,7 @@
       <small>Start time in seconds for the video to show up</small> <br />
       <%= f.text_field :time %></div>
 
-      <div><%= f.submit "Add Video", :class => "button small" %></div>
+      <div><%= f.submit "Add Video Annotation", :class => "button small" %></div>
     <% end %>
   </div>
 

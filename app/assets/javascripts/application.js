@@ -118,7 +118,6 @@ $("document").ready(function(){
           sidebar.navigateToCapsule($(this).index());
         }
       });
-
     }
   });
 
@@ -146,6 +145,5 @@ $("document").ready(function(){
     });
 
   }
-
 
 });

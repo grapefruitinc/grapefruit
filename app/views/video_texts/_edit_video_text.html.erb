@@ -1,0 +1,35 @@
+<% if video_text.persisted? %>
+  <div class="video-text" id="video-text-<%= video_text.id %>">
+<% else %>
+  <div class="video-text new">
+<% end %>
+
+  <%= form_for [@course, @capsule, @lecture, @video, video_text], remote: true do |f| %>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <h4>Video Annotation <span class="video-text-number"></span></h4>
+      </div>
+
+      <div class="small-6 columns text-right">
+        <button class="button small alert remove">Remove</button>
+        <button class="button small update">Update</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <%= f.label :content %>
+        <%= f.text_area :content, placeholder: "Content to display", size: "30x10" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <%= f.label :time %>
+        <%= f.text_field :time, placeholder: "Start time in seconds for the annotation to display" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

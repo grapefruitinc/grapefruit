@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
-  
+
   before_filter :authenticate_user!
   before_filter :get_course, only: [:show, :edit, :update, :destroy]
   before_filter :get_capsules, only: [:show, :edit, :update, :destroy]
 
   layout :get_layout
-  
+
   def new
     @course = Course.new
   end
@@ -78,5 +78,5 @@ private
     @capsules = @course.capsules.order("created_at DESC")
     @capsules.build
   end
-  
+
 end

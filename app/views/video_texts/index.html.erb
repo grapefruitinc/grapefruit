@@ -1,0 +1,28 @@
+<%= breadcrumbs([
+      link_to("All Courses", courses_path),
+      link_to(@course.name, course_path(@course)),
+      link_to(@capsule.name, [@course, @capsule]),
+      link_to(@lecture.name, [@course, @capsule, @lecture]),
+      link_to('Add/Edit Video Texts to #{@lecture.name}', void, class: "current")
+    ])
+%>
+<div class="landing">
+
+  <div class="description">
+    <h2>Edit Video Texts</h2>
+  </div>
+
+  <div class="login">
+    <div id="video-text-create" style="margin-bottom: 20px;">
+      <!-- <div style="padding-bottom: 20px;">Note: enclose mathematical expresses in backticks (`), entered using shift+tilde (~).</div> -->
+
+      <div id="video-texts">
+        <%= render collection: @video.video_texts, partial: "edit_video_text", as: :video_text %>
+      </div>
+
+      <button class="button small" id="add-video-text">Add Video Annotation</button>
+    </div>
+  </div>
+
+</div>
+
