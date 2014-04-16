@@ -35,7 +35,15 @@ class User < ActiveRecord::Base
   has_many :topics, foreign_key: "author_id"
 
   def display_identifier
-    !self.name.blank? ? self.name.split(" ").first : self.email
+    !self.name.blank? ? self.first_name : self.email
+  end
+
+  def first_name
+    self.name.split(" ").first
+  end
+
+  def last_name
+    self.name.split(" ").last
   end
 
 end
