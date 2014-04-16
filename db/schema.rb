@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140303014426) do
     t.integer  "year"
     t.integer  "spots_available"
     t.integer  "credits"
+    t.text     "webwork_url"
   end
 
   add_index "courses", ["slug"], name: "index_courses_on_slug", using: :btree
