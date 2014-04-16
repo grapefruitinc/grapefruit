@@ -5,7 +5,6 @@ gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for testss
 # Use mysql2 for development + production
-gem 'sqlite3'
 gem 'mysql2'
 
 # Use SCSS for stylesheets
@@ -60,6 +59,10 @@ group :development do
   gem 'thin'
   # optional, makes git deployment easy.
   # gem 'git-deploy'
+end
+
+group :test do
+  gem 'sqlite3'
 end
 
 # Video Controls
