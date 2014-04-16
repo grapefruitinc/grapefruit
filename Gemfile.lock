@@ -99,6 +99,7 @@ GEM
       daemon_controller (>= 1.1.0)
       rack
       rake (>= 0.8.1)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -190,6 +191,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   passenger
+  pg
   rails (= 4.0.1)
   rails_config
   sass-rails (~> 4.0.0)

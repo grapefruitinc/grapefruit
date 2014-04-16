@@ -71,6 +71,10 @@ group :production do
   gem 'passenger'
 end
 
+group :staging do
+  gem 'pg'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
