@@ -13,6 +13,6 @@ class CreateFriendlyIdSlugs < ActiveRecord::Migration
     add_index :friendly_id_slugs, :sluggable_type
 
     User.reset_column_information
-    User.each { |user| user.save }
+    User.all.each { |user| user.save }
   end
 end
