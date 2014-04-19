@@ -1,7 +1,5 @@
-
-
 <li class="course-capsule">
-	<div class="capsule-header">
+	<a class="capsule-header" href="<%= course_capsule_path(capsule.course, capsule) %>">
 		<h1 class="capsule-name"><span class="capsule-status"></span>
 			<%= capsule.name %>
 		</h1>
@@ -10,7 +8,7 @@
 			<li><i class="icon-pen interactive"></i></li>
 			<li><i class="icon-folder interactive"></i></li>
 		</ul>        
-	</div>
+	</a>
 	<ul class="capsule-contents active">
 		<% if capsule.lectures.empty? %>
 			<li class="capsule-item">

@@ -1,4 +1,8 @@
 <% page_title @lecture.name %>
+<script>
+var capsule_id = <%= @capsule.id %>;
+var lecture_id = <%= @lecture.id %>;
+</script>
 
 <%= breadcrumbs([
       link_to('All Courses', courses_path),

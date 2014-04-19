@@ -31,6 +31,7 @@ $("document").ready(function(){
     .animate({ backgroundColor: current_flash_color }, 300);  
 
 
+
   var sidebar = {
   	init: function(a){
   		$this = a;
@@ -135,6 +136,9 @@ $("document").ready(function(){
         sidebar.navigateToCapsule($(this).index());
       }
     });
+
+    sidebar.navigate(capsule_id-1);
+
   } else {
     sidebar.init($(".course-accordion"));
     sidebar.capsule().click(function(e){
@@ -144,6 +148,12 @@ $("document").ready(function(){
         sidebar.navigateToCapsule($(this).index());
       }
     });
+
+    sidebar.navigate(capsule_id-1);
+    if(typeof lecture_id !== 'undefined'){
+      $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
+    }
+
     
   }
 

@@ -1,4 +1,5 @@
 <% page_title (@capsule.name + ' :: ' + @course.name) %>
+<script>var capsule_id = <%= @capsule.id %>;</script>
 
 <nav class="breadcrumbs">
   <%= link_to "All Courses", courses_path %>
