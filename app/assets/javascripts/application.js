@@ -40,6 +40,9 @@ $("document").ready(function(){
       originalHeight = capsule.css("height");
       marginBump = $this.find(".capsule-header").outerHeight();
   	},
+    type: function(){
+      return $this.find(".capsule-nav li");
+    },
   	self: function(){
   		console.log($this);
   	},
@@ -115,14 +118,21 @@ $("document").ready(function(){
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
     sidebar.navigate(capsule_id-1);
+    sidebar.type().click(function(e){
+      e.preventDefault();
+      sidebar.navigateToType(e.target.eq());
+    });
     if(typeof lecture_id !== 'undefined'){
       $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
     }
 
   } else {
     sidebar.init($(".course-accordion"));
-
     sidebar.navigate(capsule_id-1);
+    sidebar.type().click(function(e){
+      e.preventDefault();
+      sidebar.navigateToType($(e.target).parent().index());
+    });
     if(typeof lecture_id !== 'undefined'){
       $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
     }
