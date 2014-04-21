@@ -144,8 +144,11 @@ section.course {
     .capsule-header {
         @include grid-row($behavior: collapse);
         padding: 0.5rem 0;
+        display: block;
+        color: inherit;
         &:hover {
             cursor: pointer;
+            color: inherit;
         }
         .capsule-status {
             margin-right: 0.5rem;
