@@ -46,4 +46,12 @@ class User < ActiveRecord::Base
     self.name.split(" ").last
   end
 
+  def first_initial_last_name
+    self.first_name[0].downcase + self.last_name.downcase
+  end
+
+  def unique_tag
+    "#{self.first_initial_last_name}_#{self.id}"
+  end
+
 end

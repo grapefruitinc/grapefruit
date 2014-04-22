@@ -5,13 +5,13 @@ class Webwork::User < ActiveRecord::Base
 	# created for a specific user, course, and model
 	def self.missing_records?(course, user)
 		self.set_table_name_using_course(course, "user")
-		return true unless self.where(user_id: user.id).count > 0
+		return true unless self.where(user_id: user.unique_tag).count > 0
 
 		self.set_table_name_using_course(course, "password")
-		return true unless self.where(user_id: user.id).count > 0
+		return true unless self.where(user_id: user.unique_tag).count > 0
 
 		self.set_table_name_using_course(course, "permission")
-		return true unless self.where(user_id: user.id).count > 0
+		return true unless self.where(user_id: user.unique_tag).count > 0
 
 		return false
 	end
@@ -30,18 +30,18 @@ class Webwork::User < ActiveRecord::Base
 
 	def self.create_from_course_and_user(course, user)
 		self.set_table_name_using_course(course, "user")
-		if self.where(user_id: user.id).count == 0
-			self.new(user_id: user.id, first_name: user.first_name, last_name: user.last_name, email_address: user.email, student_id: user.id, section: 0, recitation: 0, comment: "").save
+		if self.where(user_id: user.unique_tag).count == 0
+			self.new(user_id: user.unique_tag, first_name: user.first_name, last_name: user.last_name, email_address: user.email, student_id: user.unique_tag, status: "C", section: nil, recitation: nil, comment: nil).save
 		end
 
 		self.set_table_name_using_course(course, "password")
-		if self.where(user_id: user.id).count == 0
-			self.new(user_id: user.id, password: user.encrypted_password).save
+		if self.where(user_id: user.unique_tag).count == 0
+			self.new(user_id: user.unique_tag, password: user.encrypted_password.crypt((0..9).to_.sample.to_s + ('A'..'Z').to_a.sample.to_s).save
 		end
 
 		self.set_table_name_using_course(course, "permission")
-		if self.where(user_id: user.id).count == 0
-			self.new(user_id: user.id, permission: 1).save
+		if self.where(user_id: user.unique_tag).count == 0
+			self.new(user_id: user.unique_tag, permission: 1).save
 		end
 	end
 
