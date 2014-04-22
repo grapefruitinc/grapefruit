@@ -2,10 +2,11 @@ class ProblemSetsController < ApplicationController
 
   before_filter :get_course
   before_filter :get_capsule
-  before_filter :get_problem_set, only: [:show, :edit, :update, :destroy]
+  before_filter :get_capsules, only: [:show]
+  before_filter :get_problem_set, only: [:show, :edit, :update, :destroy, :iframe]
   before_filter :authenticate_user!
 
-  layout "home"
+  layout :get_layout
 
   def new
     @problem_set = @capsule.problem_sets.new
@@ -43,7 +44,21 @@ class ProblemSetsController < ApplicationController
     redirect_to :back
   end
 
+  def iframe
+    @url = @problem_set.webwork_url
+  end
+
 private
+
+  def get_layout
+    if action_name == "show"
+      return "course"
+    elsif action_name == "iframe"
+      return "lofi"
+    else
+      return "home"
+    end
+  end
 
   def get_problem_set
     @problem_set = ProblemSet.find(params[:problem_set_id] || params[:id])
@@ -54,7 +69,7 @@ private
   end
 
   def problem_set_params
-    params.require(:problem_set).permit(:name)
+    params.require(:problem_set).permit(:name, :webwork_url)
   end
 
 end
