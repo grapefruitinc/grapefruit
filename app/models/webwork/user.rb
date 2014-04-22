@@ -36,7 +36,7 @@ class Webwork::User < ActiveRecord::Base
 
 		self.set_table_name_using_course(course, "password")
 		if self.where(user_id: user.unique_tag).count == 0
-			self.new(user_id: user.unique_tag, password: user.encrypted_password.crypt((0..9).to_.sample.to_s + ('A'..'Z').to_a.sample.to_s).save
+			self.new(user_id: user.unique_tag, password: user.encrypted_password.crypt((0..9).to_a.sample.to_s + ('A'..'Z').to_a.sample.to_s)).save
 		end
 
 		self.set_table_name_using_course(course, "permission")

@@ -45,6 +45,7 @@ class ProblemSetsController < ApplicationController
   end
 
   def iframe
+    @course.ensure_webwork_exists(current_user)
     @url = @problem_set.webwork_url
   end
 
