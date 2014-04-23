@@ -79,4 +79,13 @@ class Course < ActiveRecord::Base
     "#{self.students.count} / #{self.spots_available}"
   end
 
+  # Ensures that all webwork records needed exist for this course and a specific user
+  def ensure_webwork_exists(user)
+    return false unless self.webwork_url.present?
+
+    if Webwork::User.missing_records?(self, user)
+      Webwork::User.create_from_course_and_user(self, user)
+    end
+  end
+
 end
