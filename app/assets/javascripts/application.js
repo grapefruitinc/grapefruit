@@ -115,7 +115,9 @@ $("document").ready(function(){
   }
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
-    sidebar.navigate(capsule_id-1);
+    if(typeof capsule_id !== 'undefined'){
+      sidebar.navigate(capsule_id-1);
+    }
     sidebar.type().click(function(e){
       e.preventDefault();
       sidebar.navigateToType(e.target.eq());
@@ -126,8 +128,10 @@ $("document").ready(function(){
 
   } else {
     sidebar.init($(".course-accordion"));
-    sidebar.navigate(capsule_id-1);
-    sidebar.type().click(function(e){
+    if(typeof capsule_id !== 'undefined'){
+      sidebar.navigate(capsule_id-1);
+    }
+      sidebar.type().click(function(e){
       e.preventDefault();
       sidebar.navigateToType($(e.target).parent().index());
     });
