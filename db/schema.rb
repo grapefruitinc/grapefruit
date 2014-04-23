@@ -85,15 +85,6 @@ ActiveRecord::Schema.define(version: 20140422164629) do
     t.integer  "capsule_id"
   end
 
-  create_table "problems", force: true do |t|
-    t.integer  "problem_set_id"
-    t.text     "question"
-    t.text     "solution"
-    t.integer  "worth",          default: 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "replies", force: true do |t|
     t.integer  "course_id"
     t.integer  "topic_id"
@@ -152,21 +143,6 @@ ActiveRecord::Schema.define(version: 20140422164629) do
     t.integer  "lecture_id"
     t.string   "file"
     t.string   "youtube_id"
-  end
-
-  create_table "webwork_passwords", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "webwork_permissions", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "webwork_users", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end
