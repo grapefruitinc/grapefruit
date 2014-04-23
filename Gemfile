@@ -5,7 +5,6 @@ gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for tests
 # Use mysql2 for development + production
-gem 'sqlite3'
 gem 'mysql2'
 gem 'connection_ninja'
 
@@ -37,10 +36,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-gem 'jquery-turbolinks'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -66,11 +61,19 @@ group :development do
   # gem 'git-deploy'
 end
 
+group :test do
+  gem 'sqlite3'
+end
+
 # Video Controls
 gem 'youtube_it'
 
 group :production do
   gem 'passenger'
+end
+
+group :staging do
+  gem 'pg'
 end
 
 # Use ActiveModel has_secure_password
