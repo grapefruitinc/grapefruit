@@ -15,7 +15,7 @@
 //= require foundation
 //= require_tree .
 
-$("document").ready(function(){
+$(document).ready(function(){
 
   $(document).foundation();
 
@@ -27,8 +27,6 @@ $("document").ready(function(){
   flash.stop().delay(280)
     .animate({ backgroundColor: highlight_flash_color }, 200)
     .animate({ backgroundColor: current_flash_color }, 300);
-
-
 
   var sidebar = {
   	init: function(a){
@@ -62,17 +60,11 @@ $("document").ready(function(){
   					.children(".capsule-item").eq(item);
   	},
   	navigateToCapsule: function(capsule){
-  		if(capsule >= $this.children(".course-capsule").length || capsule == -1){return false;}
+  		if(capsule == -1){return false;}
 
-  		$capsule = $this.children(".course-capsule").eq(capsule);
-
-  		if(!$capsule.hasClass("active")){
-	  		$capsule.siblings().removeClass("active").animate({height: originalHeight}, 250);
-	  		$capsule.addClass("active").animate({
-	  			height: $capsule.children("ul.capsule-contents.active").outerHeight()+(marginBump)
-	  		}, 250, function(){
-	  		});
-  		}
+      $capsule = $("[data-capsule-id=" + capsule + "]");
+      // console.log($capsule.children("ul.capsule-contents").eq(0).outerHeight()+(marginBump));
+  		$capsule.addClass("active");
   		return this;
   	},
   	navigateToType: function(type){
@@ -93,7 +85,7 @@ $("document").ready(function(){
 		return this;
   	},
   	navigate: function(c, p, i){
-  		this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
+      this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
   	}
   }
 
@@ -116,25 +108,25 @@ $("document").ready(function(){
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
     if(typeof capsule_id !== 'undefined'){
-      sidebar.navigate(capsule_id-1);
+      sidebar.navigate(capsule_id);
+      sidebar.type().click(function(e){
+        e.preventDefault();
+        sidebar.navigateToType(e.target.eq());
+      });
     }
-    sidebar.type().click(function(e){
-      e.preventDefault();
-      sidebar.navigateToType(e.target.eq());
-    });
     if(typeof lecture_id !== 'undefined'){
       $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
-    }
+    } else {}
 
   } else {
     sidebar.init($(".course-accordion"));
     if(typeof capsule_id !== 'undefined'){
-      sidebar.navigate(capsule_id-1);
-    }
+      sidebar.navigate(capsule_id);
       sidebar.type().click(function(e){
-      e.preventDefault();
-      sidebar.navigateToType($(e.target).parent().index());
-    });
+        e.preventDefault();
+        sidebar.navigateToType($(e.target).parent().index());
+      });
+    }
     if(typeof lecture_id !== 'undefined'){
       $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
     }
