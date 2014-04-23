@@ -194,13 +194,13 @@ div.main-content{
 }
 .page-header-left {
   @include grid-column(7);
-  @media #{$small} {@include grid-column(12);}
+  @media #{$medium} {@include grid-column(12);}
 }
 .page-header-right {
   @include grid-column(5);
   padding-top: .5rem;
   text-align: right;
-  @media #{$small} {
+  @media #{$medium} {
     @include grid-column(12);
     text-align: left;
     margin-top: -0.5rem;
