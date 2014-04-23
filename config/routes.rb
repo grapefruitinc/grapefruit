@@ -44,6 +44,9 @@ Grapefruit::Application.routes.draw do
 
   resources :courses do
 
+    get 'webwork'
+    get 'iframe'
+
     resources :documents, shallow: true
 
     resources :course_users, only: [:create]
@@ -59,9 +62,7 @@ Grapefruit::Application.routes.draw do
         end
       end
 
-      resources :problem_sets do
-        get 'iframe'
-      end
+      resources :problem_sets
 
     end
 

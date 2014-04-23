@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321031456) do
+ActiveRecord::Schema.define(version: 20140422164629) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
@@ -32,8 +32,7 @@ ActiveRecord::Schema.define(version: 20140321031456) do
     t.integer  "instructor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
-    t.text     "description"
+    t.text     "description",                limit: 255
     t.string   "subject"
     t.string   "course_number"
     t.string   "course_registration_number"
@@ -41,10 +40,11 @@ ActiveRecord::Schema.define(version: 20140321031456) do
     t.integer  "year"
     t.integer  "spots_available"
     t.integer  "credits"
-    t.text     "webwork_url"
+    t.string   "slug"
+    t.string   "webwork_url"
   end
 
-  add_index "courses", ["slug"], name: "index_courses_on_slug", using: :btree
+  add_index "courses", ["slug"], name: "index_courses_on_slug"
 
   create_table "documents", force: true do |t|
     t.string   "file"
@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20140321031456) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "lectures", force: true do |t|
     t.string   "name"
@@ -83,12 +83,11 @@ ActiveRecord::Schema.define(version: 20140321031456) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capsule_id"
-    t.text     "webwork_url"
   end
 
   create_table "problems", force: true do |t|
     t.integer  "problem_set_id"
-    t.text     "body"
+    t.text     "question"
     t.text     "solution"
     t.integer  "worth",          default: 1
     t.datetime "created_at"
@@ -153,6 +152,21 @@ ActiveRecord::Schema.define(version: 20140321031456) do
     t.integer  "lecture_id"
     t.string   "file"
     t.string   "youtube_id"
+  end
+
+  create_table "webwork_passwords", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "webwork_permissions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "webwork_users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

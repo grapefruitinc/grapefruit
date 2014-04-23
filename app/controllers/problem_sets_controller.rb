@@ -3,7 +3,7 @@ class ProblemSetsController < ApplicationController
   before_filter :get_course
   before_filter :get_capsule
   before_filter :get_capsules, only: [:show]
-  before_filter :get_problem_set, only: [:show, :edit, :update, :destroy, :iframe]
+  before_filter :get_problem_set, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
   layout :get_layout
@@ -44,18 +44,11 @@ class ProblemSetsController < ApplicationController
     redirect_to :back
   end
 
-  def iframe
-    @course.ensure_webwork_exists(current_user)
-    @url = @problem_set.webwork_url
-  end
-
 private
 
   def get_layout
     if action_name == "show"
       return "course"
-    elsif action_name == "iframe"
-      return "lofi"
     else
       return "home"
     end
