@@ -63,7 +63,7 @@ private
   end
 
   def problem_set_params
-    params.require(:problem_set).permit(:name, :webwork_url)
+    params.require(:problem_set).permit(:name)
   end
 
 end
