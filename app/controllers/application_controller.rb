@@ -43,6 +43,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_capsules
+    @capsules = @course.capsules.order("created_at DESC")
+    @capsules.build
+  end
+
   def get_lecture
     @lecture = Lecture.find(params[:lecture_id] || params[:id])
     unless @lecture.present?

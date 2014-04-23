@@ -2,10 +2,11 @@ class ProblemSetsController < ApplicationController
 
   before_filter :get_course
   before_filter :get_capsule
+  before_filter :get_capsules, only: [:show]
   before_filter :get_problem_set, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  layout "home"
+  layout :get_layout
 
   def new
     @problem_set = @capsule.problem_sets.new
@@ -44,6 +45,14 @@ class ProblemSetsController < ApplicationController
   end
 
 private
+
+  def get_layout
+    if action_name == "show"
+      return "course"
+    else
+      return "home"
+    end
+  end
 
   def get_problem_set
     @problem_set = ProblemSet.find(params[:problem_set_id] || params[:id])

@@ -1,11 +1,11 @@
-# Use mysql2 for development
-# change username + password to your database settings
+# Use sqlite3 for development...
+# Unless you're ambitious and then you should use mysql
+# since we're using mysql in production
 development:
-  host: localhost
-  adapter: mysql2
-  database: grapefruit
-  username: root
-  password: # insert password here (if there is one)
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -16,9 +16,13 @@ test:
   pool: 5
   timeout: 5000
 
-production:
-  host: localhost
-  adapter: mysql2
-  database: grapefruit
-  username: root
-  password: # insert password here (if there is one)
+webwork:
+  development:
+    # You will have to fill this out with details on how to access
+    # WebWork's MySQL server. It's fine to leave blank if you're not
+    # going to be working with WebWork
+    host:
+    adapter: mysql2
+    database:
+    username:
+    password:
