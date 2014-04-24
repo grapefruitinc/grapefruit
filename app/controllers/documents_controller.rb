@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
   before_filter :get_container
   before_filter :authenticate_user!
 
-  layout "home"
+  layout "course"
 
   def new
     @document = @container.documents.new
