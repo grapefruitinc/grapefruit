@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321042449) do
+ActiveRecord::Schema.define(version: 20140424035451) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_id"
+    t.text     "description"
   end
 
   create_table "course_users", force: true do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140321042449) do
     t.datetime "updated_at"
     t.integer  "capsule_id"
     t.string   "mediasite_url"
+    t.text     "description"
   end
 
   create_table "problem_sets", force: true do |t|
