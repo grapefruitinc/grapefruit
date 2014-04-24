@@ -7,7 +7,7 @@
 #  instructor_id              :integer
 #  created_at                 :datetime
 #  updated_at                 :datetime
-#  description                :text(255)
+#  description                :text
 #  subject                    :string(255)
 #  course_number              :string(255)
 #  course_registration_number :string(255)
@@ -15,6 +15,7 @@
 #  year                       :integer
 #  spots_available            :integer
 #  credits                    :integer
+#  slug                       :string(255)
 #
 
 class Course < ActiveRecord::Base

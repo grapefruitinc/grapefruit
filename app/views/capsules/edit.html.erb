@@ -7,7 +7,7 @@
     ]) %>
 
 <div class="landing">
-  
+
   <div class="description">
     <h2>Edit <%= @capsule.name %> from <%= @course.name %></h2>
   </div>
@@ -15,8 +15,10 @@
   <div class="login">
     <%= form_for [@course, @capsule] do |f| %>
       <%= devise_error_messages! %>
-      
-      <%= f.text_field :name, placeholder: "Capsule Name", autofocus: true %></div>
+
+      <%= f.text_field :name, placeholder: "Capsule Name", autofocus: true %>
+
+      <%= f.text_area :description, placeholder: "This topic consists of ..." %>
 
       <div><%= f.submit "Update Capsule", class: "button small" %></div>
     <% end %>

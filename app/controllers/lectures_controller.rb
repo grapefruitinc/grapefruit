@@ -60,7 +60,8 @@ private
   end
 
   def lecture_params
-    params.require(:lecture).permit(:name, :lecture_number, :mediasite_url)
+    params.require(:lecture).permit(:name, :description, :lecture_number,
+                                    :mediasite_url)
   end
 
 end

@@ -55,7 +55,7 @@ class CapsulesController < ApplicationController
 private
 
   def capsule_params
-    params.require(:capsule).permit(:name)
+    params.require(:capsule).permit(:name, :description)
   end
 
 end

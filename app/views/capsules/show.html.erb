@@ -20,13 +20,17 @@
 
 <% end %>
 
+<% unless @capsule.description.blank? %>
+  <p class="description expandable-text"><%= @capsule.description %></p>
+<% end %>
+
 <table class="listing">
   <thead>
     <th>
       Lectures <%= "(None found)" if @lectures.empty? %>
     </th>
   </thead>
-  <%= render @lectures %>
+  <%= render collection: @lectures, partial: "lectures/table_lecture", as: :lecture %>
 </table>
 
 <table class="listing">
@@ -35,7 +39,7 @@
       Problem Sets <%= "(None found)" if @problem_sets.empty? %>
     </th>
   </thead>
-  <%= render @problem_sets %>
+  <%= render collection: @problem_sets, partial: "problem_sets/table_problem_set", as: :problem_set %>
 </table>
 
 <%= render "documents/documents", container: @capsule %>

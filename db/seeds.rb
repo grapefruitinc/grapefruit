@@ -58,8 +58,13 @@ functions.",
     Lecture.create!(name: "Reciprocal Rule", lecture_number: 6, capsule: c3)
     Lecture.create!(name: "Chain Rule", lecture_number: 7, capsule: c3)
     Lecture.create!(name: "Derivatives of Inverse Functions", lecture_number: 8, capsule: c3)
-  c4 = Capsule.create!(name: "Integrals", course: course_one)
-    Lecture.create!(name: "Sums of a Rectangle", lecture_number: 1, capsule: c4)
+  c4 = Capsule.create!(name: "Integrals",
+                       description: "We're gonna antiderive some functions to get from one level of derivation to the one above it. I know this isn't typical math professor speak, and that's because I'm not actually a math professor. I'm a college student going to RPI. And I do well at math, but I don't really understand anything I'm doing. I just plug stuff in and it works out in the end. Thanks Newton.",
+                       course: course_one)
+    Lecture.create!(name: "Sums of a Rectangle",
+                    description: "Finding the sum of rectangles using integrals. No calculators either, it'll all be by hand. Won't this be fun??",
+                    lecture_number: 1,
+                    capsule: c4)
     Lecture.create!(name: "Summation Notation", lecture_number: 2, capsule: c4)
     Lecture.create!(name: "Right Sums", lecture_number: 3, capsule: c4)
     Lecture.create!(name: "Definite Integral", lecture_number: 4, capsule: c4)
