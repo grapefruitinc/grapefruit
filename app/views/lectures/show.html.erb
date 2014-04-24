@@ -21,7 +21,7 @@ var lecture_id = <%= @lecture.id %>;
 <% end %>
 
 <% unless @lecture.description.blank? %>
-  <p class="description"><%= @lecture.description %></p>
+  <p class="description expandable-text"><%= @lecture.description %></p>
 <% end %>
 
 <%= render "documents/documents", container: @lecture %>
