@@ -16,11 +16,11 @@
             <% if content_for?(:left_sidebar) %>
               <i class="icon-th-menu"></i>
             <% else %>
-              <i class="icon-th-menu" style="opacity: 0;"></i>            
+              <i class="icon-th-menu" style="opacity: 0;"></i>
             <% end %>
           </div>
           <div class="mobile-nav-right">
-            <i class="icon-th-small"></i>          
+            <i class="icon-th-small"></i>
           </div>
         </nav>
 
@@ -30,7 +30,6 @@
         <ul>
           <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
           <li><%= link_to "Courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
-          <li><%= link_to "WebWork", void, class: "disabled" %></li>
           <li><%= link_to "Profile", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
           <li><%= link_to "Logout", destroy_user_session_path, class: "secondary", method: :delete %></li>
         </ul>
@@ -48,7 +47,6 @@
       <ul class="standard-nav">
         <li><%= link_to "Home", root_path, class: ("active" if params[:controller] == "home") %></li>
         <li><%= link_to "Courses", courses_path, class: ("active" if params[:controller] == "courses") %></li>
-        <li><%= link_to "WebWork", void, class: "disabled" %></li>
         <li><%= link_to "Profile", edit_user_registration_path, class: ("active" if params[:controller] == "devise/registrations") %></li>
         <li><%= link_to "Logout", destroy_user_session_path, class: "secondary", method: :delete %></li>
       </ul>
@@ -111,7 +109,7 @@ function show(side){
     }, 300);
     $content.animate({
       opacity: "0.5"
-    }, 300);        
+    }, 300);
   } else if (side == "right"){
     $(".mobile-nav-right i").addClass("active");
     $rightSidebar.animate({
@@ -130,7 +128,7 @@ $(".mobile-nav i").click(function(e){
       hide("left");
     } else {
       hide("right");
-      show("left");          
+      show("left");
     }
   } else {
     if($element.hasClass("active")){
