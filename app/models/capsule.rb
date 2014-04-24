@@ -11,7 +11,7 @@
 #
 
 class Capsule < ActiveRecord::Base
-  
+
   # Validations
   # ========================================================
   validates :name, presence: true
@@ -22,5 +22,5 @@ class Capsule < ActiveRecord::Base
 	has_many :lectures, dependent: :destroy
 	has_many :problem_sets, dependent: :destroy
   has_many :documents, dependent: :destroy
-	
+
 end
