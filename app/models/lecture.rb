@@ -8,17 +8,16 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  capsule_id     :integer
-#  mediasite_url  :string(255)
 #  description    :text
 #
 
 class Lecture < ActiveRecord::Base
-  
+
   # Validations
   # ========================================================
   validates :name, presence: true
   validates :lecture_number, presence: true
-  
+
   # Relationships
   # ========================================================
   has_many :documents, dependent: :destroy
@@ -26,5 +25,5 @@ class Lecture < ActiveRecord::Base
 	belongs_to :capsule
 
   has_many :videos
-	
+
 end

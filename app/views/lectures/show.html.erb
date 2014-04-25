@@ -35,7 +35,7 @@ var lecture_id = <%= @lecture.id %>;
    </div>
   <% end %>
 
-  <% if @videos.empty? && @lecture.mediasite_url.blank? %>
+  <% if @videos.empty? %>
     <p>No videos found.</p>
   <% end %>
 
@@ -47,6 +47,3 @@ var lecture_id = <%= @lecture.id %>;
   <% end %>
 </div>
 
-<% unless @lecture.mediasite_url.blank? %>
-  <iframe style="width:60%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= @lecture.mediasite_url %>"></iframe>
-<% end %>
