@@ -37,6 +37,14 @@ class VideosController < ApplicationController
         flash[:error] = "Something went wrong..."
         render :new
       end
+    elsif @video.mediasite_url
+      if @video.save
+        flash[:success] = "Mediasite video added!"
+        redirect_to [@course, @capsule, @lecture]
+      else
+        flash[:error] = "Something went wrong..."
+        render :new
+      end
     else
       flash[:error] = "Please select a video to upload!"
       render :new
@@ -66,7 +74,7 @@ class VideosController < ApplicationController
 private
 
   def video_params
-    params.require(:video).permit(:title, :description, :file)
+    params.require(:video).permit(:title, :description, :file, :mediasite_url)
   end
 
   def get_video

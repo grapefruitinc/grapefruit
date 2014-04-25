@@ -2,26 +2,37 @@
 #
 # Table name: videos
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
-#  description :text
-#  lecture_id  :integer
-#  file        :string(255)
-#  youtube_id  :string(255)
+#  id            :integer          not null, primary key
+#  title         :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  description   :text
+#  lecture_id    :integer
+#  file          :string(255)
+#  youtube_id    :string(255)
+#  mediasite_url :string(255)
 #
 
 class Video < ActiveRecord::Base
 
   # Validations
   # ========================================================
-  validates :title, presence: true
-  validates :description, presence: true
+  validates :title, presence: true, if: :youtube_id
+  validates :description, presence: true, if: :youtube_id
+  validate :only_one_type_of_video
 
   # Relationships
   # ========================================================
   belongs_to :lecture
   has_many :video_texts
+
+private
+
+  def only_one_type_of_video
+    if youtube_id && mediasite_url
+      errors.add :mediasite_url, 'Can only have one type of video'
+      false
+    end
+  end
 
 end
