@@ -35,6 +35,9 @@ class CoursesController < ApplicationController
     end
 
     @topics = @course.topics.paginate(page: 1, per_page: 5)
+
+    @show_unenroll = true
+
   end
 
   def edit
