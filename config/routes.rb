@@ -46,7 +46,7 @@ Grapefruit::Application.routes.draw do
 
     resources :documents, shallow: true
 
-    resources :course_users, only: [:create]
+    resources :course_users, only: [:create, :destroy]
 
     resources :capsules do
 

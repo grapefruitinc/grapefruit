@@ -70,6 +70,10 @@ class Course < ActiveRecord::Base
     CourseUser.import course_users, validate: false unless course_users.empty?
   end
 
+  def remove_student(student_to_remove)
+    CourseUser.where(user_id: student_to_remove.id, course_id: self.id).destroy_all
+  end
+
   def course_user(user)
     course_users.find_by_user_id(user)
   end
