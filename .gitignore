@@ -29,6 +29,5 @@
 
 */*.DS_STORE
 
-/config/settings.yml
-
 /.idea
+config/settings.yml
