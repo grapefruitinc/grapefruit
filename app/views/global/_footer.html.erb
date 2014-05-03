@@ -9,6 +9,11 @@
         <%= link_to SCHOOL_NAME, SCHOOL_URL, :target => '_blank' %>. 
 
         Check out our <%= link_to 'Github repository', GITHUB_URL, :target => '_blank' %>!
+
+        <% if citrus_on %>
+          <p>The Citrus experimental engine is on.</p>
+        <% end %>
+
       </p>
       <nav class="horizontal">
         <ul class="nav-links"> 

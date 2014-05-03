@@ -25,4 +25,9 @@ module ApplicationHelper
     end
   end
 
+  # determine if Citrus is enabled
+  def citrus_on
+    Settings.citrus ? Settings.citrus.enabled : false
+  end
+
 end
