@@ -1,5 +1,5 @@
 <% if capsule.id != nil %>
-  <li class="course-capsule">
+  <li class="course-capsule" data-capsule-id="<%= capsule.id %>">
   	<a class="capsule-header" href="<%= course_capsule_path(capsule.course, capsule) %>">
   		<h1 class="capsule-name"><span class="capsule-status"></span>
   			<%= capsule.name %>
