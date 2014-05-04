@@ -64,9 +64,9 @@ $("document").ready(function(){
   					.children(".capsule-item").eq(item);
   	},
   	navigateToCapsule: function(capsule){
-  		if(capsule >= $this.children(".course-capsule").length || capsule == -1){return false;}
+  		if(capsule == -1){return false;}
 
-  		$capsule = $this.children(".course-capsule").eq(capsule);
+  		$capsule = $this.children(".course-capsule[data-capsule-id=" + capsule + "]");
 
   		if(!$capsule.hasClass("active")){
 	  		$capsule.siblings().removeClass("active").animate({height: originalHeight}, 250);
@@ -118,7 +118,7 @@ $("document").ready(function(){
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
     if(typeof capsule_id !== 'undefined'){
-      sidebar.navigate(capsule_id-1);
+      sidebar.navigate(capsule_id);
     }
     sidebar.type().click(function(e){
       e.preventDefault();
@@ -131,7 +131,7 @@ $("document").ready(function(){
   } else {
     sidebar.init($(".course-accordion"));
     if(typeof capsule_id !== 'undefined'){
-      sidebar.navigate(capsule_id-1);
+      sidebar.navigate(capsule_id);
     }
       sidebar.type().click(function(e){
       e.preventDefault();
