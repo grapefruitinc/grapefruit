@@ -64,9 +64,9 @@ $("document").ready(function(){
   					.children(".capsule-item").eq(item);
   	},
   	navigateToCapsule: function(capsule){
-  		if(capsule >= $this.children(".course-capsule").length || capsule == -1){return false;}
+  		if(capsule == -1){return false;}
 
-  		$capsule = $this.children(".course-capsule").eq(capsule);
+  		$capsule = $this.children(".course-capsule[data-capsule-id=" + capsule + "]");
 
   		if(!$capsule.hasClass("active")){
 	  		$capsule.siblings().removeClass("active").animate({height: originalHeight}, 250);
@@ -90,9 +90,10 @@ $("document").ready(function(){
   		return this;
   	},
   	navigateToItem: function(item){
-  		$this.find(".course-capsule.active .capsule-contents.active")
-			.children().removeClass("active").eq(item).addClass("active");
-		return this;
+      var active_item = $this.find(".course-capsule.active .capsule-contents.active");
+  		active_item.children().removeClass("active");
+      active_item.find("li[data-lecture-id=" + item + "]").addClass("active");
+		  return this;
   	},
   	navigate: function(c, p, i){
   		this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
@@ -115,31 +116,26 @@ $("document").ready(function(){
     var medium = true;
     var small = true;
   }
+
+  var current_capsule = (typeof capsule_id == 'undefined') ? -1 : capsule_id;
+  var current_lecture = (typeof lecture_id == 'undefined') ? -1 : lecture_id;
+  var current_type = 0;
+
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
-    if(typeof capsule_id !== 'undefined'){
-      sidebar.navigate(capsule_id-1);
-    }
+    sidebar.navigate(current_capsule, current_type, current_lecture);
     sidebar.type().click(function(e){
       e.preventDefault();
       sidebar.navigateToType(e.target.eq());
     });
-    if(typeof lecture_id !== 'undefined'){
-      $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
-    }
 
   } else {
     sidebar.init($(".course-accordion"));
-    if(typeof capsule_id !== 'undefined'){
-      sidebar.navigate(capsule_id-1);
-    }
-      sidebar.type().click(function(e){
+    sidebar.navigate(current_capsule, current_type, current_lecture);
+    sidebar.type().click(function(e){
       e.preventDefault();
       sidebar.navigateToType($(e.target).parent().index());
     });
-    if(typeof lecture_id !== 'undefined'){
-      $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
-    }
 
   }
 
