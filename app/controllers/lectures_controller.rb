@@ -3,7 +3,7 @@ class LecturesController < ApplicationController
   before_filter :get_course
   before_filter :get_capsule
   before_filter :get_all_course_capsules, only: [:new, :show, :edit]
-  before_filter :get_lecture, only: [:show, :edit, :update, :destroy]
+  before_filter :get_lecture, only: [:show, :edit, :update, :toggle_live, :destroy]
   before_filter :authenticate_user!
 
   layout "course"
@@ -47,6 +47,13 @@ class LecturesController < ApplicationController
     end
   end
 
+  def toggle_live
+    authorize! :update, @lecture
+    @lecture.toggle(:live)
+    @lecture.save
+    redirect_to [@course, @capsule, @lecture]
+  end
+
   def destroy
     authorize! :destroy, @lecture
   	@lecture.destroy
@@ -57,11 +64,12 @@ private
 
   def get_lecture
     @lecture = @capsule.lectures.find(params[:lecture_id] || params[:id])
+    @live_button = (@lecture.live) ? 'End Lecture' : 'Make Lecture Live';
   end
 
   def lecture_params
     params.require(:lecture).permit(:name, :description, :lecture_number,
-                                    :mediasite_url)
+                                    :mediasite_url, :live)
   end
 
 end

@@ -10,6 +10,7 @@ var lecture_id = <%= @lecture.id %>;
 
   <%= link_to "Add File", new_course_capsule_lecture_document_path(@course, @capsule, @lecture), class: "button small" %>
   <%= link_to "Edit Lecture", edit_course_capsule_lecture_path(@course, @capsule, @lecture), class: "button small" %>
+  <%= link_to @live_button, course_capsule_lecture_toggle_live_path(@course, @capsule, @lecture), class: "button small alert" %>
 
 <% end %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425025102) do
+ActiveRecord::Schema.define(version: 20140504031609) do
 
   create_table "capsules", force: true do |t|
     t.string   "name"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140425025102) do
     t.datetime "updated_at"
     t.integer  "capsule_id"
     t.text     "description"
+    t.boolean  "live",           default: false
   end
 
   create_table "problem_sets", force: true do |t|
