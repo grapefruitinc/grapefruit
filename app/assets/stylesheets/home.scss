@@ -43,6 +43,11 @@ div.live-discussion{
   div#lecture-comments{
     height: 420px;
     overflow: scroll;
+    span.comment-date{
+      display:none;
+      color: #999;
+      font-weight: light;
+    }
   }
   div.comments-submit-container form{
     input[type=text]{

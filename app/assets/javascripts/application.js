@@ -17,6 +17,15 @@
 //= require turbolinks
 //= require_tree .
 
+function html_escape(str) {
+    return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
 $("document").ready(function(){
 
   $(document).foundation();
@@ -47,7 +56,8 @@ $("document").ready(function(){
         $.each(comments, function() {
           var comment = "<p>";
           comment += "<strong>" + this.author.display_identifier + "</strong>: ";
-          comment += this.body;
+          comment += Autolinker.link(html_escape(this.body));
+          comment += "&nbsp;&nbsp;<span class='comment-date'>" + this.relative_time + " ago </span> ";
           comment += "</p>";
           $("#lecture-comments").append(comment);
         });
@@ -62,6 +72,13 @@ $("document").ready(function(){
     $("#comments-submit").on("ajax:success", function(){
       $("#comment-body").val("").select();
       refresh_comments();
+    });
+
+
+    $("#lecture-comments").on("mouseover", "p", function(){
+      $(this).children("span.comment-date").show();
+    }).on("mouseout", "p", function(){
+      $(this).children("span.comment-date").hide();
     });
 
   }
