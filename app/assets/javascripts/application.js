@@ -61,6 +61,9 @@ $("document").ready(function(){
           comment += "</p>";
           $("#lecture-comments").append(comment);
         });
+        if(comments.length == 0){
+          $("#lecture-comments").append("<p class='empty'>No comments yet! Be the first.</p>")
+        }
       }).fail(function(error, as){
         
       });
