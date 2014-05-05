@@ -83,7 +83,7 @@ $("document").ready(function(){
 
   }
 
-  if(typeof home_standalone == undefined){
+  if(typeof home_standalone == 'undefined'){
 
     var sidebar = {
       init: function(a){
