@@ -38,4 +38,12 @@ class User < ActiveRecord::Base
     !self.name.blank? ? self.name.split(" ").first : self.email
   end
 
+  def full_name
+    self.name.blank? ? self.email : self.name
+  end
+
+  def as_json(options)
+    { display_identifier: display_identifier }
+  end
+
 end

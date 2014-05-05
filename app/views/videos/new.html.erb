@@ -1,11 +1,3 @@
-<%= breadcrumbs([
-      link_to("All Courses", courses_path),
-      link_to(@course.name, course_path(@course)),
-      link_to(@capsule.name, [@course, @capsule]),
-      link_to(@lecture.name, [@course, @capsule, @lecture]),
-      link_to('Add Video', void, class: "current")
-    ])
-%>
 <div class="landing">
 
   <div class="description">

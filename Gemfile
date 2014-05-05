@@ -29,6 +29,9 @@ gem 'carrierwave'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+# serialize json objects properly
+gem "active_model_serializers"
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

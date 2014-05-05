@@ -9,6 +9,7 @@
 #  updated_at     :datetime
 #  capsule_id     :integer
 #  description    :text
+#  live           :boolean          default(FALSE)
 #
 
 class Lecture < ActiveRecord::Base
@@ -25,5 +26,6 @@ class Lecture < ActiveRecord::Base
 	belongs_to :capsule
 
   has_many :videos
+  has_many :comments, class_name: "Comment", dependent: :destroy
 
 end
