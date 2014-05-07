@@ -30,6 +30,10 @@ body {background-color: #4B5252; max-width: 100%; overflowch-x: hidden;}
 div#top-flash{
     text-align: center;
     background-color: orange;
+    position: fixed;
+    top: 3.1rem;
+    width: 100%;
+    z-index: 9999;
     div.alert-box{
         margin-bottom: 0px;
     }

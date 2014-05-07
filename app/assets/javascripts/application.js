@@ -17,7 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-$("document").ready(function(){
+$(document).ready(function(){
 
   $(document).foundation();
 
@@ -26,11 +26,10 @@ $("document").ready(function(){
   var current_flash_color = flash.css("backgroundColor");
   var highlight_flash_color = flash.parent().css("backgroundColor");
 
-  flash.stop().delay(280)
+  flash.stop().parent().css("opacity", "100").find(".alert-box").delay(280)
     .animate({ backgroundColor: highlight_flash_color }, 200)
-    .animate({ backgroundColor: current_flash_color }, 300);
-
-
+    .animate({ backgroundColor: current_flash_color }, 300)
+    .parent().delay(4000).animate({ opacity: 0 });
 
   var sidebar = {
   	init: function(a){
@@ -66,15 +65,9 @@ $("document").ready(function(){
   	navigateToCapsule: function(capsule){
   		if(capsule == -1){return false;}
 
-  		$capsule = $this.children(".course-capsule[data-capsule-id=" + capsule + "]");
+      $capsule = $("[data-capsule-id=" + capsule + "]");
+  		$capsule.addClass("active");
 
-  		if(!$capsule.hasClass("active")){
-	  		$capsule.siblings().removeClass("active").animate({height: originalHeight}, 250);
-	  		$capsule.addClass("active").animate({
-	  			height: $capsule.children("ul.capsule-contents.active").outerHeight()+(marginBump)
-	  		}, 250, function(){
-	  		});
-  		}
   		return this;
   	},
   	navigateToType: function(type){
@@ -96,7 +89,7 @@ $("document").ready(function(){
 		  return this;
   	},
   	navigate: function(c, p, i){
-  		this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
+      this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
   	}
   }
 
@@ -108,7 +101,7 @@ $("document").ready(function(){
     if(small || medium){
       sidebar.init($(".course-accordion--mobile"));
     } else {
-      sidebar.init($(".course-accordion"));      
+      sidebar.init($(".course-accordion"));
     }
   });
 
@@ -123,19 +116,30 @@ $("document").ready(function(){
 
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
-    sidebar.navigate(current_capsule, current_type, current_lecture);
-    sidebar.type().click(function(e){
-      e.preventDefault();
-      sidebar.navigateToType(e.target.eq());
-    });
+
+    if(typeof capsule_id !== 'undefined'){
+      sidebar.navigate(capsule_id);
+      sidebar.type().click(function(e){
+        e.preventDefault();
+        sidebar.navigateToType(e.target.eq());
+      });
+    }
+    if(typeof lecture_id !== 'undefined'){
+      $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
+    } else {}
 
   } else {
     sidebar.init($(".course-accordion"));
-    sidebar.navigate(current_capsule, current_type, current_lecture);
-    sidebar.type().click(function(e){
-      e.preventDefault();
-      sidebar.navigateToType($(e.target).parent().index());
-    });
+    if(typeof capsule_id !== 'undefined'){
+      sidebar.navigate(capsule_id);
+      sidebar.type().click(function(e){
+        e.preventDefault();
+        sidebar.navigateToType($(e.target).parent().index());
+      });
+    }
+    if(typeof lecture_id !== 'undefined'){
+      $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
+    }
 
   }
 
