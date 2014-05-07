@@ -61,9 +61,7 @@ $(document).ready(function(){
   	},
   	navigateToCapsule: function(capsule){
   		if(capsule == -1){return false;}
-
       $capsule = $("[data-capsule-id=" + capsule + "]");
-      // console.log($capsule.children("ul.capsule-contents").eq(0).outerHeight()+(marginBump));
   		$capsule.addClass("active");
   		return this;
   	},
