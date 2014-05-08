@@ -1,0 +1,5 @@
+<form method="post" action="<%= @url %>" enctype="application/x-www-form-urlencoded">
+	<input type="hidden" name="user" value="<%= current_user.unique_tag %>">
+	<input type="hidden" name="passwd" value="<%= current_user.encrypted_password %>">
+	<input type="submit" value="Begin Homework" class="button medium">
+</form>

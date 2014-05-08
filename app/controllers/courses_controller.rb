@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :get_course, only: [:show, :edit, :update, :destroy]
-  before_filter :get_capsules, only: [:show, :edit, :update, :destroy]
+  before_filter :get_course, only: [:show, :edit, :update, :destroy, :webwork, :iframe]
+  before_filter :get_capsules, only: [:show, :edit, :update, :destroy, :webwork]
 
   layout :get_layout
 
@@ -60,18 +60,30 @@ class CoursesController < ApplicationController
     redirect_to :back
   end
 
+  def webwork
+    redirect_to root_path unless @course.webwork_url.present?
+  end
+
+  def iframe
+    redirect_to root_path unless @course.webwork_url.present?
+    @course.ensure_webwork_exists(current_user)
+    @url = @course.webwork_url
+  end
+
 private
 
   def course_params
     params.require(:course).permit(:name, :description, :subject, :course_number,
                                    :course_registration_number, :semester, :year,
-                                   :spots_available, :credits)
+                                   :spots_available, :credits, :webwork_url)
   end
 
   def get_layout
     case action_name
     when "new", "create", "index"
       "home"
+    when "iframe"
+      "lofi"
     else
       "course"
     end

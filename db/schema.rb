@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140425025102) do
     t.integer  "spots_available"
     t.integer  "credits"
     t.string   "slug"
+    t.string   "webwork_url"
   end
 
   add_index "courses", ["slug"], name: "index_courses_on_slug", using: :btree
