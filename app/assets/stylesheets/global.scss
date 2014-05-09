@@ -238,7 +238,10 @@ form{
     }
 }
 div.alert-box{
-    @include alert($alert-color);
+  @include alert($alert-color);
+}
+div.alert-box.info{
+  @include alert($dark-blue-color);
 }
 div#error_explanation{
     @include alert($alert-color);

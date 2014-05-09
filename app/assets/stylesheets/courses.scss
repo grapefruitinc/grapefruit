@@ -113,6 +113,10 @@ section.course {
         }
         h2, h3{
           margin-top: 0em;
+          sup{
+            font-size: .5em;
+            color: $rpi-red-color;
+          }
         }
     }
 }

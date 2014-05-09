@@ -34,6 +34,39 @@ div#top-flash{
   }
 }
 
+div.live-discussion{
+  @include grid-row;
+  @include grid-column(8, $offset: 2);
+  border-left: 3px solid #999;
+  border-right: 3px solid #999;
+  margin-top: 1em;
+  div#lecture-comments{
+    height: 420px;
+    overflow: scroll;
+    span.comment-date{
+      display:none;
+      color: #999;
+      font-weight: light;
+    }
+    p.empty{
+      color: #999;
+    }
+  }
+  div.comments-submit-container form{
+    input[type=text]{
+      @include grid-column(10);
+      border-top-right-radius:0px;
+      border-bottom-right-radius:0px;
+      border-right: 0px;
+    }
+    input[type=submit]{
+      @include grid-column(2);
+      border-top-left-radius:0px;
+      border-bottom-left-radius:0px;
+    }
+  }
+}
+
 div.main-content{
   min-height: 400px;
   overflow: auto;

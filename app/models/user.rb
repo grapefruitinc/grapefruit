@@ -54,4 +54,12 @@ class User < ActiveRecord::Base
     "#{self.first_initial_last_name}_#{self.id}"
   end
 
+  def full_name
+    self.name.blank? ? self.email : self.name
+  end
+
+  def as_json(options)
+    { display_identifier: display_identifier }
+  end
+
 end

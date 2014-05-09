@@ -17,7 +17,16 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+function html_escape(str) {
+    return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+$("document").ready(function(){
 
   $(document).foundation();
 
@@ -27,7 +36,6 @@ $(document).ready(function(){
   var highlight_flash_color = flash.parent().css("backgroundColor");
 
   flash.stop().parent().css("opacity", "100").find(".alert-box").delay(280)
-    .animate({ backgroundColor: highlight_flash_color }, 200)
     .animate({ backgroundColor: current_flash_color }, 300)
     .parent().delay(4000).animate({ opacity: 0 });
 
@@ -91,13 +99,51 @@ $(document).ready(function(){
   	navigate: function(c, p, i){
       this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
   	}
-  }
 
-  $(window).resize(function() {
-    if($(".mobile-nav").css("display")!="none"){
-      var medium = true;
-      var small = true;
-    }
+  /* forms */
+
+  if($("#lecture-comments").length){
+
+    var refresh_comments = function(){
+      var lecture_id = $("#lecture-comments").data("lecture-id");
+      var list_url = $("#lecture-comments").data("url");
+      $.ajax({
+        type: "GET",
+        url: list_url,
+        data: {lecture: lecture_id}
+      }).done(function(comments) {
+        $("#lecture-comments").html("");
+        $.each(comments, function() {
+          var comment = "<p>";
+          comment += "<strong>" + this.author.display_identifier + "</strong>: ";
+          comment += Autolinker.link(html_escape(this.body));
+          comment += "&nbsp;&nbsp;<span class='comment-date'>" + this.relative_time + " ago </span> ";
+          comment += "</p>";
+          $("#lecture-comments").append(comment);
+        });
+        if(comments.length == 0){
+          $("#lecture-comments").append("<p class='empty'>No comments yet! Be the first.</p>")
+        }
+      }).fail(function(error, as){
+
+      });
+      setTimeout(refresh_comments, 5000);
+    };
+
+    refresh_comments();
+
+    $("#comments-submit").on("ajax:success", function(){
+      $("#comment-body").val("").select();
+      refresh_comments();
+    });
+
+
+    $("#lecture-comments").on("mouseover", "p", function(){
+      $(this).children("span.comment-date").show();
+    }).on("mouseout", "p", function(){
+      $(this).children("span.comment-date").hide();
+    });
+
     if(small || medium){
       sidebar.init($(".course-accordion--mobile"));
     } else {
@@ -109,10 +155,31 @@ $(document).ready(function(){
     var medium = true;
     var small = true;
   }
+=======
+>>>>>>> citrus
 
-  var current_capsule = (typeof capsule_id == 'undefined') ? -1 : capsule_id;
-  var current_lecture = (typeof lecture_id == 'undefined') ? -1 : lecture_id;
-  var current_type = 0;
+    var current_capsule = (typeof capsule_id == 'undefined') ? -1 : capsule_id;
+    var current_lecture = (typeof lecture_id == 'undefined') ? -1 : lecture_id;
+    var current_type = 0;
+
+    if($(".course-accordion").height){ // just in case the accordion isn't there
+
+      if(small || medium){
+        sidebar.init($(".course-accordion--mobile"));
+        sidebar.navigate(current_capsule, current_type, current_lecture);
+        sidebar.type().click(function(e){
+          e.preventDefault();
+          sidebar.navigateToType(e.target.eq());
+        });
+
+      } else {
+        sidebar.init($(".course-accordion"));
+        sidebar.navigate(current_capsule, current_type, current_lecture);
+        sidebar.type().click(function(e){
+          e.preventDefault();
+          sidebar.navigateToType($(e.target).parent().index());
+        });
+      }
 
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));

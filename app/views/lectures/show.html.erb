@@ -4,13 +4,18 @@ var capsule_id = <%= @capsule.id %>;
 var lecture_id = <%= @lecture.id %>;
 </script>
 
-<h2><%= @lecture.name %></h2>
+<h2><%= @lecture.name %> <sup><%= 'LIVE &#149;'.html_safe if @lecture.live %></sup></h2>
 
 <% if can? :manage, @course %>
 
   <%= link_to "Add File", new_course_capsule_lecture_document_path(@course, @capsule, @lecture), class: "button small" %>
   <%= link_to "Edit Lecture", edit_course_capsule_lecture_path(@course, @capsule, @lecture), class: "button small" %>
+  <%= link_to @live_button, course_capsule_lecture_toggle_live_path(@course, @capsule, @lecture), class: "button small alert" %>
+<% end %>
 
+<% if @lecture.live %>
+  <%= link_to 'Live Feed &nbsp; &#10148;'.html_safe, course_capsule_lecture_comments_path(@course, @capsule, @lecture),
+  class: "button small", target: "_blank" %>
 <% end %>
 
 <% unless @lecture.description.blank? %>
