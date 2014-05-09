@@ -100,6 +100,8 @@ $("document").ready(function(){
       this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
   	}
 
+  }
+
   /* forms */
 
   if($("#lecture-comments").length){
@@ -137,49 +139,41 @@ $("document").ready(function(){
       refresh_comments();
     });
 
-
     $("#lecture-comments").on("mouseover", "p", function(){
       $(this).children("span.comment-date").show();
     }).on("mouseout", "p", function(){
       $(this).children("span.comment-date").hide();
     });
 
-    if(small || medium){
-      sidebar.init($(".course-accordion--mobile"));
-    } else {
-      sidebar.init($(".course-accordion"));
-    }
-  });
+  }
 
   if($(".mobile-nav").css("display")!="none"){
     var medium = true;
     var small = true;
   }
-=======
->>>>>>> citrus
 
-    var current_capsule = (typeof capsule_id == 'undefined') ? -1 : capsule_id;
-    var current_lecture = (typeof lecture_id == 'undefined') ? -1 : lecture_id;
-    var current_type = 0;
+  var current_capsule = (typeof capsule_id == 'undefined') ? -1 : capsule_id;
+  var current_lecture = (typeof lecture_id == 'undefined') ? -1 : lecture_id;
+  var current_type = 0;
 
-    if($(".course-accordion").height){ // just in case the accordion isn't there
+  if($(".course-accordion").height){ // just in case the accordion isn't there
 
-      if(small || medium){
-        sidebar.init($(".course-accordion--mobile"));
-        sidebar.navigate(current_capsule, current_type, current_lecture);
-        sidebar.type().click(function(e){
-          e.preventDefault();
-          sidebar.navigateToType(e.target.eq());
-        });
+    if(small || medium){
+      sidebar.init($(".course-accordion--mobile"));
+      sidebar.navigate(current_capsule, current_type, current_lecture);
+      sidebar.type().click(function(e){
+        e.preventDefault();
+        sidebar.navigateToType(e.target.eq());
+      });
 
-      } else {
-        sidebar.init($(".course-accordion"));
-        sidebar.navigate(current_capsule, current_type, current_lecture);
-        sidebar.type().click(function(e){
-          e.preventDefault();
-          sidebar.navigateToType($(e.target).parent().index());
-        });
-      }
+    } else {
+      sidebar.init($(".course-accordion"));
+      sidebar.navigate(current_capsule, current_type, current_lecture);
+      sidebar.type().click(function(e){
+        e.preventDefault();
+        sidebar.navigateToType($(e.target).parent().index());
+      });
+    }
 
   if(small || medium){
     sidebar.init($(".course-accordion--mobile"));
@@ -209,5 +203,7 @@ $("document").ready(function(){
     }
 
   }
+
+}
 
 });
