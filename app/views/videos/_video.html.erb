@@ -25,11 +25,13 @@
   </div>
 <% elsif video.mediasite_url %>
   <div class="row">
-    <%= link_to "Remove Mediasite Video",
+    <% if can? :manage, @course %>
+      <%= link_to "Remove Mediasite Video",
                 course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                 data: { confirm: "Are you sure?" },
                 method: :delete,
                 class: "button secondary small" %>
+    <% end %>
   </div>
   <div class="row">
     <iframe style="width:100%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= video.mediasite_url %>"></iframe>
