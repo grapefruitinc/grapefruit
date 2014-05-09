@@ -186,8 +186,8 @@ $("document").ready(function(){
       });
     }
     if(typeof lecture_id !== 'undefined'){
-      $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
-    } else {}
+      $("[data-lecture-id=" + lecture_id + "]").addClass("active");
+    }
 
   } else {
     sidebar.init($(".course-accordion"));
@@ -198,8 +198,9 @@ $("document").ready(function(){
         sidebar.navigateToType($(e.target).parent().index());
       });
     }
+
     if(typeof lecture_id !== 'undefined'){
-      $("[data-lecture-id=" + lecture_id + "]").parent().addClass("active");
+      $("[data-lecture-id=" + lecture_id + "]").addClass("active");
     }
 
   }
