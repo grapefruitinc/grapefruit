@@ -9,8 +9,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
+  end
 
+protected
+ 
   def configure_permitted_parameters
 
     # place permitted fields for registration here
