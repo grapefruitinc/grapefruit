@@ -8,7 +8,7 @@
 
 admin = User.create!(name: "Admin Adminson", email: "admin@admin.com", password: "password", is_admin: true)
 
-professor_one = User.create!(name: "Professor Professorson", email: "professor@professor.com", password: "password")
+professor_one = User.create!(name: "Prabhat Hajela", email: "hajelap@rpi.edu", password: "password")
 
 student_one = User.create!(name: "Maebe Funke", email: "maebe@bluth.com", password: "password")
 student_two = User.create!(name: "George-Michael Bluth", email: "georgemichael@bluth.com", password: "password")
@@ -156,7 +156,8 @@ richer view of the Calculus and cement student understanding.",
   c12 = Capsule.create!(name: "The Fundamental Theorem", course: course_three)
     Lecture.create!(name: "Proof of FTC: Part I", lecture_number: 1, capsule: c12)
     Lecture.create!(name: "Proof of FTC: Part II", lecture_number: 2, capsule: c12)
-
+    
+=begin
 course_four = Course.create!(
   name: "Computer Science I",
   description: "An introduction to computer programming algorithm design and
@@ -173,6 +174,7 @@ studies, numerical and nonnumerical applications.",
   spots_available: 420,
   credits: 4,
   instructor: professor_one)
+=end
 
 CourseUser.create!(course: course_one, user: student_one)
 CourseUser.create!(course: course_one, user: student_two)

@@ -25,6 +25,15 @@
 
 <p class="description"><%= @course.description %></p>
 
+<% if @course.students.include?(current_user) %>
+  <div class="panel callout radius">
+    <p>Welcome! Grapefruit courses have <em>Capsules</em> (like units, or chapters in a textbook) which are then divided into <em>Lectures</em>.</p>
+    <p>On the left sidebar, you'll see an expandable list of the capsules in this course, along with the lectures they contain.
+    While progressing through lectures, you can always go back and view previous content.</p>
+    <p>If this is a Calculus Bridge course, you'll see a link to a Pearson problem set in lectures that include them.</p>
+  </div>
+<% end %>
+
 <%= render "documents/documents", container: @course %>
 
 <table class="listing">
