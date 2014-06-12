@@ -25,15 +25,26 @@
   </div>
 <% elsif video.mediasite_url %>
   <div class="row">
-    <% if can? :manage, @course %>
-      <%= link_to "Remove Mediasite Video",
+    <% if not @standalone %>
+      <% if can? :manage, @course %>
+        <%= link_to "Remove Mediasite Video",
+                  course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete,
+                  class: "button secondary small" %>
+      <% end %>
+      <%= link_to "View Mediasite video in larger window",
                 course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
-                data: { confirm: "Are you sure?" },
-                method: :delete,
-                class: "button secondary small" %>
+                target: "_blank",
+                class: "button alert small" %>
+    <% else %>
+      <%= link_to "Close Window",
+            "javascript:window.close()",
+            class: "button secondary small" %>
     <% end %>
+    
   </div>
   <div class="row">
-    <iframe style="width:100%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= video.mediasite_url %>"></iframe>
+    <iframe class="mediasite-video" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= video.mediasite_url %>"></iframe>
   </div>
 <% end %>
