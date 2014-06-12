@@ -10,7 +10,7 @@ class VideosController < ApplicationController
   before_filter :get_lecture
   before_filter :get_video, only: [:show, :destroy]
 
-  layout "course"
+  layout "course", except: [:show]
 
   def new
     @video = @lecture.videos.new
@@ -52,6 +52,7 @@ class VideosController < ApplicationController
   end
 
   def show
+    render layout: "home"
   end
 
   def edit
