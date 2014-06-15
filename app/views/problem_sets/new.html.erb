@@ -7,14 +7,14 @@
 %>
 
 <div class="landing">
-  
+
   <div class="description">
     <h3>Add Problem Set to <%= @capsule.name %></h3>
   </div>
 
   <div class="login">
     <%= form_for [@course, @capsule, @problem_set] do |f| %>
-      <%= devise_error_messages! %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.text_field :name, placeholder: "Name", autofocus: true %></div>
 

@@ -12,7 +12,7 @@
 <h3>New Topic</h3>
 
 <%= form_for [@course, @topic] do |f| %>
-  <%= devise_error_messages! %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <div><%= f.label :name %><br>
   <%= f.text_field :name, autofocus: true %></div>

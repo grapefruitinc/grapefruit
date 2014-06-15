@@ -15,7 +15,7 @@
   <div class="login">
 
     <%= form_for [@course, @capsule, @lecture, @video], multipart: true do |f| %>
-      <%= devise_error_messages! %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <div class="section-container auto" data-section>
         <section class="active">

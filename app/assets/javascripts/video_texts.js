@@ -98,7 +98,7 @@ $(document).ready(function()
       var $content = $videoText.find("#video_text_content");
       var $time = $videoText.find("#video_text_time");
 
-      var path = document.URL
+      var path = document.URL;
 
       if ($videoText.hasClass("new"))
       {

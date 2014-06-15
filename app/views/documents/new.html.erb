@@ -7,7 +7,7 @@
     ]) %>
 
 <div class="landing">
-  
+
   <div class="description">
     <h2>Add File to '<%= @container.name %>'</h2>
   </div>
@@ -15,9 +15,7 @@
   <div class="login">
     <%= form_for document_form(@document) do |f| %>
 
-      <% @document.errors.full_messages.each do |message| %>
-        <p>Error: <%= message %></p> <!-- TODO: style this -->
-      <% end %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.file_field :file %>
 
