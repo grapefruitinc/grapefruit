@@ -1,13 +1,13 @@
 <% if video.youtube_id %>
   <div class="row">
     <h5 class="video-title">
-      <%= video.title %>
-      <a class="video-button replay">REPLAY</a>
+      <%= video.title %> &nbsp;&nbsp;&nbsp;
+      <span class="grey"><%= time_ago_in_words(video.created_at) %> ago</span>
     </h5>
 
     <div class="columns large-8">
       <div class="video-wrapper">
-        <iframe type="text/html" width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>?enablejsapi=1&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+        <iframe type="text/html" width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>?enablejsapi=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -20,6 +20,10 @@
           <%= link_to "Add Video Annotation", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), class: "button small" %>
           <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small" %>
         </div>
+      <% end %>
+      <% if video.may_be_processing %>
+        <p class="medium grey">This video has recently been uploaded and may not display, or be rendered poorly.
+        This effect is only temporary and will end once YouTube processing has completed.</p>
       <% end %>
     </div>
   </div>
