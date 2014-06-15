@@ -1,13 +1,13 @@
 <% if video.youtube_id %>
   <div class="row">
     <h5 class="video-title">
-      <%= video.title %>
-      <a class="video-button replay">REPLAY</a>
+      <%= video.title %> &nbsp;&nbsp;&nbsp;
+      <span class="grey"><%= time_ago_in_words(video.created_at) %> ago</span>
     </h5>
 
     <div class="columns large-8">
       <div class="video-wrapper">
-        <iframe type="text/html" width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>?enablejsapi=1&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+        <iframe type="text/html" width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>?enablejsapi=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -21,17 +21,34 @@
           <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small" %>
         </div>
       <% end %>
+      <% if video.may_be_processing %>
+        <p class="medium grey">This video has recently been uploaded and may not display, or be rendered poorly.
+        This effect is only temporary and will end once YouTube processing has completed.</p>
+      <% end %>
     </div>
   </div>
 <% elsif video.mediasite_url %>
   <div class="row">
-    <%= link_to "Remove Mediasite Video",
+    <% if not @standalone %>
+      <% if can? :manage, @course %>
+        <%= link_to "Remove Mediasite Video",
+                  course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete,
+                  class: "button secondary small" %>
+      <% end %>
+      <%= link_to "View Mediasite video in larger window",
                 course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
-                data: { confirm: "Are you sure?" },
-                method: :delete,
+                target: "_blank",
                 class: "button alert small" %>
+    <% else %>
+      <%= link_to "Close Window",
+            "javascript:window.close()",
+            class: "button secondary small" %>
+    <% end %>
+    
   </div>
   <div class="row">
-    <iframe style="width:60%;height:500px;" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= video.mediasite_url %>"></iframe>
+    <iframe class="mediasite-video" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= video.mediasite_url %>"></iframe>
   </div>
 <% end %>

@@ -44,6 +44,9 @@ Grapefruit::Application.routes.draw do
 
   resources :courses do
 
+    get 'webwork'
+    get 'iframe'
+
     resources :documents, shallow: true
 
     resources :course_users, only: [:create, :destroy]
@@ -53,6 +56,10 @@ Grapefruit::Application.routes.draw do
       resources :documents, shallow: true
 
       resources :lectures do
+        get :toggle_live
+        get :comments
+        post :submit_comment
+        get :list_comments
         resources :documents, shallow: true
         resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
           resources :video_texts, only: [:new, :create, :index, :update, :destroy]

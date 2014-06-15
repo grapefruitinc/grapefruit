@@ -25,6 +25,11 @@ class Video < ActiveRecord::Base
   # ========================================================
   belongs_to :lecture
   has_many :video_texts
+  
+  def may_be_processing
+    minutes_since_uploaded = ((Time.now - updated_at) / 1.minute).round
+    return (minutes_since_uploaded < 120)
+  end
 
 private
 

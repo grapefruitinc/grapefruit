@@ -37,3 +37,5 @@ To make any user account an "admin" account, run the following command after `ra
   `rake admins:set[admin@email.com]`
 
 Note: If you are using ZSH, be sure to add `alias rake='noglob rake'` to your ~/.zshrc and source it, otherwise the rake task will have an issue with the unquoted string literal
+
+To enable the experimental Citrus engine, change `citrus.enabled` from `false` to `true` in config/settings.yml.

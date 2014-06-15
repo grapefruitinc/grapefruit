@@ -27,4 +27,7 @@
 <%= f.label :credits %>
 <%= f.text_field :credits %>
 
+<%= f.label :webwork_url, "WeBWork URL (for example: http://webwork2.cs.rpi.edu/webwork2/myTestCourse/, optional)" %>
+<%= f.text_field :webwork_url %>
+
 <%= f.submit "#{submit_text(@course)} Course", class: "button small" %>
