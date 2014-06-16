@@ -75,7 +75,8 @@ private
   def course_params
     params.require(:course).permit(:name, :description, :subject, :course_number,
                                    :course_registration_number, :semester, :year,
-                                   :spots_available, :credits, :webwork_url)
+                                   :spots_available, :credits, :webwork_url,
+                                   :problem_set_url)
   end
 
   def get_layout

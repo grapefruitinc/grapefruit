@@ -16,6 +16,8 @@
 #  spots_available            :integer
 #  credits                    :integer
 #  slug                       :string(255)
+#  webwork_url                :string(255)
+#  problem_set_url            :text
 #
 
 class Course < ActiveRecord::Base

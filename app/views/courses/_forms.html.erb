@@ -9,10 +9,10 @@
 <%= f.label :subject %>
 <%= f.text_field :subject %>
 
-<%= f.label :course_number %>
+<%= f.label :course_number, "Course Number" %>
 <%= f.text_field :course_number %>
 
-<%= f.label :course_registration_number %>
+<%= f.label :course_registration_number, "Course Registration Number (CRN)" %>
 <%= f.text_field :course_registration_number %>
 
 <%= f.label :semester %>
@@ -21,7 +21,7 @@
 <%= f.label :year %>
 <%= f.text_field :year %>
 
-<%= f.label :spots_available %>
+<%= f.label :spots_available, "Spot Available" %>
 <%= f.text_field :spots_available %>
 
 <%= f.label :credits %>
@@ -29,5 +29,8 @@
 
 <%= f.label :webwork_url, "WeBWork URL (for example: http://webwork2.cs.rpi.edu/webwork2/myTestCourse/, optional)" %>
 <%= f.text_field :webwork_url %>
+
+<%= f.label :problem_set_url, "Problem Set URL" %>
+<%= f.text_field :problem_set_url %>
 
 <%= f.submit "#{submit_text(@course)} Course", class: "button small" %>
