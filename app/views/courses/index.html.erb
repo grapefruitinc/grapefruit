@@ -9,6 +9,9 @@
     <div class="page-header-right">
       <!-- if @user.is_admin? -->
       <ul class="course-actions">
+        <% if can? :create, Course %>
+          <li><%= link_to 'Create New Course', new_course_path, class: 'button small' %></li>
+        <% end %>
       </ul>
       <!-- endif -->
     </div>
