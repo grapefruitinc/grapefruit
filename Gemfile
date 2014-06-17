@@ -85,6 +85,7 @@ gem 'youtube_it'
 
 group :production do
   gem 'passenger'
+  gem 'newrelic_rpm'
 end
 
 group :staging do
