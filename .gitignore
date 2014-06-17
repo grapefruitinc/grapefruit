@@ -24,6 +24,9 @@
 # Ignore the database config (keep the example)
 /config/database.yml
 
+# Ignore the newrelic config
+/config/newrelic.yml
+
 # Ignore Rails documentation
 /doc/*
 
