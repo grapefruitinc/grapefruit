@@ -18,6 +18,10 @@ var lecture_id = <%= @lecture.id %>;
   class: "button small", target: "_blank" %>
 <% end %>
 
+<% unless @course.problem_set_url.blank? %>
+  <p class="description"><%= link_to "Problem Sets", @course.problem_set_url %></p>
+<% end %>
+
 <% unless @lecture.description.blank? %>
   <p class="description expandable-text"><%= @lecture.description %></p>
 <% end %>

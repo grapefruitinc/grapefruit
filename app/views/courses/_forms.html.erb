@@ -31,6 +31,6 @@
 <%= f.text_field :webwork_url %>
 
 <%= f.label :problem_set_url, "Problem Set URL" %>
-<%= f.text_field :problem_set_url %>
+<%= f.text_field :problem_set_url, placeholder: "http://www.pearsonmylabandmastering.com/northamerica/" %>
 
 <%= f.submit "#{submit_text(@course)} Course", class: "button small" %>

@@ -23,6 +23,10 @@
 
 <% end %>
 
+<% unless @course.problem_set_url.blank? %>
+  <p class="description"><%= link_to "Problem Sets", @course.problem_set_url %></p>
+<% end %>
+
 <p class="description"><%= @course.description %></p>
 
 <% if @course.students.include?(current_user) %>
