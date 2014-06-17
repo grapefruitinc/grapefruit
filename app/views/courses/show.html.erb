@@ -23,9 +23,7 @@
 
 <% end %>
 
-<% unless @course.problem_set_url.blank? %>
-  <p class="description"><%= link_to "Problem Sets", @course.problem_set_url %></p>
-<% end %>
+<%= link_to_textbook_problem_sets(@course) %>
 
 <p class="description"><%= @course.description %></p>
 
