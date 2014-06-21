@@ -19,8 +19,6 @@ class VideosController < ApplicationController
   def create
 
     @video = @lecture.videos.new(video_params)
-    render action: :new
-    return
 
     if @video.file # is a YouTube video
       
@@ -36,16 +34,18 @@ class VideosController < ApplicationController
 
       if @video.save
         flash[:success] = "YouTube video created!"
-        #redirect_to [@course, @capsule, @lecture] and return
+        redirect_to [@course, @capsule, @lecture] and return
       end
       
     elsif @video.mediasite_url # is a mediasite video
       
       if @video.save
         flash[:success] = "Mediasite video added!"
-        #redirect_to [@course, @capsule, @lecture] and return
+        redirect_to [@course, @capsule, @lecture] and return
       end
       
+    else
+      @video.save
     end
     
     render :new
