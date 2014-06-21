@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621044929) do
+ActiveRecord::Schema.define(version: 20140621203808) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -129,15 +129,6 @@ ActiveRecord::Schema.define(version: 20140621044929) do
     t.integer  "capsule_id"
   end
 
-  create_table "problems", force: true do |t|
-    t.integer  "problem_set_id"
-    t.text     "question"
-    t.text     "solution"
-    t.integer  "worth",          default: 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "replies", force: true do |t|
     t.integer  "course_id"
     t.integer  "topic_id"
@@ -173,7 +164,6 @@ ActiveRecord::Schema.define(version: 20140621044929) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_admin"
     t.string   "name"
   end
 

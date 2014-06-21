@@ -28,7 +28,7 @@ ActiveAdmin.register User, as: "Unassigned Users" do
     end
   end
 
-  permit_params :email, :name, :password, :is_admin
+  permit_params :email, :name, :password
 
   menu priority: 10
 
@@ -37,7 +37,6 @@ ActiveAdmin.register User, as: "Unassigned Users" do
       f.input :email
       f.input :name
       f.input :password
-      f.input :is_admin
     end
 
     f.actions
@@ -52,7 +51,6 @@ ActiveAdmin.register User, as: "Unassigned Users" do
     end
     column :email
     column :sign_in_count
-    column :is_admin
 
     actions
   end
