@@ -17,38 +17,39 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = @lecture.videos.new(video_params)
 
-    if @video.file
+    @video = @lecture.videos.new(video_params)
+    render action: :new
+    return
+
+    if @video.file # is a YouTube video
+      
       @video.file = video_params[:file].tempfile.path
       client = getYoutubeClient
       upload = client.video_upload(File.open(@video.file),
                                    title: @video.title,
                                    description: @video.description,
-                                   category: 'People',
+                                   category: 'Education',
                                    keywords: %w[rensselaer grapefruit lecture video])
 
       @video.youtube_id = upload.video_id.split(':')[-1]
 
       if @video.save
-        flash[:success] = "Video created!"
-        redirect_to [@course, @capsule, @lecture]
-      else
-        flash[:error] = "Something went wrong..."
-        render :new
+        flash[:success] = "YouTube video created!"
+        #redirect_to [@course, @capsule, @lecture] and return
       end
-    elsif @video.mediasite_url
+      
+    elsif @video.mediasite_url # is a mediasite video
+      
       if @video.save
         flash[:success] = "Mediasite video added!"
-        redirect_to [@course, @capsule, @lecture]
-      else
-        flash[:error] = "Something went wrong..."
-        render :new
+        #redirect_to [@course, @capsule, @lecture] and return
       end
-    else
-      flash[:error] = "Please select a video to upload!"
-      render :new
+      
     end
+    
+    render :new
+    
   end
 
   def show

@@ -38,7 +38,7 @@ private
 
   def only_one_type_of_video
     if not (youtube_id.blank? ^ mediasite_url.blank?)
-      errors.add :mediasite_url, 'You can only have one type of video'
+      errors.add :base, 'You can only have one type of video'
       false
     end
   end

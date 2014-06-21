@@ -97,7 +97,16 @@ $("document").ready(function(){
 		  return this;
   	},
   	navigate: function(c, p, i){
-      this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
+       c = typeof c !== 'undefined' ? c : false;
+       p = typeof p !== 'undefined' ? p : false;
+       i = typeof i !== 'undefined' ? i : false;
+       if(c && p && i && (c * p * i) > 0){
+         this.navigateToCapsule(c).navigateToType(p).navigateToItem(i); 
+       }else if(c && p && (c * p) > 0){
+         this.navigateToCapsule(c).navigateToType(p);
+       }else if(c && c > 0){
+         this.navigateToCapsule(c);
+       }
   	}
 
   }
@@ -152,9 +161,9 @@ $("document").ready(function(){
     var small = true;
   }
 
-  var current_capsule = (typeof capsule_id == 'undefined') ? -1 : capsule_id;
-  var current_lecture = (typeof lecture_id == 'undefined') ? -1 : lecture_id;
-  var current_type = 0;
+  current_capsule = (typeof capsule_id == 'undefined') ? -1 : capsule_id;
+  current_lecture = (typeof lecture_id == 'undefined') ? -1 : lecture_id;
+  current_type = 0;
 
   if($(".course-accordion").height){ // just in case the accordion isn't there
 

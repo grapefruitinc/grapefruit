@@ -61,7 +61,7 @@ Grapefruit::Application.routes.draw do
         post :submit_comment
         get :list_comments
         resources :documents, shallow: true
-        resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
+        resources :videos, except: :index do
           resources :video_texts, only: [:new, :create, :index, :update, :destroy]
         end
       end
