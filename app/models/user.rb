@@ -15,17 +15,20 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
-#  is_admin               :boolean
 #  name                   :string(255)
 #
 
 class User < ActiveRecord::Base
 
+  # Devise
+  # ========================================================
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable
 
+  # Relationships
+  # ========================================================
   has_many :instructed_courses, class_name: "Course", foreign_key: "instructor_id"
 
   has_many :course_users, dependent: :destroy
@@ -34,6 +37,23 @@ class User < ActiveRecord::Base
   has_many :replies, foreign_key: "author_id"
   has_many :topics, foreign_key: "author_id"
 
+  # User Types
+  # ========================================================
+  def self.unassigned
+    # TODO
+    includes(:course_users, :instructed_courses).where('course_users.user_id IS NULL AND courses.instructor_id != users.id')
+  end
+
+  def self.instructors
+    joins(:instructed_courses).uniq
+  end
+
+  def self.students
+    includes(:student_courses).where('courses.instructor_id != users.id')
+  end
+
+  # Output
+  # ========================================================
   def display_identifier
     !self.name.blank? ? self.first_name : self.email
   end
