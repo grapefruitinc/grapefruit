@@ -7,11 +7,13 @@ class CoursesController < ApplicationController
   layout :get_layout
 
   def new
+    authorize! :create, Course
     @course = Course.new
   end
 
   def create
     @course = current_user.instructed_courses.build(course_params)
+    authorize! :create, @course
     if @course.save
       flash[:success] = "Course created!"
       redirect_to @course

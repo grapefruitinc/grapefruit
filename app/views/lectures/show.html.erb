@@ -10,7 +10,9 @@ var lecture_id = <%= @lecture.id %>;
 
   <%= link_to "Add File", new_course_capsule_lecture_document_path(@course, @capsule, @lecture), class: "button small" %>
   <%= link_to "Edit Lecture", edit_course_capsule_lecture_path(@course, @capsule, @lecture), class: "button small" %>
-  <%= link_to @live_button, course_capsule_lecture_toggle_live_path(@course, @capsule, @lecture), class: "button small alert" %>
+  <% if citrus_on %>
+    <%= link_to @live_button, course_capsule_lecture_toggle_live_path(@course, @capsule, @lecture), class: "button small alert" %>
+  <% end %>
 <% end %>
 
 <% if @lecture.live %>
@@ -18,9 +20,7 @@ var lecture_id = <%= @lecture.id %>;
   class: "button small", target: "_blank" %>
 <% end %>
 
-<% unless @course.problem_set_url.blank? %>
-  <p class="description"><%= link_to "Problem Sets", @course.problem_set_url %></p>
-<% end %>
+<%= link_to_textbook_problem_sets(@course) %>
 
 <% unless @lecture.description.blank? %>
   <p class="description expandable-text"><%= @lecture.description %></p>

@@ -33,10 +33,15 @@
       can :manage_admins, User
       can :manage, :all
     else
+      
+      # Users can manage courses if they are the instructor
 
       can :manage, Course do |course|
         course.instructor == user
       end
+      
+      # But they can only create them if they are an admin
+      cannot :create, Course
 
       can :read, Course do |course|
         user.student_courses.include? course
