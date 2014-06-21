@@ -111,6 +111,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.15)
+    newrelic_rpm (3.8.1.221)
     nokogiri (1.5.11)
     oauth (0.4.7)
     oauth2 (0.9.3)
@@ -238,6 +239,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   mysql2
+  newrelic_rpm
   passenger
   pg
   rails (= 4.0.1)
