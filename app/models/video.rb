@@ -17,9 +17,12 @@ class Video < ActiveRecord::Base
 
   # Validations
   # ========================================================
-  validates :title, presence: true, if: :youtube_id
-  validates :description, presence: true, if: :youtube_id
   validate :only_one_type_of_video
+  
+  validates :title, presence: true
+  validates :description, presence: true, if: :youtube_id
+
+  validates_associated :lecture
 
   # Relationships
   # ========================================================
@@ -34,8 +37,8 @@ class Video < ActiveRecord::Base
 private
 
   def only_one_type_of_video
-    if youtube_id && mediasite_url
-      errors.add :mediasite_url, 'Can only have one type of video'
+    if not (youtube_id.blank? ^ mediasite_url.blank?)
+      errors.add :mediasite_url, 'You can only have one type of video'
       false
     end
   end
