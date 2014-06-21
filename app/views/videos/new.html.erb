@@ -14,6 +14,7 @@
         <section class="active">
           <p class="title" data-section-title><a href="#uploadYoutube">Upload to Youtube</a></p>
           <div class="content" data-section-content>
+            
             <div class="form-group">
               <%= f.label :title %>
               <%= f.text_field :title, autofocus: true %>
@@ -34,10 +35,12 @@
         <section>
           <p class="title" data-section-title><a href="#mediasiteURL">Mediasite URL</a></p>
           <div class="content" data-section-content>
+            
             <div class="form-group">
               <%= f.label :title %>
               <%= f.text_field :title, autofocus: true %>
             </div>
+            
             <div class="form-group">
               <%= f.label :mediasite_url, 'Medasite URL' %>
               <%= f.text_field :mediasite_url, placeholder: "http://mediasite.mms.rpi.edu/Mediasite/Play/1337" %>
@@ -51,17 +54,3 @@
   </div>
 
 </div>
-
-<script>
-$(document).ready(function(){
-  
-  var $form = $('#new_video');
-  
-  $form.submit(function(e){
-    $form.find("section:not(.active)").remove();
-    alert($form.attr("action"));
-    return true;
-  });
-  
-});
-</script>

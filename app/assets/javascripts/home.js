@@ -20,3 +20,14 @@ if(typeof home_standalone == undefined){
     }
   });
 }
+
+$(document).ready(function(){
+    
+  var $form = $('#new_video');
+  
+  $form.submit(function(e){
+    $form.find("section:not(.active)").remove();
+    $form.trigger("submit");
+  });
+  
+});
