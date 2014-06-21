@@ -1,3 +1,5 @@
+<%= render 'shared/error_messages', object: @video %>
+
 <div class="landing">
 
   <div class="description">
@@ -7,12 +9,12 @@
   <div class="login">
 
     <%= form_for [@course, @capsule, @lecture, @video], multipart: true do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
+      
       <div class="section-container auto" data-section>
         <section class="active">
           <p class="title" data-section-title><a href="#uploadYoutube">Upload to Youtube</a></p>
           <div class="content" data-section-content>
+            
             <div class="form-group">
               <%= f.label :title %>
               <%= f.text_field :title, autofocus: true %>
@@ -33,7 +35,16 @@
         <section>
           <p class="title" data-section-title><a href="#mediasiteURL">Mediasite URL</a></p>
           <div class="content" data-section-content>
-            <%= f.text_field :mediasite_url, placeholder: "Mediasite URL (if any)" %>
+            
+            <div class="form-group">
+              <%= f.label :title %>
+              <%= f.text_field :title, autofocus: true %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :mediasite_url, 'Medasite URL' %>
+              <%= f.text_field :mediasite_url, placeholder: "http://mediasite.mms.rpi.edu/Mediasite/Play/1337" %>
+            </div>
           </div>
         </section>
       </div>
@@ -43,24 +54,3 @@
   </div>
 
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function()
-  {
-    var $form = $('#new_video');
-
-    $form.submit(function(e)
-    {
-      e.preventDefault();
-
-      removeUnusedFields($form);
-
-      $form.get(0).submit();
-    });
-  });
-
-  var removeUnusedFields = function($form)
-  {
-    $form.find("section:not(.active)").remove();
-  };
-</script>

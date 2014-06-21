@@ -1,13 +1,14 @@
 <% if object.errors.any? %>
-  <div class="large-6 columns">
+  <div class="panel error radius">
     <div id="error-explanation">
-      <strong>The form contains <%= pluralize(object.errors.full_unique_messages.count, "error") %>.</strong>
-
-      <ul>
-        <% object.errors.full_unique_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+      <strong>
+        Oops, check <%= (form_error_count(object) > 1) ? "these" : "this" %>
+          <%= pluralize(form_error_count(object), "thing") %> first:
+      </strong>
+      <br/>
+      <% object.errors.full_unique_messages.each do |message| %>
+        <%= message %>.<br/>
+      <% end %>
     </div>
   </div>
 <% end %>

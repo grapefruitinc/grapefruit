@@ -253,6 +253,12 @@ div#error_explanation{
         color: #fff;
     }
 }
+div.panel.error{
+  background-color: $ethan-red-color;
+  color: #fff;
+  border: 0em;
+}
+
 
 input[type=text], input[type=email], input[type=password] {
     border-radius: 4px;
