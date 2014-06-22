@@ -29,6 +29,10 @@
   </div>
 <% elsif video.mediasite_url %>
   <div class="row">
+    <h5 class="video-title">
+      <%= video.title %> &nbsp;&nbsp;&nbsp;
+      <span class="grey"><%= time_ago_in_words(video.updated_at) %> ago</span>
+    </h5>
     <% if not @standalone %>
       <% if can? :manage, @course %>
         <%= link_to "Remove Mediasite Video",
