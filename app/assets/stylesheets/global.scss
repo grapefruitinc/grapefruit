@@ -323,6 +323,9 @@ input[type=text], input[type=email], input[type=password] {
 section {
     @include grid-row();
     & > div {@include grid-column(8, $last-column: true);}
+    div.admin{
+        @include grid-column(6, $offset: 3);
+    }
 }
 
 

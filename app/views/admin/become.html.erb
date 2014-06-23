@@ -1,0 +1,17 @@
+<section>
+  <div class="admin">
+
+    <h2>Grapefruit Administration</h2>
+
+    <p>Type the ID of the user that you want to "become" below.</p>
+    
+    <%= form_tag become_path do %>
+    
+       <%= text_field_tag :user_id %>
+       
+       <%= submit_tag "Become User", class: "button" %>
+    
+    <% end %>
+
+  </div>
+</section>
