@@ -7,7 +7,7 @@ class AdminController < ApplicationController
   def become
     
     if request.post?
-      sign_in(:user, User.find(params[:user_id]))
+      sign_in(:user, User.find(params[:user_id]), { :bypass => true })
       redirect_to root_url
     end
     

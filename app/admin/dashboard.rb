@@ -22,12 +22,12 @@ ActiveAdmin.register_page "Dashboard" do
     #       end
     #     end
     #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
+    columns do
+       column do
+         panel "Welcome to Grapefruit Administration." do
+           para "Navigate to /become to log in as any user."
+         end
+       end
+    end
   end # content
 end
