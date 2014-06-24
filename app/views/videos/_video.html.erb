@@ -2,8 +2,9 @@
   <div class="row">
     <h5 class="video-title">
       <%= video.title %> &nbsp;&nbsp;&nbsp;
-      <span class="grey"><%= time_ago_in_words(video.created_at) %> ago</span>
+      <span class="grey">Updated <%= time_ago_in_words(video.created_at) %> ago</span>
     </h5>
+    <p class="grey"><%= video.description unless video.description.blank? %></p>
 
     <div class="columns large-8">
       <div class="video-wrapper">
@@ -39,8 +40,9 @@
   <div class="row">
     <h5 class="video-title">
       <%= video.title %> &nbsp;&nbsp;&nbsp;
-      <span class="grey"><%= time_ago_in_words(video.updated_at) %> ago</span>
+      <span class="grey">Updated <%= time_ago_in_words(video.updated_at) %> ago</span>
     </h5>
+    <p class="grey"><%= video.description unless video.description.blank? %></p>
     <% if not @standalone %>
       <%= link_to "View Mediasite video in larger window",
                 course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
