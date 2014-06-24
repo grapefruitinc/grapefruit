@@ -36,8 +36,8 @@ ActiveAdmin.register User, as: "Instructor" do
     selectable_column
 
     column :id
-    column :name do |student|
-      link_to student.name, admin_student_path(student)
+    column :name do |instructor|
+      link_to instructor.name, admin_instructor_path(instructor)
     end
     column :email
     column :sign_in_count

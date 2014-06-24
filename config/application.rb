@@ -24,7 +24,9 @@ module Grapefruit
     Devise::PasswordsController.layout "guest"
     Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "home" : "guest" }
   end
+  
   config.i18n.enforce_available_locales = false
+  config.time_zone = 'Eastern Time (US & Canada)'
 
   end
 end
