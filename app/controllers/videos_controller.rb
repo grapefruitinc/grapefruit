@@ -28,7 +28,8 @@ class VideosController < ApplicationController
                                    title: @video.title,
                                    description: @video.description,
                                    category: 'Education',
-                                   keywords: %w[rensselaer grapefruit lecture video])
+                                   keywords: %w[rensselaer grapefruit lecture video],
+                                   list: 'denied')
 
       @video.youtube_id = upload.video_id.split(':')[-1]
 
