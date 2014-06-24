@@ -19,6 +19,11 @@
         <div>
           <%= link_to "Add Video Annotation", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), class: "button small" %>
           <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small" %>
+          <%= link_to "Remove YouTube Video",
+                    course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+                    data: { confirm: "Are you sure? This action CANNOT be undone." },
+                    method: :delete,
+                    class: "button alert small" %>
         </div>
       <% end %>
       <% if video.may_be_processing %>
@@ -34,17 +39,17 @@
       <span class="grey"><%= time_ago_in_words(video.updated_at) %> ago</span>
     </h5>
     <% if not @standalone %>
+      <%= link_to "View Mediasite video in larger window",
+                course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+                target: "_blank",
+                class: "button secondary small" %>
       <% if can? :manage, @course %>
         <%= link_to "Remove Mediasite Video",
                   course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                   data: { confirm: "Are you sure?" },
                   method: :delete,
-                  class: "button secondary small" %>
+                  class: "button alert small" %>
       <% end %>
-      <%= link_to "View Mediasite video in larger window",
-                course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
-                target: "_blank",
-                class: "button alert small" %>
     <% else %>
       <%= link_to "Close Window",
             "javascript:window.close()",

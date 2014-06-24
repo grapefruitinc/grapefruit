@@ -70,6 +70,10 @@ class VideosController < ApplicationController
   end
 
   def destroy
+    if @video.youtube_id
+      client = getYoutubeClient
+      client.video_delete(@video.youtube_id)
+    end
     @video.destroy
     redirect_to :back
   end
