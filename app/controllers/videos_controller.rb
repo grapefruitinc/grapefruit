@@ -8,7 +8,7 @@ class VideosController < ApplicationController
   before_filter :get_capsule
   before_filter :get_all_course_capsules
   before_filter :get_lecture
-  before_filter :get_video, only: [:show, :destroy]
+  before_filter :get_video, only: [:show, :edit, :update, :destroy]
 
   layout "course", except: [:show]
 
@@ -58,18 +58,20 @@ class VideosController < ApplicationController
   end
 
   def edit
+    authorize! :update, @lecture # if you can edit the lecture, you can edit the video
   end
 
   def update
     if @video.update_attributes(video_params)
       flash[:success] = "Video updated!"
-      redirect_to [@course, @capsule, @lecture]
+      redirect_to [@course, @capsule, @lecture] # redirect back to video
     else
       render :edit
     end
   end
 
   def destroy
+    authorize! :destroy, @lecture
     if @video.youtube_id
       client = getYoutubeClient
       client.video_delete(@video.youtube_id)

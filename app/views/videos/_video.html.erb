@@ -19,6 +19,9 @@
         <div>
           <%= link_to "Add Video Annotation", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), class: "button small" %>
           <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small" %>
+          <%= link_to "Edit YouTube Video",
+                    edit_course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+                    class: "button primary small" %>
           <%= link_to "Remove YouTube Video",
                     course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                     data: { confirm: "Are you sure? This action CANNOT be undone." },
@@ -44,6 +47,9 @@
                 target: "_blank",
                 class: "button secondary small" %>
       <% if can? :manage, @course %>
+        <%= link_to "Edit Mediasite Video",
+                  edit_course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+                  class: "button primary small" %>
         <%= link_to "Remove Mediasite Video",
                   course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                   data: { confirm: "Are you sure?" },

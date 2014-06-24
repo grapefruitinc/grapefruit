@@ -1,0 +1,46 @@
+<% page_title "Edit Video" %>
+
+<div class="landing">
+
+  <div class="description">
+    <h3>Edit <%= (@video.youtube_id.blank?) ? 'Mediasite' : 'YouTube' %> Video</h3>
+    <p>Current title: <%= @video.title.blank? ? '(none)' : @video.title %></p>
+    <p>Current description: <%= @video.description.blank? ? '(none)' : @video.description %></p>
+    <p>Current URL: <%= (@video.youtube_id.blank?) ? @video.mediasite_url : youtube_id_to_url(@video.youtube_id) %></p>
+  </div>
+
+  <div class="login">
+    <%= form_for [@course, @capsule, @lecture, @video] do |f| %>
+    
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :title, "Video title" %>
+      
+      <%= f.text_area :title, placeholder: "The title of this video", autofocus: true  %>
+      
+      <%= f.label :title, "Video description" %>
+
+      <%= f.text_area :description, placeholder: "A short description of this video" %>
+      
+      <% if @video.mediasite_url.blank? %>
+      
+        <%= f.label :title, "YouTube ID" %>
+      
+        <p>The ID of this YouTube video.</p>
+        <p>For example, the id is 'grapefruit' if your video URL is <%= youtube_id_to_url 'grapefruit'%></p>
+        
+        <%= f.text_area :youtube_id, placeholder: youtube_id_to_url('696969') %>
+        
+      <% else %>
+      
+        <%= f.label :title, "Mediasite URL" %>
+        <%= f.text_area :mediasite_url, placeholder: 'https://mms.mediasite.rpi.edu/696969' %>
+      
+      <% end %>
+
+      <div><%= f.submit "Update Video", class: "button small" %></div>
+      
+    <% end %>
+  </div>
+
+</div>
