@@ -1,0 +1,11 @@
+<p>
+  <strong><%= user.name %></strong>
+  <%= user.email %>
+</p>
+<p>
+  <%= link_to "Remove From Course",
+            course_course_user_path(@course, user),
+            data: { confirm: "Are you sure?" },
+            method: :delete,
+            class: "button alert small" %>
+</p>

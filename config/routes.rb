@@ -50,6 +50,7 @@ Grapefruit::Application.routes.draw do
 
     get 'webwork'
     get 'iframe'
+    get 'students'
 
     resources :documents, shallow: true
 

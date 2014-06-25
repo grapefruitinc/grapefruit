@@ -1,5 +1,7 @@
 class CourseUsersController < ApplicationController
-  before_filter :course_joinable, only: [:create, :destroy]
+  before_filter :get_course
+  before_filter :get_student, only: [:create]
+  before_filter :get_student_with_user_id, only: [:destroy]
 
   def create
     unless @course.students.include?(@student)
@@ -14,14 +16,14 @@ class CourseUsersController < ApplicationController
 
   def destroy
     @course.remove_student(@student)
-    redirect_to course_path(@course)    
+    redirect_to course_students_path(@course)   
   end
 
 private
-  def course_joinable
-    @course = Course.find(params[:course_id] || params[:id])
-    @user = User.find(params[:course_user][:user_id])
+  def get_student
     @student = User.find(params[:course_user][:user_id])
   end
-
+  def get_student_with_user_id
+    @student = User.find(params[:user_id] || params[:id])
+  end
 end

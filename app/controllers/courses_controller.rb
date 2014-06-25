@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :get_course, only: [:show, :edit, :update, :destroy, :webwork, :iframe]
+  before_filter :get_course, only: [:show, :edit, :update, :destroy, :webwork, :iframe, :students]
   before_filter :get_capsules, only: [:show, :edit, :update, :destroy, :webwork]
 
   layout :get_layout
@@ -70,6 +70,11 @@ class CoursesController < ApplicationController
     redirect_to root_path unless @course.webwork_url.present?
     @course.ensure_webwork_exists(current_user)
     @url = @course.webwork_url
+  end
+  
+  def students
+    authorize! :update, @course
+    @students = @course.students
   end
 
 private

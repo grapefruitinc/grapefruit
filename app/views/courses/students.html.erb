@@ -1,0 +1,8 @@
+<section>
+  <% unless @students.blank? %>
+    <h3>Students (<%= @students.count %>) in <%= @course.name %></h3>
+    <%= render @students %>
+  <% else %>
+    <p class="grey">There are not any students currently enrolled in this course.</p>
+  <% end %>
+</section>
