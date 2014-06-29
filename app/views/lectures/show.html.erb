@@ -33,7 +33,7 @@ var lecture_id = <%= @lecture.id %>;
 
   <% if can? :manage, @course %>
    <div>
-     <%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), class: "button small" %>
+     <%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), class: "button small", data: { no_turbolink: true }  %>
    </div>
   <% end %>
 
