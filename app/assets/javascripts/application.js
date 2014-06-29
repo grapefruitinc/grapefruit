@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
+//= //require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
+//= //require turbolinks
 //= require_tree .
 
 function html_escape(str) {
@@ -110,6 +110,8 @@ $("document").ready(function(){
   	}
 
   }
+
+  /* forms */
 
   if($("#lecture-comments").length){
 
