@@ -31,14 +31,13 @@ $("document").ready(function(){
   $(document).foundation();
 
   var flash = $("div#top-flash");
+  var flash_exists = (flash.children().length > 0) ? true : false;
   
-  if(flash.height()){
+  if(flash_exists){
     flash.delay(3800).fadeOut(420);
+  }else{
+    flash.hide();
   }
-
-  /*flash.stop().parent().css("opacity", "100").find(".alert-box").delay(280)
-    .animate({ backgroundColor: current_flash_color }, 300)
-    .parent().delay(4000).animate({ opacity: 0 });*/
 
   var sidebar = {
   	init: function(a){
