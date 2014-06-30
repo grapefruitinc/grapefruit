@@ -10,13 +10,6 @@
 @import "video_texts";
 @import "videos";
 
-div#top-flash{
-  div.alert-box{
-    @include alert(lighten(#0A7790, 10%));
-    margin-bottom: 0px;
-  }
-}
-
 .nav-area {
   a{
     &:hover {

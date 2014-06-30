@@ -30,14 +30,15 @@ $("document").ready(function(){
 
   $(document).foundation();
 
-  var flash = $("div#top-flash div.alert-box");
+  var flash = $("div#top-flash");
+  
+  if(flash.height()){
+    flash.delay(3800).fadeOut(420);
+  }
 
-  var current_flash_color = flash.css("backgroundColor");
-  var highlight_flash_color = flash.parent().css("backgroundColor");
-
-  flash.stop().parent().css("opacity", "100").find(".alert-box").delay(280)
+  /*flash.stop().parent().css("opacity", "100").find(".alert-box").delay(280)
     .animate({ backgroundColor: current_flash_color }, 300)
-    .parent().delay(4000).animate({ opacity: 0 });
+    .parent().delay(4000).animate({ opacity: 0 });*/
 
   var sidebar = {
   	init: function(a){
