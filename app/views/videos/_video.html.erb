@@ -6,35 +6,55 @@
     </h5>
     <p class="grey"><%= video.description unless video.description.blank? %></p>
 
-    <div class="columns large-8">
-      <div class="video-wrapper">
-        <iframe type="text/html" width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>?enablejsapi=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+    <% if @standalone %>
+      <div class="columns large-8">
+        <div class="video-wrapper">
+          <iframe type="text/html" width="560" height="315" src="//www.youtube.com/embed/<%=video.youtube_id%>?enablejsapi=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
-    </div>
 
-    <div class="columns large-4">
-      <ul class="video-texts">
-        <%= render video.video_texts.order(time: :asc) %>
-      </ul>
-      <% if can? :manage, @course %>
-        <div>
+      <div class="columns large-4">
+
+        <% if can? :manage, @course %>
+
           <%= link_to "Add Video Annotation", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), class: "button small" %>
           <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small" %>
-          <%= link_to "Edit YouTube Video",
+
+        <% end %>
+        
+        <ul class="video-texts">
+          <%= render video.video_texts.order(time: :asc) %>
+        </ul>
+
+        <% if video.may_be_processing %>
+          <p class="medium grey">This video has recently been uploaded and may not display, or be rendered poorly.
+          This effect is only temporary and will end once YouTube processing has completed.</p>
+        <% end %>
+
+      </div>
+
+    <% end %>
+
+    <% if not @standalone %>
+
+      <%= link_to "Watch &#10148;".html_safe,
+                course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+                target: "_blank",
+                class: "button secondary small" %>
+
+      <% if can? :manage, @course %>
+
+          <%= link_to "Edit Video",
                     edit_course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                     class: "button primary small" %>
-          <%= link_to "Remove YouTube Video",
+          <%= link_to "Remove Video",
                     course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                     data: { confirm: "Are you sure? This action CANNOT be undone." },
                     method: :delete,
                     class: "button alert small" %>
-        </div>
+
       <% end %>
-      <% if video.may_be_processing %>
-        <p class="medium grey">This video has recently been uploaded and may not display, or be rendered poorly.
-        This effect is only temporary and will end once YouTube processing has completed.</p>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 <% elsif video.mediasite_url %>
   <div class="row">
@@ -44,15 +64,15 @@
     </h5>
     <p class="grey"><%= video.description unless video.description.blank? %></p>
     <% if not @standalone %>
-      <%= link_to "View Mediasite video in larger window",
+      <%= link_to "Watch &#10148;".html_safe,
                 course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                 target: "_blank",
                 class: "button secondary small" %>
       <% if can? :manage, @course %>
-        <%= link_to "Edit Mediasite Video",
+        <%= link_to "Edit Video",
                   edit_course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                   class: "button primary small" %>
-        <%= link_to "Remove Mediasite Video",
+        <%= link_to "Remove Video",
                   course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                   data: { confirm: "Are you sure?" },
                   method: :delete,
@@ -63,9 +83,11 @@
             "javascript:window.close()",
             class: "button secondary small" %>
     <% end %>
-    
+
   </div>
-  <div class="row">
-    <iframe class="mediasite-video" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= video.mediasite_url %>"></iframe>
-  </div>
+  <% if @standalone %>
+    <div class="row">
+      <iframe class="mediasite-video" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="<%= video.mediasite_url %>"></iframe>
+    </div>
+  <% end %>
 <% end %>
