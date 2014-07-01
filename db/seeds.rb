@@ -40,7 +40,7 @@ functions.",
                 name: "Left and Right Hand Limits",
                 lecture_number: 2,
                 capsule: c2)
-    lecture.videos.create(mediasite_url: "https://mediasite.mms.rpi.edu/Mediasite5/Play/0630c92605a646f7ae817552ab9763ca1d")
+    lecture.videos.create!(title: "Fun Vid", mediasite_url: "https://mediasite.mms.rpi.edu/Mediasite5/Play/0630c92605a646f7ae817552ab9763ca1d")
     Lecture.create!(name: "Continuity", lecture_number: 3, capsule: c2)
     Lecture.create!(name: "Limits at Infinity", lecture_number: 4, capsule: c2)
   c3 = Capsule.create!(name: "Derivatives", course: course_one)
@@ -48,7 +48,7 @@ functions.",
                 name: "Definition of a Derivative",
                 lecture_number: 1,
                 capsule: c3)
-    lecture.videos.create(mediasite_url: "http://mediasite.mms.rpi.edu/Mediasite5/Play/24211bff372b455c92d9fe2a4fe35c3c1d")
+    lecture.videos.create!(title: "Fun Vid", mediasite_url: "http://mediasite.mms.rpi.edu/Mediasite5/Play/24211bff372b455c92d9fe2a4fe35c3c1d")
     Lecture.create!(name: "Derivative as a Function", lecture_number: 2, capsule: c3)
     Lecture.create!(name: "Basic Rules", lecture_number: 3, capsule: c3)
     Lecture.create!(name: "Notation and Higher Derivatives", lecture_number: 4, capsule: c3)
@@ -154,7 +154,7 @@ richer view of the Calculus and cement student understanding.",
   c12 = Capsule.create!(name: "The Fundamental Theorem", course: course_three)
     Lecture.create!(name: "Proof of FTC: Part I", lecture_number: 1, capsule: c12)
     Lecture.create!(name: "Proof of FTC: Part II", lecture_number: 2, capsule: c12)
-    
+
 =begin
 course_four = Course.create!(
   name: "Computer Science I",
