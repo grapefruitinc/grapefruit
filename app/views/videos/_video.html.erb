@@ -21,7 +21,7 @@
           <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small" %>
 
         <% end %>
-        
+
         <ul class="video-texts">
           <%= render video.video_texts.order(time: :asc) %>
         </ul>
@@ -49,7 +49,7 @@
                     class: "button primary small" %>
           <%= link_to "Remove Video",
                     course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
-                    data: { confirm: "Are you sure? This action CANNOT be undone." },
+                    data: { confirm: "Are you sure? This action cannot be undone." },
                     method: :delete,
                     class: "button alert small" %>
 
@@ -74,7 +74,7 @@
                   class: "button primary small" %>
         <%= link_to "Remove Video",
                   course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
-                  data: { confirm: "Are you sure?" },
+                  data: { confirm: "Are you sure? This action cannot be undone." },
                   method: :delete,
                   class: "button alert small" %>
       <% end %>
