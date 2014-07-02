@@ -13,6 +13,12 @@
 
     <%= f.submit "Login", class: "button" %>
 
+    <% if admin_user_signed_in? %>
+
+      <p>Or, <%= link_to 'login with a user ID', become_path %> as an admin. </p>
+
+    <% end %>
+
     <div class="center">
       <%= render "devise/shared/links" %>
     </div>
