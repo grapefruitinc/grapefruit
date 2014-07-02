@@ -4,3 +4,8 @@ youtube:
   username: "YOUTUBE USERNAME"
   password: "YOUTUBE PASSWORD"
   dev_key: "YOUTUBE DEVKEY"
+gmail:
+  username: "GMAIL USERNAME"
+  password: "GMAIL PASSWORD"
+  source_host: "grapefruit.cs.rpi.edu" # example, please change if needed!
+  from_name: "The Grapefruit Team"
