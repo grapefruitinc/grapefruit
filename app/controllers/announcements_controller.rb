@@ -29,9 +29,12 @@ class AnnouncementsController < ApplicationController
   end
 
   def edit
+    authorize! :manage, @course
   end
 
   def update
+    authorize! :manage, @course
+
     if @announcement.update_attributes(announcement_params)
       flash[:success] = "Announcement updated!"
       redirect_to [@course, @announcement]
@@ -41,6 +44,7 @@ class AnnouncementsController < ApplicationController
   end
 
   def destroy
+    authorize! :manage, @course
     @announcement.destroy
     flash[:success] = "Announcement deleted!"
     redirect_to @course
