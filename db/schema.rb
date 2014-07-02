@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140701195617) do
 
   create_table "announcements", force: true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -135,6 +135,15 @@ ActiveRecord::Schema.define(version: 20140701195617) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capsule_id"
+  end
+
+  create_table "problems", force: true do |t|
+    t.integer  "problem_set_id"
+    t.text     "question"
+    t.text     "solution"
+    t.integer  "worth",          default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "replies", force: true do |t|
