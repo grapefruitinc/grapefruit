@@ -26,13 +26,15 @@
 
 <%= link_to_textbook_problem_sets(@course) %>
 
-<p class="announcement">
-  <%= @course.announcements.last.title %>
-  <br>
-  <span class="expandable-text"><%= @course.announcements.last.content %></span>
-  <br>
-  <%= link_to "All Announcements", course_announcements_path(@course, @course.announcements) %>
-</p>
+<% unless @course.announcements.blank? %>
+  <p class="announcement">
+    <%= @course.announcements.last.title %>
+    <br>
+    <span class="expandable-text"><%= @course.announcements.last.content %></span>
+    <br>
+    <%= link_to "All Announcements", course_announcements_path(@course, @course.announcements) %>
+  </p>
+<% end %>
 
 <p class="description"><%= @course.description %></p>
 

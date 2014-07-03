@@ -17,7 +17,7 @@ class AnnouncementsController < ApplicationController
 
     if @announcement.save
       flash[:success] = "Announcement created!"
-      redirect_to [@course, @announcement]
+      redirect_to course_announcements_path(@course)
     else
       render "new"
     end
@@ -37,7 +37,7 @@ class AnnouncementsController < ApplicationController
 
     if @announcement.update_attributes(announcement_params)
       flash[:success] = "Announcement updated!"
-      redirect_to [@course, @announcement]
+      redirect_to course_announcements_path(@course)
     else
       render "edit"
     end
