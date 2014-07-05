@@ -43,7 +43,7 @@
     <br>
     <span class="expandable-text"><%= @course.announcements.last.content %></span>
     <br>
-    <%= link_to "View All Announcements", course_announcements_path(@course, @course.announcements) %>
+    <%= link_to "View All Announcements", course_announcements_path(@course) %>
   </p>
 <% end %>
 

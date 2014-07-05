@@ -6,6 +6,8 @@
     <h3>Announcements for <%= @course.name %></h3>
   </div>
 
+  <%= link_to "Add Announcement", new_course_announcement_path(@course), class: "button small" %> 
+
   <table class="">
     <thead>
       <th width="200">Title</th>

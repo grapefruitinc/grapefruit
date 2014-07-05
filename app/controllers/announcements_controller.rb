@@ -25,7 +25,7 @@ class AnnouncementsController < ApplicationController
 
   def index
     authorize! :read, @course
-    @announcements = @course.announcements.paginate(page: params[:page])
+    @announcements = @course.announcements.order("created_at DESC").paginate(page: params[:page])
   end
 
   def edit
