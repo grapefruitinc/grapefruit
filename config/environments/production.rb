@@ -75,7 +75,7 @@ Grapefruit::Application.configure do
      :port => 587,
      :authentication => :login,
      :enable_starttls_auto => true,
-     :user_name => Settings.gmail.username + '@gmail.com',
+     :user_name => Settings.gmail.address,
      :password => Settings.gmail.password
    }
 
