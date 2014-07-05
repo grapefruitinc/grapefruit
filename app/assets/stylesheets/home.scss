@@ -69,7 +69,7 @@ div.main-content{
   }
 
   table.listing{
-    width: 50%;
+    width: 90%;
     border-spacing:0;
     border-collapse:collapse;
     padding:0px;
@@ -89,9 +89,8 @@ div.main-content{
         color: $grey-text-color;
       }
     }
-    td.center{
+    td.center, th.center{
       text-align: center;
-      border-left: 1px solid #ddd;
     }
   }
 }
