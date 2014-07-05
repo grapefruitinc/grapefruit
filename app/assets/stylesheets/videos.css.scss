@@ -6,3 +6,17 @@ iframe.mediasite-video{
   height: 500px;
   width: 100%;
 }
+
+/* turn off the lights for videos */
+h5.video-title.dark{
+  color: #fff;
+}
+a.video-action.dark{
+  &:link, &:visited{
+    background-color: #333;
+    color: #fff;
+  }
+  &:hover{
+    background-color: #555;
+  }
+}

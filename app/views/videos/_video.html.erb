@@ -15,10 +15,18 @@
 
       <div class="columns large-4">
 
+        <%= link_to "Close Window",
+            "javascript:window.close()",
+            class: "button secondary small video-action" %>
+            
+        <%= link_to "Turn Off the Lights",
+            "#",
+            class: "button secondary small video-action", id: "off-lights" %>
+
         <% if can? :manage, @course %>
 
-          <%= link_to "Add Video Annotation", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), class: "button small" %>
-          <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small" %>
+          <%= link_to "Add Video Annotation", new_course_capsule_lecture_video_video_text_path(@course, @capsule, @lecture, video), class: "button small video-action" %>
+          <%= link_to "View/Edit Video Annotations", course_capsule_lecture_video_video_texts_path(@course, @capsule, @lecture, video), class: "button small video-action" %>
 
         <% end %>
 
@@ -81,7 +89,10 @@
     <% else %>
       <%= link_to "Close Window",
             "javascript:window.close()",
-            class: "button secondary small" %>
+            class: "button secondary small video-action" %>
+      <%= link_to "Turn Off the Lights",
+            "#",
+            class: "button secondary small video-action", id: "off-lights" %>
     <% end %>
 
   </div>
