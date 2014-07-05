@@ -20,15 +20,6 @@
   <p class="description expandable-text"><%= @capsule.description %></p>
 <% end %>
 
-<table class="listing">
-  <thead>
-    <th>
-      Lectures <%= "(None found)" if @lectures.empty? %>
-    </th>
-  </thead>
-  <%= render collection: @lectures, partial: "lectures/table_lecture", as: :lecture %>
-</table>
-
 <% if @problem_sets.present? %>
   <table class="listing">
     <thead>

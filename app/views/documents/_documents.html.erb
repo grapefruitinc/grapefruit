@@ -3,22 +3,24 @@
   table_class ||= "listing"
 %>
 
-<table class="<%= table_class %>">
-  <thead>
-    <th width="50%">File</th>
-    <th width="25%" class="center">Type</th>
-    <% if can? :manage, container %>
-      <th width="25%" class="center">Actions</th>
-    <% end %>
-  </thead>
-  <tbody>
-    <%= render @documents %>
-    <% if @documents.empty? %>
-      <tr>
-        <td colspan="3">
-          <span>No <%= container.class.name.downcase %> files uploaded.</span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @documents.present? %>
+  <table class="<%= table_class %>">
+    <thead>
+      <th width="50%">File</th>
+      <th width="25%" class="center">Type</th>
+      <% if can? :manage, container %>
+        <th width="25%" class="center">Actions</th>
+      <% end %>
+    </thead>
+    <tbody>
+      <%= render @documents %>
+      <% if @documents.empty? %>
+        <tr>
+          <td colspan="3">
+            <span>No <%= container.class.name.downcase %> files uploaded.</span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
