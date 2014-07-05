@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= //require jquery.turbolinks
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
-//= //require turbolinks
+//= require turbolinks
 //= require_tree .
 
 function html_escape(str) {
@@ -32,7 +32,7 @@ $("document").ready(function(){
 
   var flash = $("div#top-flash");
   var flash_exists = (flash.children().length > 0) ? true : false;
-  
+
   if(flash_exists){
     flash.delay(3800).fadeOut(420);
   }else{
@@ -101,7 +101,7 @@ $("document").ready(function(){
        p = typeof p !== 'undefined' ? p : false;
        i = typeof i !== 'undefined' ? i : false;
        if(c && p && i && (c * p * i) > 0){
-         this.navigateToCapsule(c).navigateToType(p).navigateToItem(i); 
+         this.navigateToCapsule(c).navigateToType(p).navigateToItem(i);
        }else if(c && p && (c * p) > 0){
          this.navigateToCapsule(c).navigateToType(p);
        }else if(c && c > 0){
