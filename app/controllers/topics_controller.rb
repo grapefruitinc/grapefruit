@@ -34,7 +34,8 @@ class TopicsController < ApplicationController
     end
   end
 
-  private
+private
+
   def topic_params(extra_params = {})
     params.require(:topic).permit(:name, :body).merge(extra_params)
   end

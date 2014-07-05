@@ -1,0 +1,32 @@
+<% page_title "Announcements" %>
+
+<div class="landing">
+
+  <div class="description">
+    <h3>Announcements for <%= @course.name %></h3>
+  </div>
+
+  <table class="">
+    <thead>
+      <th width="200">Title</th>
+      <th width="400">Content</th>
+      <% if can? :manage, @course %>
+        <th width="150">Actions</th>
+      <% end %>
+    </thead>
+      <tbody>
+        <% if @announcements.empty? %>
+          <tr>
+            <td colspan="4">
+              <span>No announcements found.</span>
+            </td>
+          </tr>
+        <% end %>
+        <%= render @announcements, full: true %>
+      </tbody>
+  </table>
+
+  <div class="pages">
+    <%= will_paginate @announcements %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<% page_title "Editing #{@announcement.title}" %>
+
+<div class="landing">
+
+  <div class="description">
+    <h3>Edit <%= @announcement.title %></h3>
+  </div>
+
+  <div class="login">
+    <%= form_for [@course, @announcement] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.text_field :title, placeholder: "Homework due tommorrow!", autofocus: true %>
+
+      <%= f.text_area :content, rows: 4, style: "height:auto;", placeholder: "Pages 47-48 problems are due tomorrow, make sure to turn them in!" %>
+
+      <div><%= f.submit "Modify Announcement", class: "button small" %></div>
+    <% end %>
+  </div>
+
+</div>
