@@ -12,7 +12,7 @@
 
       <%= f.text_field :title, placeholder: "Homework due tommorrow!", autofocus: true %>
 
-      <%= f.text_area :content, placeholder: "Pages 47-48 problems are due tomorrow, make sure to turn them in!" %>
+      <%= f.text_area :content, rows: 4, style: "height:auto;", placeholder: "Pages 47-48 problems are due tomorrow, make sure to turn them in!" %>
 
       <div><%= f.submit "Create Announcement", class: "button small" %></div>
     <% end %>
