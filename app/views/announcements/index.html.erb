@@ -10,7 +10,9 @@
     <thead>
       <th width="200">Title</th>
       <th width="400">Content</th>
-      <th width="150">Actions</th>
+      <% if can? :manage, @course %>
+        <th width="150">Actions</th>
+      <% end %>
     </thead>
       <tbody>
         <% if @announcements.empty? %>

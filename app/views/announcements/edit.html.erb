@@ -1,11 +1,5 @@
 <% page_title "Editing #{@announcement.title}" %>
 
-<%= breadcrumbs([
-      link_to('All Courses', courses_path),
-      link_to(@course.name, course_path(@course)),
-      link_to("Edit #{@announcement.title}", void, class: "current")
-    ]) %>
-
 <div class="landing">
 
   <div class="description">
@@ -20,7 +14,7 @@
 
       <%= f.text_area :content, placeholder: "Pages 47-48 problems are due tomorrow, make sure to turn them in!" %>
 
-      <div><%= f.submit "Add Announcement", class: "button small" %></div>
+      <div><%= f.submit "Modify Announcement", class: "button small" %></div>
     <% end %>
   </div>
 
