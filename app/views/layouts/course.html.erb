@@ -1,5 +1,10 @@
 <% content_for :home_content do %>
 
+<script>
+var capsule_id = <%= (@capsule.present?) ? @capsule.id : -1 %>
+var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
+</script>
+
 <div class="page-header-container">
   <div class="page-header">
     <div class="page-header-left">

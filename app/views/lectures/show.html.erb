@@ -1,8 +1,4 @@
 <% page_title @lecture.name %>
-<script>
-var capsule_id = <%= @capsule.id %>;
-var lecture_id = <%= @lecture.id %>;
-</script>
 
 <h2><%= @lecture.name %> <sup><%= 'LIVE &#149;'.html_safe if @lecture.live %></sup></h2>
 
@@ -28,24 +24,25 @@ var lecture_id = <%= @lecture.id %>;
 
 <%= render "documents/documents", container: @lecture %>
 
-<div>
-  <h3>Videos</h3>
+<% if can? :manage, @course %>
+  <div>
+   <%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), class: "button small" %>
+  </div>
+<% end %>
 
-  <% if can? :manage, @course %>
-   <div>
-     <%= link_to "New Video", new_course_capsule_lecture_video_path(@course, @capsule, @lecture), class: "button small" %>
-   </div>
-  <% end %>
-
-  <% if @videos.empty? %>
-    <p>No videos found.</p>
-  <% end %>
-
-  <% @videos.each do |video| %>
-    <%= render video %>
-    <% if @videos.length > 1 %>
-      <div class="custom-hr"></div>
+<% if @videos.present? %>
+  <div>
+    <h3>Videos</h3>
+    <% @videos.each do |video| %>
+      <%= render video %>
+      <% if @videos.length > 1 %>
+        <div class="custom-hr"></div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
+
+<% if @documents.empty? && @videos.empty? %>
+  <p class="grey">Looks like there's no content in this lecture yet!</p>
+<% end %>
 

@@ -1,5 +1,4 @@
 <% page_title (@capsule.name + ' :: ' + @course.name) %>
-<script>var capsule_id = <%= @capsule.id %>;</script>
 
 <h3><%= @capsule.name %></h3>
 
@@ -20,22 +19,20 @@
   <p class="description expandable-text"><%= @capsule.description %></p>
 <% end %>
 
-<table class="listing">
-  <thead>
-    <th>
-      Lectures <%= "(None found)" if @lectures.empty? %>
-    </th>
-  </thead>
-  <%= render collection: @lectures, partial: "lectures/table_lecture", as: :lecture %>
-</table>
-
-<table class="listing">
-  <thead>
-    <th>
-      Problem Sets <%= "(None found)" if @problem_sets.empty? %>
-    </th>
-  </thead>
-  <%= render collection: @problem_sets, partial: "problem_sets/table_problem_set", as: :problem_set %>
-</table>
+<% if @problem_sets.present? %>
+  <table class="listing">
+    <thead>
+      <th>
+        Problem Sets
+      </th>
+    </thead>
+    <%= render collection: @problem_sets, partial: "problem_sets/table_problem_set", as: :problem_set %>
+  </table>
+<% end %>
 
 <%= render "documents/documents", container: @capsule %>
+
+<% if @documents.empty? && @problem_sets.empty? && @capsule.description.blank? %>
+  <p class="grey">Looks like there's no content in this capsule yet!</p>
+  <p class="grey">Try clicking on a lecture instead.</p>
+<% end %>

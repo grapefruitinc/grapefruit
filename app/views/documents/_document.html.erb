@@ -4,11 +4,11 @@
           document.file.url,
           target: "_blank" %>
   </td>
-  <td>
+  <td class="center">
     <%= document.file.file.extension %>
   </td>
   <% if can? :delete, document %>
-    <td>
+    <td class="center">
       <%= link_to 'Delete', document, confirm: ("Are you sure you want to delete " + document[:file] + "?"), method: :delete %>
     </td>
   <% end %>
