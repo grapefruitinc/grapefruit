@@ -1,5 +1,4 @@
 <% page_title (@capsule.name + ' :: ' + @course.name) %>
-<script>var capsule_id = <%= @capsule.id %>;</script>
 
 <h3><%= @capsule.name %></h3>
 
@@ -32,3 +31,8 @@
 <% end %>
 
 <%= render "documents/documents", container: @capsule %>
+
+<% if @documents.empty? && @problem_sets.empty? && @capsule.description.blank? %>
+  <p class="grey">Looks like there's no content in this capsule yet!</p>
+  <p class="grey">Try clicking on a lecture instead.</p>
+<% end %>
