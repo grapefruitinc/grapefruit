@@ -25,7 +25,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
        column do
          panel "Welcome to Grapefruit Administration." do
-           para "Navigate to /become to log in as any user."
+           para "You can login as a user by going to the standard login page and selecting 'login with a user ID'."
          end
        end
     end
