@@ -51,6 +51,26 @@ $("document").ready(function(){
     return false;
   });
 
+  /* slide reveal */
+
+  function set_reveal_text(el){
+    if(el.data("initial")){
+      el.html((el.hasClass('revealing')) ? el.data('active') : el.data('initial'));
+    }
+  }
+
+  $("a.slide-reveal").on('click', function(e){
+    e.preventDefault();
+    $(this).toggleClass('revealing');
+    $("#" + $(this).data('reveal')).slideToggle(200);
+    set_reveal_text($(this));
+    return false;
+  });
+
+  $("a.slide-reveal").each(function(){
+    set_reveal_text($(this));
+  });
+
   var sidebar = {
   	init: function(a){
   		$this = a;

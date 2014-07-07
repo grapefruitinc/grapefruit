@@ -25,6 +25,10 @@ module ApplicationHelper
     end
   end
 
+  def parens(number)
+    (number == 0) ? "" : "(" + number.to_s + ")"
+  end
+
   # determine if Citrus is enabled
   def citrus_on
     Settings.citrus ? Settings.citrus.enabled : false

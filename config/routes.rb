@@ -51,6 +51,8 @@ Grapefruit::Application.routes.draw do
     get 'webwork'
     get 'iframe'
     get 'students'
+    get 'manage'
+    get 'stats'
 
     resources :documents, shallow: true
 
