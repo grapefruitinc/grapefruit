@@ -30,18 +30,9 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     authorize! :delete, @document
     name = @document[:file]
-    # TODO: these should be changed to the correct hash to reveal on redirect
-    if @document.lecture
-      redirect = course_capsule_lecture_path(@document.lecture.capsule.course, @document.lecture.capsule, @document.lecture)
-    elsif @document.capsule
-      redirect = course_capsule_path(@document.capsule.course, @document.capsule)
-    else
-      redirect = course_path(@document.course)
-    end
-    redirect = course_manage_path(@document.course)
     @document.destroy
     flash[:success] = "#{name} was deleted!"
-    redirect_to redirect
+    redirect_to course_manage_path(@document.course)
   end
 
   private

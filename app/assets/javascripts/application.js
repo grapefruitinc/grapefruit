@@ -92,7 +92,7 @@ $("document").ready(function(){
           var panel_el = $("#" + panels[i]);
           if(panel_el.length){
             panel_el.addClass('revealed').show();
-            var link_showing = $("a[data-reveal='" + panel_el.attr('id') + "'");
+            var link_showing = $("a[data-reveal='" + panel_el.attr('id') + "']");
             link_showing.addClass('revealing').html(link_showing.data('active'));
           }
         }

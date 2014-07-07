@@ -103,6 +103,11 @@ section.course {
             border-right: 1px solid rgba(0, 0, 0, 0.1);
         }
         @media #{$medium} {display: none;}
+        a.back{
+            border-radius: 0em;
+            width:100%;
+            border:0px;
+        }
     }
     .workplace {
         @include grid-column(12);

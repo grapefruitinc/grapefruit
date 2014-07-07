@@ -62,6 +62,8 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
     <%= yield %>
   <% else %>
     <aside>
+      <%= link_to "&#9664; Manage Content".html_safe, course_manage_path(@course),
+        class: "button secondary back" %>
       <ul class="course-accordion">
         <%= render @capsules %>
         <% if @capsules.empty? %>

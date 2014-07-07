@@ -50,7 +50,7 @@ class CoursesController < ApplicationController
     authorize! :update, @course
     if @course.update_attributes(course_params)
       flash[:success] = "Course updated!"
-      redirect_to course_path(@course)
+      redirect_to course_manage_path(@course)
     else
       render "edit"
     end
