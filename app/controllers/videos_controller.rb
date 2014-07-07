@@ -40,7 +40,7 @@ class VideosController < ApplicationController
 
         if @video.save
           flash[:success] = "YouTube video created!"
-          redirect_to [@course, @capsule, @lecture] and return
+          redirect_to course_manage_path(@course) and return
         end
 
       end
@@ -49,7 +49,7 @@ class VideosController < ApplicationController
 
       if @video.save
         flash[:success] = "Mediasite video added!"
-        redirect_to [@course, @capsule, @lecture] and return
+        redirect_to course_manage_path(@course) and return
       end
 
     else
@@ -71,7 +71,7 @@ class VideosController < ApplicationController
   def update
     if @video.update_attributes(video_params)
       flash[:success] = "Video updated!"
-      redirect_to [@course, @capsule, @lecture] # redirect back to video
+      redirect_to course_manage_path(@course) # redirect back to video
     else
       render :edit
     end

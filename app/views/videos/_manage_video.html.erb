@@ -1,0 +1,24 @@
+<%
+  @lecture = video.lecture
+  @capsule = @lecture.capsule
+  @edit_text = " and add annotations " unless video.mediasite_url
+%>
+
+<div class="video-container">
+  <p>
+    <%= video.title %>
+    <span class="grey">Updated <%= time_ago_in_words(video.updated_at) %> ago</span>
+    <%= link_to "edit",
+          edit_course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+          class: "add" %>
+<%= link_to "remove",
+          course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+          data: { confirm: "Are you sure? This action cannot be undone." },
+          method: :delete,
+          class: "add alert" %>
+<%= link_to "watch #{@edit_text} &#10148;".html_safe,
+          course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
+          target: "_blank",
+          class: "add secondary" %>
+  </p>
+</div>

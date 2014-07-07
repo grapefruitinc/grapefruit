@@ -31,6 +31,9 @@ span.instructing{
 	li a {
 		@extend .stateful-button--inactive;
 	}
+    li a.bold{
+        font-weight: bold;
+    }
 }
 
 .course-card {
@@ -100,6 +103,11 @@ section.course {
             border-right: 1px solid rgba(0, 0, 0, 0.1);
         }
         @media #{$medium} {display: none;}
+        a.back{
+            border-radius: 0em;
+            width:100%;
+            border:0px;
+        }
     }
     .workplace {
         @include grid-column(12);
@@ -325,5 +333,69 @@ span[class*="status"] {
     }
     span.expandable-text{
         font-weight: normal;
+    }
+}
+
+div.manage{
+    @include grid-column(12);
+    div.capsule-container{
+        padding-top: .5em;
+        border-top: 1px solid #ddd;
+    }
+    div.capsule-container:last-of-type{
+        border-bottom: 1px solid #ddd;
+    }
+    div.lecture-container{
+        margin-left: .5em;
+        background-color: #eee;
+        padding: .5em 1em;
+        border-radius: .5em;
+        margin-bottom: .5em;
+    }
+    div.lecture-videos{
+        margin-left: 30px;
+    }
+    a.add{
+        display:inline-block;
+        margin-left: .3em;
+    }
+    a.add.alert{
+        &:link, &:visited{
+            color: $grapefruit-orange-color;
+        }
+        &:hover{
+            color: darken($grapefruit-orange-color, 10%);
+        }
+    }
+    a.add.secondary{
+        &:link, &:visited{
+            color: #777;
+        }
+        &:hover{
+            color: #999;
+        }
+    }
+    a.add.secondary.revealing{
+        background-color: transparent;
+        color: #444;
+    }
+    p{
+        a.add{
+            font-weight: bold;
+        }
+        span.space{
+            display: inline-block;
+            width:1em;
+        }
+    }
+    a.secondary.revealing{
+        background-color: #555;
+        color: #fff;
+    }
+    table.listing{
+        th{
+            background-color: #777;
+            color: #fff;
+        }
     }
 }

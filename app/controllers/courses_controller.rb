@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :get_course, only: [:show, :edit, :update, :destroy, :webwork, :iframe, :students]
-  before_filter :get_capsules, only: [:show, :edit, :update, :destroy, :webwork]
+  before_filter :get_course, except: [:new, :create, :index]
+  before_filter :get_capsules, only: [:show, :edit, :update, :destroy, :webwork, :manage, :stats]
 
   layout :get_layout
 
@@ -50,7 +50,7 @@ class CoursesController < ApplicationController
     authorize! :update, @course
     if @course.update_attributes(course_params)
       flash[:success] = "Course updated!"
-      redirect_to course_path(@course)
+      redirect_to course_manage_path(@course)
     else
       render "edit"
     end
@@ -75,6 +75,15 @@ class CoursesController < ApplicationController
   def students
     authorize! :update, @course
     @students = @course.students
+  end
+
+  def manage
+    authorize! :manage, @course
+    @hide_sidebar = true
+  end
+
+  def stats
+    @hide_sidebar = true
   end
 
 private
