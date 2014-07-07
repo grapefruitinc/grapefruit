@@ -6,7 +6,9 @@
     <h3>Announcements for <%= @course.name %></h3>
   </div>
 
-  <%= link_to "Add Announcement", new_course_announcement_path(@course), class: "button small" %> 
+  <% if can? :manage, @course %>
+    <%= link_to "Add Announcement", new_course_announcement_path(@course), class: "button small" %> 
+  <% end %>
 
   <table class="">
     <thead>
