@@ -47,7 +47,7 @@ class AnnouncementsController < ApplicationController
     authorize! :manage, @course
     @announcement.destroy
     flash[:success] = "Announcement deleted!"
-    redirect_to @course
+    redirect_to [@course, @announcement]
   end
 
 private
