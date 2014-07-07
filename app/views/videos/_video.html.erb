@@ -1,3 +1,7 @@
+<%
+  @manage = (params[:controller] == 'courses' && params[:action] == 'manage') ? true : false
+%>
+
 <% if video.youtube_id %>
   <div class="row">
     <h5 class="video-title">
@@ -42,7 +46,7 @@
                 target: "_blank",
                 class: "button secondary small" %>
 
-      <% if can? :manage, @course %>
+      <% if can? :manage, @course && @manage %>
 
           <%= link_to "Edit Video",
                     edit_course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
@@ -68,7 +72,7 @@
                 course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                 target: "_blank",
                 class: "button secondary small" %>
-      <% if can? :manage, @course %>
+      <% if can? :manage, @course && @manage %>
         <%= link_to "Edit Video",
                   edit_course_capsule_lecture_video_path(@course, @capsule, @lecture, video),
                   class: "button primary small" %>

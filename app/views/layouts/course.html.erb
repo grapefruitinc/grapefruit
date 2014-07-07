@@ -10,7 +10,7 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
     <div class="page-header-left">
       <h2 class="title"><%= link_to @course.name, course_path(@course) %></h2>
       <% if @course.instructor == current_user %>
-        <p class="description">You are instructing this course.</p>
+        <p class="description">Instructor</p>
       <% end %>
     </div>
     <div class="page-header-right">
@@ -62,7 +62,10 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
     <%= yield %>
   <% else %>
     <aside>
-      <%= link_to "&#9664; Manage Content".html_safe, course_manage_path(@course),
+      <% @back_icon =
+          (Rails.application.routes.recognize_path(request.referrer)[:action] == 'manage') ? '&#9664;' : ''
+      %>
+      <%= link_to "#{@back_icon} Manage Content".html_safe, course_manage_path(@course),
         class: "button secondary back" %>
       <ul class="course-accordion">
         <%= render @capsules %>
