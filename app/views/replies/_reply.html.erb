@@ -1,8 +1,17 @@
 <div class="row reply">
   <a name="reply-<%= reply.id %>"></a>
   <div class="small-4 column author">
-    <strong><%= reply.author.name %></strong><% if reply.author == course.instructor %> (course instructor)<% elsif reply.author == topic.author %> (topic creator)<% end %><br>
-    <%= reply.created_at.strftime("%B %d, %Y") %>
+    <strong><%= reply.author.name %></strong>
+    <% if reply.author == current_user %>
+      <strong>(You)</strong>
+    <% elsif reply.author == course.instructor %>
+      <p>(course instructor)</p>
+    <% elsif reply.author == topic.author %>
+      <p>(topic creator)</p>
+    <% end %>
+    <br>
+    <%= time_ago_in_words(reply.created_at) %> ago<br/>
+    (<%= reply.created_at.strftime("%B %d, %Y") %> at <%= reply.created_at.strftime("%I:%M:%S") %>)
   </div>
   <div class="small-8 column body">
     <%= reply.body %>

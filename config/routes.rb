@@ -3,7 +3,7 @@ Grapefruit::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   match "become" => 'admin#become', via: [:get, :post]
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -44,6 +44,8 @@ Grapefruit::Application.routes.draw do
     get 'settings' => 'devise/registrations#edit',   as: :edit_user_registration
     put 'join' => 'devise/registrations#update', as: :update_user_registration
 
+    post 'management_state' => 'home#management_state'
+
   end
 
   resources :courses do
@@ -51,6 +53,8 @@ Grapefruit::Application.routes.draw do
     get 'webwork'
     get 'iframe'
     get 'students'
+    get 'manage'
+    get 'stats'
 
     resources :documents, shallow: true
 
@@ -75,9 +79,11 @@ Grapefruit::Application.routes.draw do
 
     end
 
-    resources :topics, only: [:new, :create, :show, :index] do
+    resources :topics, only: [:new, :create, :show, :index, :destroy] do
       resources :replies, only: [:create]
     end
+
+    resources :announcements, except: [:show]
 
   end
 

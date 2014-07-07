@@ -17,6 +17,7 @@ Use with extends instead of in the markup directly when possible
 .bold {font-weight: 500;}
 .normal {font-weight: normal;}
 .upper {text-transform: uppercase;}
+.hidden,.reveal-hidden{display:none;}
 
 
 $small: "screen and (max-width: 34rem)";
@@ -221,11 +222,11 @@ div.main-content{
   }
 }
 .page-header-left {
-  @include grid-column(7);
+  @include grid-column(5);
   @media #{$medium} {@include grid-column(12);}
 }
 .page-header-right {
-  @include grid-column(5);
+  @include grid-column(7);
   padding-top: .5rem;
   text-align: right;
   @media #{$medium} {

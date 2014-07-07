@@ -2,22 +2,11 @@
 
 <h3><%= @capsule.name %></h3>
 
-<% if can? :manage, @course %>
-
-  <div>
-    <%= link_to "Add Lecture", new_course_capsule_lecture_path(@course, @capsule), class: "button small" %>
-    <!--<%= link_to "Add Problem Set", new_course_capsule_problem_set_path(@course, @capsule), class: "button small" %>-->
-    <%= link_to "Add File", new_course_capsule_document_path(@course, @capsule), class: "button small" %>
-    <%= link_to "Edit Capsule", edit_course_capsule_path(@course, @capsule), class: "button small" %>
-  </div>
-
-<% end %>
-
-<%= link_to_textbook_problem_sets(@course) %>
-
 <% unless @capsule.description.blank? %>
   <p class="description expandable-text"><%= @capsule.description %></p>
 <% end %>
+
+<%= link_to_textbook_problem_sets(@course) %>
 
 <% if @problem_sets.present? %>
   <table class="listing">

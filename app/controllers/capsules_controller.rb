@@ -18,7 +18,7 @@ class CapsulesController < ApplicationController
     authorize! :create, @capsule
     if @capsule.save
       flash[:success] = "Capsule created!"
-      redirect_to [@course, @capsule]
+      redirect_to course_manage_path(@course)
     else
       render 'new'
     end
@@ -40,7 +40,7 @@ class CapsulesController < ApplicationController
     authorize! :update, @capsule
     if @capsule.update_attributes(capsule_params)
       flash[:success] = "Capsule updated!"
-      redirect_to [@course, @capsule]
+      redirect_to course_manage_path(@course)
     else
       render "edit"
     end

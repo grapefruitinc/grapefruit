@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <%= announcement.title %>
+  </td>
+
+  <td>
+    <span class="expandable-text"><%= announcement.content %></span>
+  </td>
+
+  <td>
+    <% if can? :manage, @course %>
+      <%= link_to "Edit",
+          edit_course_announcement_path(@course, announcement),
+          class: "button small" %>
+      <%= link_to 'Delete',
+          [@course, announcement],
+          confirm: ("Are you sure you want to delete this announcement?"),
+          method: :delete,
+          class: "button small alert" %>
+    <% end %>
+  </td>
+</tr>

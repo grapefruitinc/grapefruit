@@ -37,8 +37,10 @@ class Course < ActiveRecord::Base
   has_many :course_users, dependent: :destroy
   has_many :students, class_name: "User", through: :course_users, source: :user
   has_many :capsules, dependent: :destroy
+  has_many :lectures, through: :capsules
   has_many :documents, dependent: :destroy
   has_many :topics, dependent: :destroy
+  has_many :announcements, dependent: :destroy
 
   # Friendly_id definitions
   # ========================================================
@@ -62,18 +64,16 @@ class Course < ActiveRecord::Base
     course_users = []
 
     students_to_add.each do |student|
-      if student.valid?
-        unless self.students.include?(student)
-          course_users.push CourseUser.new(user_id: student.id, course_id: self.id)
-        end
+      if (student.valid? && !self.students.include?(student))
+        course_users.push CourseUser.new(user_id: student.id, course_id: self.id)
       end
     end
 
     CourseUser.import course_users, validate: false unless course_users.empty?
   end
 
-  def remove_student(student_to_remove)
-    CourseUser.where(user_id: student_to_remove.id, course_id: self.id).destroy_all
+  def remove_student(student)
+    CourseUser.where(user_id: student.id, course_id: self.id).destroy_all
   end
 
   def course_user(user)
