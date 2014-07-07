@@ -44,6 +44,8 @@ Grapefruit::Application.routes.draw do
     get 'settings' => 'devise/registrations#edit',   as: :edit_user_registration
     put 'join' => 'devise/registrations#update', as: :update_user_registration
 
+    post 'management_state' => 'home#management_state'
+
   end
 
   resources :courses do
