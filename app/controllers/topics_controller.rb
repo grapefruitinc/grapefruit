@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :get_topic, only: [:show]
-  before_filter :get_course, only: [:new, :create, :index, :show]
+  before_filter :get_topic, only: [:show, :destroy]
+  before_filter :get_course, only: [:new, :create, :index, :show, :destroy]
 
   layout "course"
 
@@ -32,6 +32,12 @@ class TopicsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def destroy
+    authorize! :destroy, @course
+    @topic.destroy
+    redirect_to course_topics_path(@course)
   end
 
 private

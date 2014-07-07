@@ -14,10 +14,10 @@
   <% if defined? full %>
     <td><%= topic.replies.count %></td>
     <td>
-        <%= topic.author.name %> (<%= distance_of_time_in_words_to_now topic.created_at %> ago)
+        <%= topic.author.display_identifier %> (<%= distance_of_time_in_words_to_now topic.created_at %> ago)
     </td>
     <td>
-        <%= topic.last_poster.name %> (<%= distance_of_time_in_words_to_now topic.updated_at %> ago)
+        <%= topic.last_poster.display_identifier %> (<%= distance_of_time_in_words_to_now topic.updated_at %> ago)
     </td>
   <% end %>
 </tr>

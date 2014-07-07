@@ -62,9 +62,7 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
     <%= yield %>
   <% else %>
     <aside>
-      <% @back_icon =
-          (Rails.application.routes.recognize_path(request.referrer)[:action] == 'manage') ? '&#9664;' : ''
-      %>
+      <% @back_icon = (request.referer =~ /manage/) ? '&#9664;' : '' %>
       <%= link_to "#{@back_icon} Manage Content".html_safe, course_manage_path(@course),
         class: "button secondary back" %>
       <ul class="course-accordion">

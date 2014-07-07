@@ -12,7 +12,7 @@
 <h3 class="course-name"><%= @topic.name %></h3>
 
 <% if current_user == @topic.author %>
-  <span class="instructing">You created this topic.</span>
+  <p>You created this topic.</p>
 <% else %>
   <p>Started by: <%= @topic.author.name %> (<%= mail_to @course.instructor.email %>)</p>
 <% end %>
@@ -21,8 +21,25 @@
   <% if @replies.current_page == 1 %>
     <div class="row topic">
       <div class="small-4 column author">
-        <strong><%= @topic.author.name %></strong> (topic creator)<br>
-        <%= @topic.created_at.strftime("%B %d, %Y") %>
+        <strong><%= @topic.author.name %></strong>
+        <% if @topic.author == current_user %>
+          <strong>(You)</strong>
+        <% elsif @topic.author == @course.instructor %>
+          <p>(course instructor)</p>
+        <% elsif @topic.author == @topic.author %>
+          <p>(topic creator)</p>
+        <% end %>
+        <br/>
+        <%= time_ago_in_words(@topic.created_at) %> ago<br/>
+        (<%= @topic.created_at.strftime("%B %d, %Y") %> at <%= @topic.created_at.strftime("%I:%M:%S") %>)
+        <% if can? :manage, @course %>
+          <br/><br/>
+          <%= link_to "delete topic",
+                course_topic_path(@course, @topic),
+                data: { confirm: "Are you sure? This action cannot be undone." },
+                method: :delete,
+                class: "button alert small" %>
+        <% end %>
       </div>
       <div class="small-8 column body">
         <%= @topic.body %>

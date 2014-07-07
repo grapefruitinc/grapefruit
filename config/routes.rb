@@ -79,7 +79,7 @@ Grapefruit::Application.routes.draw do
 
     end
 
-    resources :topics, only: [:new, :create, :show, :index] do
+    resources :topics, only: [:new, :create, :show, :index, :destroy] do
       resources :replies, only: [:create]
     end
 
