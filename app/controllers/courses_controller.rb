@@ -78,6 +78,7 @@ class CoursesController < ApplicationController
   end
 
   def manage
+    authorize! :manage, @course
     @hide_sidebar = true
   end
 

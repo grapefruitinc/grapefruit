@@ -10,7 +10,11 @@
     <p>
 
       <%= link_to "edit capsule", edit_course_capsule_path(@course, capsule), class: "add" %>
-      <%= link_to "remove capsule", "#", class: "add alert" %>
+      <%= link_to "remove capsule",
+                  course_capsule_path(@course, capsule),
+                  data: { confirm: "Are you want to delete this capsule? This action cannot be undone." },
+                  method: :delete,
+                  class: "add alert" %>
 
       <span class="space"></span>
 
@@ -44,6 +48,9 @@
 
     </div>
 
+    <% if capsule.lectures.empty? %>
+      <p class="grey">There aren't any lectures in this capsule yet.</p>
+    <% end %>
     
     <%= render collection: capsule.lectures, partial: "lectures/manage_lecture", as: :lecture %>
 
