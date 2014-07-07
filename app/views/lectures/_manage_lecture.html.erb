@@ -26,7 +26,7 @@
       <%= link_to "add video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture), class: "add" %>
     </p>
 
-    <div id="lecture-<%= lecture.id %>-files" class="hidden panel">
+    <div id="lecture-<%= lecture.id %>-files" class="reveal-hidden panel">
 
       <% if lecture.documents.empty? %>
         <p>No capsule files yet!</p>

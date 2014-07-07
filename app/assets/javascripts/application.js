@@ -62,6 +62,10 @@ $("document").ready(function(){
     }
   }
 
+  $("a.slide-reveal").each(function(){
+    set_reveal_text($(this));
+  });
+
   // Manage AJAX requests for maintaining the state of open panels
   var management_state = {
 
@@ -70,7 +74,7 @@ $("document").ready(function(){
 
     get: function(){
       $.post("/management_state", {open_panels: "get"}, function(response){
-          management_state.open_panels(String(response));
+        management_state.open_panels(String(response));
       });
     },
 
@@ -88,6 +92,8 @@ $("document").ready(function(){
           var panel_el = $("#" + panels[i]);
           if(panel_el.length){
             panel_el.addClass('revealed').show();
+            var link_showing = $("a[data-reveal='" + panel_el.attr('id') + "'");
+            link_showing.addClass('revealing').html(link_showing.data('active'));
           }
         }
     }
@@ -113,10 +119,6 @@ $("document").ready(function(){
     management_state.set(open_panels.join(','));
 
     return false;
-  });
-
-  $("a.slide-reveal").each(function(){
-    set_reveal_text($(this));
   });
 
   // on document load, get the state from a cookie
