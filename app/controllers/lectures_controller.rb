@@ -16,7 +16,7 @@ class LecturesController < ApplicationController
     @lecture = @capsule.lectures.new(lecture_params)
     if @lecture.save
       flash[:success] = "Lecture created!"
-      redirect_to [@course, @capsule, @lecture]
+      redirect_to course_manage_path(@course)
     else
       render 'new'
     end
@@ -41,7 +41,7 @@ class LecturesController < ApplicationController
     authorize! :update, @lecture
     if @lecture.update_attributes(lecture_params)
       flash[:success] = "Lecture updated!"
-      redirect_to [@course, @capsule, @lecture]
+      redirect_to course_manage_path(@course)
     else
       render "edit"
     end
