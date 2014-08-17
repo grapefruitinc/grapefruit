@@ -1,13 +1,14 @@
 Grapefruit
 ==========
 
-an open source learning portal
-------------------------------
+### an open source learning portal
 
-* Grapefruit is an RCOS (http://rcos.rpi.edu) project
+Grapefruit is an RCOS (http://rcos.rpi.edu) project. However, pull requests are always welcome from anyone!
 
 Installation
 ------------
+
+*If you are an experienced Rails developer, follow the below steps. If not, please visit `setup.md` to get started.*
 
 1. Go to config and rename database-example.yml to database.yml.
 
@@ -21,21 +22,17 @@ be accessing it.
 
 5. rake db:migrate
 
-6. (Optional) Run rake db:seed to add some test seed data
+6. *Optional* - Run rake db:seed to add some test seed data
 
 Contributing
 ------------
 
-Please use 2 spaced-tabs (don't use real tabs, Sublime Text 2 and any decent editor
+Please use 2 spaced-tabs (don't use real tabs, any decent editor
 will have an option to replace tabs with spaces).
 
-Administration
---------------
+The `dev` branch is our main development branch. If you are working on a new feature, please branch off of `dev` and name your new branch appropriately (e.g. `redesign-masthead`). The `master` branch is reserved for production builds that will be sourced from `dev`. Please DO NOT commit, pull request, or merge to the `master` branch.
 
-To make any user account an "admin" account, run the following command after `rake db:migrate` has successfully completed:
+Help
+----
 
-  `rake admins:set[admin@email.com]`
-
-Note: If you are using ZSH, be sure to add `alias rake='noglob rake'` to your ~/.zshrc and source it, otherwise the rake task will have an issue with the unquoted string literal
-
-To enable the experimental Citrus engine, change `citrus.enabled` from `false` to `true` in config/settings.yml.
+For help with contributing, please contact [Graham Ramsey](mailto:ramseg@rpi.edu) or any member of the Grapefruit core team.
