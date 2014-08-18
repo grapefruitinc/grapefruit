@@ -37,7 +37,6 @@ div.main-content{
     }
 
     div.content{
-        @include grid-row;
         @include grid-column(8, $offset: 2);
         padding: 1em 2em;
         margin-bottom: 2em;
@@ -46,7 +45,9 @@ div.main-content{
         float:none;
 
     }
-
+    div.about.content, div.contact.content{
+      padding: 1em 15%;
+    }
     div.landing{
       text-align: center;
       p.description{
