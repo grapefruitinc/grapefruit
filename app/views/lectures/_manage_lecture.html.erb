@@ -18,7 +18,7 @@
       <span class="space"></span>
       <%= link_to "show files", "#",
           class: "add secondary slide-reveal",
-          data: { 
+          data: {
             reveal: 'lecture-' + lecture.id.to_s + '-files',
             initial: "show files #{parens(lecture.documents.count)}",
             active: 'hide files'
@@ -28,6 +28,7 @@
             class: "add secondary" %>
       <span class="space"></span>
       <%= link_to "add video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture), class: "add" %>
+      <%= link_to "make lecture live &#10148;".html_safe, course_capsule_lecture_toggle_live_path(@course, lecture.capsule, lecture), class: "add secondary" %>
     </p>
 
     <div id="lecture-<%= lecture.id %>-files" class="reveal-hidden panel">
@@ -40,12 +41,12 @@
 
       <%= render "documents/documents", container: lecture, documents: lecture.documents %>
 
-      <h5><%= link_to "add file", 
+      <h5><%= link_to "add file",
         new_course_capsule_lecture_document_path(@course, lecture.capsule, lecture), class: "" %>
       </h5>
 
     </div>
-    
+
     <div class="lecture-videos">
       <% if lecture.videos.present? %>
         <div>

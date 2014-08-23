@@ -1,8 +1,11 @@
 include ActionView::Helpers::DateHelper
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :body, :relative_time
+  attributes :id, :body, :posted_time, :is_from_instructor
   has_one :author
-  def relative_time
-    time_ago_in_words(object.updated_at, true)
+  def posted_time
+    object.updated_at
+  end
+  def is_from_instructor
+    return object.lecture.capsule.course.instructor == current_user
   end
 end

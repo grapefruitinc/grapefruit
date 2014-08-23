@@ -13,7 +13,7 @@ module ApplicationHelper
 
   # sets the page title (for templates)
   def page_title(page_title)
-    content_for :title, page_title.to_s
+    content_for :title, page_title.to_s.html_safe
   end
 
   # Returns Submit or Create depending if the object is saved
@@ -33,7 +33,7 @@ module ApplicationHelper
   def citrus_on
     Settings.citrus ? Settings.citrus.enabled : false
   end
-  
+
   # get the full error count of a form object
   def form_error_count(object)
     object.errors.full_unique_messages.count

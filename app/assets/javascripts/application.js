@@ -66,6 +66,40 @@ $("document").ready(function(){
     set_reveal_text($(this));
   });
 
+  /*
+    youtube parsing
+  */
+  var YoutubeParser = {
+
+    // courtesy of https://gist.github.com/takien/4077195
+    get_id: function(url){
+      var youtube_id = '';
+      url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+      if(url[2] !== undefined) {
+        youtube_id = url[2].split(/[^0-9a-z_]/i);
+        youtube_id = youtube_id[0];
+      }
+      else {
+        youtube_id = "false";
+      }
+      return youtube_id;
+    },
+
+    youtube_iframe_for_id: function(youtube_id){
+      return '<iframe width="560" height="315" src="//www.youtube.com/embed/' + youtube_id + '" frameborder="0" allowfullscreen></iframe>';
+    },
+
+    get_html: function(url){
+      var youtube_id = this.get_id(url);
+      if(youtube_id == "false"){
+        return '';
+      }else{
+        return this.youtube_iframe_for_id(youtube_id);
+      }
+    },
+
+  };
+
   // Manage AJAX requests for maintaining the state of open panels
   var management_state = {
 
@@ -201,37 +235,69 @@ $("document").ready(function(){
 
   if($("#lecture-comments").length){
 
-    var refresh_comments = function(){
-      var lecture_id = $("#lecture-comments").data("lecture-id");
-      var list_url = $("#lecture-comments").data("url");
+    var lecture_id = $("#lecture-comments").data("lecture-id");
+    var list_url = $("#lecture-comments").data("url");
+    var loaded_comment_ids = [];
+
+    var get_comment_content = function(comment){
+      var self = comment;
+      var content = "<p class='lecture-comment'>";
+      content += "<strong>" + self.author.display_identifier + "</strong>: ";
+      content += Autolinker.link(html_escape(self.body));
+      content += "&nbsp;&nbsp;<span class='comment-date' data-time='" + self.posted_time + "'></span> ";
+      content += YoutubeParser.get_html(self.body);
+      content += "</p>";
+      return content;
+    }
+
+    var push_comments_to_dom = function(comments){
+
+      var $container = $("#lecture-comments");
+
+      $container.children('p.empty').remove();
+
+      if(comments.length == 0){
+        $container.html("<p class='empty'>No comments yet! Be the first.</p>")
+      }
+
+      $.each(comments, function() {
+        if($.inArray(this.id, loaded_comment_ids)!==-1)
+          return true;
+        loaded_comment_ids.push(this.id);
+        var comment = get_comment_content(this);
+        $container.prepend(comment);
+      });
+
+      // update the date for each comment
+      $('p.lecture-comment').each(function(){
+          $span = $(this).children('span.comment-date');
+          $span.html($.timeago($span.data('time')));
+      });
+
+    }
+
+    var download_latest_comments = function(){
+
       $.ajax({
         type: "GET",
         url: list_url,
         data: {lecture: lecture_id}
       }).done(function(comments) {
-        $("#lecture-comments").html("");
-        $.each(comments, function() {
-          var comment = "<p>";
-          comment += "<strong>" + this.author.display_identifier + "</strong>: ";
-          comment += Autolinker.link(html_escape(this.body));
-          comment += "&nbsp;&nbsp;<span class='comment-date'>" + this.relative_time + " ago </span> ";
-          comment += "</p>";
-          $("#lecture-comments").append(comment);
-        });
-        if(comments.length == 0){
-          $("#lecture-comments").append("<p class='empty'>No comments yet! Be the first.</p>")
-        }
+        push_comments_to_dom(comments);
+        setTimeout(download_latest_comments, 300);
       }).fail(function(error, as){
-
+        console.log('Getting latest comments failed!');
+        push_comments_to_dom([]);
+        setTimeout(download_latest_comments, 2000);
       });
-      setTimeout(refresh_comments, 5000);
-    };
 
-    refresh_comments();
+    }
+
+    download_latest_comments();
 
     $("#comments-submit").on("ajax:success", function(){
       $("#comment-body").val("").select();
-      refresh_comments();
+      download_latest_comments();
     });
 
     $("#lecture-comments").on("mouseover", "p", function(){

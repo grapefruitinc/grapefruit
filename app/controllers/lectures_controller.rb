@@ -76,7 +76,7 @@ class LecturesController < ApplicationController
 
   def list_comments
     authorize! :show, @lecture
-    render json: @lecture.comments.order('created_at DESC').limit(50)
+    render json: @lecture.comments.order('created_at ASC').limit(50)
   end
 
   def destroy
