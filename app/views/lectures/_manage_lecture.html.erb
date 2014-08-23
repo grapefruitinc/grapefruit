@@ -28,7 +28,7 @@
             class: "add secondary" %>
       <span class="space"></span>
       <%= link_to "add video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture), class: "add" %>
-      <%= link_to "make lecture live &#10148;".html_safe, course_capsule_lecture_toggle_live_path(@course, lecture.capsule, lecture), class: "add secondary" %>
+      <%= link_to "toggle lecture live &#10148;".html_safe, course_capsule_lecture_toggle_live_path(@course, lecture.capsule, lecture), class: "add secondary", target: "_blank" %>
     </p>
 
     <div id="lecture-<%= lecture.id %>-files" class="reveal-hidden panel">
