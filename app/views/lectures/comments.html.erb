@@ -3,18 +3,6 @@
   <h3>live discussion: <%= link_to @lecture.name, [@course, @capsule, @lecture]%></h3>
   <p><%= link_to 'Close', 'javascript:window.close()', class: "button small" %></p>
 
-  <% if not @lecture.live %>
-     <div class="alert-box info">
-      This lecture is not currently live. Comments are read-only if present.
-    </div>
-  <% end %>
-
-  <div id="lecture-comments" 
-    data-lecture-id="<%= @lecture.id %>" 
-    data-url="<%= course_capsule_lecture_list_comments_path(@course, @capsule, @lecture) %>">
-    <p>Loading comments...</p>
-  </div>
-
   <% if @lecture.live %>
 
     <div class="comments-submit-container">
@@ -24,8 +12,20 @@
         <%= f.submit 'Post Comment', class: 'button postfix' %>
       <% end %>
 
-    </div>
+    </div><br/>
 
   <% end %>
+
+  <% if not @lecture.live %>
+     <div class="alert-box info">
+      This lecture is not currently live. Comments are read-only if present.
+    </div>
+  <% end %>
+
+  <div id="lecture-comments"
+    data-lecture-id="<%= @lecture.id %>"
+    data-url="<%= course_capsule_lecture_list_comments_path(@course, @capsule, @lecture) %>">
+    <p class='empty'>Loading comments...</p>
+  </div>
 
 </div>
