@@ -34,7 +34,7 @@
     end
 
     # But they can only create them if they are an admin
-    cannot :create, Course
+    can :create, Course
 
     can :read, Course do |course|
       user.student_courses.include? course
