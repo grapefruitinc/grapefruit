@@ -16,7 +16,7 @@ class DocumentsController < ApplicationController
     @document = @container.documents.new(document_params)
 
     authorize! :create, @document
-    
+
     if @document.save
       flash[:success] = "File added!"
       redirect_to @redirect
@@ -50,7 +50,7 @@ class DocumentsController < ApplicationController
 
   private
   def get_container
-    # TODO: these should be changed to the correct hash to reveal on redirect 
+    # TODO: these should be changed to the correct hash to reveal on redirect
     if @lecture
       @container = @lecture
       @redirect = course_capsule_lecture_path(@course, @capsule, @lecture)
@@ -61,7 +61,6 @@ class DocumentsController < ApplicationController
       @container = @course
       @redirect = course_path(@course)
     end
-    @redirect = course_manage_path(@course)
   end
 
 private

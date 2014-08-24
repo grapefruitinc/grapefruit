@@ -11,7 +11,7 @@
     <div class="top-bar" data-options="is_hover:false">
       <div class="title-area">
         <%= link_to root_path do %>
-          <%= image_tag 'better-gf-logo_red.png' %>
+          <%= image_tag 'better-gf-logo_red.svg' %>
         <% end %>
 
         <nav class="mobile-nav">
@@ -35,7 +35,7 @@
             <%= link_to "Home", root_path,
               class: ("active" if params[:controller] == "home") %>
           </li><li>
-            <%= link_to "Courses", courses_path, 
+            <%= link_to "Courses", courses_path,
               class: ("active" if (@course.present? || params[:controller] == "courses")) %>
           </li><li>
             <%= link_to "Profile", edit_user_registration_path,
