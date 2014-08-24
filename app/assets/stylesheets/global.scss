@@ -222,11 +222,11 @@ div.main-content{
   }
 }
 .page-header-left {
-  @include grid-column(5);
+  @include grid-column(6);
   @media #{$medium} {@include grid-column(12);}
 }
 .page-header-right {
-  @include grid-column(7);
+  @include grid-column(6);
   padding-top: .5rem;
   text-align: right;
   @media #{$medium} {
