@@ -10,7 +10,7 @@ if(typeof home_standalone != undefined){
     var bar = $('div.top-bar-container');
     var shadow = "0px 5px 10px 0px rgba(0, 0, 0, 0.1)";
     var current = $(document).scrollTop();
-    if(ph.height != 0){
+    if(ph.length != 0){
       var content_offset = ph.offset().top + ph.height() - 21;
       if(current < content_offset || current <= 0){
         bar.css("box-shadow", "none");
@@ -22,12 +22,12 @@ if(typeof home_standalone != undefined){
 }
 
 $(document).ready(function(){
-    
+
   var $form = $('#new_video');
-  
+
   $form.submit(function(e){
     $form.find("section:not(.active)").remove();
     $form.trigger("submit");
   });
-  
+
 });
