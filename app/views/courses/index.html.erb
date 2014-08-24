@@ -44,11 +44,11 @@
 <section>
   <div class="page-header">
     <h3 class="page-header-title">Courses Offered</h3>
-  </div>
-
   <% if @courses.empty? %>
-    <h5 class="light">There are no courses listed.</h5>
+      <h5 class="light">There are no courses listed.</h5>
+    </div>
   <% else %>
+    </div>
     <%= render @courses %>
   <% end %>
 
