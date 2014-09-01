@@ -10,7 +10,7 @@
 <%= link_to_textbook_problem_sets(@course) %>
 
 <% unless @lecture.description.blank? %>
-  <p class="description expandable-text"><%= @lecture.description %></p>
+  <p class="description lecture-description"><%= @lecture.description %></p>
 <% end %>
 
 <%= render "documents/documents", container: @lecture %>
@@ -30,4 +30,3 @@
 <% if @documents.empty? && @videos.empty? %>
   <p class="grey">Looks like there's no content in this lecture yet!</p>
 <% end %>
-

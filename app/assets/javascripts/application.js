@@ -97,6 +97,14 @@ $("document").ready(function(){
   });
 
   /*
+    lecture text parsing
+  */
+  var $lectureDescription = $("p.lecture-description");
+  if($lectureDescription.length){
+    $lectureDescription.html(Autolinker.link($lectureDescription.html()));
+  }
+
+  /*
     youtube parsing
   */
   var YoutubeParser = {
