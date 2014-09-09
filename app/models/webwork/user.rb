@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  name                   :string(255)
+#  can_create_courses     :boolean          default(FALSE)
 #
 
 class Webwork::User < ActiveRecord::Base

@@ -33,8 +33,9 @@
       course.instructor == user
     end
 
-    # But they can only create them if they are an admin
-    can :create, Course
+    cannot :create, Course
+
+    can :create, Course if user.can_create_courses == true
 
     can :read, Course do |course|
       user.student_courses.include? course

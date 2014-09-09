@@ -13,6 +13,8 @@ ActiveAdmin.register User, as: "Instructor" do
   #  permitted
   # end
 
+  permit_params :email, :name, :password, :can_create_courses
+
   controller do
     def scoped_collection
       User.instructors
@@ -27,8 +29,6 @@ ActiveAdmin.register User, as: "Instructor" do
       super
     end
   end
-
-  permit_params :email, :name, :password
 
   menu priority: 2
 
