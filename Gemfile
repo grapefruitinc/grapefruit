@@ -75,8 +75,6 @@ end
 group :development do
   gem 'annotate'
   gem 'thin'
-  # optional, makes git deployment easy.
-  # gem 'git-deploy'
 end
 
 group :test do
