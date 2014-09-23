@@ -39,7 +39,7 @@ server 'graham.li',
   roles: %w{web},
   ssh_options: {
     user: 'root', # overrides user setting above
-    keys: %w(~/.ssh/id_rsa.pub),
+    keys: %w(/tmp/gf-key.pub),
     forward_agent: false,
     auth_methods: %w(publickey)
   }

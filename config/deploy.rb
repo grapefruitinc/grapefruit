@@ -6,6 +6,13 @@ set :repo_url, 'git@github.com:grahamcracker/grapefruit.git'
 
 set :stages, %w(stage1 stage2 production)
 
+ssh_pubkey_location = "/tmp/"
+ssh_pubkey_file = ssh_pubkey_location + "gf-key.pub"
+
+require 'fileutils'
+FileUtils.mkdir_p(File.dirname(ssh_pubkey_location))
+FileUtils.cp(".travis/staging-key.pub", ssh_pubkey_location)
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
