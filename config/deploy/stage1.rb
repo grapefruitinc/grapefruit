@@ -17,7 +17,6 @@ set :deploy_to, '/srv/stage1'
 # used to set extended properties on the server.
 
 # server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
-server "graham.li", user: "root", roles: %w{web}, primary: true
 
 # Custom SSH Options
 # ==================
@@ -39,7 +38,7 @@ server 'graham.li',
   roles: %w{web},
   ssh_options: {
     user: 'root', # overrides user setting above
-    keys: %w(.travis/staging-key.pub),
+    keys: %w(~/.ssh/gf-staging-key.pub),
     forward_agent: false,
     auth_methods: %w(publickey)
   }

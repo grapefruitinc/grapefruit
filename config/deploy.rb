@@ -27,6 +27,16 @@ set :stages, %w(stage1 stage2 production)
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/settings.yml}
 
+ssh_pubkey_dir = "#{Dir.home}/.ssh"
+ssh_pubkey_name = "gf-staging-key.pub"
+ssh_pubkey_location = ssh_pubkey_dir + "/" + ssh_pubkey_name
+
+require 'fileutils'
+if(!File.exist?(ssh_pubkey_location))
+  FileUtils.mkdir_p(File.dirname(ssh_pubkey_dir))
+  FileUtils.cp(".travis/" + ssh_pubkey_name, ssh_pubkey_dir)
+end
+
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
