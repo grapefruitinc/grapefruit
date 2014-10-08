@@ -176,7 +176,14 @@ div#top-flash{
 .title-area {
     @include grid-column(4);
     height: 50px;
-    img {width: 110px;}
+    > a {
+      display: inline-block;
+      height: 100%;
+      object {
+        width: 110px;
+        pointer-events: none;
+      }
+    }
     @media #{$medium} {
       @include grid-column(12);
       height: 4rem;

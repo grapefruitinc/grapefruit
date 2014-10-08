@@ -16,6 +16,11 @@ module ApplicationHelper
     content_for :title, page_title.to_s.html_safe
   end
 
+  # gets an SVG tag
+  def svg_tag(path)
+    "<object type='image/svg+xml' data='#{path}'></object>".html_safe
+  end
+
   # Returns Submit or Create depending if the object is saved
   def submit_text(object)
     if object.persisted?
