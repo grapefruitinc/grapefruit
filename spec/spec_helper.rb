@@ -41,7 +41,15 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Capybara::DSL
-  
+
   # Don't have to preface with FactoryGirl everytime
   config.include FactoryGirl::Syntax::Methods
+
+  config.include AuthHelpers, type: :request
+  config.include Requests::JsonHelpers, type: :request
+
+  # Disable the old-style object.should syntax.
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
 end

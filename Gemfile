@@ -61,6 +61,10 @@ gem "friendly_id", ">=5.0.0"
 # Active admin for admin panel
 gem "activeadmin", github: "gregbell/active_admin"
 
+# Gems for JSON API responses
+gem 'rabl'
+gem 'oj'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   # helpful if you know you won't have an internet connection

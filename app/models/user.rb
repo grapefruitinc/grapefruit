@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable
 
+  # Callbacks
+  # ========================================================
+  before_create :ensure_authentication_token
+
   # Relationships
   # ========================================================
   has_many :instructed_courses, class_name: "Course", foreign_key: "instructor_id"
@@ -81,6 +85,40 @@ class User < ActiveRecord::Base
 
   def as_json(options)
     { display_identifier: display_identifier }
+  end
+
+  # Authentication Token Methods
+  # ========================================================
+  def new_authentication_token!
+    self.authentication_token = generate_authentication_token
+    self.save
+  end
+
+  def reset_authentication_token!
+    self.authentication_token = nil
+    self.save
+  end
+
+private
+
+  # Forgot Password Methods
+  # ========================================================
+  def generate_forgot_password_code
+    self.forgot_password_code = SecureRandom.urlsafe_base64(4)
+    self.save validate: false
+  end
+
+  def ensure_authentication_token
+    if self.authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
 
 end

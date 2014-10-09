@@ -87,6 +87,28 @@ Grapefruit::Application.routes.draw do
 
   end
 
+  # API
+  namespace :api, defaults: { format: :json } do
+
+    # V1
+    namespace :v1 do
+
+      # User Actions
+      resources :users, only: [:create, :update]
+      put "/edit_account" => "users#update"
+      post "/sign_in" => "sessions#create"
+      delete "/sign_out" => "sessions#destroy"
+
+      # Password Actions
+      devise_scope :user do
+        post "forgot_password" => "passwords#create"
+        put "change_password" => "passwords#update"
+      end
+
+    end
+
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
