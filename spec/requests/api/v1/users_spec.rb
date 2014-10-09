@@ -32,27 +32,6 @@ describe "Users API" do
 
     end
 
-    context "with missing name" do
-      before do
-        params = { user:
-                    { email: "email@example.com",
-                      password: "grapefruit" } }
-
-        post('/api/v1/users',
-             params.to_json,
-             set_headers)
-      end
-
-      it "should be a unsuccessful response" do
-        expect(response.status).to eq(400)
-      end
-
-      it "should have an error" do
-        expect(json).to have_key('name')
-        expect(json['name'].first).to eq("can't be blank")
-      end
-    end
-
     context "with existing user email" do
       let(:user)  { FactoryGirl.create(:user) }
 

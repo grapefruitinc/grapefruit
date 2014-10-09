@@ -32,10 +32,6 @@ class User < ActiveRecord::Base
   # ========================================================
   before_create :ensure_authentication_token
 
-  # Validations
-  # ========================================================
-  validates :name, presence: true
-
   # Relationships
   # ========================================================
   has_many :instructed_courses, class_name: "Course", foreign_key: "instructor_id"
