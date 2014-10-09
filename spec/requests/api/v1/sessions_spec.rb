@@ -10,7 +10,7 @@ describe "Sessions API" do
       before do
         params = { user:
                     { email: user.email,
-                      password: "foobarbaz" } }
+                      password: "grapefruit" } }
 
         post('/api/v1/sign_in',
              params.to_json,

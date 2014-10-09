@@ -10,7 +10,7 @@ describe "Users API" do
 
         params = { user:
                     { email: "email@example.com",
-                      password: "password8",
+                      password: "grapefruit",
                       name: "Damian Mastylo" } }
 
         post('/api/v1/users',
@@ -36,7 +36,7 @@ describe "Users API" do
       before do
         params = { user:
                     { email: "email@example.com",
-                      password: "password8" } }
+                      password: "grapefruit" } }
 
         post('/api/v1/users',
              params.to_json,
@@ -59,7 +59,7 @@ describe "Users API" do
       before do
         params = { user:
                     { email: user.email,
-                      password: "password8",
+                      password: "grapefruit",
                       name: user.name } }
 
         post('/api/v1/users',
@@ -86,7 +86,7 @@ describe "Users API" do
 
       before do
         params = { user:
-                    { current_password: "foobarbaz",
+                    { current_password: "grapefruit",
                       name: "Damian Mastylo" } }
 
         put('/api/v1/edit_account',
@@ -134,7 +134,7 @@ describe "Users API" do
       before do
         params = { user:
                     { email: existing_user.email,
-                      current_password: "foobarbaz" } }
+                      current_password: "grapefruit" } }
 
         put('/api/v1/edit_account',
              params.to_json,
