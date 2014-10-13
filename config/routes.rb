@@ -95,6 +95,7 @@ Grapefruit::Application.routes.draw do
 
       # User Actions
       resources :users, only: [:create, :update]
+      post "/sign_up" => "users#create"
       put "/edit_account" => "users#update"
       post "/sign_in" => "sessions#create"
       delete "/sign_out" => "sessions#destroy"

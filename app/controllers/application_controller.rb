@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: exception.message
   end
 
+  skip_before_filter :verify_authenticity_token, if: Proc.new { |c| c.request.format == 'application/json' }
+
 protected
- 
+
   def configure_permitted_parameters
 
     # place permitted fields for registration here
