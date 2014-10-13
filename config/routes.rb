@@ -106,6 +106,8 @@ Grapefruit::Application.routes.draw do
         put "change_password" => "passwords#update"
       end
 
+      resources :courses, only: [:index, :show]
+
     end
 
   end
