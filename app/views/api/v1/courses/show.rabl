@@ -2,12 +2,12 @@ object @course
 
 attributes :id, :name, :description, :credits, :subject, :course_number
 
-child :annoucements do
+child :announcements do
   attributes :title, :content
 end
 
-child :instructor do
-  attributes: :name, :email
+child :instructor => :instructor do
+  attributes :name, :email
 end
 
 child :capsules do
