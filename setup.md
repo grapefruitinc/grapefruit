@@ -43,7 +43,7 @@ These apps are recommended, not required (unless otherwise indicated). When test
 
 You will need to install the following system libraries: git, mysql2, libxml2, libxslt, and postgresql.
 
-On OS X, we recommend using homebrew, so installation is as simple as ![turtle](http://findicons.com/files/icons/1050/pidgin_old_tango_smilies/24/turtle.png) `brew install git mysql postgresql libxml2 libxslt` and `brew link libxml2 libxslt`. On Linux, these can be installed with `apt-get install libxslt-dev libxml2-dev mysql-client libmysql-client-dev`.
+On OS X, we recommend using homebrew, so installation is as simple as ![turtle](http://findicons.com/files/icons/1050/pidgin_old_tango_smilies/24/turtle.png) `brew install git mysql postgresql libxml2 libxslt` and `brew link libxml2 libxslt`. On Linux, these can be installed with `apt-get install libxslt-dev libxml2-dev mysql-client libmysqlclient-dev`.
 
 While git is perfectly usable just by using the command line, some people prefer graphical clients to aid them in their work. Recommended are [Github for Mac](https://mac.github.com/) and [Github for Windows](https://windows.github.com/). If you are on Linux, or you would like explore other options, check out the [Git GUI client list](http://git-scm.com/downloads/guis) on the Git SCM site.
 
