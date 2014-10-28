@@ -12,6 +12,7 @@ private
 
     if user_email.nil?
       render json: { success: false, message: "Email is missing." }, status: 401
+      puts "Authentication failed: User email is nil"
       return
     end
 
@@ -20,6 +21,7 @@ private
     if @user && Devise.secure_compare(@user.authentication_token, request.headers["authentication-token"] || params[:authentication][:token])
       sign_in @user, store: false
     else
+      puts "Authentication failed: email or authentication_token is invalid"
       render json: { success: false, message: "Email or authentication_token is invalid." }, status: 401
     end
   end
