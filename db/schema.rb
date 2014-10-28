@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028160937) do
+ActiveRecord::Schema.define(version: 20141028162325) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -131,6 +131,15 @@ ActiveRecord::Schema.define(version: 20141028160937) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "grades", force: true do |t|
+    t.float    "points"
+    t.string   "comments"
+    t.integer  "assignment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "lectures", force: true do |t|
     t.string   "name"
     t.integer  "lecture_number"
@@ -162,6 +171,14 @@ ActiveRecord::Schema.define(version: 20141028160937) do
     t.integer  "topic_id"
     t.integer  "author_id"
     t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "submissions", force: true do |t|
+    t.string   "comments"
+    t.integer  "user_id"
+    t.integer  "assignment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
