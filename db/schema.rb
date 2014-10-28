@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028162325) do
+ActiveRecord::Schema.define(version: 20141028162545) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20141028162325) do
   create_table "announcements", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assignment_types", force: true do |t|
+    t.string   "name"
+    t.float    "default_point_value"
+    t.boolean  "drops_lowest"
+    t.float    "percentage"
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"

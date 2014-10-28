@@ -40,6 +40,8 @@ class Course < ActiveRecord::Base
   has_many :lectures, through: :capsules
   has_many :documents, dependent: :destroy
   has_many :topics, dependent: :destroy
+  has_many :assignments, dependent: :destroy
+  has_many :assignment_types, dependent: :destroy
   has_many :announcements, dependent: :destroy
 
   # Friendly_id definitions
