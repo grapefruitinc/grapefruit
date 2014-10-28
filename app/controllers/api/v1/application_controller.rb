@@ -7,7 +7,7 @@ private
   def authenticate_user_from_token!
     user_email = request.headers["user-email"].presence
     if user_email.nil?
-      user_email = params[:authentication][:email].presence if params[:authentication]
+      user_email = params[:authentication_data][:email].presence if params[:authentication_data]
     end
 
     if user_email.nil?
@@ -18,7 +18,7 @@ private
 
     @user = user_email && User.find_by_email(user_email)
 
-    if @user && Devise.secure_compare(@user.authentication_token, request.headers["authentication-token"] || params[:authentication][:token])
+    if @user && Devise.secure_compare(@user.authentication_token, request.headers["authentication-token"] || params[:authentication_data][:authentication_token])
       sign_in @user, store: false
     else
       puts "Authentication failed: email or authentication_token is invalid"

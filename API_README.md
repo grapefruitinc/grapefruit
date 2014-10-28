@@ -13,13 +13,13 @@ All possible requests will be posted below with their requirements, and examples
 User create action: requires a POST in the format: { user: { email: email@example.com, password: password8, name: "Damian Mastylo" } }. If successful, you will get a response in a JSON format containing the User id, email, phone number and authentication_token.
 
 ####edit_account
-User update action: requires a PUT in the format: { authentication: { email: email@example.com, token: 555 }, user: { email: email@example.com, password: password8, name: Example Name } }. Everything in the user block is optional. Only put in the parameters you want to change. If successful, you will get a response in a JSON format containing the User id, email, name, and authentication_token.
+User update action: requires a PUT in the format: { authentication_data: { email: email@example.com, authentication_token: 555 }, user: { email: email@example.com, password: password8, name: Example Name } }. Everything in the user block is optional. Only put in the parameters you want to change. If successful, you will get a response in a JSON format containing the User id, email, name, and authentication_token.
 
 ####sign_in
 Sessions create action: requires a POST in the format: { user: { email: email@example.com, password: password8 } }. If successful, you will get a response in a JSON format containing the User id, email, name, and authentication_token.
 
 ####sign_out
-Sessions destroy action: requires a DELETE in the format: { authentication: { email: email@example.com, token: 555 } }. If successful, the authentication token will be deleted and not work anymore, and you will simply receive a "success: true" JSON message. Sign in again to retrieve a new authentication token.
+Sessions destroy action: requires a DELETE in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. If successful, the authentication_token will be deleted and not work anymore, and you will simply receive a "success: true" JSON message. Sign in again to retrieve a new authentication authentication_token.
 
 ###Forgot Password Actions
 
@@ -32,10 +32,10 @@ Forgot Password Request update action: requires a PUT in the format: { user: { p
 ###Course Actions
 
 ####courses
-Courses index action: requires a GET in the format: { authentication: { email: email@example.com, token: 555 } }. You will get a response in a JSON format containing all courses.
+Courses index action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. You will get a response in a JSON format containing all courses.
 
 ####courses/show
-Course show action: requires a GET in the format: { authentication: { email: email@example.com, token: 555 } }. Replace "show" with the id of the Course you want to view. You will get a response in a JSON format containing all the Course attributes including the announcements, instructor, and capsules.
+Course show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace "show" with the id of the Course you want to view. You will get a response in a JSON format containing all the Course attributes including the announcements, instructor, and capsules.
 
 Example Curl commands for API Testing
 --------------------------------------
@@ -51,7 +51,7 @@ curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -
 
 User Edit
 ````
-curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X PUT -d '{ "authentication": { "email": "dmastylo@gmail.com", "token": "Nszp-zU2KztmYP2mbsfs" }, "user": { "name": "Damian Mastylo" } }' 'localhost:3000/api/v1/edit_account'
+curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X PUT -d '{ "authentication_data": { "email": "dmastylo@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" }, "user": { "name": "Damian Mastylo" } }' 'localhost:3000/api/v1/edit_account'
 ````
 
 User Sign_in
@@ -61,7 +61,7 @@ curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -
 
 User Sign_out
 ````
-curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X DELETE -d '{ "authentication": { "email": "dmastylo@gmail.com", "token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/sign_out'
+curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X DELETE -d '{ "authentication_data": { "email": "dmastylo@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/sign_out'
 ````
 
 ###Forgot Password Actions
@@ -80,10 +80,10 @@ curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X PUT -d
 
 Course Index
 ````
-curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication": { "email": "polishown3r@gmail.com", "token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses'
+curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses'
 ````
 
 Course Show
 ````
-curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication": { "email": "polishown3r@gmail.com", "token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/15'
+curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/15'
 ````
