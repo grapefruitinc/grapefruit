@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
 protected
- 
+
   def configure_permitted_parameters
 
     # place permitted fields for registration here
@@ -78,6 +78,10 @@ protected
 
   def get_all_course_capsules
     @capsules = @course.capsules
+  end
+
+  def hide_sidebar
+    @hide_sidebar = true
   end
 
 end

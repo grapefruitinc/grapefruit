@@ -30,6 +30,7 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
           <li><%= link_to "Students", course_students_path(@course), class: "button small"%></li>
           <li><%= link_to "Stats", course_stats_path(@course), class: "button small"%></li>
           <li><%= link_to "Manage Content", course_manage_path(@course), class: "button small bold" %></li>
+          <li><%= link_to "Assignments & Grading", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 
         <div style="margin-top:1em;">
