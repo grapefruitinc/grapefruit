@@ -71,7 +71,7 @@ Open a new terminal window, and navigate to the directory where you'd like to in
 
 This should download a local version of Grapefruit to your system. Now, let's install all of the Ruby gems that Grapefruit depends on. In the same directory, run this command:
 
-> ![turtle](http://findicons.com/files/icons/1050/pidgin_old_tango_smilies/24/turtle.png) bundle install && bundle update
+> ![turtle](http://findicons.com/files/icons/1050/pidgin_old_tango_smilies/24/turtle.png) bundle install
 
 If this command exits at some point with an error, don't panic! Usually this just indicates a need for a minor modification of your system. The best method to resolve errors is usually to Google the message you get.
 

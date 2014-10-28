@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.1.1
+before_script:
+  .travis/setup.sh
+script:
+  .travis/deploy.sh

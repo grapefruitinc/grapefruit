@@ -43,6 +43,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
+# deployment
+gem 'capistrano'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -75,8 +78,6 @@ end
 group :development do
   gem 'annotate'
   gem 'thin'
-  # optional, makes git deployment easy.
-  # gem 'git-deploy'
 end
 
 group :test do
