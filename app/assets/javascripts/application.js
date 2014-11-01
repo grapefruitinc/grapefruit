@@ -15,6 +15,9 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require react
+//= require components
+//= require react_ujs
 //= require_tree .
 
 function html_escape(str) {

@@ -1,3 +1,39 @@
 section.course h4.under-back-button{
   margin-top: 0em;
 }
+
+button{
+  @extend .button;
+}
+
+
+section > div {
+  padding-left: 0em;
+}
+div[data-react-class="AssignmentTypesContainer"]{
+  width: 80%;
+}
+
+table.assignmentTypeList{
+  background-color: #eee;
+  border-radius: 5px;
+  padding: .5em;
+  width: 100%;
+  border-collapse: collapse;
+  th{
+    text-align: left;
+  }
+  td{
+    button{
+      margin-right: .5em;
+      border: 1px solid transparent;
+    }
+    button.secondary{
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+  }
+  tr.editing, tr.editing td{
+    background-color: #ddd;
+  }
+}
