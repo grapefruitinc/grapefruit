@@ -11,19 +11,10 @@ var AssignmentTypesContainer = React.createClass({
     $.getJSON(window.location, this.processTypes);
   },
   newType: function(){
-    var new_exists = false;
-    current_types = this.state.types;
-    $.each(current_types, function(index, value) {
-      if(value.id == 0){
-        new_exists = true;
-        return false;
-      }
-    });
-    if(new_exists){
-      console.log("Sorry, please save or cancel the current type first.");
-    }else{
-        current_types.push({
-           id: 0,
+    var current_types = this.state.types;
+    var temp_id = Math.floor((Math.random() * 999999) + 1);
+    current_types.push({
+           id: temp_id,
            name: "",
            default_point_value: 100,
            drops_lowest: false,
@@ -31,13 +22,13 @@ var AssignmentTypesContainer = React.createClass({
            editing: true,
            cancel_function: this.cancelNewType
         });
-        this.setState({types: current_types});
-    }
-  },
-  cancelNewType: function(){
-    current_types = this.state.types;
-    current_types.pop();
     this.setState({types: current_types});
+  },
+  cancelNewType: function(cancelingType){
+    var new_types = this.state.types.filter(function(item) {
+      return item.id !== cancelingType.state.id;
+    });
+    this.setState({types: new_types});
   },
   render: function() {
     return <AssignmentTypesList types={this.state.types} newType={this.newType} />
@@ -75,6 +66,7 @@ var AssignmentTypeItem = React.createClass({
   getInitialState: function(){
     var to = this.props.typeObject;
     return {
+      id: to.id,
       editing: (to.hasOwnProperty("editing")) ? to.editing : false,
       name: to.name,
       drops_lowest: to.drops_lowest,
@@ -110,6 +102,7 @@ var AssignmentTypeItem = React.createClass({
     if(this.state.hasOwnProperty("initialState")){
         var to = this.state.initialState;
         this.setState({
+          id: to.id,
           editing: false,
           name: to.name,
           drops_lowest: to.drops_lowest,
