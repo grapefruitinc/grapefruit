@@ -1,8 +1,12 @@
 var AssignmentTypesContainer = React.createClass({
   getInitialState: function(){
     return {
-      types: this.props.current_types
+      types: this.props.current_types,
+      error: ""
     };
+  },
+  setError: function(message){
+    this.setState({error: message});
   },
   processTypes: function(data){
     this.setState({types: data});
@@ -10,7 +14,15 @@ var AssignmentTypesContainer = React.createClass({
   tick: function(){
     $.getJSON(window.location, this.processTypes);
   },
+  deleteType: function(id){
+    $.ajax({ type: "DELETE", url: window.location + '/' + id, data: {} });
+    var new_types = this.state.types.filter(function(item) {
+      return item.id !== id;
+    });
+    this.setState({types: new_types});
+  },
   newType: function(){
+    this.setError("");
     var current_types = this.state.types;
     var temp_id = Math.floor((Math.random() * 999999) + 1);
     current_types.push({
@@ -31,7 +43,12 @@ var AssignmentTypesContainer = React.createClass({
     this.setState({types: new_types});
   },
   render: function() {
-    return <AssignmentTypesList types={this.state.types} newType={this.newType} />
+    return (
+      <div>
+        <ErrorBox message={this.state.error} />
+        <AssignmentTypesList types={this.state.types} newType={this.newType} deleteType={this.deleteType} errorHandler={this.setError}/>
+      </div>
+    );
   }
 
 });
@@ -39,12 +56,18 @@ var AssignmentTypesContainer = React.createClass({
 var AssignmentTypesList = React.createClass({
   render: function() {
 
+      var errorHandler = this.props.errorHandler;
+      var deleteType = this.props.deleteType
+
       var createTypeItem = function(typeObject) {
         return <AssignmentTypeItem
           typeObject={typeObject}
           key={typeObject.id}
+          errorHandler={errorHandler}
+          deleteType={deleteType}
           />;
       };
+
       return (
         <div>
           <table className='assignmentTypeList'>
@@ -85,20 +108,27 @@ var AssignmentTypeItem = React.createClass({
       console.log("Saving type...");
       var name = this.refs.name.getDOMNode().value;
       var dpv = this.refs.dpv.getDOMNode().value;
-      if(!name || !dpv)
+      if(!name){
+        this.props.errorHandler("Name can't be blank!");
         return;
+      }else{
+        this.props.errorHandler("");
+      }
     }
 
     this.setState({editing: !this.state.editing});
 
   },
   deletePressed: function(){
-
+    var confirm = window.confirm("Are you sure you want to delete this?");
+    if(confirm)
+      this.props.deleteType(this.state.id);
   },
   cancelPressed: function(){
     // reset properties
     // if we don't have an initial state,
     // we're canceling creating a new one
+    this.props.errorHandler("");
     if(this.state.hasOwnProperty("initialState")){
         var to = this.state.initialState;
         this.setState({

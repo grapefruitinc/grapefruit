@@ -5,3 +5,5 @@ before_script:
   .travis/setup.sh
 script:
   .travis/deploy.sh
+notifications:
+  email: false

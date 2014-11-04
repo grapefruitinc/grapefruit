@@ -22,3 +22,17 @@ var BooleanPicker = React.createClass({
     );
   }
 });
+
+/*
+  An error box. Hides if there is no error message.
+*/
+
+var ErrorBox = React.createClass({
+  render: function(){
+    var classes = 'panel error radius ';
+    classes += (this.props.message == "") ? 'hidden' : '';
+    return (
+      <div className={classes}>{this.props.message}</div>
+    );
+  }
+});

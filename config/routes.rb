@@ -57,7 +57,8 @@ Grapefruit::Application.routes.draw do
     get 'stats'
 
     resources :assignments, only: [:index]
-    get 'assignment_types' => 'assignments#assignment_types'
+    resources :assignment_types, only: [:index, :create, :destroy]
+
     resources :documents, shallow: true
 
     resources :course_users, only: [:create, :destroy]
