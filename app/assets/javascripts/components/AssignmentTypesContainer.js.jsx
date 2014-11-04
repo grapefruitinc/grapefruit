@@ -11,22 +11,54 @@ var AssignmentTypesContainer = React.createClass({
   processTypes: function(data){
     this.setState({types: data});
   },
-  tick: function(){
+  refreshTypes: function(){
+    // TODO: experiment with tick realtime
     $.getJSON(window.location, this.processTypes);
   },
   deleteType: function(id){
-    $.ajax({ type: "DELETE", url: window.location + '/' + id, data: {} });
+    $.ajax({ type: "DELETE", url: window.location + '/' + id });
     var new_types = this.state.types.filter(function(item) {
       return item.id !== id;
     });
     this.setState({types: new_types});
+  },
+  updateType: function(typeObject){
+    var name = typeObject.state.name;
+    var id = typeObject.state.id;
+    var drops_lowest = typeObject.state.drops_lowest;
+    var default_point_value = typeObject.state.default_point_value;
+
+    if(typeof typeObject.state.temp_id === "undefined"){
+
+      // updating an existing type
+
+      $.ajax({ type: "PUT", url: window.location + '/' + id, data: {
+          name: name,
+          drops_lowest: drops_lowest,
+          default_point_value: default_point_value
+        }
+      });
+
+    }else{
+
+      // creating a new type
+
+      $.ajax({ type: "POST", url: window.location, data: {
+          name: name,
+          drops_lowest: drops_lowest,
+          default_point_value: default_point_value
+        }
+      });
+
+    }
+    this.refreshTypes();
   },
   newType: function(){
     this.setError("");
     var current_types = this.state.types;
     var temp_id = Math.floor((Math.random() * 999999) + 1);
     current_types.push({
-           id: temp_id,
+           temp_id: temp_id,
            name: "",
            default_point_value: 100,
            drops_lowest: false,
@@ -46,7 +78,12 @@ var AssignmentTypesContainer = React.createClass({
     return (
       <div>
         <ErrorBox message={this.state.error} />
-        <AssignmentTypesList types={this.state.types} newType={this.newType} deleteType={this.deleteType} errorHandler={this.setError}/>
+        <AssignmentTypesList
+          types={this.state.types}
+          newType={this.newType}
+          deleteType={this.deleteType}
+          updateType={this.updateType}
+          errorHandler={this.setError}/>
       </div>
     );
   }
@@ -57,16 +94,26 @@ var AssignmentTypesList = React.createClass({
   render: function() {
 
       var errorHandler = this.props.errorHandler;
-      var deleteType = this.props.deleteType
+      var deleteType = this.props.deleteType;
+      var updateType = this.props.updateType;
 
       var createTypeItem = function(typeObject) {
+        var keyValue = (typeObject.hasOwnProperty("id")) ? typeObject.id : typeObject.temp_id;
         return <AssignmentTypeItem
           typeObject={typeObject}
-          key={typeObject.id}
+          key={keyValue}
           errorHandler={errorHandler}
           deleteType={deleteType}
+          updateType={updateType}
           />;
       };
+
+      var emptyMessage = "";
+      if(this.props.types.length == 0){
+        emptyMessage = (
+          <tr><td colSpan="4" className="empty-row">No assignment types yet!</td></tr>
+        );
+      }
 
       return (
         <div>
@@ -77,6 +124,7 @@ var AssignmentTypesList = React.createClass({
             <th width="25%">Manage</th>
             <tbody>
               {this.props.types.map(createTypeItem)}
+              {emptyMessage}
             </tbody>
           </table>
           <button className='small' onClick={this.props.newType}>+ New Assignment Type</button>
@@ -90,6 +138,7 @@ var AssignmentTypeItem = React.createClass({
     var to = this.props.typeObject;
     return {
       id: to.id,
+      temp_id: to.temp_id,
       editing: (to.hasOwnProperty("editing")) ? to.editing : false,
       name: to.name,
       drops_lowest: to.drops_lowest,
@@ -102,6 +151,9 @@ var AssignmentTypeItem = React.createClass({
   },
   editPressed: function(){
 
+    // Either we just hit the cancel button,
+    // or we want to save this type
+
     if(!this.state.editing){
         this.setState({initialState: this.state});
     }else{
@@ -113,6 +165,8 @@ var AssignmentTypeItem = React.createClass({
         return;
       }else{
         this.props.errorHandler("");
+        // send to db
+        this.props.updateType(this);
       }
     }
 

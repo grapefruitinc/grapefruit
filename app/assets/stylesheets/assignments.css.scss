@@ -23,6 +23,11 @@ table.assignmentTypeList{
   th{
     text-align: left;
   }
+  td.empty-row{
+    background-color: #fff;
+    @extend .grey;
+    text-align: center;
+  }
   td{
     button{
       margin-right: .5em;

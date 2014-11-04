@@ -23,7 +23,7 @@ class AssignmentTypesController < ApplicationController
       authorize! :manage, @course
       if @assignment_type.valid?
         @assignment_type.save
-        render json: 0
+        render json: @assignment_type.id
       else
         render json: -1
       end
@@ -36,6 +36,19 @@ class AssignmentTypesController < ApplicationController
     # TODO: MUST CHECK FOR EXISTING ASSIGNMENTS HERE
     @assignment_type.destroy
     render json: 0
+  end
+
+  def update
+    authorize! :manage, @course
+    @assignment_type = @course.assignment_types.find(params[:assignment_type_id] || params[:id])
+    if @assignment_type.update_attributes(
+      name: params[:name],
+      drops_lowest: params[:drops_lowest],
+      default_point_value: params[:default_point_value])
+      render json: 0
+    else
+      render json: -1
+    end
   end
 
   private
