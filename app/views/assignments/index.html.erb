@@ -1,5 +1,12 @@
 <h3>Course Assignments</h3>
 
-<%= link_to 'Manage Assignment Types', course_assignment_types_path(@course), class: "button small" %>
+<div>
+  <%= link_to 'Create New Assignment',
+    new_course_assignment_path(@course),
+    class: "button small" %>
+  <%= link_to 'Manage Assignment Types',
+    course_assignment_types_path(@course),
+    class: "button small secondary" %>
+</div>
 
-<p>A list of assignments should be here...</p>
+<%= react_component('AssignmentListContainer', {assignments: @assignments}) %>

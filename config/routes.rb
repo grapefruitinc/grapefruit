@@ -56,7 +56,7 @@ Grapefruit::Application.routes.draw do
     get 'manage'
     get 'stats'
 
-    resources :assignments, only: [:index]
+    resources :assignments
     resources :assignment_types, only: [:index, :create, :destroy, :update]
 
     resources :documents, shallow: true

@@ -42,3 +42,10 @@ table.assignmentTypeList{
     background-color: #ddd;
   }
 }
+
+select{
+  line-height: 1.5em;
+  height: 1.5em;
+  font-size: 1.2em;
+  -webkit-appearance: menulist-button;
+}

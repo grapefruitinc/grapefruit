@@ -70,7 +70,7 @@ var AssignmentTypesContainer = React.createClass({
   },
   cancelNewType: function(cancelingType){
     var new_types = this.state.types.filter(function(item) {
-      return item.id !== cancelingType.state.id;
+      return item.temp_id !== cancelingType.state.temp_id;
     });
     this.setState({types: new_types});
   },

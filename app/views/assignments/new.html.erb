@@ -1,0 +1,38 @@
+<% page_title "Creating New Assignment" %>
+
+<div class="landing">
+
+  <%= link_to '&#9664; Cancel to Assignment List'.html_safe,
+    course_assignments_path(@course),
+    class: "button small secondary" %>
+
+  <div class="description">
+    <h4>New Assignment in <%= @course.name %></h4>
+  </div>
+
+  <div class="login">
+
+    <%= form_for [@course, @assignment] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.text_field :name, placeholder: "Assignment Name", autofocus: true %>
+
+      <%= f.label :course_assignments_path, 'Assignment Type:' %>
+
+      <%= f.select :assignment_type_id, options_for_select(@types.collect {|t| [ t.name, t.id ] } ) %>
+
+      <%= f.text_area :description, placeholder: "Description or instructions for the assignment.", style: "height: 10em" %>
+
+      <%= f.fields_for :documents do |p| %>
+       <div class="field">
+         <%= p.label "Attach documents (PDF, image, Word, etc)" %><br>
+         <%= p.file_field :document, :multiple => true, name: "documents[document][]" %>
+       </div>
+     <% end %>
+
+      <div><%= f.submit "Create Assignment", class: "button small" %></div>
+    <% end %>
+
+  </div>
+
+</div>
