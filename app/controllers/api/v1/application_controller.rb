@@ -6,6 +6,7 @@ private
 
   def authenticate_user_from_token!
     user_email = request.headers["user-email"].presence
+    puts params
     if user_email.nil?
       user_email = params[:authentication_data][:email] if params[:authentication_data]
     end
