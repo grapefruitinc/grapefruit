@@ -89,7 +89,7 @@ describe "Sessions API" do
       end
 
       it "should describe the error" do
-        expect(json['message']).to eq("Email is missing.")
+        expect(json['message']).to eq("Missing user-email")
       end
     end
 

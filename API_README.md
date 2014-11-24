@@ -37,6 +37,14 @@ Courses index action: requires a GET in the format: { authentication_data: { ema
 ####courses/show
 Course show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace "show" with the id of the Course you want to view. You will get a response in a JSON format containing all the Course attributes including the announcements, instructor, and capsules.
 
+###Capsule Actions
+
+####courses/course_id/capsules
+Capsules index action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. You will get a response in a JSON format containing all capsules of the course.
+
+####courses/course_id/capsules/show
+Capsule show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace "show" with the id of the Capsule you want to view. You will get a response in a JSON format containing all the capsule attributes including the lectures.
+
 Example Curl commands for API Testing
 --------------------------------------
 
@@ -86,4 +94,16 @@ curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d
 Course Show
 ````
 curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/15'
+````
+
+###Capsule Actions
+
+Capsule Index
+````
+curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/1/capsules'
+````
+
+Capsule Show
+````
+curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/1/capsule/2'
 ````
