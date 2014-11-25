@@ -111,7 +111,7 @@ Grapefruit::Application.routes.draw do
 
           resources :documents, shallow: true, only: [:index, :show]
 
-          resources :lectures, only: [:index, :show] do
+          resources :lectures, only: [:show] do
             resources :documents, shallow: true, only: [:index, :show]
             resources :videos, except: :index, only: [:index, :show]
           end
