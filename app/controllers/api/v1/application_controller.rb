@@ -46,7 +46,7 @@ private
   end
 
   def get_capsule
-    @capsule = Capsule.find(params[:capsule_id] || params[:id])
+    @capsule = Capsule.includes(:course).find(params[:capsule_id] || params[:id])
 
     unless @capsule.present?
       flash[:error] = "Invalid capsule!"
@@ -59,7 +59,7 @@ private
   end
 
   def get_lecture
-    @lecture = Lecture.find(params[:lecture_id] || params[:id])
+    @lecture = Lecture.includes(:capsule => :course).find(params[:lecture_id] || params[:id])
 
     unless @lecture.present?
       flash[:error] = "Invalid lecture!"
