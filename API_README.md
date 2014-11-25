@@ -34,16 +34,21 @@ Forgot Password Request update action: requires a PUT in the format: { user: { p
 ####courses
 Courses index action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. You will get a response in a JSON format containing all courses.
 
-####courses/show
-Course show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace "show" with the id of the Course you want to view. You will get a response in a JSON format containing all the Course attributes including the announcements, instructor, and capsules.
+####courses/course_id
+Course show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace the ids with the respected resources you want to view. You will get a response in a JSON format containing all the Course attributes including the announcements, instructor, and capsules.
 
 ###Capsule Actions
 
 ####courses/course_id/capsules
 Capsules index action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. You will get a response in a JSON format containing all capsules of the course.
 
-####courses/course_id/capsules/show
-Capsule show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace "show" with the id of the Capsule you want to view. You will get a response in a JSON format containing all the capsule attributes including the lectures.
+####courses/course_id/capsules/capsule_id
+Capsule show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace the ids with the respected resources you want to view. You will get a response in a JSON format containing all the capsule attributes including the lectures.
+
+###Lecture Actions
+
+####courses/course_id/capsules/capsule_id/lectures/lecture_id
+Capsule show action: requires a GET in the format: { authentication_data: { email: email@example.com, authentication_token: 555 } }. Replace the ids with the respected resources you want to view. You will get a response in a JSON format containing all the lecture attributes including the associated documents, videos, and comments.
 
 Example Curl commands for API Testing
 --------------------------------------
@@ -106,4 +111,11 @@ curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d
 Capsule Show
 ````
 curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/1/capsules/2'
+````
+
+###Lecture Actions
+
+Lecture Show
+````
+curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/1/capsules/2/lectures/5'
 ````
