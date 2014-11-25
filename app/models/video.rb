@@ -18,7 +18,7 @@ class Video < ActiveRecord::Base
   # Validations
   # ========================================================
   validate :only_one_type_of_video
-  
+
   validates :title, presence: true
   validates :description, presence: true, if: :youtube_id
 
@@ -28,10 +28,14 @@ class Video < ActiveRecord::Base
   # ========================================================
   belongs_to :lecture
   has_many :video_texts
-  
+
   def may_be_processing
     minutes_since_uploaded = ((Time.now - updated_at) / 1.minute).round
     return (minutes_since_uploaded < 120)
+  end
+
+  def youtube_url
+    "http://www.youtube.com/#{youtube_id}"
   end
 
 private

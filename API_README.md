@@ -105,5 +105,5 @@ curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d
 
 Capsule Show
 ````
-curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/1/capsule/2'
+curl -H 'Content-Type: application/json' -H "Accept: application/json" -X GET -d '{ "authentication_data": { "email": "polishown3r@gmail.com", "authentication_token": "Nszp-zU2KztmYP2mbsfs" } }' 'localhost:3000/api/v1/courses/1/capsules/2'
 ````
