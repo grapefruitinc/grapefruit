@@ -19,9 +19,9 @@ class Assignment < ActiveRecord::Base
   validates :assignment_type, presence: true
 
   belongs_to :course
+  belongs_to :assignment_type
   has_many :grades, dependent: :destroy
   has_many :submissions, dependent: :destroy
   has_many :documents, dependent: :destroy
-  has_one :assignment_type
 
 end
