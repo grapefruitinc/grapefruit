@@ -12,23 +12,28 @@
 
   <div class="login">
 
-    <%= form_for [@course, @assignment] do |f| %>
+    <%= form_for([@course, @assignment], :html=> {:multipart => true}) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.text_field :name, placeholder: "Assignment Name", autofocus: true %>
 
-      <%= f.label :course_assignments_path, 'Assignment Type:' %>
+      <%= f.label :assignment_type_id, 'Assignment Type:' %>
 
-      <%= f.select :assignment_type_id, options_for_select(@types.collect {|t| [ t.name, t.id ] } ) %>
+      <%= f.collection_select(:assignment_type_id, @course.assignment_types, :id, :name) %>
 
       <%= f.text_area :description, placeholder: "Description or instructions for the assignment.", style: "height: 10em" %>
+     
+      <%= f.label "Attach documents (PDF, image, Word, etc)" %><br>
 
-      <%= f.fields_for :documents do |p| %>
-       <div class="field">
-         <%= p.label "Attach documents (PDF, image, Word, etc)" %><br>
-         <%= p.file_field :document, :multiple => true, name: "documents[document][]" %>
-       </div>
-     <% end %>
+
+       <%= f.fields_for :documents do |p| %>
+         <div class="field">
+           <%= p.file_field :document, :multiple => true, name: "documents[document][]" %>
+         </div>
+       <% end %>
+
+     <%= f.label :points, 'Point value:' %>
+     <%= f.text_field :points, placeholder: "10, 20, 100, etc" %>
 
       <div><%= f.submit "Create Assignment", class: "button small" %></div>
     <% end %>
