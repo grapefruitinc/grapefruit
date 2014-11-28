@@ -1,6 +1,16 @@
-<p>
-	<%= assignment.name %>,
-	<%= assignment.description %>,
-	<%= assignment.points %>,
-	<%= assignment.assignment_type.name %>
-</p>
+<div>
+	<div>
+		<h3>
+			<%= link_to assignment.name, edit_course_assignment_path(assignment.course, assignment) %>
+		</h3>
+		<span class="points"><%= assignment.points %> points</span>
+	</div>
+	<div>
+		<span class="type">
+			<%= assignment.assignment_type.name %>
+		</span>
+		<span class="description">
+			<%= assignment.description %>
+		</span>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-<h3>Course Assignments</h3>
+<h3>Course Assignments (<%= @assignments.count %>)</h3>
 
 <div>
   <%= link_to 'Create New Assignment',
@@ -9,6 +9,9 @@
     class: "button small secondary" %>
 </div>
 
-<div>
+<div class="assignmentList">
 	<%= render @assignments %>
+	<% if @assignments.count == 0 %>
+		<p class="grey">No assignments yet!</p>
+	<% end %>
 </div>

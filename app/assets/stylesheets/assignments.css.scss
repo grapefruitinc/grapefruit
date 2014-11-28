@@ -49,3 +49,16 @@ select{
   font-size: 1.2em;
   -webkit-appearance: menulist-button;
 }
+
+div.assignmentList{
+  > div {
+    h3{
+      display: inline-block;
+      margin-right: .5em;
+    }
+    span.description{
+      font-style: italic;
+      @extend .grey;
+    }
+  }
+}

@@ -3,6 +3,7 @@ class AssignmentsController < ApplicationController
   layout "course"
 
   before_filter :authenticate_user!, :get_course, :hide_sidebar
+  before_filter :get_assignment, only: [:edit, :update, :destroy]
 
   def index
     @assignments = @course.assignments
@@ -10,6 +11,10 @@ class AssignmentsController < ApplicationController
 
   def new
     @assignment = @course.assignments.new
+  end
+
+  def edit
+    @assign
   end
 
   def create
@@ -32,10 +37,21 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
   private
 
   def assignment_params
     params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents)
+  end
+
+   def get_assignment
+    @assignment = Assignment.find(params[:assignment_id] || params[:id])
+    unless @assignment.present?
+      flash[:error] = "Invalid assignment!"
+      redirect_to root_path
+    end
   end
 
 end
