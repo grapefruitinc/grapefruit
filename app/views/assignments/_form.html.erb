@@ -1,16 +1,4 @@
-<% page_title "Creating New Assignment" %>
-
-<div class="landing">
-
-  <%= link_to '&#9664; Cancel to Assignment List'.html_safe,
-    course_assignments_path(@course),
-    class: "button small secondary" %>
-
-  <div class="description">
-    <h4>New Assignment in <%= @course.name %></h4>
-  </div>
-
-  <div class="login">
+ <div class="login">
 
     <%= form_for([@course, @assignment], :html=> {:multipart => true}) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
@@ -25,6 +13,7 @@
      
       <%= f.label "Attach documents (PDF, image, Word, etc)" %><br>
 
+      <%= render "documents/documents", container: @assignment %>
 
        <%= f.fields_for :documents do |p| %>
          <div class="field">
@@ -35,9 +24,14 @@
      <%= f.label :points, 'Point value:' %>
      <%= f.text_field :points, placeholder: "10, 20, 100, etc" %>
 
-      <div><%= f.submit "Create Assignment", class: "button small" %></div>
+      <div>
+        <%= f.submit "Save Assignment", class: "button small" %>
+        <% if defined? allow_delete %>
+          <%= link_to 'Delete', course_assignment_path(@assignment.course, @assignment), 
+            confirm: ("Are you sure you want to delete this assignment? This *cannot* be undone."),
+            method: :delete, class: "button small alert" %>
+        <% end %>
+      </div>
     <% end %>
 
   </div>
-
-</div>

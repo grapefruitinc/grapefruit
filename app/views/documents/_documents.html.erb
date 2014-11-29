@@ -17,4 +17,6 @@
       <%= render documents %>
     </tbody>
   </table>
+<% elsif container.instance_of?(Assignment) %>
+  <p class="grey">No documents found.</p>
 <% end %>

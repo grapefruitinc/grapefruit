@@ -37,7 +37,28 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def update
+
+    authorize! :manage, @course
+
+    if @assignment.update_attributes(assignment_params)
+      if params[:documents]
+        params[:documents][:document].each { |doc|
+          @assignment.documents.create(file: doc)
+        }
+      end
+      flash[:success] = "Assignment saved!"
+    end
+
+    render 'edit'
+
+  end
+
   def destroy
+    authorize! :manage, @course
+    @assignment.destroy
+    flash[:success] = "Assignment deleted!"
+    redirect_to course_assignments_path(@course)
   end
 
   private

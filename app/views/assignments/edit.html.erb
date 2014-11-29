@@ -1,1 +1,5 @@
-<%= @assignment.name %>
+<div class="editNav">
+	<%= link_to '&larr; back to assignment list'.html_safe, course_assignments_path(@course) %> 
+</div>
+
+<%= render 'assignments/form', allow_delete: true %>
