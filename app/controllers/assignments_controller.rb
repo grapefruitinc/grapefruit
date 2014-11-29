@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
   before_filter :get_assignment, only: [:edit, :update, :destroy]
 
   def index
-    @assignments = @course.assignments
+    @assignments = @course.assignments.order("updated_at DESC")
   end
 
   def new

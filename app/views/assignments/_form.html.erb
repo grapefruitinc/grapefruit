@@ -13,7 +13,9 @@
      
       <%= f.label "Attach documents (PDF, image, Word, etc)" %><br>
 
-      <%= render "documents/documents", container: @assignment %>
+      <% if @assignment.persisted? %>
+        <%= render "documents/documents", container: @assignment, documents: @assignment.documents %>
+      <% end %> 
 
        <%= f.fields_for :documents do |p| %>
          <div class="field">
@@ -27,9 +29,13 @@
       <div>
         <%= f.submit "Save Assignment", class: "button small" %>
         <% if defined? allow_delete %>
+          <%= link_to 'View Assignment as Student',
+            course_assignment_path(@assignment.course, @assignment),
+            class: "button small secondary" %>
           <%= link_to 'Delete', course_assignment_path(@assignment.course, @assignment), 
             confirm: ("Are you sure you want to delete this assignment? This *cannot* be undone."),
-            method: :delete, class: "button small alert" %>
+            method: :delete,
+            class: "button small alert" %>
         <% end %>
       </div>
     <% end %>

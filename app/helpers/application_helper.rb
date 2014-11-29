@@ -21,7 +21,7 @@ module ApplicationHelper
     "<object type='image/svg+xml' data='#{path}'></object>".html_safe
   end
 
-  # Returns Submit or Create depending if the object is saved
+  # returns proper copy for multi-use form partials
   def submit_text(object)
     if object.persisted?
       "Update"
@@ -30,6 +30,7 @@ module ApplicationHelper
     end
   end
 
+  # don't show parentheses if there are zero records
   def parens(number)
     (number == 0) ? "" : "(" + number.to_s + ")"
   end

@@ -57,8 +57,14 @@
       problem_set.capsule.course.instructor == user
     end
 
+    can :manage, Assignment do |assignment|
+      assignment.course.instructor == user
+    end
+
     can :manage, Document do |document|
-      if document.course
+      if document.assignment
+        document.assignment.course.instructor == user
+      elsif document.course
         document.course.instructor == user
       elsif document.capsule
         document.capsule.course.instructor == user

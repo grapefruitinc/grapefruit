@@ -1,4 +1,4 @@
-<h3>Course Assignments (<%= @assignments.count %>)</h3>
+<h3>Course Assignments <%= parens(@assignments.count) %></h3>
 
 <div>
   <%= link_to 'Create New Assignment',
