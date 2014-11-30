@@ -1,31 +1,43 @@
 <% page_title @course.name %>
 
-<% if !@course.students.include?(current_user) && @course.instructor != current_user %>
-  <%= form_for [@course, @course_user] do |f| %>
-    <%= f.hidden_field :course_id, value: @course.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Join Course", class: "button small" %>
+<div style="margin-top:1em;">
+
+  <% if @show_unenroll && @course.students.include?(current_user) %>
+    
+    <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
+      <%= f.hidden_field :course_id, value: @course.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Unenroll from this course", class: "button secondary small" %>
+    <% end %>
+
+    <% if not @course.students.include?(current_user) %>
+      <%= form_for [@course, @course_user] do |f| %>
+        <%= f.hidden_field :course_id, value: @course.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Enroll", class: "button small" %>
+      <% end %>
+    <% end %>
+
   <% end %>
-<% else %>
 
-  <% unless @course.announcements.blank? %>
-    <p class="announcement">
-      <%= @course.announcements.last.title %>
-      <br>
-      <span class="expandable-text"><%= @course.announcements.last.content %></span>
-      <br>
-      <%= link_to "View All Announcements", course_announcements_path(@course) %>
-    </p>
-  <% end %>
+</div>
 
-  <div class="panel callout radius">
-    <p>Welcome! Grapefruit courses have <em>Capsules</em> (like units, or chapters in a textbook) which are then divided into <em>Lectures</em>.</p>
-    <p>On the left sidebar, you'll see an expandable list of the capsules in this course, along with the lectures they contain.
-    While progressing through lectures, you can always go back and view previous content.</p>
-    <p>If this is a Calculus Bridge course, you'll see a link to a Pearson problem set in lectures that include them.</p>
-  </div>
-
+<% unless @course.announcements.blank? %>
+  <p class="announcement">
+    <%= @course.announcements.last.title %>
+    <br>
+    <span class="expandable-text"><%= @course.announcements.last.content %></span>
+    <br>
+    <%= link_to "View All Announcements", course_announcements_path(@course) %>
+  </p>
 <% end %>
+
+<div class="panel callout radius">
+  <p>Welcome! Grapefruit courses have <em>Capsules</em> (like units, or chapters in a textbook) which are then divided into <em>Lectures</em>.</p>
+  <p>On the left sidebar, you'll see an expandable list of the capsules in this course, along with the lectures they contain.
+  While progressing through lectures, you can always go back and view previous content.</p>
+  <p>If this is a Calculus Bridge course, you'll see a link to a Pearson problem set in lectures that include them.</p>
+</div>
 
 <%= link_to_textbook_problem_sets(@course) %>
 

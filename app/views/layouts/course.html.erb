@@ -33,26 +33,10 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
           <li><%= link_to "Assignments & Grading", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 
-        <div style="margin-top:1em;">
-
-          <% if @show_unenroll && @course.students.include?(current_user) %>
-            <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
-              <%= f.hidden_field :course_id, value: @course.id %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit "Unenroll", class: "stateful-button--active" %>
-          <% end %>
-
-          <% if not @course.students.include?(current_user) %>
-            <%= form_for [@course, @course_user] do |f| %>
-              <%= f.hidden_field :course_id, value: @course.id %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit "Enroll", class: "stateful-button--inactive" %>
-            <% end %>
-          <% end %>
-
-        </div>
-
+        <% if not can? :manage, @course %>
+          <li><%= link_to "Assignments", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
+
       </ul>
     </div>
   </div>

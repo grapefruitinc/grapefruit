@@ -1,13 +1,15 @@
 <h3>Course Assignments <%= parens(@assignments.count) %></h3>
 
-<div>
-  <%= link_to 'Create New Assignment',
-    new_course_assignment_path(@course),
-    class: "button small" %>
-  <%= link_to 'Manage Assignment Types',
-    course_assignment_types_path(@course),
-    class: "button small secondary" %>
-</div>
+<% if can? :manage, @course %>
+  <div>
+    <%= link_to 'Create New Assignment',
+      new_course_assignment_path(@course),
+      class: "button small" %>
+    <%= link_to 'Manage Assignment Types',
+      course_assignment_types_path(@course),
+      class: "button small secondary" %>
+  </div>
+<% end %>
 
 <div class="assignmentList">
 	<%= render @assignments %>
