@@ -3,7 +3,7 @@ class AssignmentsController < ApplicationController
   layout "course"
 
   before_filter :authenticate_user!, :get_course, :hide_sidebar
-  before_filter :get_assignment, only: [:edit, :update, :destroy]
+  before_filter :get_assignment, only: [:edit, :show, :update, :destroy]
 
   def index
     @assignments = @course.assignments.order("updated_at DESC")
