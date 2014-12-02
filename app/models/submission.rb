@@ -13,6 +13,7 @@
 class Submission < ActiveRecord::Base
 
   belongs_to :assignment
+  belongs_to :user
   has_many :documents, dependent: :destroy
 
 end

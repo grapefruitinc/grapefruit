@@ -1,5 +1,5 @@
 <div class="editNav">
-	<%= link_to '&larr; back to assignment list'.html_safe, course_assignments_path(@course) %> 
+	<%= link_to '&larr; back to assignment list'.html_safe, course_assignments_path(@course) %>
 </div>
 
 <br/><br/>
@@ -18,6 +18,17 @@
 	<%= @assignment.description %>
 </p>
 
-<div>
+<p>
+	<%= render 'documents/documents', container: @assignment, documents: @assignment.documents %>
+</p>
 
+<div>
+	<%= link_to 'Upload Submission for Assignment',
+		new_course_assignment_submission_path(@course, @assignment),
+		class: "button small" %>
+
+	<div>
+		<%= render @submissions %>
+	</div>
+	
 </div>

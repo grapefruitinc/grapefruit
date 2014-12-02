@@ -64,6 +64,10 @@
     can :manage, Document do |document|
       if document.assignment
         document.assignment.course.instructor == user
+      elsif document.submission
+        document.submission.assignment.course.instructor == user
+      elsif document.grade
+        document.grade.user == user
       elsif document.course
         document.course.instructor == user
       elsif document.capsule

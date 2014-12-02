@@ -47,6 +47,22 @@ protected
     end
   end
 
+  def get_assignment
+    @assignment = Assignment.find(params[:assignment_id] || params[:id])
+    unless @assignment.present?
+      flash[:error] = "Invalid assignment!"
+      redirect_to root_path
+    end
+  end
+
+  def get_submission
+    @submission = Submission.find(params[:submission_id] || params[:id])
+    unless @submission.present?
+      flash[:error] = "Invalid submission!"
+      redirect_to root_path
+    end
+  end
+
   def get_capsules
     @capsules = @course.capsules.order("created_at DESC")
     @capsules.build
@@ -82,6 +98,14 @@ protected
 
   def hide_sidebar
     @hide_sidebar = true
+  end
+
+  def process_multiple_documents(container)
+    if params[:documents]
+      params[:documents][:document].each { |doc|
+        container.documents.create(file: doc)
+      }
+    end
   end
 
 end

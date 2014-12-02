@@ -1,0 +1,37 @@
+<div class="editNav">
+  <%= link_to '&larr; all assignments'.html_safe, course_assignments_path(@course) %>
+</div>
+
+<div>
+  <h4>
+    Submission for
+    <%= link_to (@assignment.name), course_assignment_path(@course, @assignment) %>
+  </h4>
+
+  <div class="login">
+
+    <%= form_for([@course, @assignment, @submission], :html=> {:multipart => true}) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.text_area :comments, placeholder: "Any comments for this submission", style: "height: 10em" %>
+
+      <%= f.label "Attach documents (PDF, image, Word, zip, etc)" %><br>
+
+      <%= f.fields_for :documents do |p| %>
+        <div class="field multipleDocs">
+          <%= p.file_field :document, :multiple => true, name: "documents[document][]" %>
+        </div>
+      <% end %>
+
+      <div>
+        <%= f.submit "Submit Response for Assignment", class: "button small" %>
+        <p class="grey">
+          WARNING: responses cannot be edited after they are submitted. <br/>
+          However, you can delete them if you have made a mistake.
+        </p>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

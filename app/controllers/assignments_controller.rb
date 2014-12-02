@@ -14,7 +14,10 @@ class AssignmentsController < ApplicationController
   end
 
   def edit
-    @assign
+  end
+
+  def show
+    @submissions = @assignment.submissions.where(user_id: current_user.id).order("created_at DESC")
   end
 
   def create
@@ -22,10 +25,10 @@ class AssignmentsController < ApplicationController
     authorize! :manage, @course
 
     @assignment = @course.assignments.new(assignment_params)
-    
+
     if @assignment.valid?
       @assignment.save
-      process_multiple_documents
+      process_multiple_documents(@assignment)
       flash[:success] = "The assignment was created!"
       redirect_to course_assignments_path(@course)
     else
@@ -38,7 +41,7 @@ class AssignmentsController < ApplicationController
     authorize! :manage, @course
 
     if @assignment.update_attributes(assignment_params)
-      process_multiple_documents
+      process_multiple_documents(@assignment)
       flash[:success] = "Assignment saved!"
     end
 
@@ -55,24 +58,8 @@ class AssignmentsController < ApplicationController
 
   private
 
-  def process_multiple_documents
-    if params[:documents]
-      params[:documents][:document].each { |doc|
-        @assignment.documents.create(file: doc)
-      }
-    end
-  end
-
   def assignment_params
     params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents)
-  end
-
-  def get_assignment
-    @assignment = Assignment.find(params[:assignment_id] || params[:id])
-    unless @assignment.present?
-      flash[:error] = "Invalid assignment!"
-      redirect_to root_path
-    end
   end
 
 end
