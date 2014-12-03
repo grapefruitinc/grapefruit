@@ -7,13 +7,13 @@
 
       <%= f.label :assignment_type_id, 'Assignment Type:' %>
 
-      <%= f.collection_select(:assignment_type_id, @course.assignment_types, :id, :name) %>
+      <%= f.select :assignment_type_id, options_for_select(@course.assignment_types.map{ |c| [c.name, c.id, {'data-default-points'=>c.default_point_value}] }, selected: @assignment.assignment_type.id) %>
 
       <%= f.text_area :description, placeholder: "Description or instructions for the assignment.", style: "height: 10em" %>
 
       <% if @assignment.persisted? %>
         <%= render "documents/documents", container: @assignment, documents: @assignment.documents %>
-      <% end %> 
+      <% end %>
 
       <%= f.label "Attach documents (PDF, image, Word, etc)" %><br>
 
@@ -32,7 +32,7 @@
           <%= link_to 'View Assignment as Student',
             course_assignment_path(@assignment.course, @assignment),
             class: "button small secondary" %>
-          <%= link_to 'Delete', course_assignment_path(@assignment.course, @assignment), 
+          <%= link_to 'Delete', course_assignment_path(@assignment.course, @assignment),
             confirm: ("Are you sure you want to delete this assignment? This *cannot* be undone."),
             method: :delete,
             class: "button small alert" %>
