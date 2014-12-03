@@ -65,7 +65,7 @@
       if document.assignment
         document.assignment.course.instructor == user
       elsif document.submission
-        document.submission.assignment.course.instructor == user
+        false
       elsif document.grade
         document.grade.user == user
       elsif document.course

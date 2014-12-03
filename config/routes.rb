@@ -58,6 +58,7 @@ Grapefruit::Application.routes.draw do
 
     resources :assignments do
       resources :submissions
+      resources :grades
     end
 
     resources :assignment_types, only: [:index, :create, :destroy, :update]

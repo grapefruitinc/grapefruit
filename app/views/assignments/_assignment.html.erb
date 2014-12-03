@@ -3,6 +3,7 @@
 		<h4>
 			<% if can? :manage, @course %>
 				<%= link_to assignment.name, edit_course_assignment_path(assignment.course, assignment) %>
+				(<%= link_to 'grade', course_assignment_grades_path(assignment.course, assignment) %>)
 			<% else %>
 				<%= link_to assignment.name, course_assignment_path(assignment.course, assignment) %>
 			<% end %>

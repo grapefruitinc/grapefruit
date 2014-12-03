@@ -1,0 +1,15 @@
+<div class="editNav">
+  <%= link_to '&larr; all assignments'.html_safe, course_assignments_path(@course) %>
+</div>
+
+<div>
+  <h4>
+    Lates submissions by user for<br/>
+    <%= link_to (@assignment.name), edit_course_assignment_path(@course, @assignment) %>
+  </h4>
+
+  <div>
+    <%= render @submissions_available %>
+  </div>
+
+</div>

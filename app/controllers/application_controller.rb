@@ -63,6 +63,14 @@ protected
     end
   end
 
+  def get_grade
+    @grade = Grade.find(params[:grade_id] || params[:id])
+    unless @grade.present?
+      flash[:error] = "Invalid grade!"
+      redirect_to root_path
+    end
+  end
+
   def get_capsules
     @capsules = @course.capsules.order("created_at DESC")
     @capsules.build
