@@ -213,7 +213,7 @@ var AssignmentTypeItem = React.createClass({
             <td>{this.dropsLowest()}</td>
             <td>{this.state.default_point_value}</td>
             <td>
-              <button className='small primary' onClick={this.editPressed}>Edit</button>
+              <button className='small secondary' onClick={this.editPressed}>Edit</button>
               <button className='small alert' onClick={this.deletePressed}>Delete</button>
             </td>
           </tr>

@@ -50,7 +50,7 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
       <% if can? :manage, @course %>
         <% @back_icon = (request.referer =~ /manage/) ? '&#9664;' : '' %>
         <%= link_to "#{@back_icon} Manage Content".html_safe, course_manage_path(@course),
-          class: "button secondary back" %>
+          class: "button coal back" %>
       <% end %>
       <ul class="course-accordion">
         <%= render @capsules %>
