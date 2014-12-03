@@ -3,7 +3,7 @@ object @lecture
 attributes :id, :lecture_number, :description, :caosule_id, :live
 
 child :documents do
-  attributes :id
+  attributes :id, :description
 
   node(:file) { |document| document.file.url }
 end
