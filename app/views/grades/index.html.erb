@@ -4,12 +4,15 @@
 
 <div>
   <h4>
-    Lates submissions by user for<br/>
+    Lates submissions by user <%= parens(@submissions_available.count) %> for<br/>
     <%= link_to (@assignment.name), edit_course_assignment_path(@course, @assignment) %>
   </h4>
 
   <div>
     <%= render @submissions_available %>
+    <% if @submissions_available.count == 0 %>
+      <p class="grey">No submissions have been made yet!</p>
+    <% end %>
   </div>
 
 </div>

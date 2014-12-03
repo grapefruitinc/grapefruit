@@ -7,7 +7,7 @@
 
       <%= f.label :assignment_type_id, 'Assignment Type:' %>
 
-      <%= f.select :assignment_type_id, options_for_select(@course.assignment_types.map{ |c| [c.name, c.id, {'data-default-points'=>c.default_point_value}] }, selected: @assignment.assignment_type.id) %>
+      <%= f.select :assignment_type_id, options_for_select(@course.assignment_types.map{ |c| [c.name, c.id, {'data-default-points'=>c.default_point_value}] }, selected: (@assignment.persisted?) ? @assignment.assignment_type.id : 0) %>
 
       <%= f.text_area :description, placeholder: "Description or instructions for the assignment.", style: "height: 10em" %>
 

@@ -2,14 +2,15 @@ class GradesController < ApplicationController
 
   layout "course"
 
-  before_filter :authenticate_user!, :get_course, :get_assignment, :auth, :hide_sidebar
+  before_filter :authenticate_user!, :get_course, :auth, :hide_sidebar
+  before_filter :get_assignment, except: [:gradelist]
   before_filter :get_grade, only: [:destroy]
 
   def index
     @submissions_available = @assignment.submissions.where(updated_at: @assignment.submissions.select("max(updated_at)").group(:user_id)).order("updated_at desc")
   end
 
-  def show
+  def gradelist
   end
 
   def create

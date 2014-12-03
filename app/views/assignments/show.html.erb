@@ -29,6 +29,9 @@
 	<div>
 		<h6>Your Submissions <%= parens(@submissions.count) %></h6>
 		<%= render @submissions %>
+		<% if @submissions.count == 0 %>
+			<p class="grey">You have not submitted a response to this assignment.</p>
+		<% end %>
 	</div>
 
 </div>

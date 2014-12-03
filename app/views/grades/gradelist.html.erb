@@ -1,0 +1,13 @@
+<% page_title "Grades" %>
+
+<div class="landing">
+
+  <%= link_to '&#9664; Back to Assignment List'.html_safe,
+  course_assignments_path(@course),
+  class: "button small secondary" %>
+
+  <div class="description">
+    <h4>Grades for <%= @course.name %></h4>
+  </div>
+  
+</div>
