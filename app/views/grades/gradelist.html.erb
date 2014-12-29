@@ -10,4 +10,17 @@
     <h4>Grades for <%= @course.name %></h4>
   </div>
 
+  <% @course.students.each do |student| %>
+
+    <p><%= link_to student.name, "javascript:void(0)" %>
+    - <strong><%= student.grade_for_course(@course) %></strong></p>
+
+  <% end %>
+
+  <div>
+    Coming soon:
+    <%= link_to "Export to Excel", "javascript:void(0)", class: "button secondary small disabled" %>
+    <%= link_to "Export to PDF", "javascript:void(0)", class: "button secondary small disabled" %>
+  </div>
+
 </div>

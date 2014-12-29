@@ -16,6 +16,7 @@ class Grade < ActiveRecord::Base
   validates :points, presence: true
 
   belongs_to :assignment
+  belongs_to :user
   has_many :documents, dependent: :destroy
 
 end

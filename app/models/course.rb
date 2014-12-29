@@ -82,6 +82,14 @@ class Course < ActiveRecord::Base
     course_users.find_by_user_id(user)
   end
 
+  def perfect_total
+    sum = 0
+    self.assignments.each do |assignment|
+      sum += assignment.points
+    end
+    sum
+  end
+
   # Outputting
   # ========================================================
   def seats_left
