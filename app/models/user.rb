@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
 
   has_many :replies, foreign_key: "author_id"
   has_many :topics, foreign_key: "author_id"
+  has_many :grades, foreign_key: "user_id"
 
   # User Types
   # ========================================================
@@ -51,6 +52,10 @@ class User < ActiveRecord::Base
 
   def self.students
     includes(:student_courses).where('courses.instructor_id != users.id')
+  end
+
+  def grade_for_course(course)
+    (self.grades.joins(:assignment).merge(Assignment.where(course_id: course.id)).sum(:points) / course.perfect_total * 100).round(2).to_s + "%"
   end
 
   # Output

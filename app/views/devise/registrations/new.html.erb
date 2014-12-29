@@ -1,3 +1,5 @@
+<% @register = true %>
+
 <div class="register content">
 
   <h2>Sign Up</h2>
@@ -16,9 +18,10 @@
 
     <%= f.submit "Create Account", class: 'button' %>
 
+    <br/>
+
+    <%= render "devise/shared/links" %>
+
   <% end %>
 
-  <% @register = true %>
-
-  <%= render "devise/shared/links" %>
 </div>

@@ -30,9 +30,14 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     authorize! :delete, @document
     name = @document[:file]
+    assignment = @document.assignment ? @document.assignment : nil
     @document.destroy
     flash[:success] = "#{name} was deleted!"
-    redirect_to course_manage_path(@document.course)
+    if assignment
+      redirect_to edit_course_assignment_path(assignment.course, assignment)
+    else
+      redirect_to course_manage_path(@document.course)
+    end
   end
 
   private

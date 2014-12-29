@@ -56,6 +56,15 @@ Grapefruit::Application.routes.draw do
     get 'manage'
     get 'stats'
 
+    get 'gradelist' => 'grades#gradelist'
+
+    resources :assignments do
+      resources :submissions
+      resources :grades
+    end
+
+    resources :assignment_types, only: [:index, :create, :destroy, :update]
+
     resources :documents, shallow: true
 
     resources :course_users, only: [:create, :destroy]

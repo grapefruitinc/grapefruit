@@ -71,7 +71,7 @@ class CoursesController < ApplicationController
     @course.ensure_webwork_exists(current_user)
     @url = @course.webwork_url
   end
-  
+
   def students
     authorize! :update, @course
     @students = @course.students
@@ -107,7 +107,7 @@ private
   end
 
   def get_capsules
-    @capsules = @course.capsules.order("created_at DESC")
+    @capsules = @course.capsules.order("created_at ASC")
     @capsules.build
   end
 

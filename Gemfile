@@ -61,6 +61,8 @@ gem "friendly_id", ">=5.0.0"
 # Active admin for admin panel
 gem "activeadmin", github: "gregbell/active_admin"
 
+gem 'react-rails', :git => 'git@github.com:grahamcracker/react-rails.git', :branch => '0.12'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   # helpful if you know you won't have an internet connection

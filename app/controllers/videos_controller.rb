@@ -90,7 +90,7 @@ class VideosController < ApplicationController
 private
 
   def video_params
-    params.require(:video).permit(:title, :description, :file, :mediasite_url)
+    params.require(:video).permit(:title, :description, :file, :mediasite_url, :youtube_id)
   end
 
   def get_video
