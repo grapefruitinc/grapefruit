@@ -432,8 +432,8 @@ footer{
     position: relative;
     i {
       color: white;
-      font-size: 8rem;
-      line-height: 1rem;
+      font-size: 5rem;
+      line-height: .5em;
     }
     @media #{$medium} {
       @include grid-column(12);
@@ -469,6 +469,10 @@ footer{
     @media #{$medium} {
       @include grid-column(12);
     }
+}
+
+.platform{
+  font-size: .8em;
 }
 
 .icon-seal {
