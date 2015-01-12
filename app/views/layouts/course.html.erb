@@ -30,28 +30,13 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
           <li><%= link_to "Students", course_students_path(@course), class: "button small"%></li>
           <li><%= link_to "Stats", course_stats_path(@course), class: "button small"%></li>
           <li><%= link_to "Manage Content", course_manage_path(@course), class: "button small bold" %></li>
+          <li><%= link_to "Assignments & Grading", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 
-        <div style="margin-top:1em;">
-
-          <% if @show_unenroll && @course.students.include?(current_user) %>
-            <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
-              <%= f.hidden_field :course_id, value: @course.id %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit "Unenroll", class: "stateful-button--active" %>
-          <% end %>
-
-          <% if not @course.students.include?(current_user) %>
-            <%= form_for [@course, @course_user] do |f| %>
-              <%= f.hidden_field :course_id, value: @course.id %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit "Enroll", class: "stateful-button--inactive" %>
-            <% end %>
-          <% end %>
-
-        </div>
-
+        <% if not can? :manage, @course %>
+          <li><%= link_to "Assignments", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
+
       </ul>
     </div>
   </div>
@@ -65,7 +50,7 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
       <% if can? :manage, @course %>
         <% @back_icon = (request.referer =~ /manage/) ? '&#9664;' : '' %>
         <%= link_to "#{@back_icon} Manage Content".html_safe, course_manage_path(@course),
-          class: "button secondary back" %>
+          class: "button coal back" %>
       <% end %>
       <ul class="course-accordion">
         <%= render @capsules %>

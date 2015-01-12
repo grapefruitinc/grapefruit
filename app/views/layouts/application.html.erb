@@ -35,13 +35,6 @@
     
     <%= content_for?(:content) ? yield(:content) : yield %>
 
-    <% if Rails.env.development? %>
-      <div class="container">
-        <%= debug(params) %>
-        <!-- <%= debug(session) %> -->
-      </div>
-    <% end %>
-
     <%= yield(:scripts) %>
     
     <script>

@@ -9,6 +9,10 @@
 @import "topics";
 @import "video_texts";
 @import "videos";
+@import "assignments";
+@import "assignment_types";
+@import "submissions";
+@import "grades";
 
 .nav-area {
   a{
@@ -152,4 +156,9 @@ textarea.medium {
 }
 textarea.large {
   height: 300px;
+}
+div.panel.callout{
+  p{
+    color: #fff;
+  }
 }

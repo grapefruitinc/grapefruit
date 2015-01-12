@@ -43,6 +43,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
+# deployment
+gem 'capistrano'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -57,6 +60,8 @@ gem "friendly_id", ">=5.0.0"
 
 # Active admin for admin panel
 gem "activeadmin", github: "gregbell/active_admin"
+
+gem 'react-rails', :git => 'git@github.com:grahamcracker/react-rails.git', :branch => '0.12'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

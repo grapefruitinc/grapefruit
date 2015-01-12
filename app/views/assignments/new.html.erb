@@ -1,0 +1,15 @@
+<% page_title "Creating New Assignment" %>
+
+<div class="landing">
+
+  <%= link_to '&#9664; cancel to assignment list'.html_safe,
+    course_assignments_path(@course),
+    class: "button coal small" %>
+
+  <div class="description">
+    <h4>New Assignment in <%= @course.name %></h4>
+  </div>
+
+  <%= render 'assignments/form' %>
+
+</div>

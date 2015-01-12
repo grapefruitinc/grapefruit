@@ -28,7 +28,7 @@ ActiveAdmin.register User, as: "Student" do
     end
   end
 
-  permit_params :email, :name, :password
+  permit_params :email, :name, :password, :can_create_courses
 
   menu priority: 1
 

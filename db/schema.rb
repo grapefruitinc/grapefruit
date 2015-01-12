@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701195617) do
+ActiveRecord::Schema.define(version: 20141203075641) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -50,6 +50,26 @@ ActiveRecord::Schema.define(version: 20140701195617) do
     t.string   "title"
     t.text     "content"
     t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assignment_types", force: true do |t|
+    t.string   "name"
+    t.float    "default_point_value"
+    t.boolean  "drops_lowest"
+    t.float    "percentage"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assignments", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.float    "points"
+    t.integer  "course_id"
+    t.integer  "assignment_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -105,6 +125,9 @@ ActiveRecord::Schema.define(version: 20140701195617) do
     t.integer  "course_id"
     t.integer  "capsule_id"
     t.integer  "lecture_id"
+    t.integer  "assignment_id"
+    t.integer  "submission_id"
+    t.integer  "grade_id"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -119,6 +142,15 @@ ActiveRecord::Schema.define(version: 20140701195617) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "grades", force: true do |t|
+    t.float    "points"
+    t.string   "comments"
+    t.integer  "assignment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lectures", force: true do |t|
     t.string   "name"
@@ -155,6 +187,14 @@ ActiveRecord::Schema.define(version: 20140701195617) do
     t.datetime "updated_at"
   end
 
+  create_table "submissions", force: true do |t|
+    t.string   "comments"
+    t.integer  "user_id"
+    t.integer  "assignment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "topics", force: true do |t|
     t.integer  "replies",        default: 0
     t.integer  "course_id"
@@ -169,12 +209,12 @@ ActiveRecord::Schema.define(version: 20140701195617) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -182,6 +222,7 @@ ActiveRecord::Schema.define(version: 20140701195617) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.boolean  "can_create_courses",     default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

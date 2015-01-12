@@ -86,10 +86,11 @@ $em-base: 16px !default;
    $dark-blue-color: #00748F;
    $grey-text-color: #666;
    $ethan-red-color: #CA4343;
+   $error-color: #690000;
 
-   $primary-color: #097C7C;
+   $primary-color: #CA4343;
    $success-color: $ethan-red-color;
-   $alert-color: lighten($grapefruit-orange-color, 10%);
+   $alert-color: $grapefruit-orange-color;
 
 // Make sure border radius matches unless we want it different.
 
@@ -232,7 +233,7 @@ $em-base: 16px !default;
 
 // $anchor-text-decoration: none;
   $anchor-font-color: $primary-color;
-  $anchor-font-color-hover: darken($anchor-font-color, 12%);
+  $anchor-font-color-hover: lighten($anchor-font-color, 12%);
 
 // Style the <hr> element
 
@@ -312,7 +313,7 @@ $em-base: 16px !default;
 // $input-bg-color: #fff;
 // $input-focus-bg-color: darken(#fff, 2%);
 // $input-border-color: darken(#fff, 20%);
-// $input-focus-border-color: darken(#fff, 40%);
+   $input-focus-border-color: #1e1e1e;
 // $input-border-style: solid;
 // $input-border-width: 1px;
 // $input-disabled-bg: #ddd;

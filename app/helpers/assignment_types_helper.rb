@@ -1,0 +1,2 @@
+module AssignmentTypesHelper
+end

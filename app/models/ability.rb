@@ -33,8 +33,9 @@
       course.instructor == user
     end
 
-    # But they can only create them if they are an admin
-    can :create, Course
+    cannot :create, Course
+
+    can :create, Course if user.can_create_courses == true
 
     can :read, Course do |course|
       user.student_courses.include? course
@@ -56,8 +57,18 @@
       problem_set.capsule.course.instructor == user
     end
 
+    can :manage, Assignment do |assignment|
+      assignment.course.instructor == user
+    end
+
     can :manage, Document do |document|
-      if document.course
+      if document.assignment
+        document.assignment.course.instructor == user
+      elsif document.submission
+        false
+      elsif document.grade
+        document.grade.user == user
+      elsif document.course
         document.course.instructor == user
       elsif document.capsule
         document.capsule.course.instructor == user

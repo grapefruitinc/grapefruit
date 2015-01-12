@@ -21,6 +21,8 @@ Grapefruit::Application.routes.draw do
   get 'about' => 'guest#about'
   get 'tos' => 'guest#tos'
   get 'contact' => 'guest#contact'
+  get 'contribute' => 'guest#contribute'
+  get 'changelog' => 'guest#changelog'
 
   devise_for :users, :skip => [:sessions, :passwords, :registrations]
 
@@ -55,6 +57,15 @@ Grapefruit::Application.routes.draw do
     get 'students'
     get 'manage'
     get 'stats'
+
+    get 'gradelist' => 'grades#gradelist'
+
+    resources :assignments do
+      resources :submissions
+      resources :grades
+    end
+
+    resources :assignment_types, only: [:index, :create, :destroy, :update]
 
     resources :documents, shallow: true
 

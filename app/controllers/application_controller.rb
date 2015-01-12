@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: exception.message
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
 protected
- 
+
   def configure_permitted_parameters
 
     # place permitted fields for registration here
@@ -43,6 +43,30 @@ protected
     @capsule = Capsule.find(params[:capsule_id] || params[:id])
     unless @capsule.present?
       flash[:error] = "Invalid capsule!"
+      redirect_to root_path
+    end
+  end
+
+  def get_assignment
+    @assignment = Assignment.find(params[:assignment_id] || params[:id])
+    unless @assignment.present?
+      flash[:error] = "Invalid assignment!"
+      redirect_to root_path
+    end
+  end
+
+  def get_submission
+    @submission = Submission.find(params[:submission_id] || params[:id])
+    unless @submission.present?
+      flash[:error] = "Invalid submission!"
+      redirect_to root_path
+    end
+  end
+
+  def get_grade
+    @grade = Grade.find(params[:grade_id] || params[:id])
+    unless @grade.present?
+      flash[:error] = "Invalid grade!"
       redirect_to root_path
     end
   end
@@ -78,6 +102,18 @@ protected
 
   def get_all_course_capsules
     @capsules = @course.capsules
+  end
+
+  def hide_sidebar
+    @hide_sidebar = true
+  end
+
+  def process_multiple_documents(container)
+    if params[:documents]
+      params[:documents][:document].each { |doc|
+        container.documents.create(file: doc)
+      }
+    end
   end
 
 end

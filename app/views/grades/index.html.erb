@@ -1,0 +1,18 @@
+<div class="editNav">
+  <%= link_to '&larr; all assignments'.html_safe, course_assignments_path(@course) %>
+</div>
+
+<div>
+  <h4>
+    Latest submissions by user <%= parens(@submissions_available.count) %> for<br/>
+    <%= link_to (@assignment.name), edit_course_assignment_path(@course, @assignment) %>
+  </h4>
+
+  <div>
+    <%= render @submissions_available %>
+    <% if @submissions_available.count == 0 %>
+      <p class="grey">No submissions have been made yet!</p>
+    <% end %>
+  </div>
+
+</div>

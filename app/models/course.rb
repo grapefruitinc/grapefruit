@@ -40,6 +40,8 @@ class Course < ActiveRecord::Base
   has_many :lectures, through: :capsules
   has_many :documents, dependent: :destroy
   has_many :topics, dependent: :destroy
+  has_many :assignments, dependent: :destroy
+  has_many :assignment_types, dependent: :destroy
   has_many :announcements, dependent: :destroy
 
   # Friendly_id definitions
@@ -78,6 +80,14 @@ class Course < ActiveRecord::Base
 
   def course_user(user)
     course_users.find_by_user_id(user)
+  end
+
+  def perfect_total
+    sum = 0
+    self.assignments.each do |assignment|
+      sum += assignment.points
+    end
+    sum
   end
 
   # Outputting

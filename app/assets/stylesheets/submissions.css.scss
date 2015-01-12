@@ -1,0 +1,20 @@
+div.submission{
+
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: .8em;
+  margin-bottom: .5em;
+
+  span.number{
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  span.timeago{
+    color: #999;
+  }
+  p{
+    margin: .5em 1em .5em 1em;
+    font-size: 1.1em;
+  }
+
+}

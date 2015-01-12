@@ -1,9 +1,9 @@
 language: ruby
 rvm:
   - 2.1.1
-script:
-  - RAILS_ENV=development bundle exec rake db:reset --trace
 before_script:
-  - cp config/database-example.yml config/database.yml
-  - cp config/settings-demo.yml config/settings.yml
-  - mysql -e 'create database grapefruit'
+  .travis/setup.sh
+script:
+  .travis/deploy.sh
+notifications:
+  email: false

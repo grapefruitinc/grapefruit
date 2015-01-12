@@ -13,4 +13,10 @@ class GuestController < ApplicationController
   def contact
   end
 
+  def contribute
+  end
+
+  def changelog
+  end
+
 end

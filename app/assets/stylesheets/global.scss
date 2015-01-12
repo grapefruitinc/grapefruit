@@ -18,6 +18,7 @@ Use with extends instead of in the markup directly when possible
 .normal {font-weight: normal;}
 .upper {text-transform: uppercase;}
 .hidden,.reveal-hidden{display:none;}
+.visibility-hidden{visibility:hidden;}
 
 
 $small: "screen and (max-width: 34rem)";
@@ -43,7 +44,7 @@ div#top-flash{
 
   div.alert-box{
 
-    @include alert(lighten($grapefruit-orange-color, 10%));
+    @include alert($grapefruit-orange-color);
     padding:0px!important;
     margin:0px!important;
 
@@ -59,7 +60,7 @@ div#top-flash{
   }
 
   div.alert-box.success{
-    @include alert(lighten($ethan-red-color, 12%));
+    @include alert($error-color);
   }
 
 }
@@ -176,7 +177,14 @@ div#top-flash{
 .title-area {
     @include grid-column(4);
     height: 50px;
-    img {width: 110px;}
+    > a {
+      display: inline-block;
+      height: 100%;
+      object {
+        width: 110px;
+        pointer-events: none;
+      }
+    }
     @media #{$medium} {
       @include grid-column(12);
       height: 4rem;
@@ -277,7 +285,7 @@ div#error_explanation{
     }
 }
 div.panel.error{
-  background-color: $ethan-red-color;
+  background-color: $error-color;
   color: #fff;
   border: 0em;
 }
@@ -424,8 +432,8 @@ footer{
     position: relative;
     i {
       color: white;
-      font-size: 8rem;
-      line-height: 1rem;
+      font-size: 5rem;
+      line-height: .5em;
     }
     @media #{$medium} {
       @include grid-column(12);
@@ -463,6 +471,16 @@ footer{
     }
 }
 
+.platform{
+  font-size: .8em;
+}
+
 .icon-seal {
   font-size: 12rem;
+}
+a.coal{
+  background-color: #333;
+  &:hover{
+    background-color: #555;
+  }
 }

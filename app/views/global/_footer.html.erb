@@ -1,22 +1,28 @@
  <footer>
   <div>
     <div class="school-logo">
-      <i class="icon-rensselaer"></i>
+
     </div>
     <div class="project-description">
+
       <p>
-        Created by the <strong>Grapefruit Team</strong> at
-        <%= link_to SCHOOL_NAME, SCHOOL_URL, :target => '_blank' %>.
-
-        Check out our <%= link_to 'Github repository', GITHUB_URL, :target => '_blank' %>!
-
+        Created by the Grapefruit Team and funded in part <br/> by the
+        <%= link_to "Rensselaer Center for Open Source Software", "http://rcos.rpi.edu", :target => '_blank' %>.
       </p>
+
       <nav class="horizontal">
         <ul class="nav-links">
           <li><%= link_to 'About', about_url %></li>
           <li><%= link_to 'Contact', contact_url %></li>
+          <li><%= link_to 'Contribute', contribute_url %></li>
+          <li><%= link_to 'Changelog', changelog_url %></li>
         </ul>
       </nav>
+
+      <p class="platform">
+        grapefruit platform v. <%= GRAPEFRUIT_VERSION_MAJOR %>.<%= GRAPEFRUIT_VERSION_MINOR %>.<%= GRAPEFRUIT_VERSION_PATCH %>
+      </p>
+
     </div>
   </div>
 </footer>

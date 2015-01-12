@@ -1,0 +1,43 @@
+ <div class="login">
+
+    <%= form_for([@course, @assignment], :html=> {:multipart => true}) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.text_field :name, placeholder: "Assignment Name", autofocus: true %>
+
+      <%= f.label :assignment_type_id, 'Assignment Type:' %>
+
+      <%= f.select :assignment_type_id, options_for_select(@course.assignment_types.map{ |c| [c.name, c.id, {'data-default-points'=>c.default_point_value}] }, selected: (@assignment.persisted?) ? @assignment.assignment_type.id : 0) %>
+
+      <%= f.text_area :description, placeholder: "Description or instructions for the assignment.", style: "height: 10em" %>
+
+      <% if @assignment.persisted? %>
+        <%= render "documents/documents", container: @assignment, documents: @assignment.documents %>
+      <% end %>
+
+      <%= f.label "Attach documents (PDF, image, Word, etc)" %><br>
+
+      <%= f.fields_for :documents do |p| %>
+        <div class="field multipleDocs">
+         <%= p.file_field :document, :multiple => true, name: "documents[document][]" %>
+        </div>
+      <% end %>
+
+     <%= f.label :points, 'Point value:' %>
+     <%= f.text_field :points, placeholder: "10, 20, 100, etc" %>
+
+      <div>
+        <%= f.submit "Save Assignment", class: "button small" %>
+        <% if defined? allow_delete %>
+          <%= link_to 'View Assignment as Student',
+            course_assignment_path(@assignment.course, @assignment),
+            class: "button small secondary" %>
+          <%= link_to 'Delete', course_assignment_path(@assignment.course, @assignment),
+            confirm: ("Are you sure you want to delete this assignment? This *cannot* be undone."),
+            method: :delete,
+            class: "button small alert" %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>

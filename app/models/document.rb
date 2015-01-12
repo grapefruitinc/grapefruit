@@ -27,5 +27,8 @@ class Document < ActiveRecord::Base
   belongs_to :course
   belongs_to :capsule
   belongs_to :lecture
-  
+  belongs_to :submission
+  belongs_to :assignment
+  belongs_to :grade
+
 end
