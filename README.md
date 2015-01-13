@@ -3,7 +3,15 @@ Grapefruit
 
 ### an open source learning portal
 
-Grapefruit is an RCOS (http://rcos.rpi.edu) project. However, pull requests are always welcome from anyone!
+Grapefruit is a free and open learning management system for administrators, educators, and students.
+
+We currently support awesome features like lecture videos and notes, a discussion forum, assignments, grading, and much more!
+
+Please consider contributing to the project -
+we need your help to accomplish our goal of making the best free education platform possible.
+
+
+Grapefruit receives support from RCOS (http://rcos.rpi.edu). However, pull requests and collaborations are welcome from anyone!
 
 Installation
 ------------
@@ -30,7 +38,10 @@ Contributing
 Please use 2 spaced-tabs (don't use real tabs, any decent editor
 will have an option to replace tabs with spaces).
 
-The `dev` branch is our main development branch. If you are working on a new feature, please branch off of `dev` and name your new branch appropriately (e.g. `redesign-masthead`). The `master` branch is reserved for production builds that will be sourced from `dev`. Please DO NOT commit, pull request, or merge to the `master` branch.
+**The `dev` branch is our main development branch.** If you are working on a new feature, please branch off of `dev` and name your new branch appropriately (e.g. `redesign-masthead`). The `master` branch is reserved for production builds that will be sourced from `dev`. Please DO NOT commit, pull request, or merge to the `master` branch.
+
+We do our best to follow the semantic versioning guidelines outlined at [semver.org](http://semver.org). In the footer of most Grapefruit
+pages, we list the platform major, minor, and patch versions, as well as a "build number" (which is really a shortened hash of the current commit).
 
 Help
 ----
