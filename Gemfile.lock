@@ -1,15 +1,4 @@
 GIT
-  remote: git@github.com:grahamcracker/react-rails.git
-  revision: 359cfbb7479ef1e5627561297e0dfaa991a8c679
-  branch: 0.12
-  specs:
-    react-rails (1.0.0.pre)
-      connection_pool
-      execjs
-      rails (>= 3.1)
-      react-source (= 0.12)
-
-GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 4f445b51c22b12af2cdde57fe2ce9835c32ef88e
   specs:
@@ -25,6 +14,17 @@ GIT
       rails (>= 3.2, < 4.2)
       ransack (~> 1.0)
       sass-rails
+
+GIT
+  remote: git@github.com:grahamcracker/react-rails.git
+  revision: 359cfbb7479ef1e5627561297e0dfaa991a8c679
+  branch: 0.12
+  specs:
+    react-rails (1.0.0.pre)
+      connection_pool
+      execjs
+      rails (>= 3.1)
+      react-source (= 0.12)
 
 GEM
   remote: https://rubygems.org/
