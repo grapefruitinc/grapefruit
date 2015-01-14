@@ -6,7 +6,7 @@ private
 
   def authenticate_user_from_token!
     user_email = request.headers["user-email"] ||
-      user_email = params.fetch(:authentication_data, {}).fetch(:email, {})
+      params.fetch(:authentication_data, {}).fetch(:email, {})
 
     token = request.headers["authentication-token"] ||
       params.fetch(:authentication_data, {}).fetch(:authentication_token, {})
@@ -17,7 +17,7 @@ private
       return
     end
 
-    if user_email.blank?
+    if token.blank?
       render json: { success: false, message: "Missing authentication token" }, status: 401
       puts "Authentication failed: authentication-token is nil"
       return
