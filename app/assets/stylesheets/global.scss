@@ -308,6 +308,16 @@ input[type=text], input[type=email], input[type=password] {
     border-radius: $global-radius;
 }
 
+.button.success{
+  color: $primary-color;
+  border: 2px solid $primary-color;
+
+  &:hover{
+    background-color: $primary-color;
+    color: #fff;
+  }
+}
+
 .stateful-button {
     padding: 0.5rem;
     border-radius: 3px;
@@ -417,7 +427,7 @@ section {
 **/
 footer{
     background-color: #4B5252;
-    padding: 5rem 0;
+    padding: 1rem 0 1rem 0;
 
     a {
         color: rgba(255, 255, 255, 0.8);

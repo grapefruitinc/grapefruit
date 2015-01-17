@@ -14,7 +14,7 @@ Grapefruit::Application.routes.draw do
       root 'home#dashboard', as: "authenticated_root"
     end
     unauthenticated :user do
-      root 'guest#landing'
+      root 'devise/sessions#new'
     end
   end
 

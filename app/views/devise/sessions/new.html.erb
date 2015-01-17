@@ -5,13 +5,11 @@
 
   <fieldset>
 
-    <h3>Login</h3>
-
     <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "large" %>
 
     <%= f.password_field :password, placeholder: "Password", class: "large" %>
 
-    <%= f.submit "Login", class: "button" %>
+    <%= f.submit "Login", class: "button success" %>
 
     <% if admin_user_signed_in? %>
 
@@ -20,6 +18,27 @@
     <% end %>
 
     <div class="center">
+
+      <% if request.post? %>
+
+        <%= link_to "Forgot password?", new_password_path(resource_name) %>
+
+      <% end %>
+
+      <hr/>
+
+      <%= link_to "Make your #{ORG_NAME_SHORT} Grapefruit account!", new_registration_path(resource_name), class: "button new-call" %>
+
+      <hr/>
+
+      <h5>What is Grapefruit?</h5>
+
+      <p>
+        <a href="#" class="button small secondary">For Students</a>
+        <a href="#" class="button small secondary">For Educators</a>
+        <a href="#" class="button small secondary">For Admins</a>
+      </p>
+
       <%= render "devise/shared/links" %>
     </div>
 

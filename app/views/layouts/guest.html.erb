@@ -19,20 +19,12 @@
         <ul>
           <li><%= link_to "about", about_path, class: ("active" if params[:action] == "about") %></li>
           <li><%= link_to "contact", contact_path, class: ("active" if params[:action] == "contact") %></li>
-          <li><%= link_to "login", new_user_session_path, class: ("active" if params[:controller] == "devise/sessions") %></li>
-        </ul>
+          </ul>
       </nav>
     </div>
   </div>
 
   <div class="main-content">
-    <div class="page-header-container">
-      <div class="page-header">
-        <div class="page-header-full">
-          <h1 class="title">Learn at Rensselaer. <b>Everywhere.</b></h1>
-        </div>
-      </div>
-    </div>
         <%= yield %>
   </div>
 

@@ -30,7 +30,9 @@
 
 div.main-content{
     padding: 0em;
-
+    background-image: url(<%= asset_path 'orchard.jpeg' %>);
+    background-position: 0% 20%;
+    background-size: 100%;
     div.logo{
         @include grid-column(12);
         margin-bottom: 2em;
@@ -40,10 +42,11 @@ div.main-content{
         @include grid-column(8, $offset: 2);
         padding: 1em 2em;
         margin-bottom: 2em;
-        border-radius: 0em 0em 1em 1em;
-        background-color:#fff;
+        background-color: rgba(255, 255, 255, 0.7);
         float:none;
-
+        hr{
+          border-color: #aaa;
+        }
     }
     div.about.content, div.contact.content,div.contribute.content{
       padding: 1em 15%;
@@ -68,7 +71,6 @@ div.main-content{
         input[type="submit"]{
             margin-bottom: .8em;
             width: 100%;
-            color: white;
             border-radius: 4px;
         }
         fieldset{
@@ -76,14 +78,18 @@ div.main-content{
         }
     }
     div.login-form-container{
-        border-radius: 10px;
-        border: 20px solid #fff;
-        margin-top: -5rem;
         @include grid-column(3, $center: true);
-        padding: 1rem 2rem;
+        padding-top: 0em;
+        padding: .5rem 2rem;
         width: 30rem;
         @media #{$medium} {@include grid-column(10);}
         @media #{$small} {@include grid-column(12);}
+        fieldset{
+          margin:0;
+        }
+        a.new-call{
+          margin-bottom:0;
+        }
     }
     h3 {
         text-align: center;

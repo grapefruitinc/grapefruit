@@ -79,18 +79,17 @@ $em-base: 16px !default;
 
 // Colors
 
-// $secondary-color: #e9e9e9;
-// $success-color: #5da423;
-   $rpi-red-color: #d81d05;
-   $grapefruit-orange-color: #ff7f00;
-   $dark-blue-color: #00748F;
-   $grey-text-color: #666;
-   $ethan-red-color: #CA4343;
-   $error-color: #690000;
+  $rpi-red-color: #d81d05;
+  $grapefruit-orange-color: #ff7f00;
+  $dark-blue-color: #00748F;
+  $grey-text-color: #666;
+  $ethan-red-color: #CA4343;
+  $error-color: #690000;
 
-   $primary-color: #CA4343;
-   $success-color: $ethan-red-color;
-   $alert-color: $grapefruit-orange-color;
+  $primary-color: #CA4343;
+  $secondary-color: #e9e9e9;
+  $success-color: #fff;
+  $alert-color: $grapefruit-orange-color;
 
 // Make sure border radius matches unless we want it different.
 
