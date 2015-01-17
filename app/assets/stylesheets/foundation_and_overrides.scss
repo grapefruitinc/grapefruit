@@ -83,7 +83,6 @@ $em-base: 16px !default;
   $grapefruit-orange-color: #ff7f00;
   $dark-blue-color: #00748F;
   $grey-text-color: #666;
-  $ethan-red-color: #CA4343;
   $error-color: #690000;
 
   $primary-color: #CA4343;
@@ -1262,7 +1261,7 @@ $em-base: 16px !default;
 
 // Background color for the top bar
 
-  $topbar-bg-color: $ethan-red-color;
+  $topbar-bg-color: $primary-color;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
