@@ -16,7 +16,4 @@ class GuestController < ApplicationController
   def contribute
   end
 
-  def changelog
-  end
-
 end
