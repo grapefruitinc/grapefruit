@@ -19,7 +19,8 @@
         <ul>
           <li><%= link_to "about", about_path, class: ("active" if params[:action] == "about") %></li>
           <li><%= link_to "contact", contact_path, class: ("active" if params[:action] == "contact") %></li>
-          </ul>
+          <li><%= link_to "login", root_path, class: ("active" if params[:action] == "new") %></li>
+        </ul>
       </nav>
     </div>
   </div>
