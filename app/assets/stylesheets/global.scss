@@ -428,7 +428,9 @@ section {
 footer{
     background-color: $footer-color;
     padding: 1rem 0 1rem 0;
-
+    ul.nav-links{
+      text-align: left;
+    }
     a {
         color: rgba(255, 255, 255, 0.8);
         transition: color 250ms;
