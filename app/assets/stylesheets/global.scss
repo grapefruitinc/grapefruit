@@ -29,7 +29,7 @@ $full: "screen and (max-width: 90rem)";
 /***************************/
 
 
-body {background-color: #4B5252; max-width: 100%; overflow-x: hidden;}
+body {background-color: $footer-color; max-width: 100%; overflow-x: hidden;}
 
 div#top-flash{
 
@@ -426,7 +426,7 @@ section {
   footer
 **/
 footer{
-    background-color: #4B5252;
+    background-color: $footer-color;
     padding: 1rem 0 1rem 0;
 
     a {
