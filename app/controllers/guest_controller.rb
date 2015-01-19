@@ -16,4 +16,13 @@ class GuestController < ApplicationController
   def contribute
   end
 
+  def students
+  end
+
+  def educators
+  end
+
+  def admins
+  end
+
 end

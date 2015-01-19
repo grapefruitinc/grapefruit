@@ -27,16 +27,16 @@
 
       <hr/>
 
-      <%= link_to "Make your #{ORG_NAME_SHORT} Grapefruit account!", new_registration_path(resource_name), class: "button new-call" %>
+      <%= link_to "Create your #{ORG_NAME_SHORT} Grapefruit account!", new_registration_path(resource_name), class: "button new-call" %>
 
       <hr/>
 
       <h5>What is Grapefruit?</h5>
 
       <p>
-        <a href="#" class="button small secondary">For Students</a>
-        <a href="#" class="button small secondary">For Educators</a>
-        <a href="#" class="button small secondary">For Admins</a>
+        <%= link_to 'For Students', students_path, class: "button small secondary" %>
+        <%= link_to 'For Educators', educators_path, class: "button small secondary" %>
+        <%= link_to 'For Admins', admins_path, class: "button small secondary" %>
       </p>
 
       <%= render "devise/shared/links" %>
