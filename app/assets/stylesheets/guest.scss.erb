@@ -34,6 +34,14 @@ div.main-content{
     background-position: 0% 20%;
     background-size: 100%;
 
+    /* hide background on small viewports */
+    @media #{$small} {
+      background:none;
+    }
+    @media #{$medium} {
+      background:none;
+    }
+
     div.logo{
         @include grid-column(12);
         margin-bottom: 2em;
