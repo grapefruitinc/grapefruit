@@ -11,7 +11,7 @@
     <div class="top-bar" data-options="is_hover:false">
       <div class="title-area">
         <%= link_to root_path do %>
-          <%= svg_tag asset_path('better-gf-logo_red.svg') %>
+          <%= svg_tag asset_path('grapefruit-logo-v2.svg') %>
         <% end %>
       </div>
 
@@ -19,20 +19,13 @@
         <ul>
           <li><%= link_to "about", about_path, class: ("active" if params[:action] == "about") %></li>
           <li><%= link_to "contact", contact_path, class: ("active" if params[:action] == "contact") %></li>
-          <li><%= link_to "login", new_user_session_path, class: ("active" if params[:controller] == "devise/sessions") %></li>
+          <li><%= link_to "login", root_path, class: ("active" if params[:action] == "new") %></li>
         </ul>
       </nav>
     </div>
   </div>
 
   <div class="main-content">
-    <div class="page-header-container">
-      <div class="page-header">
-        <div class="page-header-full">
-          <h1 class="title">Learn at Rensselaer. <b>Everywhere.</b></h1>
-        </div>
-      </div>
-    </div>
         <%= yield %>
   </div>
 

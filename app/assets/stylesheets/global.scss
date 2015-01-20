@@ -29,7 +29,7 @@ $full: "screen and (max-width: 90rem)";
 /***************************/
 
 
-body {background-color: #4B5252; max-width: 100%; overflow-x: hidden;}
+body {background-color: $footer-color; max-width: 100%; overflow-x: hidden;}
 
 div#top-flash{
 
@@ -198,7 +198,7 @@ div#top-flash{
     ul {float: right; line-height: 1rem;}
     a {
         padding: 1rem;
-        color: $ethan-red-color;
+        color: $primary-color;
         display: inline-block;
         height: 50px;
         &:hover {
@@ -306,6 +306,16 @@ input[type=text], input[type=email], input[type=password] {
     box-shadow: none;
     transition: none;
     border-radius: $global-radius;
+}
+
+.button.success{
+  color: $primary-color;
+  border: 2px solid $primary-color;
+
+  &:hover{
+    background-color: $primary-color;
+    color: #fff;
+  }
 }
 
 .stateful-button {
@@ -416,9 +426,11 @@ section {
   footer
 **/
 footer{
-    background-color: #4B5252;
-    padding: 5rem 0;
-
+    background-color: $footer-color;
+    padding: 1rem 0 1rem 0;
+    ul.nav-links{
+      text-align: left;
+    }
     a {
         color: rgba(255, 255, 255, 0.8);
         transition: color 250ms;

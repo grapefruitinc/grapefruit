@@ -4,6 +4,10 @@
 
   <h2>Sign Up</h2>
 
+  <p class="grey medium">
+    Grapefruit at <strong><%= ORG_NAME %></strong>
+  </p>
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
     <%= devise_error_messages! %>
@@ -19,6 +23,8 @@
     <%= f.submit "Create Account", class: 'button' %>
 
     <br/>
+
+    Lost? <%= link_to "Sign in", new_session_path(resource_name) %>
 
     <%= render "devise/shared/links" %>
 
