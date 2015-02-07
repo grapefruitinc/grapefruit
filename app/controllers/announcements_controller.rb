@@ -11,6 +11,13 @@ class AnnouncementsController < ApplicationController
     authorize! :manage, @course
   end
 
+  def tester
+    authorize! :manage, @course
+    UserMailer.tester.deliver
+    flash[:success] = "Email sent!"
+    redirect_to [@course, @announcement]
+  end
+
   def create
     @announcement = @course.announcements.new(announcement_params)
     authorize! :manage, @course

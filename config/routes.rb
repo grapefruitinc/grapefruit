@@ -97,6 +97,7 @@ Grapefruit::Application.routes.draw do
     end
 
     resources :announcements, except: [:show]
+    get 'announcements/tester' => 'announcements#tester'
 
   end
 
