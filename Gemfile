@@ -9,7 +9,7 @@ gem 'mysql2'
 gem 'connection_ninja'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # ZURB Foundation 4.0
 gem "compass-rails"
