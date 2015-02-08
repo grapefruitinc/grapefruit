@@ -2,6 +2,8 @@
 
 <div class="landing">
 
+  <%= link_to '&larr; cancel to announcements'.html_safe, course_announcements_path(@course), class: 'button secondary small' %>
+
   <div class="description">
     <h3>Edit <%= @announcement.title %></h3>
   </div>

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.2.0'
 
 # Use sqlite3 as the database for tests
 # Use mysql2 for development + production
@@ -9,7 +9,7 @@ gem 'mysql2'
 gem 'connection_ninja'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # ZURB Foundation 4.0
 gem "compass-rails"
