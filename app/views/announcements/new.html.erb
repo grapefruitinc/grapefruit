@@ -2,6 +2,8 @@
 
 <div class="landing">
 
+  <%= link_to '&larr; cancel to announcements'.html_safe, course_announcements_path(@course), class: 'button secondary small' %>
+
   <div class="description">
     <h3>Add Announcement to <%= @course.name %></h3>
   </div>
@@ -13,6 +15,10 @@
       <%= f.text_field :title, placeholder: "Homework due tommorrow!", autofocus: true %>
 
       <%= f.text_area :content, rows: 4, style: "height:auto;", placeholder: "Pages 47-48 problems are due tomorrow, make sure to turn them in!" %>
+
+      <%= check_box_tag :send_email, 'yes', true %>
+      <%= f.label :send_email, "Email announcement to students in #{@course.name}", style: 'display:inline-block' %>
+
 
       <div><%= f.submit "Create Announcement", class: "button small" %></div>
     <% end %>

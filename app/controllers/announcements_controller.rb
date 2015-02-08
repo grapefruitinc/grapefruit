@@ -28,6 +28,9 @@ class AnnouncementsController < ApplicationController
 
     if @announcement.save
       flash[:success] = "Announcement created!"
+      if(params[:send_email])
+        UserMailer.to_class(current_user, @course, @announcement.title, @announcement.content).deliver_now
+      end
       redirect_to course_announcements_path(@course)
     else
       render "new"
