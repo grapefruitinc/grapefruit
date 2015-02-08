@@ -6,16 +6,20 @@ class AnnouncementsController < ApplicationController
 
   layout "course"
 
-  def new
-    @announcement = @course.announcements.new
+  def new_to_class
     authorize! :manage, @course
   end
 
-  def tester
+  def send_to_class
     authorize! :manage, @course
-    UserMailer.tester.deliver
+    UserMailer.to_class(current_user, @course, params[:subject], params[:message]).deliver_now
     flash[:success] = "Email sent!"
-    redirect_to [@course, @announcement]
+    redirect_to course_announcements_path(@course)
+  end
+
+  def new
+    @announcement = @course.announcements.new
+    authorize! :manage, @course
   end
 
   def create
