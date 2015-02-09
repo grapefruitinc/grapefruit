@@ -29,6 +29,7 @@ class AssignmentsController < ApplicationController
     if @assignment.valid?
       @assignment.save
       process_multiple_documents(@assignment)
+      send_assignment_email(@course, @assignment)
       flash[:success] = "The assignment was created!"
       redirect_to course_assignments_path(@course)
     else
@@ -60,6 +61,12 @@ class AssignmentsController < ApplicationController
 
   def assignment_params
     params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents)
+  end
+
+  def send_assignment_email(course, assignment)
+    if(params[:send_email])
+      UserMailer.new_assignment(course, assignment).deliver_now
+    end
   end
 
 end

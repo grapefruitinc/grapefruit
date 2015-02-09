@@ -17,4 +17,14 @@ class UserMailer < ActionMailer::Base
     end
   end
 
+  def new_assignment(course, assignment)
+    subject = "New Assignment: #{assignment.name}"
+    @course = course
+    @assignment = assignment
+    course.students.each do |student|
+      @student_name = student.display_identifier
+      mail(to: student.email, subject: subject)
+    end
+  end
+
 end

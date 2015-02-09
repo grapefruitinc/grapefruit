@@ -16,9 +16,7 @@
 
       <%= f.text_area :content, rows: 4, style: "height:auto;", placeholder: "Pages 47-48 problems are due tomorrow, make sure to turn them in!" %>
 
-      <%= check_box_tag :send_email, 'yes', true %>
-      <%= f.label :send_email, "Email announcement to students in #{@course.name}", style: 'display:inline-block' %>
-
+      <%= render 'global/send_email', checked: true %>
 
       <div><%= f.submit "Create Announcement", class: "button small" %></div>
     <% end %>

@@ -5,7 +5,7 @@
     <style>
       body, pre{
         font-family: 'Helvetica Neue', sans-serif;
-        font-size: 14px;
+        font-size: 15px;
       }
       div.message{
         background-color: #eee;
@@ -15,14 +15,20 @@
       a:link, a:visited{
         color: darkred;
       }
-      p.grey{
+      h3{
+        margin: .3em 0em;
+      }
+      .grey{
         color: #777
+      }
+      .small{
+        font-size: .8em;
       }
     </style>
   </head>
   <body>
     <%= yield %>
-    <p class="grey">
+    <p class="grey small">
       The Grapefruit Team <br/>
       (<%= link_to 'help', contact_path %>)
       (<%= link_to 'about', about_path %>)
