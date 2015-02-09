@@ -26,6 +26,10 @@
      <%= f.label :points, 'Point value:' %>
      <%= f.text_field :points, placeholder: "10, 20, 100, etc" %>
 
+     <% if not @assignment.persisted? %>
+      <%= render 'global/send_email', checked: false %>
+     <% end %>
+
       <div>
         <%= f.submit "Save Assignment", class: "button small" %>
         <% if defined? allow_delete %>

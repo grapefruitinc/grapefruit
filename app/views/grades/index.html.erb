@@ -4,13 +4,13 @@
 
 <div>
   <h4>
-    Latest submissions by user <%= parens(@submissions_available.count) %> for<br/>
+    Latest submissions <%= parens(@available_submissions.count) %> by user for<br/>
     <%= link_to (@assignment.name), edit_course_assignment_path(@course, @assignment) %>
   </h4>
 
   <div>
-    <%= render @submissions_available %>
-    <% if @submissions_available.count == 0 %>
+    <%= render @available_submissions %>
+    <% if @available_submissions.count == 0 %>
       <p class="grey">No submissions have been made yet!</p>
     <% end %>
   </div>

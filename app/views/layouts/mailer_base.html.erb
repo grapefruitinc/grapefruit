@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body, pre{
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 15px;
+      }
+      div.message{
+        background-color: #eee;
+        padding: 1em 2em;
+        border-radius: .5em;
+      }
+      a:link, a:visited{
+        color: darkred;
+      }
+      h3{
+        margin: .3em 0em;
+      }
+      .grey{
+        color: #777
+      }
+      .small{
+        font-size: .8em;
+      }
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+    <p class="grey small">
+      The Grapefruit Team <br/>
+      (<%= link_to 'help', contact_path %>)
+      (<%= link_to 'about', about_path %>)
+    </p>
+
+  </body>
+</html>

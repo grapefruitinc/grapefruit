@@ -7,7 +7,7 @@ class GradesController < ApplicationController
   before_filter :get_grade, only: [:destroy]
 
   def index
-    @submissions_available = @assignment.submissions.where(updated_at: @assignment.submissions.select("max(updated_at)").group(:user_id)).order("updated_at desc")
+    @available_submissions = @assignment.available_submissions
   end
 
   def gradelist

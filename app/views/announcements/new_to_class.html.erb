@@ -1,0 +1,19 @@
+<div class="landing">
+
+  <%= link_to '&larr; announcements'.html_safe, course_announcements_path(@course), class: 'button secondary small' %>
+
+  <div class="description">
+    <h3>Send Email to Students in <%= @course.name %></h3>
+  </div>
+
+  <div class="login">
+
+    <%= form_tag(course_send_to_class_path(@course)) do %>
+      <%= text_field_tag :subject, nil, placeholder: "Email Subject", autofocus: true %>
+      <%= text_area_tag :message, nil, style: "height:10em", placeholder: "Message" %>
+      <%= submit_tag "Send Email", class: "button small" %>
+    <% end %>
+
+  </div>
+
+</div>

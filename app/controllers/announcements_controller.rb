@@ -6,6 +6,17 @@ class AnnouncementsController < ApplicationController
 
   layout "course"
 
+  def new_to_class
+    authorize! :manage, @course
+  end
+
+  def send_to_class
+    authorize! :manage, @course
+    UserMailer.to_class(current_user, @course, params[:subject], params[:message]).deliver_now
+    flash[:success] = "Email sent!"
+    redirect_to course_announcements_path(@course)
+  end
+
   def new
     @announcement = @course.announcements.new
     authorize! :manage, @course
@@ -17,6 +28,9 @@ class AnnouncementsController < ApplicationController
 
     if @announcement.save
       flash[:success] = "Announcement created!"
+      if(params[:send_email])
+        UserMailer.to_class(current_user, @course, @announcement.title, @announcement.content).deliver_now
+      end
       redirect_to course_announcements_path(@course)
     else
       render "new"
