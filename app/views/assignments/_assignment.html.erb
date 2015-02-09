@@ -1,22 +1,26 @@
+<hr/>
 <div>
 	<div>
 		<h4>
 			<% if can? :manage, @course %>
+
 				<%= link_to assignment.name, edit_course_assignment_path(assignment.course, assignment) %>
-				(<%= link_to 'grade', course_assignment_grades_path(assignment.course, assignment) %>)
+
+				<span class="grey">
+					-
+					<% if assignment.submissions.count > 0 %>
+						<%= link_to 'grade', course_assignment_grades_path(assignment.course, assignment) %>
+					<% end %>
+					<%= assignment.submissions.count %> submissions
+				</span>
+
 			<% else %>
 				<%= link_to assignment.name, course_assignment_path(assignment.course, assignment) %>
 			<% end %>
 		</h4>
-		<span class="points"><%= assignment.points %> points</span>
-		<span class="timestamp grey"><%= time_ago_in_words(assignment.updated_at) %> ago</span>
 	</div>
 	<div>
-		<span class="type">
-			<%= assignment.assignment_type.name %>
-		</span>
-		<span class="description">
-			<%= assignment.description %>
-		</span>
+			<span class="points"><%= assignment.points %> point <%= assignment.assignment_type.name %> </span><br/>
+			<span class="timestamp grey">updated <%= time_ago_in_words(assignment.updated_at) %> ago</span>
 	</div>
 </div>
