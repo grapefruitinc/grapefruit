@@ -8,10 +8,10 @@
 
 				<span class="grey">
 					-
-					<% if assignment.submissions.count > 0 %>
+					<% if assignment.available_submissions.count > 0 %>
 						<%= link_to 'grade', course_assignment_grades_path(assignment.course, assignment) %>
 					<% end %>
-					<%= assignment.submissions.count %> submissions
+					<%= assignment.available_submissions.count %> submissions
 				</span>
 
 			<% else %>
