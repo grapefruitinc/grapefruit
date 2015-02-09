@@ -49,8 +49,11 @@
         placeholder="Any comments for this grade."><%= latest_grade.comments if latest_grade %></textarea>
       <input type="text" style="width:200px" class="points" data-total-points="<%= submission.assignment.points %>"
         value="<%= latest_grade.points if latest_grade %>"
-        placeholder="Point value (100% is <%= submission.assignment.points %>)"/>
-        <button class="button small primary grade-update">Update Grade (<span class="percentage"><%= percentage %></span>%)</button>
+        placeholder="Point value"/>
+        <button class="button small primary grade-update">
+          Update Grade (<span class="percentage"><%= percentage %></span>%
+          of <%= submission.assignment.points %> points)
+        </button>
     </div>
 
   <% end %>

@@ -31,6 +31,8 @@ $(document).ready(function(){
     var points = parseFloat($(this).val());
     var total_points = parseFloat($(this).data("total-points"));
     var percentage = points / total_points * 100;
+    if(!$.isNumeric(percentage))
+      percentage = 0;
     $(this).parent().find("span.percentage").html(percentage.toFixed(2));
   });
 
