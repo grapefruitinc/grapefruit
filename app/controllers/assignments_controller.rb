@@ -6,7 +6,11 @@ class AssignmentsController < ApplicationController
   before_filter :get_assignment, only: [:edit, :show, :update, :destroy]
 
   def index
-    @assignments = @course.assignments.order("updated_at DESC")
+    if can? :manage, @course
+      @assignments = @course.assignments.order("updated_at DESC")
+    else
+      @assignments = @course.assignments.where('reveal_day < ?', DateTime.now).order("due_day DESC")
+    end
   end
 
   def new

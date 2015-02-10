@@ -14,6 +14,22 @@
 	in <%= link_to @course.name, course_path(@course) %>
 </p>
 
+<% if not @assignment.due_day.blank? %>
+<p>
+	Due <strong><%= @assignment.due_day.strftime(DATE_FORMAT_DAY) %></strong>,
+
+	which is
+
+	<% if @assignment.due_day > Time.now %>
+		<%= time_ago_in_words(@assignment.due_day) %> from now.
+	<% else %>
+		<%= time_ago_in_words(@assignment.due_day) %> ago.
+	<% end %>
+
+</p>
+
+<% end %>
+
 <p class="large">
 	<%= @assignment.description %>
 </p>
