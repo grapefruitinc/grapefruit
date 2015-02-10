@@ -46,7 +46,7 @@
           <%= f.label :reveal_day, "Date to reveal this assignment:" %>
           <%= f.text_field :reveal_day,
               class: "pickadate",
-              value: @assignment.reveal_day.try(:strftime, "%B %-d, %Y"),
+              value: @assignment.reveal_day.try(:strftime, DATE_FORMAT_DAY),
               placeholder: "Click me to set!" %>
         </div>
 
@@ -54,7 +54,7 @@
           <%= f.label :due_day, "Date this assignment is due:" %>
           <%= f.text_field :due_day,
               class: "pickadate",
-              value: @assignment.due_day.try(:strftime, "%B %-d, %Y"),
+              value: @assignment.due_day.try(:strftime, DATE_FORMAT_DAY),
               placeholder: "Click me to set!" %>
         </div>
 
