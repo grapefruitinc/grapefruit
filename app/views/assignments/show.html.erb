@@ -8,26 +8,26 @@
 
 <p class="grey">
 	<%= @assignment.assignment_type.name %> created
-	<%= @assignment.created_at.strftime('%B %e at %l:%M %p') %><% if @assignment.updated_at != @assignment.created_at %>,
+	<%= @assignment.created_at.strftime('%B %e at %l:%M %p') %>
+  <% if @assignment.updated_at != @assignment.created_at %>,
 		updated <%= time_ago_in_words(@assignment.updated_at) %> ago
 	<% end %>
 	in <%= link_to @course.name, course_path(@course) %>
 </p>
 
-<% if not @assignment.due_day.blank? %>
-<p>
-	Due <strong><%= @assignment.due_day.strftime(DATE_FORMAT_DAY) %></strong>,
+<% unless @assignment.due_day.blank? %>
+  <p>
+    Due <strong><%= @assignment.due_day.strftime(DATE_FORMAT_DAY) %></strong>,
 
-	which is
+    which is
 
-	<% if @assignment.due_day > Time.now %>
-		<%= time_ago_in_words(@assignment.due_day) %> from now.
-	<% else %>
-		<%= time_ago_in_words(@assignment.due_day) %> ago.
-	<% end %>
+    <% if @assignment.due_day > Time.now %>
+      <%= time_ago_in_words(@assignment.due_day) %> from now.
+    <% else %>
+      <%= time_ago_in_words(@assignment.due_day) %> ago.
+    <% end %>
 
-</p>
-
+  </p>
 <% end %>
 
 <p class="large">
@@ -37,15 +37,19 @@
 <p>
 	<%= render 'documents/documents', container: @assignment, documents: @assignment.documents %>
 </p>
+
 <div>
 	<%= link_to 'Upload Submission for Assignment',
 		new_course_assignment_submission_path(@course, @assignment),
 		class: "button small" %>
 	<br/><br/>
+
 	<div>
 		<h6>Your Submissions <%= parens(@submissions.count) %></h6>
+
 		<%= render @submissions %>
-		<% if @submissions.count == 0 %>
+
+		<% if @submissions.blank? %>
 			<p class="grey">You have not submitted a response to this assignment.</p>
 		<% end %>
 	</div>

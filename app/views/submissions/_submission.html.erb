@@ -1,26 +1,24 @@
 <div class="submission" data-user-id="<%= submission.user.id %>" data-assignment-id="<%= submission.assignment.id %>">
 
-    <div class="top-info">
+  <div class="top-info">
+    <% if can? :manage, submission.assignment %>
+      <span class="number"><%= submission.user.name %></span>
+    <% end %>
 
-      <% if can? :manage, submission.assignment %>
-        <span class="number"><%= submission.user.name %></span>
-      <% end %>
+    submitted
 
-      submitted
+    <span class="number">
+      #10<%= submission.id %>
+    </span>
 
-      <span class="number">
-        #10<%= submission.id %>
+    <%= time_ago_in_words(submission.created_at) %> ago
+
+    <% if submission.created_at > submission.assignment.due_day %>
+      <span class="alert label">
+        <%= distance_of_time_in_words(submission.created_at, submission.assignment.due_day) %> late!
       </span>
-
-      <%= time_ago_in_words(submission.created_at) %> ago
-
-      <% if submission.created_at > submission.assignment.due_day %>
-        <span class="alert label">
-          <%= distance_of_time_in_words(submission.created_at, submission.assignment.due_day) %> late!
-        </span>
-      <% end %>
-
-    </div>
+    <% end %>
+  </div>
 
   <p>
     <%= submission.comments %>
@@ -28,19 +26,15 @@
 
   <%= render 'documents/documents', container: submission, documents: submission.documents%>
 
-
   <% if submission.user == current_user %>
-
     <%= link_to 'delete this submission',
       course_assignment_submission_path(submission.assignment.course, submission.assignment, submission),
       method: :delete,
       class: "button warning small",
       data: { confirm: "Warning - this CANNOT be undone. Are you sure you want to delete this submission?" } %>
-
   <% end %>
 
   <% if can? :manage, submission.assignment %>
-
     <% latest_grade = submission.assignment.grades.where(user_id: submission.user_id).order("updated_at desc").first %>
     <% percentage = (latest_grade) ? ((latest_grade.points / submission.assignment.points) * 100).round(2) : 0 %>
 
@@ -57,17 +51,28 @@
     <% end %>
 
     <div class="grade-form">
-      <textarea class="comments"
-        placeholder="Any comments for this grade."><%= latest_grade.comments if latest_grade %></textarea>
+      <textarea class="comments" placeholder="Any comments for this grade.">
+        <%= latest_grade.comments if latest_grade %>
+      </textarea>
+
       <input type="text" style="width:200px" class="points" data-total-points="<%= submission.assignment.points %>"
         value="<%= latest_grade.points if latest_grade %>"
         placeholder="Point value"/>
-        <button class="button small primary grade-update">
-          Update Grade (<span class="percentage"><%= percentage %></span>%
-          of <%= submission.assignment.points %> points)
-        </button>
-    </div>
 
+      <%= label_tag "Attach grade document, notes, etc. (Optional)" %><br>
+      
+      <div class="field multipleDocs">
+        <%= file_field_tag :document,
+            :multiple => true,
+            name: 'documents[document][]',
+            class: 'documents-uploader' %>
+      </div>
+
+      <button class="button small primary grade-update">
+        Update Grade (<span class="percentage"><%= percentage %></span>%
+        of <%= submission.assignment.points %> points)
+      </button>
+    </div>
   <% end %>
 
 </div>
