@@ -46,7 +46,7 @@ class AssignmentsController < ApplicationController
       flash[:success] = "Assignment saved!"
     end
 
-    render 'edit'
+    redirect_to edit_course_assignment_path(@course, @assignment)
 
   end
 
@@ -60,7 +60,7 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents)
+    params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents, :reveal_day, :due_day)
   end
 
   def send_assignment_email(course, assignment)

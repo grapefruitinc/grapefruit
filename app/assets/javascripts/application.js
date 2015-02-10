@@ -18,7 +18,7 @@
 //= require react
 //= require components
 //= require react_ujs
-//= require pickadate/picker 
+//= require pickadate/picker
 //= require pickadate/picker.date
 //= require_tree .
 
@@ -36,6 +36,13 @@ $("document").ready(function(){
   $(document).foundation();
 
   /* TODO: all of this needs to be objectified */
+
+  /*
+    pickadate.js
+  */
+  $(".pickadate").pickadate({
+    format: 'mmmm d, yyyy'
+  });
 
   /*
     flash alerts
