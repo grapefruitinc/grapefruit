@@ -211,6 +211,8 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.1)
+    pickadate-rails (3.5.5.0)
+      railties (>= 3.1.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     rack (1.6.0)
@@ -356,6 +358,7 @@ DEPENDENCIES
   newrelic_rpm
   passenger
   pg
+  pickadate-rails
   rails (= 4.2.0)
   rails_config
   react-rails!

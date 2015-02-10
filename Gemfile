@@ -15,6 +15,9 @@ gem 'sass-rails'
 gem "compass-rails"
 gem 'zurb-foundation'
 
+# pickadate.js datepicker
+gem 'pickadate-rails'
+
 # config for configuraiton files and YAML
 gem 'rails_config'
 

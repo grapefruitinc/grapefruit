@@ -18,6 +18,8 @@
 //= require react
 //= require components
 //= require react_ujs
+//= require pickadate/picker 
+//= require pickadate/picker.date
 //= require_tree .
 
 function html_escape(str) {
