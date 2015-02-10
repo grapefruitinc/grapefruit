@@ -4,9 +4,9 @@
 #
 #  id                  :integer          not null, primary key
 #  name                :string(255)
-#  default_point_value :float
+#  default_point_value :float(24)
 #  drops_lowest        :boolean
-#  percentage          :float
+#  percentage          :float(24)
 #  course_id           :integer
 #  created_at          :datetime
 #  updated_at          :datetime

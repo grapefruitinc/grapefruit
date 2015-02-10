@@ -8,7 +8,7 @@
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
-#  sign_in_count          :integer          default(0), not null
+#  sign_in_count          :integer          default("0"), not null
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
@@ -16,7 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  name                   :string(255)
-#  can_create_courses     :boolean          default(FALSE)
+#  can_create_courses     :boolean          default("0")
 #
 
 class Webwork::User < ActiveRecord::Base
