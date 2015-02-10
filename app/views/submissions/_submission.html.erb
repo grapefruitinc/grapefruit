@@ -9,7 +9,7 @@
       submitted
 
       <span class="number">
-        #<%= submission.id %>.<%= truncate(Digest::MD5.hexdigest(submission.inspect), length: 5, omission: "") %>
+        #10<%= submission.id %>
       </span>
 
       <%= time_ago_in_words(submission.created_at) %> ago
