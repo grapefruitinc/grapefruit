@@ -6,7 +6,7 @@
 #  title         :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
-#  description   :text
+#  description   :text(65535)
 #  lecture_id    :integer
 #  file          :string(255)
 #  youtube_id    :string(255)

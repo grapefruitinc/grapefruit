@@ -8,9 +8,10 @@
     <%= link_to 'Manage Assignment Types',
       course_assignment_types_path(@course),
       class: "button small secondary" %>
-    <%= link_to 'View Course Grades',
+    <%= link_to 'View Course Grades (Experimental)',
       course_gradelist_path(@course),
-      class: "button small secondary"
+      class: "button small secondary",
+      disabled: true
       %>
   </div>
 <% end %>

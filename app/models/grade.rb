@@ -3,7 +3,7 @@
 # Table name: grades
 #
 #  id            :integer          not null, primary key
-#  points        :float
+#  points        :float(24)
 #  comments      :string(255)
 #  assignment_id :integer
 #  user_id       :integer
