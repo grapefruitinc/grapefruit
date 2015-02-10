@@ -9,7 +9,12 @@
     <% if can? :manage, submission.assignment %>
     by </span><span class="number"><%= submission.user.name %></span><span class="timeago">
     <% end %>
-    <%= time_ago_in_words(submission.created_at) %> ago
+    <%= time_ago_in_words(submission.created_at) %> ago &nbsp;&nbsp;
+    <% if submission.created_at > submission.assignment.due_day %>
+      <span class="alert label">
+        <%= distance_of_time_in_words(submission.created_at, submission.assignment.due_day) %> late!
+      </span>
+    <% end %>
   </span>
 
   <% if submission.user == current_user %>
