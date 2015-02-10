@@ -5,12 +5,13 @@ div.submission{
   padding: .8em;
   margin-bottom: .5em;
 
+  div.top-info{
+    color: #999;
+  }
   span.number{
     font-size: 1.2em;
     font-weight: bold;
-  }
-  span.timeago{
-    color: #999;
+    color: #1e1e1e;
   }
   p{
     margin: .5em 1em .5em 1em;
