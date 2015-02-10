@@ -20,7 +20,15 @@
 		</h4>
 	</div>
 	<div>
-			<span class="points"><%= assignment.points %> point <%= assignment.assignment_type.name %> </span><br/>
+			<span class="points"><%= assignment.points %> point <%= assignment.assignment_type.name %> </span>
+			<% if not can? :manage, @course %>
+				-
+				<% if assignment.due_day < DateTime.now %>
+					was
+				<% end %>
+				due on <%= assignment.due_day.strftime(DATE_FORMAT_DAY) %>
+			<% end %>
+			<br/>
 			<span class="timestamp grey">updated <%= time_ago_in_words(assignment.updated_at) %> ago</span>
 	</div>
 </div>
