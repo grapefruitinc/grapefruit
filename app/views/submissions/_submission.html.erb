@@ -51,16 +51,15 @@
     <% end %>
 
     <div class="grade-form">
-      <textarea class="comments" placeholder="Any comments for this grade.">
-        <%= latest_grade.comments if latest_grade %>
-      </textarea>
+      <textarea class="comments"
+        placeholder="Any comments for this grade."><%= latest_grade.comments if latest_grade %></textarea>
 
       <input type="text" style="width:200px" class="points" data-total-points="<%= submission.assignment.points %>"
         value="<%= latest_grade.points if latest_grade %>"
         placeholder="Point value"/>
 
       <%= label_tag "Attach grade document, notes, etc. (Optional)" %><br>
-      
+
       <div class="field multipleDocs">
         <%= file_field_tag :document,
             :multiple => true,
