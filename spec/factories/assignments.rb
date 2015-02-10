@@ -5,11 +5,13 @@
 #  id                 :integer          not null, primary key
 #  name               :string(255)
 #  description        :string(255)
-#  points             :float
+#  points             :float(24)
 #  course_id          :integer
 #  assignment_type_id :integer
 #  created_at         :datetime
 #  updated_at         :datetime
+#  reveal_day         :date
+#  due_day            :date
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

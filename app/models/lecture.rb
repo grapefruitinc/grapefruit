@@ -8,8 +8,8 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  capsule_id     :integer
-#  description    :text
-#  live           :boolean          default(FALSE)
+#  description    :text(65535)
+#  live           :boolean          default("0")
 #
 
 class Lecture < ActiveRecord::Base

@@ -3,7 +3,7 @@
 # Table name: video_texts
 #
 #  id         :integer          not null, primary key
-#  content    :text
+#  content    :text(65535)
 #  time       :string(255)
 #  created_at :datetime
 #  updated_at :datetime

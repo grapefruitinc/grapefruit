@@ -7,7 +7,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  course_id   :integer
-#  description :text
+#  description :text(65535)
 #
 
 class Capsule < ActiveRecord::Base

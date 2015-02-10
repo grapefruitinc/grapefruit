@@ -1,13 +1,23 @@
- <div class="login">
+ <div class="assignment-form-container row">
 
     <%= form_for([@course, @assignment], :html=> {:multipart => true}) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.text_field :name, placeholder: "Assignment Name", autofocus: true %>
+      <div class="row">
+        <div class="large-6 columns">
 
-      <%= f.label :assignment_type_id, 'Assignment Type:' %>
+            <%= f.label :name, "Assignment Name:" %>
+            <%= f.text_field :name, placeholder: "Example: 'Homework 5: Protons and Neurons'", autofocus: true %>
 
-      <%= f.select :assignment_type_id, options_for_select(@course.assignment_types.map{ |c| [c.name, c.id, {'data-default-points'=>c.default_point_value}] }, selected: (@assignment.persisted?) ? @assignment.assignment_type.id : 0) %>
+        </div>
+        <div class="large-6 columns">
+
+            <%= f.label :assignment_type_id, 'Assignment Type:' %>
+
+            <%= f.select :assignment_type_id, options_for_select(@course.assignment_types.map{ |c| [c.name, c.id, {'data-default-points'=>c.default_point_value}] }, selected: (@assignment.persisted?) ? @assignment.assignment_type.id : 0) %>
+
+        </div>
+      </div>
 
       <%= f.text_area :description, placeholder: "Description or instructions for the assignment.", style: "height: 10em" %>
 
@@ -23,12 +33,36 @@
         </div>
       <% end %>
 
-     <%= f.label :points, 'Point value:' %>
-     <%= f.text_field :points, placeholder: "10, 20, 100, etc" %>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :points, 'Point value:' %>
+          <%= f.text_field :points, placeholder: "10, 20, 100, etc" %>
+        </div>
+      </div>
 
-     <% if not @assignment.persisted? %>
-      <%= render 'global/send_email', checked: false %>
-     <% end %>
+      <div class="row">
+
+        <div class="large-6 columns">
+          <%= f.label :reveal_day, "Date to reveal this assignment:" %>
+          <%= f.text_field :reveal_day,
+              class: "pickadate",
+              value: @assignment.reveal_day.try(:strftime, DATE_FORMAT_DAY),
+              placeholder: "Click me to set!" %>
+        </div>
+
+        <div class="large-6 columns">
+          <%= f.label :due_day, "Date this assignment is due:" %>
+          <%= f.text_field :due_day,
+              class: "pickadate",
+              value: @assignment.due_day.try(:strftime, DATE_FORMAT_DAY),
+              placeholder: "Click me to set!" %>
+        </div>
+
+      </div>
+
+      <% if not @assignment.persisted? %>
+        <%= render 'global/send_email', checked: false %>
+      <% end %>
 
       <div>
         <%= f.submit "Save Assignment", class: "button small" %>
@@ -42,6 +76,9 @@
             class: "button small alert" %>
         <% end %>
       </div>
+
+      <p class="grey medium">Note: An assignment will not be shown to students unless the reveal date is set and has been reached.</p>
+
     <% end %>
 
   </div>

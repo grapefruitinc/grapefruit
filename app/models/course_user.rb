@@ -7,7 +7,7 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  type       :integer          default(0)
+#  type       :string(255)
 #
 
 class CourseUser < ActiveRecord::Base

@@ -6,7 +6,11 @@ class AssignmentsController < ApplicationController
   before_filter :get_assignment, only: [:edit, :show, :update, :destroy]
 
   def index
-    @assignments = @course.assignments.order("updated_at DESC")
+    if can? :manage, @course
+      @assignments = @course.assignments.order("updated_at DESC")
+    else
+      @assignments = @course.assignments.where('reveal_day < ?', DateTime.now).order("due_day DESC")
+    end
   end
 
   def new
@@ -46,7 +50,7 @@ class AssignmentsController < ApplicationController
       flash[:success] = "Assignment saved!"
     end
 
-    render 'edit'
+    redirect_to edit_course_assignment_path(@course, @assignment)
 
   end
 
@@ -60,7 +64,7 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents)
+    params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents, :reveal_day, :due_day)
   end
 
   def send_assignment_email(course, assignment)

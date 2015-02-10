@@ -7,7 +7,7 @@
 #  instructor_id              :integer
 #  created_at                 :datetime
 #  updated_at                 :datetime
-#  description                :text
+#  description                :text(65535)
 #  subject                    :string(255)
 #  course_number              :string(255)
 #  course_registration_number :string(255)
@@ -17,7 +17,7 @@
 #  credits                    :integer
 #  slug                       :string(255)
 #  webwork_url                :string(255)
-#  problem_set_url            :text
+#  problem_set_url            :text(65535)
 #
 
 class Course < ActiveRecord::Base
