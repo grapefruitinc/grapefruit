@@ -17,11 +17,18 @@
 
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.file_field :file %>
+      <div class="row">
+        <div class="large-3">
+          <%= f.label :file, "Choose File: " %>
+        </div>
+        <div class="large-9">
+          <%= f.file_field :file %>
+        </div>
+      </div>
 
       <%= f.text_field :description, placeholder: "Optional Description" %>
 
-      <div><%= f.submit "Add File", class: "button small" %></div>
+      <div><%= f.submit "Upload File", class: "button small", id: "document_file_button" %></div>
 
     <% end %>
   </div>
