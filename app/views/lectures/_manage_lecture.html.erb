@@ -8,7 +8,7 @@
   <div class="lecture reveal-hidden" id="lecture-<%= lecture.id %>">
 
     <p>
-      <%= link_to "edit lecture",
+      <%= link_to "edit lecture info",
         edit_course_capsule_lecture_path(@course, lecture.capsule, lecture), class: "add" %>
         <%= link_to "remove lecture",
                   course_capsule_lecture_path(@course, lecture.capsule, lecture),
@@ -20,15 +20,14 @@
           class: "add secondary slide-reveal",
           data: {
             reveal: 'lecture-' + lecture.id.to_s + '-files',
-            initial: "show files #{parens(lecture.documents.count)}",
-            active: 'hide files'
+            initial: "manage files #{parens(lecture.documents.count)}",
+            active: 'done with files'
           } %>
       <%= link_to "view as student &#10148;".html_safe,
             course_capsule_lecture_path(@course, lecture.capsule, lecture),
             class: "add secondary" %>
       <span class="space"></span>
       <%= link_to "add video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture), class: "add" %>
-      <%= link_to "toggle lecture live &#10148;".html_safe, course_capsule_lecture_toggle_live_path(@course, lecture.capsule, lecture), class: "add secondary", target: "_blank" %>
     </p>
 
     <div id="lecture-<%= lecture.id %>-files" class="reveal-hidden panel">
