@@ -3,7 +3,7 @@
 <h3><%= @capsule.name %></h3>
 
 <% unless @capsule.description.blank? %>
-  <p class="description expandable-text"><%= @capsule.description %></p>
+  <p class="description"><%= @capsule.description %></p>
 <% end %>
 
 <%= link_to_textbook_problem_sets(@course) %>
