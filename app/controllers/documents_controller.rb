@@ -19,7 +19,7 @@ class DocumentsController < ApplicationController
 
     if @document.save
       flash[:success] = "File added!"
-      redirect_to @redirect
+      redirect_to course_manage_path(@document.course)
     else
       render 'new'
     end
@@ -55,16 +55,12 @@ class DocumentsController < ApplicationController
 
   private
   def get_container
-    # TODO: these should be changed to the correct hash to reveal on redirect
     if @lecture
       @container = @lecture
-      @redirect = course_capsule_lecture_path(@course, @capsule, @lecture)
     elsif @capsule
       @container = @capsule
-      @redirect = course_capsule_path(@course, @capsule)
     elsif @course
       @container = @course
-      @redirect = course_path(@course)
     end
   end
 
