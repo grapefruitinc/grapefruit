@@ -1,21 +1,18 @@
  <div class="assignment-form-container row">
-
     <%= form_for([@course, @assignment], :html=> {:multipart => true}) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <div class="row">
         <div class="large-6 columns">
-
-            <%= f.label :name, "Assignment Name:" %>
-            <%= f.text_field :name, placeholder: "Example: 'Homework 5: Protons and Neurons'", autofocus: true %>
-
+          <%= f.label :name, "Assignment Name:" %>
+          <%= f.text_field :name, placeholder: "Example: 'Homework 5: Protons and Neurons'", autofocus: true %>
         </div>
+
         <div class="large-6 columns">
-
-            <%= f.label :assignment_type_id, 'Assignment Type:' %>
-
-            <%= f.select :assignment_type_id, options_for_select(@course.assignment_types.map{ |c| [c.name, c.id, {'data-default-points'=>c.default_point_value}] }, selected: (@assignment.persisted?) ? @assignment.assignment_type.id : 0) %>
-
+          <%= f.label :assignment_type_id, 'Assignment Type:' %>
+          <%= f.select :assignment_type_id,
+                options_for_select(@course.assignment_types.map { |c| [c.name, c.id, { 'data-default-points' => c.default_point_value }] },
+                selected: (@assignment.persisted?) ? @assignment.assignment_type.id : 0) %>
         </div>
       </div>
 
@@ -60,12 +57,13 @@
 
       </div>
 
-      <% if not @assignment.persisted? %>
+      <% unless @assignment.persisted? %>
         <%= render 'global/send_email', checked: false %>
       <% end %>
 
       <div>
         <%= f.submit "Save Assignment", class: "button small" %>
+
         <% if defined? allow_delete %>
           <%= link_to 'View Assignment as Student',
             course_assignment_path(@assignment.course, @assignment),
@@ -80,5 +78,4 @@
       <p class="grey medium">Note: An assignment will not be shown to students unless the reveal date is set and has been reached.</p>
 
     <% end %>
-
   </div>

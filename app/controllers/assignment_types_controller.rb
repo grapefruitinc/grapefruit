@@ -5,13 +5,11 @@ class AssignmentTypesController < ApplicationController
   before_filter :authenticate_user!, :get_course, :hide_sidebar
 
   def index
-
     @current_types = @course.assignment_types
 
     if request.xhr?
       render json: @current_types
     end
-
   end
 
   def create

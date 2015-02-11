@@ -118,6 +118,7 @@ section.course {
         @media #{$medium} {@include grid-column(12);}
         p.description{
           color: $grey-text-color;
+          white-space: pre-wrap;
         }
         h2, h3{
           margin-top: 0em;

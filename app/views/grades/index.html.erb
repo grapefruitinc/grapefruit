@@ -10,7 +10,8 @@
 
   <div>
     <%= render @available_submissions %>
-    <% if @available_submissions.count == 0 %>
+
+    <% if @available_submissions.blank? %>
       <p class="grey">No submissions have been made yet!</p>
     <% end %>
   </div>
