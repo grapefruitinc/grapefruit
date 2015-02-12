@@ -30,7 +30,7 @@
     <%= link_to 'delete this submission',
       course_assignment_submission_path(submission.assignment.course, submission.assignment, submission),
       method: :delete,
-      class: "button warning small",
+      class: "button alert small",
       data: { confirm: "Warning - this CANNOT be undone. Are you sure you want to delete this submission?" } %>
   <% end %>
 
