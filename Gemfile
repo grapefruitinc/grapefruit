@@ -67,7 +67,6 @@ gem "activeadmin", github: "gregbell/active_admin"
 # react for rails
 gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   # helpful if you know you won't have an internet connection
