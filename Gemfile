@@ -64,7 +64,7 @@ gem "friendly_id", ">=5.0.0"
 # Active admin for admin panel
 gem "activeadmin", github: "gregbell/active_admin"
 
-gem 'react-rails'
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
