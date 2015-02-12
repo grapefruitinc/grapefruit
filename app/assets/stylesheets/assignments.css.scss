@@ -5,6 +5,10 @@ section.course h4.under-back-button{
 button{
   @extend .button;
 }
+span.assignment-controls{
+  display:inline-block;
+  margin-left: .5em;
+}
 
 div.assignment-form-container{
   width: 75%;

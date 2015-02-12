@@ -38,20 +38,24 @@
 	<%= render 'documents/documents', container: @assignment, documents: @assignment.documents %>
 </p>
 
-<div>
-	<%= link_to 'Upload Submission for Assignment',
-		new_course_assignment_submission_path(@course, @assignment),
-		class: "button small" %>
-	<br/><br/>
+<% unless @course.instructor == current_user %>
 
 	<div>
-		<h6>Your Submissions <%= parens(@submissions.count) %></h6>
+		<%= link_to 'Upload Submission for Assignment',
+			new_course_assignment_submission_path(@course, @assignment),
+			class: "button small" %>
+		<br/><br/>
 
-		<%= render @submissions %>
+		<div>
+			<h6>Your Submissions <%= parens(@submissions.count) %></h6>
 
-		<% if @submissions.blank? %>
-			<p class="grey">You have not submitted a response to this assignment.</p>
-		<% end %>
+			<%= render @submissions %>
+
+			<% if @submissions.blank? %>
+				<p class="grey">You have not submitted a response to this assignment.</p>
+			<% end %>
+		</div>
+
 	</div>
 
-</div>
+<% end %>
