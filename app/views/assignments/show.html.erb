@@ -49,6 +49,12 @@
 		<div>
 			<h6>Your Submissions <%= parens(@submissions.count) %></h6>
 
+			<p class="grey">
+				You can submit as many submissions for an assignment as you would like!
+				Whichever submission that was uploaded the latest will be counted for grading.
+			</p>
+
+
 			<%= render @submissions %>
 
 			<% if @submissions.blank? %>
