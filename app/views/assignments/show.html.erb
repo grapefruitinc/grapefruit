@@ -46,6 +46,15 @@
 			class: "button small" %>
 		<br/><br/>
 
+		<% if @grade %>
+			<div>
+				<h6>Your Grade</h6>
+				<h4 class="grade-<%= @grade.percentage %>"><%= @grade.points %> points (<%= @grade.percentage %>%)</h4>
+				<p class="grey"><%= @grade.comments %></p>
+				<%= render 'documents/documents', container: @grade, documents: @grade.documents %>
+			</div>
+		<% end %>
+
 		<div>
 			<h6>Your Submissions <%= parens(@submissions.count) %></h6>
 

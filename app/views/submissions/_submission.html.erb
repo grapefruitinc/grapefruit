@@ -36,7 +36,7 @@
 
   <% if can? :manage, submission.assignment %>
     <% latest_grade = submission.assignment.grades.where(user_id: submission.user_id).order("updated_at desc").first %>
-    <% percentage = (latest_grade) ? ((latest_grade.points / submission.assignment.points) * 100).round(2) : 0 %>
+    <% percentage = (latest_grade) ? latest_grade.percentage : 0 %>
 
     <% if latest_grade %>
       <% if latest_grade.updated_at < submission.updated_at %>

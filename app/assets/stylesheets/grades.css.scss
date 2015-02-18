@@ -4,3 +4,13 @@ h6.yellow{
 h6.green{
   color: green;
 }
+
+@for $i from 1 through 100 {
+  h4.grade-#{$i} {
+    @if $i < 40 { color: red; }
+    @else if $i < 66 { color: darken(red, 10%); }
+    @else if $i < 80 { color: darken(red, 20%); }
+    @else if $i < 90 { color: blue; }
+    @else { color: green; }
+  }
+}
