@@ -37,15 +37,15 @@ span.instructing{
 }
 
 .course-card {
-    @include grid-column(4);
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    @include grid-column(4, $collapse: true);
+    padding-right: 1em;
     position: relative;
-    .course-card-image {
-        border-radius: 4px;
-    }
     .course-card-name {
         margin-top: 1rem;
+    }
+    .course-card-description{
+      min-height: 4em;
+      color: $grey-text-color;
     }
     .course-card-details {
         list-style: none;
