@@ -12,9 +12,6 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
       <% if @course.instructor == current_user %>
         <p class="description">Instructor</p>
       <% end %>
-      <% if can? :manage, @course && !@hide_sidebar && params[:action] != "new" && params[:action] != "edit" %>
-        <p class="description">This is what the student sees! <br/> Click 'Manage Content' to edit or delete.</p>
-      <% end %>
     </div>
     <div class="page-header-right">
       <ul class="course-details">
@@ -44,6 +41,15 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
     </div>
   </div>
 </div>
+
+<% if (can? :manage, @course) && !@hide_sidebar && params[:action] == "show" %>
+
+  <div class="instructor-edit-notify">
+      <p class="description">This is what the student sees! You can edit or delete this in Manage Content.</p>
+  </div>
+
+<% end %>
+
 
 <section class="course">
   <% if @hide_sidebar.present? %>

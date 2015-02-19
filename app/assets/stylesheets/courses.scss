@@ -82,6 +82,10 @@ span.instructing{
 
 }
 
+div.instructor-edit-notify{
+  @include panel($padding: .5em);
+  text-align: center;
+}
 
 section.course {
     @include grid-row();
