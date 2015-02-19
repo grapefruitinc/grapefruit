@@ -22,6 +22,7 @@ class AssignmentsController < ApplicationController
 
   def show
     @submissions = @assignment.submissions.where(user_id: current_user.id).order("created_at DESC")
+    @grade = @assignment.grades.where(user_id: current_user.id).last
   end
 
   def create

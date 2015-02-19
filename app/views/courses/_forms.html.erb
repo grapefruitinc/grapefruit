@@ -4,7 +4,7 @@
 <%= f.text_field :name, autofocus: true %>
 
 <%= f.label :description %>
-<%= f.text_area :description, rows: 6, style: "height:auto;" %>
+<%= f.text_area :description, rows: 15, style: "height:auto;" %>
 
 <%= f.label :subject %>
 <%= f.text_field :subject %>
@@ -34,3 +34,7 @@
 <%= f.text_field :problem_set_url, placeholder: "http://www.pearsonmylabandmastering.com/northamerica/" %>
 
 <%= f.submit "#{submit_text(@course)} Course", class: "button small" %>
+
+<% if @course.persisted? %>
+  <%= link_to "Destroy Course", "#", class: "button alert small" %>
+<% end %>

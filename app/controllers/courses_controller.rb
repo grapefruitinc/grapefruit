@@ -15,6 +15,8 @@ class CoursesController < ApplicationController
     @course = current_user.instructed_courses.build(course_params)
     authorize! :create, @course
     if @course.save
+      @first_type = @course.assignment_types.new(name: 'Assignment', drops_lowest: false, default_point_value: 100)
+      @first_type.save
       flash[:success] = "Course created!"
       redirect_to @course
     else

@@ -22,7 +22,7 @@
         <%= render "documents/documents", container: @assignment, documents: @assignment.documents %>
       <% end %>
 
-      <%= f.label "Attach documents (PDF, image, Word, etc)" %><br>
+      <%= f.label "Attach one or many documents (PDF, image, Word, etc)" %><br>
 
       <%= f.fields_for :documents do |p| %>
         <div class="field multipleDocs">

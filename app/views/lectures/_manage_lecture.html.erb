@@ -8,33 +8,27 @@
   <div class="lecture reveal-hidden" id="lecture-<%= lecture.id %>">
 
     <p>
-      <%= link_to "edit lecture",
+      <%= link_to "edit lecture info",
         edit_course_capsule_lecture_path(@course, lecture.capsule, lecture), class: "add" %>
-        <%= link_to "remove lecture",
-                  course_capsule_lecture_path(@course, lecture.capsule, lecture),
-                  data: { confirm: "Are you want to delete this lecture? This action cannot be undone." },
-                  method: :delete,
-                  class: "add alert" %>
       <span class="space"></span>
       <%= link_to "show files", "#",
           class: "add secondary slide-reveal",
           data: {
             reveal: 'lecture-' + lecture.id.to_s + '-files',
-            initial: "show files #{parens(lecture.documents.count)}",
-            active: 'hide files'
+            initial: "manage files #{parens(lecture.documents.count)}",
+            active: 'done with files'
           } %>
       <%= link_to "view as student &#10148;".html_safe,
             course_capsule_lecture_path(@course, lecture.capsule, lecture),
             class: "add secondary" %>
       <span class="space"></span>
-      <%= link_to "add video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture), class: "add" %>
-      <%= link_to "toggle lecture live &#10148;".html_safe, course_capsule_lecture_toggle_live_path(@course, lecture.capsule, lecture), class: "add secondary", target: "_blank" %>
+
     </p>
 
     <div id="lecture-<%= lecture.id %>-files" class="reveal-hidden panel">
 
       <% if lecture.documents.empty? %>
-        <p>No capsule files yet!</p>
+        <p>No lecture files yet!</p>
       <% else %>
         <h6>Lecture Files (examples: presentations, homework, etc)</h6>
       <% end %>
@@ -50,13 +44,16 @@
     <div class="lecture-videos">
       <% if lecture.videos.present? %>
         <div>
-          <h6>lecture videos</h6>
+          <h6>lecture videos (<%= link_to "new video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture) %>)</h6>
           <% lecture.videos.each do |video| %>
             <%= render 'videos/manage_video', video: video %>
           <% end %>
         </div>
       <% else %>
-        <p class="grey">There aren't any videos in this lecture yet.</p>
+        <p class="grey">
+          There aren't any videos in this lecture yet.
+          <%= link_to "add video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture), class: "add" %>
+        </p>
       <% end %>
     </div>
 
