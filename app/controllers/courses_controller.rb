@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter :get_course, except: [:new, :create, :index]
-  before_filter :get_capsules, only: [:show, :edit, :update, :destroy, :webwork, :manage, :stats]
+  before_filter :get_capsules, only: [:show, :edit, :update, :destroy, :manage, :stats]
 
   layout :get_layout
 
@@ -25,9 +25,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
-    @instructed_courses = current_user.instructed_courses
-    @enrolled_courses = current_user.student_courses
+    @courses = Course.all.order("updated_at DESC")
   end
 
   def show
@@ -64,16 +62,6 @@ class CoursesController < ApplicationController
     redirect_to :back
   end
 
-  def webwork
-    redirect_to root_path unless @course.webwork_url.present?
-  end
-
-  def iframe
-    redirect_to root_path unless @course.webwork_url.present?
-    @course.ensure_webwork_exists(current_user)
-    @url = @course.webwork_url
-  end
-
   def students
     authorize! :update, @course
     @students = @course.students
@@ -93,7 +81,7 @@ private
   def course_params
     params.require(:course).permit(:name, :description, :subject, :course_number,
                                    :course_registration_number, :semester, :year,
-                                   :spots_available, :credits, :webwork_url,
+                                   :spots_available, :credits,
                                    :problem_set_url)
   end
 

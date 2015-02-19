@@ -37,15 +37,15 @@ span.instructing{
 }
 
 .course-card {
-    @include grid-column(4);
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    @include grid-column(4, $collapse: true);
+    padding: 0em 1em;
     position: relative;
-    .course-card-image {
-        border-radius: 4px;
-    }
     .course-card-name {
         margin-top: 1rem;
+    }
+    .course-card-description{
+      min-height: 5em;
+      color: $grey-text-color;
     }
     .course-card-details {
         list-style: none;
@@ -74,6 +74,11 @@ span.instructing{
         height: 100%;
         top: 0; left: 0; right: 0; bottom: 0;
         opacity: 0;
+        border-radius: .5em;
+        &:hover{
+          opacity: .2;
+          background-color: #ccc;
+        }
     }
 
     @media #{$medium} {@include grid-column(6);}

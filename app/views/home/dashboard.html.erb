@@ -2,23 +2,23 @@
   <div class="page-header">
     <div class="page-header-full">
       <h2 class="title">Welcome <%= current_user.display_identifier %>!</h2>
-      <!-- if @course.description.empty? -->
-      <% if can? :manage_admins, User %>
-        <p class="description">You have administrator permissions. Manage your courses and profile using the links in the upper right hand corner.</p>
-      <% else %>
-        <p class="description">This is your personal dashboard where you can manage your courses and profile.</p>
-      <% end %>
-      <!-- endif -->
     </div>
   </div>
 </div>
 
+<% unless @instructed_courses.empty? %>
+  <section>
+      <h3>Courses You Instruct</h3>
+      <%= render @instructed_courses %>
+  </section>
+<% end %>
+
 <section>
   <div class="page-header">
-    <h3 class="page-header-title">Enrolled</h3>
+    <h3 class="page-header-title">Courses You're Taking</h3>
 
   <% if @enrolled_courses.empty? %>
-    <h5 class="light">There are no courses listed.</h5>
+    <h5 class="light">You are not enrolled in any courses.</h5>
     </div>
   <% else %>
     </div>
@@ -26,19 +26,3 @@
   <% end %>
 
 </section>
-
-<% if @instructed_courses.empty? %>
-<% else %>
-  <section>
-    <div class="page-header">
-      <h3 class="page-header-title">Courses You Instruct</h3>
-    <% if @instructed_courses.empty? %>
-      <h5 class="light">There are no courses listed.</h5>
-      </div>
-    <% else %>
-    </div>
-      <%= render @instructed_courses %>
-    <% end %>
-
-  </section>
-<% end %>

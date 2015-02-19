@@ -54,7 +54,6 @@ Grapefruit::Application.routes.draw do
 
   resources :courses do
 
-    get 'webwork'
     get 'iframe'
     get 'students'
     get 'manage'
