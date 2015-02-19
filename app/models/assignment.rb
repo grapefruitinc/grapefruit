@@ -30,4 +30,12 @@ class Assignment < ActiveRecord::Base
     submissions.where(updated_at: self.submissions.select("max(updated_at)").group(:user_id)).order("updated_at desc")
   end
 
+  def submitted_for_user(user)
+    submissions.where(user_id: user.id).count > 0
+  end
+
+  def grade_for_user(user)
+    grades.where(user_id: user.id).last
+  end
+
 end

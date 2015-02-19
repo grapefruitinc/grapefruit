@@ -19,7 +19,11 @@
 				</span>
 
 			<% else %>
+				<% if assignment.submitted_for_user(current_user) %>
+					&check;
+				<% end %>
 				<%= link_to assignment.name, course_assignment_path(assignment.course, assignment) %>
+				<%= render 'grades/percentage', assignment: assignment, user: current_user %>
 			<% end %>
 		</h4>
 	</div>

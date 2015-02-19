@@ -49,7 +49,7 @@
 		<% if @grade %>
 			<div>
 				<h6>Your Grade</h6>
-				<h4 class="grade-<%= @grade.percentage %>"><%= @grade.points %> points (<%= @grade.percentage %>%)</h4>
+				<h4 class="grade-coloring-<%= @grade.percentage %>"><%= @grade.points %> points (<%= @grade.percentage %>%)</h4>
 				<p class="grey"><%= @grade.comments %></p>
 				<%= render 'documents/documents', container: @grade, documents: @grade.documents %>
 			</div>

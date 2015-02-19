@@ -1,0 +1,9 @@
+<% grade = assignment.grade_for_user(user) %>
+
+<% if grade %>
+
+  <span class="grade-coloring-<%= grade.percentage %>">
+    <%= grade.percentage %>
+  </span>
+
+<% end %>
