@@ -37,6 +37,7 @@ ActiveAdmin.register User, as: "Student" do
       f.input :email
       f.input :name
       f.input :password
+      f.input :can_create_courses
     end
 
     f.actions
