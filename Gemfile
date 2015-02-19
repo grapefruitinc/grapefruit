@@ -48,6 +48,8 @@ gem 'jquery-turbolinks'
 
 # deployment
 gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

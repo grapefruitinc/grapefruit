@@ -71,23 +71,19 @@ class Course < ActiveRecord::Base
       end
     end
 
-    CourseUser.import course_users, validate: false unless course_users.empty?
+    CourseUser.import course_users, validate: false
   end
 
   def remove_student(student)
-    CourseUser.where(user_id: student.id, course_id: self.id).destroy_all
+    self.course_users.where(user: student).destroy_all
   end
 
   def course_user(user)
-    course_users.find_by_user_id(user)
+    self.course_users.find_by_user_id(user)
   end
 
   def perfect_total
-    sum = 0
-    self.assignments.each do |assignment|
-      sum += assignment.points
-    end
-    sum
+    self.assignments.inject(0) { |sum, assignment| sum += assignment.points }
   end
 
   # Outputting
