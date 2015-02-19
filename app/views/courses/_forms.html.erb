@@ -1,34 +1,35 @@
 <%= render 'shared/error_messages', object: f.object %>
 
 <%= f.label :name %>
-<%= f.text_field :name, autofocus: true %>
+<%= f.text_field :name, autofocus: true, placeholder: "The human-readable name for the course." %>
 
 <%= f.label :description %>
-<%= f.text_area :description, rows: 15, style: "height:auto;" %>
+<%= f.text_area :description, rows: 15, style: "height:auto;",
+  placeholder: "A description for the course. Remember, you can upload a syllabus later." %>
 
 <%= f.label :subject %>
-<%= f.text_field :subject %>
+<%= f.text_field :subject, placeholder: "e.g. CSCI." %>
 
 <%= f.label :course_number, "Course Number" %>
-<%= f.text_field :course_number %>
+<%= f.text_field :course_number, placeholder: "e.g. 1001" %>
 
 <%= f.label :course_registration_number, "Course Registration Number (CRN)" %>
-<%= f.text_field :course_registration_number %>
+<%= f.text_field :course_registration_number, placeholder: "e.g. 12345, for future integration with systems like SIS."  %>
 
 <%= f.label :semester %>
-<%= f.text_field :semester %>
+<%= f.text_field :semester, placeholder: "e.g. Fall"  %>
 
 <%= f.label :year %>
-<%= f.text_field :year %>
+<%= f.text_field :year, placeholder: "e.g. #{Time.now.year}"  %>
 
 <%= f.label :spots_available, "Spot Available" %>
-<%= f.text_field :spots_available %>
+<%= f.text_field :spots_available, placeholder: "How many students can join this course?"  %>
 
 <%= f.label :credits %>
-<%= f.text_field :credits %>
+<%= f.text_field :credits, placeholder: "How many credits is this course worth?"  %>
 
-<%= f.label :problem_set_url, "Problem Set URL" %>
-<%= f.text_field :problem_set_url, placeholder: "http://www.pearsonmylabandmastering.com/northamerica/" %>
+<%= f.label :problem_set_url, "Problem Set URL (optional, include if linking to a third-party textbook resource)" %>
+<%= f.text_field :problem_set_url, placeholder: "e.g. http://www.pearsonmylabandmastering.com/northamerica/" %>
 
 <%= f.submit "#{submit_text(@course)} Course", class: "button small" %>
 
