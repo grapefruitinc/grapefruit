@@ -25,9 +25,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
-    @instructed_courses = current_user.instructed_courses
-    @enrolled_courses = current_user.student_courses
+    @courses = Course.all.order("updated_at DESC")
   end
 
   def show

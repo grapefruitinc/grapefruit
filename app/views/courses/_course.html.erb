@@ -3,12 +3,12 @@
 		<%= link_to course.name, course_path(course) %>
 	</h4>
 	<p class="course-card-description">
-	    <%= truncate course.description, length: 80, separator: /\w/, omission: "..." %>
+	    <%= truncate course.description, length: 110, separator: /\w/, omission: "..." %>
 	</p>
 	<ul class="course-card-details">
 		<li><%= course.credits %> credits</li>
 		<li><%= course.subject %></li>
-		<li><%= course.course_number %></li>
+		<li><%= course.seats_left %> seats</li>
 	</ul>
 	<a href=<%= course_path(course) %> class="course-anchor"></a>
 </div>

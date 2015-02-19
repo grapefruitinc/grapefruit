@@ -38,13 +38,13 @@ span.instructing{
 
 .course-card {
     @include grid-column(4, $collapse: true);
-    padding-right: 1em;
+    padding: 0em 1em;
     position: relative;
     .course-card-name {
         margin-top: 1rem;
     }
     .course-card-description{
-      min-height: 4em;
+      min-height: 5em;
       color: $grey-text-color;
     }
     .course-card-details {
@@ -74,6 +74,11 @@ span.instructing{
         height: 100%;
         top: 0; left: 0; right: 0; bottom: 0;
         opacity: 0;
+        border-radius: .5em;
+        &:hover{
+          opacity: .2;
+          background-color: #ccc;
+        }
     }
 
     @media #{$medium} {@include grid-column(6);}
