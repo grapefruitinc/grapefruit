@@ -20,7 +20,18 @@
 
       <%= f.text_area :description, style: "height: 20em", placeholder: "This topic consists of ..." %>
 
-      <div><%= f.submit "Update Capsule", class: "button small" %></div>
+      <div>
+
+        <%= f.submit "Update Capsule", class: "button small" %>
+
+        <%= link_to "Delete Capsule",
+                    course_capsule_path(@course, @capsule),
+                    data: { confirm: "Are you want to delete this capsule? This action cannot be undone." },
+                    method: :delete,
+                    class: "button alert small" %>
+
+      </div>
+
     <% end %>
   </div>
 

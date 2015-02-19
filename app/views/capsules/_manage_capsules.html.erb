@@ -10,11 +10,6 @@
     <p>
 
       <%= link_to "edit capsule info", edit_course_capsule_path(@course, capsule), class: "add" %>
-      <%= link_to "remove capsule",
-                  course_capsule_path(@course, capsule),
-                  data: { confirm: "Are you want to delete this capsule? This action cannot be undone." },
-                  method: :delete,
-                  class: "add alert" %>
 
       <span class="space"></span>
 
