@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
 protected
 
   def configure_permitted_parameters
-
     # place permitted fields for registration here
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :email, :password, :password_confirmation)
@@ -26,7 +25,6 @@ protected
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:name, :email, :password, :password_confirmation, :current_password)
     end
-
   end
 
   def get_course
@@ -110,9 +108,9 @@ protected
 
   def process_multiple_documents(container)
     if params[:documents]
-      params[:documents][:document].each { |doc|
-        container.documents.create(file: doc)
-      }
+      params[:documents][:document].each do |doc|
+        container.documents.build(file: doc)
+      end
     end
   end
 

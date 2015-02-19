@@ -27,7 +27,15 @@ class Assignment < ActiveRecord::Base
   has_many :documents, dependent: :destroy
 
   def available_submissions
-    self.submissions.where(updated_at: self.submissions.select("max(updated_at)").group(:user_id)).order("updated_at desc")
+    submissions.where(updated_at: self.submissions.select("max(updated_at)").group(:user_id)).order("updated_at desc")
+  end
+
+  def submitted_for_user(user)
+    submissions.where(user_id: user.id).count > 0
+  end
+
+  def grade_for_user(user)
+    grades.where(user_id: user.id).last
   end
 
 end

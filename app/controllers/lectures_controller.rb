@@ -29,7 +29,7 @@ class LecturesController < ApplicationController
 
     @videos = @lecture.videos.order("created_at ASC")
     @videos.build
-
+    
     @documents = @lecture.documents
   end
 

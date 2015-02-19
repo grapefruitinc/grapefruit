@@ -9,21 +9,16 @@
 
     <p>
 
-      <%= link_to "edit capsule", edit_course_capsule_path(@course, capsule), class: "add" %>
-      <%= link_to "remove capsule",
-                  course_capsule_path(@course, capsule),
-                  data: { confirm: "Are you want to delete this capsule? This action cannot be undone." },
-                  method: :delete,
-                  class: "add alert" %>
+      <%= link_to "edit capsule info", edit_course_capsule_path(@course, capsule), class: "add" %>
 
       <span class="space"></span>
 
       <%= link_to "show files", "#",
           class: "add secondary slide-reveal",
-          data: { 
+          data: {
             reveal: 'capsule-' + capsule.id.to_s + '-files',
-            initial: "show files #{parens(capsule.documents.count)}",
-            active: 'hide files'
+            initial: "manage files #{parens(capsule.documents.count)}",
+            active: 'done with files'
           } %>
       <%= link_to "view as student &#10148;".html_safe,
       course_capsule_path(@course, capsule), class: "add secondary" %>
@@ -51,7 +46,7 @@
     <% if capsule.lectures.empty? %>
       <p class="grey">There aren't any lectures in this capsule yet.</p>
     <% end %>
-    
+
     <%= render collection: capsule.lectures, partial: "lectures/manage_lecture", as: :lecture %>
 
 

@@ -15,7 +15,7 @@
 
       <%= f.text_area :comments, placeholder: "Any comments for this submission", style: "height: 10em" %>
 
-      <%= f.label "Attach documents (PDF, image, Word, zip, etc)" %><br>
+      <%= f.label "Attach one or many documents (PDF, image, Word, zip, etc)" %><br>
 
       <%= f.fields_for :documents do |p| %>
         <div class="field multipleDocs">

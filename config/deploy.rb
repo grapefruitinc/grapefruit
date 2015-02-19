@@ -1,8 +1,8 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '3.3.5'
 
 set :application, 'grapefruit'
-set :repo_url, 'git@github.com:grahamcracker/grapefruit.git'
+set :repo_url, 'https://github.com/grapefruitdotlink/grapefruit.git'
 
 set :stages, %w(stage1 stage2 production)
 
@@ -25,17 +25,7 @@ set :stages, %w(stage1 stage2 production)
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/settings.yml}
-
-ssh_pubkey_dir = "#{Dir.home}/.ssh"
-ssh_pubkey_name = "gf-staging-key.pub"
-ssh_pubkey_location = ssh_pubkey_dir + "/" + ssh_pubkey_name
-
-require 'fileutils'
-if(!File.exist?(ssh_pubkey_location))
-  FileUtils.mkdir_p(File.dirname(ssh_pubkey_dir))
-  FileUtils.cp(".travis/" + ssh_pubkey_name, ssh_pubkey_dir)
-end
+# set :linked_files, %w{config/database.yml config/settings.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}

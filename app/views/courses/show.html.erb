@@ -13,11 +13,11 @@
   <% end %>
 
   <% if !@course.students.include?(current_user) && @course.instructor != current_user %>
-  <%= form_for [@course, @course_user] do |f| %>
-  <%= f.hidden_field :course_id, value: @course.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Enroll", class: "button small" %>
-  <% end %>
+    <%= form_for [@course, @course_user] do |f| %>
+      <%= f.hidden_field :course_id, value: @course.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Enroll", class: "button small" %>
+    <% end %>
   <% end %>
 
 </div>
@@ -26,7 +26,7 @@
   <p class="announcement">
     <%= @course.announcements.last.title %>
     <br>
-    <span class="expandable-text"><%= @course.announcements.last.content %></span>
+    <span><%= @course.announcements.last.content %></span>
     <br>
     <%= link_to "View All Announcements", course_announcements_path(@course) %>
   </p>

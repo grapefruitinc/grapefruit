@@ -19,4 +19,8 @@ class Grade < ActiveRecord::Base
   belongs_to :user
   has_many :documents, dependent: :destroy
 
+  def percentage
+    ((self.points / self.assignment.points) * 100).round(0)
+  end
+
 end

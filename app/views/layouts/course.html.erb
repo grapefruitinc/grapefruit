@@ -42,6 +42,15 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
   </div>
 </div>
 
+<% if (can? :manage, @course) && !@hide_sidebar && params[:action] == "show" %>
+
+  <div class="instructor-edit-notify">
+      <p class="description">This is what the student sees! You can edit or delete this in Manage Content.</p>
+  </div>
+
+<% end %>
+
+
 <section class="course">
   <% if @hide_sidebar.present? %>
     <%= yield %>

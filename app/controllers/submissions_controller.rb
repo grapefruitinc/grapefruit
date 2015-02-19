@@ -11,18 +11,15 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-
     @submission = @assignment.submissions.new(submission_params(user_id: current_user.id))
+    process_multiple_documents(@submission)
 
-    if @submission.valid?
-      @submission.save
-      process_multiple_documents(@submission)
+    if @submission.save
       flash[:success] = "You have submitted a response to " + @assignment.name
       redirect_to course_assignment_path(@course, @assignment)
     else
       render 'new'
     end
-
   end
 
   def destroy

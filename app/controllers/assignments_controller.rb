@@ -22,17 +22,16 @@ class AssignmentsController < ApplicationController
 
   def show
     @submissions = @assignment.submissions.where(user_id: current_user.id).order("created_at DESC")
+    @grade = @assignment.grades.where(user_id: current_user.id).last
   end
 
   def create
-
     authorize! :manage, @course
 
     @assignment = @course.assignments.new(assignment_params)
+    process_multiple_documents(@assignment)
 
-    if @assignment.valid?
-      @assignment.save
-      process_multiple_documents(@assignment)
+    if @assignment.save
       send_assignment_email(@course, @assignment)
       flash[:success] = "The assignment was created!"
       redirect_to course_assignments_path(@course)
@@ -42,7 +41,6 @@ class AssignmentsController < ApplicationController
   end
 
   def update
-
     authorize! :manage, @course
 
     if @assignment.update_attributes(assignment_params)
@@ -51,7 +49,6 @@ class AssignmentsController < ApplicationController
     end
 
     redirect_to edit_course_assignment_path(@course, @assignment)
-
   end
 
   def destroy
@@ -61,14 +58,14 @@ class AssignmentsController < ApplicationController
     redirect_to course_assignments_path(@course)
   end
 
-  private
+private
 
   def assignment_params
     params.require(:assignment).permit(:name, :description, :assignment_type_id, :points, :documents, :reveal_day, :due_day)
   end
 
   def send_assignment_email(course, assignment)
-    if(params[:send_email])
+    if params[:send_email]
       UserMailer.new_assignment(course, assignment).deliver_now
     end
   end

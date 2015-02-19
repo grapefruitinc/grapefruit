@@ -82,6 +82,10 @@ span.instructing{
 
 }
 
+div.instructor-edit-notify{
+  @include panel($padding: .5em);
+  text-align: center;
+}
 
 section.course {
     @include grid-row();
@@ -118,6 +122,7 @@ section.course {
         @media #{$medium} {@include grid-column(12);}
         p.description{
           color: $grey-text-color;
+          white-space: pre-wrap;
         }
         h2, h3{
           margin-top: 0em;

@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 20150210033208) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type",       limit: 255
   end
 
   create_table "courses", force: :cascade do |t|
@@ -172,11 +171,11 @@ ActiveRecord::Schema.define(version: 20150210033208) do
     t.integer  "capsule_id", limit: 4
   end
 
-  create_table "replies", force: true do |t|
-    t.integer  "course_id"
-    t.integer  "topic_id"
-    t.integer  "author_id"
-    t.string   "body"
+  create_table "replies", force: :cascade do |t|
+    t.integer  "course_id",  limit: 4
+    t.integer  "topic_id",   limit: 4
+    t.integer  "author_id",  limit: 4
+    t.string   "body",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

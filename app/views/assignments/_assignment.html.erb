@@ -4,9 +4,13 @@
 		<h4>
 			<% if can? :manage, @course %>
 
-				<%= link_to assignment.name, edit_course_assignment_path(assignment.course, assignment) %>
+				<%= assignment.name %>
 
-				<span class="grey">
+				<span class="grey assignment-controls">
+
+					<%= link_to 'view', course_assignment_path(assignment.course, assignment) %>
+					-
+					<%= link_to 'edit', edit_course_assignment_path(assignment.course, assignment) %>
 					-
 					<% if assignment.available_submissions.count > 0 %>
 						<%= link_to 'grade', course_assignment_grades_path(assignment.course, assignment) %>
@@ -15,13 +19,17 @@
 				</span>
 
 			<% else %>
+				<% if assignment.submitted_for_user(current_user) %>
+					&check;
+				<% end %>
 				<%= link_to assignment.name, course_assignment_path(assignment.course, assignment) %>
+				<%= render 'grades/percentage', assignment: assignment, user: current_user %>
 			<% end %>
 		</h4>
 	</div>
 	<div>
 			<span class="points"><%= assignment.points %> point <%= assignment.assignment_type.name %> </span>
-			<% if not can? :manage, @course %>
+			<% unless can? :manage, @course %>
 				-
 				<% if assignment.due_day < DateTime.now %>
 					was
