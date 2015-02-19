@@ -60,6 +60,10 @@
 
       <%= label_tag "Attach grade document, notes, etc. (Optional)" %><br>
 
+      <% if latest_grade %>
+        <%= render 'documents/documents', container: latest_grade.assignment, documents: latest_grade.documents %>
+      <% end %>
+
       <div class="field multipleDocs">
         <%= file_field_tag :document,
             :multiple => true,
