@@ -42,8 +42,7 @@ class User < ActiveRecord::Base
   # User Types
   # ========================================================
   def self.unassigned
-    # TODO
-    includes(:course_users, :instructed_courses).where('course_users.user_id IS NULL AND courses.instructor_id != users.id')
+    User.where.not(id: includes(:student_courses)).where.not(id: includes(:instructed_courses))
   end
 
   def self.instructors
@@ -51,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def self.students
-    includes(:student_courses).where('courses.instructor_id != users.id')
+    includes(:student_courses)
   end
 
   def grade_for_course(course)
