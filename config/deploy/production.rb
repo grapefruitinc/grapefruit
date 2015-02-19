@@ -38,7 +38,6 @@ server 'grapefruit.cs.rpi.edu',
   user: 'administrator',
   roles: %w{web},
   ssh_options: {
-    user: 'administrator',
     forward_agent: false,
     auth_methods: %w(publickey)
   }

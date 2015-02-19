@@ -9,6 +9,7 @@ role :web, %w{graham.li}
 role :db,  %w{graham.li}
 
 set :deploy_to, '/srv/stage1'
+set :branch, 'dev'
 
 # Extended Server Syntax
 # ======================
@@ -37,8 +38,6 @@ server 'graham.li',
   user: 'root',
   roles: %w{web},
   ssh_options: {
-    user: 'root', # overrides user setting above
-    keys: %w(~/.ssh/gf-staging-key.pub),
     forward_agent: false,
     auth_methods: %w(publickey)
   }

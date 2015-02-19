@@ -4,11 +4,13 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{graham.li}
-role :web, %w{graham.li}
-role :db,  %w{graham.li}
+role :app, %w{grapefruit.cs.rpi.edu}
+role :web, %w{grapefruit.cs.rpi.edu}
+role :db,  %w{grapefruit.cs.rpi.edu}
 
-set :deploy_to, '/srv/stage2'
+set :deploy_to, '/home/administrator/apps/gf-stage2'
+set :branch, 'dev'
+set :rails_env, "production"
 
 # Extended Server Syntax
 # ======================
@@ -17,7 +19,6 @@ set :deploy_to, '/srv/stage2'
 # used to set extended properties on the server.
 
 # server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
-server "graham.li", user: "root", roles: %w{web}, primary: true
 
 # Custom SSH Options
 # ==================
@@ -34,12 +35,10 @@ server "graham.li", user: "root", roles: %w{web}, primary: true
 #
 # And/or per server (overrides global)
 # ------------------------------------
-server 'graham.li',
-  user: 'root',
+server 'grapefruit.cs.rpi.edu',
+  user: 'administrator',
   roles: %w{web},
   ssh_options: {
-    user: 'root', # overrides user setting above
-    keys: %w(.travis/staging-key.pub),
     forward_agent: false,
     auth_methods: %w(publickey)
   }
