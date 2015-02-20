@@ -203,9 +203,7 @@ section.course {
         height: auto;
         .capsule-nav { display: inline-block; }
         .capsule-name {
-            overflow: hidden;
             color: black;
-            max-width: 60%;
             @extend .bold;
             &.long:hover {
                 &:after {content: '';}
