@@ -100,7 +100,7 @@ section.course {
     aside {
         @include grid-column(3);
         background-color: #F7F7F7;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        //border: 1px solid rgba(0, 0, 0, 0.1);
         border-right: none;
         padding: 0;
         position: absolute;
@@ -109,13 +109,13 @@ section.course {
         @media #{$full} {
             position: relative;
             left: 0;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
         }
         @media #{$medium} {display: none;}
         a.back{
             border-radius: 0em;
             width:100%;
             border:0px;
+            margin:0px;
         }
     }
     .workplace {
@@ -406,4 +406,24 @@ div.manage{
             color: #fff;
         }
     }
+}
+
+ul.course-capsule-list{
+  list-style-type: none;
+  ul, li{
+    display: block;
+  }
+  > ul{ // lecture lists
+    margin-bottom: 0em;
+  }
+  > li { // capsule names
+    padding: .5em .2em 0em 1em;
+    a.active{
+      font-weight: bold;
+    }
+  }
+  > ul > li { // lecture name
+    font-size: .85em;
+    padding-left: 2em;
+  }
 }

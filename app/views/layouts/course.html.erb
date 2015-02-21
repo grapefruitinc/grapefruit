@@ -1,10 +1,5 @@
 <% content_for :home_content do %>
 
-<script>
-var capsule_id = <%= (@capsule.present?) ? @capsule.id : -1 %>
-var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
-</script>
-
 <div class="page-header-container">
   <div class="page-header">
     <div class="page-header-left">
@@ -61,17 +56,17 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
         <%= link_to "#{@back_icon} Manage Content".html_safe, course_manage_path(@course),
           class: "button coal back" %>
       <% end %>
-      <ul class="course-accordion">
+
+
+      <ul class="course-capsule-list">
         <%= render @capsules %>
         <% if @capsules.empty? %>
-          <li class="course-capsule">
-            <div class="capsule-header">
-              <h1 class="capsule-name">No capsules yet!</h1>
-            </div>
-          </li>
+          <li class="grey">No capsules found.</li>
         <% end %>
       </ul>
+
     </aside>
+
     <div class="workplace">
       <%= yield %>
     </div>
@@ -84,19 +79,6 @@ var lecture_id = <%= (@lecture.present?) ? @lecture.id : -1 %>;
 <ul class="course-accordion--mobile">
   <%= render @capsules %>
 </ul>
-<% end %>
-
-<% content_for :scripts do %>
-
-<script>
-capsule_names = $(".capsule-name");
-for (var i = capsule_names.length - 1; i >= 0; i--) {
-  if($(capsule_names[i]).clone().children().remove().end().text().length > 25){
-    $(capsule_names[i]).addClass("long");
-  }
-};
-</script>
-
 <% end %>
 
 <%= render template: 'layouts/home' %>

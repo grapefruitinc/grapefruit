@@ -1,31 +1,23 @@
 <% if capsule.id %>
-	<li class="course-capsule" data-capsule-id="<%= capsule.id %>">
-		<a class="capsule-header" href="<%= course_capsule_path(capsule.course, capsule) %>">
-			<h1 class="capsule-name"><span class="capsule-status"></span>
-				<%= capsule.name %>
-			</h1>
-			<ul class="capsule-nav">
-				<li class="active"><i class="icon-video-outline interactive"></i></li>
-				<!--<li><i class="icon-pen interactive"></i></li>-->
-			</ul>
-		</a>
-		<ul class="capsule-contents active">
-			<% if capsule.lectures.empty? %>
-				<li class="capsule-item">
-				  <h2 class="capsule-item-empty">Oops, looks like there's nothing here!</h2>
-				</li>
-			<% else %>
-			<%= render capsule.lectures %>
-			<% end %>
-		</ul>
-		<ul class="capsule-contents">
-			<% if capsule.problem_sets.empty? %>
-				<li class="capsule-item">
-				  <h2 class="capsule-item-empty">Oops, looks like there's nothing here!</h2>
-				</li>
-			<% else %>
-				<%= render capsule.problem_sets %>
-			<% end %>
-		</ul>
+
+	<li>
+		<%= link_to capsule.name, course_capsule_path(capsule.course, capsule), class: (@capsule == capsule) ? 'active' : '' %>
 	</li>
+
+	<% if @capsule == capsule %>
+
+		<% if @capsule.lectures.empty? %>
+
+			<li class="grey">No capsules found!</li>
+
+		<% else %>
+
+			<ul>
+				<%= render @capsule.lectures %>
+			</ul>
+
+		<% end %>
+
+	<% end %>
+
 <% end %>
