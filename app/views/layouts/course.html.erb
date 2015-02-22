@@ -24,7 +24,7 @@
          <% if can? :manage, @course %>
           <li><%= link_to "Students", course_students_path(@course), class: "button small"%></li>
           <li><%= link_to "Stats", course_stats_path(@course), class: "button small"%></li>
-          <li><%= link_to "Manage Content", course_manage_path(@course), class: "button small bold" %></li>
+          <li><%= link_to "Content Manager", course_manage_path(@course), class: "button small bold" %></li>
           <li><%= link_to "Assignments & Grading", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 
@@ -40,7 +40,20 @@
 <% if (can? :manage, @course) && !@hide_sidebar && params[:action] == "show" %>
 
   <div class="instructor-edit-notify">
-      <p class="description">This is what the student sees! You can edit or delete this in Manage Content.</p>
+      <p class="description">
+        This is what the student sees! You can
+        <% if !@lecture.blank? %>
+          <%= link_to "edit this lecture",
+            edit_course_capsule_lecture_path(@course, @capsule, @lecture) %>
+        <% elsif !@capsule.blank? %>
+          <%= link_to "edit this capsule",
+            edit_course_capsule_path(@course, @capsule) %>
+        <% else %>
+          <%= link_to "edit the course",
+            edit_course_path(@course) %>
+        <% end %>
+        in the <%= link_to "Content Manager", course_manage_path(@course) %>.
+      </p>
   </div>
 
 <% end %>
@@ -53,7 +66,7 @@
     <aside>
       <% if can? :manage, @course %>
         <% @back_icon = (request.referer =~ /manage/) ? '&#9664;' : '' %>
-        <%= link_to "#{@back_icon} Manage Content".html_safe, course_manage_path(@course),
+        <%= link_to "#{@back_icon} Content Manager".html_safe, course_manage_path(@course),
           class: "button coal back" %>
       <% end %>
 
