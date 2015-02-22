@@ -1,5 +1,3 @@
-citrus:
-  enabled: false
 youtube:
   username: "YOUTUBE USERNAME"
   password: "YOUTUBE PASSWORD"

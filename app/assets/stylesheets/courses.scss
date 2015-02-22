@@ -410,20 +410,35 @@ div.manage{
 
 ul.course-capsule-list{
   list-style-type: none;
-  ul, li{
+  ul, li, > li a, > ul > li > a{
     display: block;
   }
   > ul{ // lecture lists
-    margin-bottom: 0em;
+    margin-bottom: .5em;
+    margin-top: .3em;
   }
   > li { // capsule names
-    padding: .5em .2em 0em 1em;
+    a, span{
+      display:block;
+      padding: .3em .2em .2em 1em;
+    }
+    a{
+      background-color: #999;
+      color: #fff;
+      &:hover{
+        background-color: #777;
+      }
+    }
     a.active{
-      font-weight: bold;
+      background-color: #ddd;
+      color: #1e1e1e;
+      &:hover{
+        background-color: #eee;
+      }
     }
   }
-  > ul > li { // lecture name
-    font-size: .85em;
-    padding-left: 2em;
+  > ul > li{ // lecture name
+      font-size: .85em;
+      padding-left: 2em;
   }
 }

@@ -1,7 +1,12 @@
 <% if capsule.id %>
 
 	<li>
-		<%= link_to capsule.name, course_capsule_path(capsule.course, capsule), class: (@capsule == capsule) ? 'active' : '' %>
+		<% if @capsule == capsule && @lecture.blank? %>
+			<span><%= capsule.name %> &rsaquo; </span>
+		<% else %>
+			<%= link_to capsule.name, course_capsule_path(capsule.course, capsule),
+				class: (@capsule == capsule) ? 'active' : '' %>
+		<% end %>
 	</li>
 
 	<% if @capsule == capsule %>

@@ -1,7 +1,7 @@
 <li>
   <% if lecture == @lecture %>
-    <strong> <%= @lecture.lecture_number %>. <%= @lecture.name %></strong>
+    <strong><%= @lecture.name %> &rsaquo;</strong>
   <% else %>
-    <%= link_to "#{lecture.lecture_number}. #{lecture.name}", [lecture.capsule.course, lecture.capsule, lecture] %>
+    <%= link_to lecture.name, [lecture.capsule.course, lecture.capsule, lecture] %>
   <% end %>
 </li>

@@ -17,7 +17,6 @@ class Lecture < ActiveRecord::Base
   # Validations
   # ========================================================
   validates :name, presence: true
-  validates :lecture_number, presence: true
 
   # Relationships
   # ========================================================
