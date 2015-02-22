@@ -35,11 +35,6 @@ module ApplicationHelper
     (number == 0) ? "" : "(" + number.to_s + ")"
   end
 
-  # determine if Citrus is enabled
-  def citrus_on
-    Settings.citrus ? Settings.citrus.enabled : false
-  end
-
   # get the full error count of a form object
   def form_error_count(object)
     object.errors.full_unique_messages.count

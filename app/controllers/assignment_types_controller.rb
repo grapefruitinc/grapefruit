@@ -31,9 +31,17 @@ class AssignmentTypesController < ApplicationController
   def destroy
     authorize! :manage, @course
     @assignment_type = @course.assignment_types.find(params[:assignment_type_id] || params[:id])
-    # TODO: MUST CHECK FOR EXISTING ASSIGNMENTS HERE
-    @assignment_type.destroy
-    render json: 0
+
+    # don't delete existing assignments
+    if @course.assignments.where(assignment_type: @assignment_type).count > 0
+      render json: -1
+    # don't delete the last assignment type in an assignment
+    elsif @course.assignment_types.count == 1
+      render json: -2
+    else
+      @assignment_type.destroy
+      render json: 0
+    end
   end
 
   def update

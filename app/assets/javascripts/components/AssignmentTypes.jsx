@@ -16,12 +16,23 @@ var AssignmentTypesContainer = React.createClass({
     $.getJSON(window.location, this.processTypes);
   },
   deleteType: function(id){
-    $.ajax({ type: "DELETE", url: window.location + '/' + id });
-    var new_types = this.state.types.filter(function(item) {
-      return item.id !== id;
-    });
-    this.setState({types: new_types});
-  },
+    var ast = this;
+    $.ajax(
+      { type: "DELETE", url: window.location + '/' + id,
+        success: function(res){
+          if(res == -1){
+            ast.setError("You can't delete an assignment type if there are existing assignments of that type.");
+          }else if(res == -2){
+            ast.setError("You can't delete this assignment type - each course must have at least one assignment type.")
+          }else{
+            var new_types = ast.state.types.filter(function(item) {
+              return item.id !== id;
+            });
+            ast.setState({types: new_types});
+          }
+        }
+      });
+    },
   updateType: function(typeObject){
     var name = typeObject.state.name;
     var id = typeObject.state.id;

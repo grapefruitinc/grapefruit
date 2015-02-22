@@ -12,9 +12,7 @@
 
       <%= f.text_field :name, placeholder: "Name", autofocus: true %>
 
-      <%= f.text_area :description, placeholder: "This lecture will focus on ..." %>
-
-      <%= f.text_field :lecture_number, placeholder: "Lecture Number" %>
+      <%= f.text_area :description, style: "height: 20em", placeholder: "This lecture will focus on ..." %>
 
       <div>
         <%= f.submit "Update Lecture", class: "button small" %>

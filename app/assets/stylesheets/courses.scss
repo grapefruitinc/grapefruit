@@ -100,7 +100,7 @@ section.course {
     aside {
         @include grid-column(3);
         background-color: #F7F7F7;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        //border: 1px solid rgba(0, 0, 0, 0.1);
         border-right: none;
         padding: 0;
         position: absolute;
@@ -109,13 +109,13 @@ section.course {
         @media #{$full} {
             position: relative;
             left: 0;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
         }
         @media #{$medium} {display: none;}
         a.back{
             border-radius: 0em;
             width:100%;
             border:0px;
+            margin:0px;
         }
     }
     .workplace {
@@ -203,9 +203,7 @@ section.course {
         height: auto;
         .capsule-nav { display: inline-block; }
         .capsule-name {
-            overflow: hidden;
             color: black;
-            max-width: 60%;
             @extend .bold;
             &.long:hover {
                 &:after {content: '';}
@@ -408,4 +406,46 @@ div.manage{
             color: #fff;
         }
     }
+}
+
+ul.course-capsule-list{
+  list-style-type: none;
+  margin-bottom: 0em;
+  ul, li, > li a, > ul > li > a{
+    display: block;
+  }
+  > li.grey{ // no capsules found
+    padding: .5em;
+  }
+  > ul{ // lecture lists
+    margin-bottom: .5em;
+    margin-top: .3em;
+    > li.grey{ // no lectures found
+      margin-bottom: .5em;
+    }
+  }
+  > li { // capsule names
+    a, span{
+      display:block;
+      padding: .3em .2em .2em 1em;
+    }
+    a{
+      background-color: #999;
+      color: #fff;
+      &:hover{
+        background-color: #777;
+      }
+    }
+    a.active{
+      background-color: #ddd;
+      color: #1e1e1e;
+      &:hover{
+        background-color: #eee;
+      }
+    }
+  }
+  > ul > li{ // lecture name
+      font-size: .85em;
+      padding-left: 2em;
+  }
 }
