@@ -410,12 +410,19 @@ div.manage{
 
 ul.course-capsule-list{
   list-style-type: none;
+  margin-bottom: 0em;
   ul, li, > li a, > ul > li > a{
     display: block;
+  }
+  > li.grey{ // no capsules found
+    padding: .5em;
   }
   > ul{ // lecture lists
     margin-bottom: .5em;
     margin-top: .3em;
+    > li.grey{ // no lectures found
+      margin-bottom: .5em;
+    }
   }
   > li { // capsule names
     a, span{
