@@ -2,8 +2,10 @@
 
 <h2><%= @lecture.name %> <sup><%= 'LIVE &#149;'.html_safe if @lecture.live %></sup></h2>
 
-<%= link_to (@lecture.live ? "stop live comments" : "make lecture live"),
-  course_capsule_lecture_toggle_live_path(@course, @capsule, @lecture), class: "button small" %>
+<% if can? :manage, @course %>
+  <%= link_to (@lecture.live ? "stop live comments" : "make lecture live"),
+    course_capsule_lecture_toggle_live_path(@course, @capsule, @lecture), class: "button small" %>
+<% end %>
 
 <% if @lecture.live %>
   <%= link_to 'Live Feed &nbsp; &#10148;'.html_safe, course_capsule_lecture_comments_path(@course, @capsule, @lecture),
