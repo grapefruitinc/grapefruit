@@ -86,6 +86,8 @@ end
 group :development do
   gem 'annotate'
   gem 'thin'
+  gem 'quiet_assets'
+  gem 'better_errors'
 end
 
 group :test do
