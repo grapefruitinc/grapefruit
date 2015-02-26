@@ -387,6 +387,28 @@ div.manage{
         background-color: transparent;
         color: #444;
     }
+    a.add.slide-reveal.revealing, a.small.secondary.slide-reveal.revealing{
+      position:relative;
+      &:after{
+        content: " ";
+        width:0;
+        height:0;
+        border-left: 1em solid transparent;
+        border-right: 1em solid transparent;
+        border-bottom: 1em solid #d9d9d9;
+        position:absolute;
+        top: 1.5em;
+        left: 30%;
+      }
+    }
+    a.small.secondary.slide-reveal.revealing{
+        &:after{
+          top: 3em;
+          border-left: 1.5em solid transparent;
+          border-right: 1.5em solid transparent;
+          border-bottom: 1.5em solid #d9d9d9;
+        }
+    }
     p{
         a.add{
             font-weight: bold;
