@@ -387,6 +387,35 @@ div.manage{
         background-color: transparent;
         color: #444;
     }
+    div.panel.revealed{
+      z-index: 100;
+      position: relative;
+      border-width: 4px;
+      border-color: #ccc;
+    }
+    a.add.slide-reveal.revealing, a.small.secondary.slide-reveal.revealing{
+      position:relative;
+      &:after{
+        content: " ";
+        width:0;
+        height:0;
+        border-left: 2em solid transparent;
+        border-right: 2em solid transparent;
+        border-bottom: 2em solid #ccc;
+        position:absolute;
+        top: 1.5em;
+        left: 15%;
+        z-index: 50;
+      }
+    }
+    a.small.secondary.slide-reveal.revealing{
+        &:after{
+          top: 3em;
+          border-left: 3em solid transparent;
+          border-right: 3em solid transparent;
+          border-bottom: 3em solid #ccc;
+        }
+    }
     p{
         a.add{
             font-weight: bold;
