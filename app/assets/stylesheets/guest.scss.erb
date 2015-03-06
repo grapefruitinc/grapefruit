@@ -29,11 +29,6 @@
 }
 
 div.main-content{
-    padding: 0em;
-    background-image: url(<%= asset_path 'orchard.jpeg' %>);
-    background-position: 0% 20%;
-    background-size: 100%;
-
     /* hide background on small viewports */
     @media #{$small} {
       background:none;
@@ -48,12 +43,6 @@ div.main-content{
     }
 
     div.content{
-        @include grid-column(8, $offset: 2);
-        padding: 1em 2em;
-        margin-bottom: 2em;
-        background-color: rgba(255, 255, 255, 0.7);
-        float:none;
-        min-height: 400px;
         hr{
           border-color: #aaa;
         }
@@ -80,6 +69,12 @@ div.main-content{
       }
     }
 
+    .header-container {
+      background-image: url(<%= asset_path 'orchard.jpeg' %>);
+      background-position: 0% 50%;
+      background-size: 100%;
+    }
+
     form.login-form{
         input[type="submit"]{
             margin-bottom: .8em;
@@ -90,24 +85,21 @@ div.main-content{
           border: none;
         }
     }
-    div.login-form-container{
-        @include grid-column(3, $center: true);
-        padding-top: 0em;
-        padding: .5rem 2rem;
-        width: 30rem;
-        @media #{$medium} {@include grid-column(10);}
-        @media #{$small} {@include grid-column(12);}
-        fieldset{
-          margin:0;
-        }
-        a.new-call{
-          margin-bottom:0;
-        }
+
+    div.call-to-action {
+      h1 {
+        color: white;
+      }
     }
-    h3 {
-        text-align: center;
-        background: none;
+
+    div.login-form-container {
+      color: white;
+
+      h4 {
+        color: white;
+      }
     }
+
     div.register{
         @include grid-column(3, $center: true);
     }

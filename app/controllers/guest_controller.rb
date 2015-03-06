@@ -1,5 +1,8 @@
 class GuestController < ApplicationController
 
+  def index
+  end
+
   def landing
     @login_inset = true # let template know not to force grid on form
   end

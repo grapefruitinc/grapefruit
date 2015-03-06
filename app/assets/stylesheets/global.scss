@@ -26,8 +26,27 @@ $medium: "screen and (max-width: 50rem)";
 $full: "screen and (max-width: 90rem)";
 
 
-/***************************/
+/***************************
+ * Global Defaults
+ */
 
+/*
+ * Default font settings
+ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+h1, h2, h3 {
+  color: $gina-orange-color;
+}
+
+li {
+  list-style-image: url('grapefruit-seed.svg');
+}
+
+/***************************/
 
 body {background-color: $footer-color; max-width: 100%; overflow-x: hidden;}
 
@@ -213,7 +232,6 @@ nav.horizontal ul li { display: inline-block; }
 
 div.main-content{
     background-color: #FFF;
-    padding: 3rem 0;
 }
 
 .page-header-container {
@@ -425,18 +443,19 @@ section {
 /**
   footer
 **/
-footer{
-    background-color: $footer-color;
-    padding: 1rem 0 1rem 0;
-    ul.nav-links{
-      text-align: left;
-    }
-    a {
-        color: rgba(255, 255, 255, 0.8);
-        transition: color 250ms;
-        &:hover {color: white;}
-    }
-    & > div {@include grid-row();}
+footer {
+  background-color: $footer-color;
+  padding: 1rem 0 1rem 0;
+
+  ul.nav-links {
+    text-align: left;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 250ms;
+    &:hover { color: white; }
+  }
 }
 
 .school-logo {

@@ -69,7 +69,7 @@
 
 
   <div class="main-content">
-    <% if not content_for?(:home_content) %>
+    <% if !content_for?(:home_content) %>
       <script> var home_standalone = true; </script>
     <% end %>
     <%= content_for?(:home_content) ? yield(:home_content) : yield %>
