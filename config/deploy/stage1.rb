@@ -8,8 +8,9 @@ role :app, %w{graham.li}
 role :web, %w{graham.li}
 role :db,  %w{graham.li}
 
-set :deploy_to, '/srv/stage1'
+set :deploy_to, '/srv/apps/stage1'
 set :branch, 'dev'
+set :rails_env, "production"
 
 # Extended Server Syntax
 # ======================
@@ -35,7 +36,7 @@ set :branch, 'dev'
 # And/or per server (overrides global)
 # ------------------------------------
 server 'graham.li',
-  user: 'root',
+  user: 'deploy',
   roles: %w{web},
   ssh_options: {
     forward_agent: false,

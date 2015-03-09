@@ -9,7 +9,7 @@ role :web, %w{grapefruit.cs.rpi.edu}
 role :db,  %w{grapefruit.cs.rpi.edu}
 
 set :deploy_to, '/home/administrator/apps/gf-stage2'
-set :branch, 'dev'
+set :branch, 'master'
 set :rails_env, "production"
 
 # Extended Server Syntax
