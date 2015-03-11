@@ -4,11 +4,11 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{grapefruit.cs.rpi.edu}
-role :web, %w{grapefruit.cs.rpi.edu}
-role :db,  %w{grapefruit.cs.rpi.edu}
+role :app, %w{cloud.grapefruit.link}
+role :web, %w{cloud.grapefruit.link}
+role :db,  %w{cloud.grapefruit.link}
 
-set :deploy_to, '/home/administrator/apps/grapefruit'
+set :deploy_to, '/srv/apps/cloud'
 
 # Extended Server Syntax
 # ======================
@@ -34,8 +34,8 @@ set :deploy_to, '/home/administrator/apps/grapefruit'
 #
 # And/or per server (overrides global)
 # ------------------------------------
-server 'grapefruit.cs.rpi.edu',
-  user: 'administrator',
+server 'cloud.grapefruit.link',
+  user: 'deploy',
   roles: %w{web},
   ssh_options: {
     forward_agent: false,
