@@ -4,7 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  name               :string(255)
-#  description        :string(255)
+#  description        :text(65535)
 #  points             :float(24)
 #  course_id          :integer
 #  assignment_type_id :integer

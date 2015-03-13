@@ -10,7 +10,7 @@
 #  lecture_id    :integer
 #  file          :string(255)
 #  youtube_id    :string(255)
-#  mediasite_url :string(255)
+#  mediasite_url :string(500)
 #
 
 class Video < ActiveRecord::Base

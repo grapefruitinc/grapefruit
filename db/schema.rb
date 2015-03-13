@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219213443) do
+ActiveRecord::Schema.define(version: 20150313152950) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20150219213443) do
 
   create_table "assignments", force: :cascade do |t|
     t.string   "name",               limit: 255
-    t.string   "description",        limit: 255
+    t.text     "description",        limit: 65535
     t.float    "points",             limit: 24
     t.integer  "course_id",          limit: 4
     t.integer  "assignment_type_id", limit: 4
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20150219213443) do
   create_table "comments", force: :cascade do |t|
     t.integer  "lecture_id", limit: 4
     t.integer  "author_id",  limit: 4
-    t.string   "body",       limit: 255
+    t.string   "body",       limit: 700
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20150219213443) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type",       limit: 255
   end
 
   create_table "courses", force: :cascade do |t|
@@ -120,7 +121,7 @@ ActiveRecord::Schema.define(version: 20150219213443) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "file",          limit: 255
-    t.string   "description",   limit: 255
+    t.text     "description",   limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_id",     limit: 4
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(version: 20150219213443) do
 
   create_table "grades", force: :cascade do |t|
     t.float    "points",        limit: 24
-    t.string   "comments",      limit: 255
+    t.text     "comments",      limit: 65535
     t.integer  "assignment_id", limit: 4
     t.integer  "user_id",       limit: 4
     t.datetime "created_at"
@@ -174,13 +175,13 @@ ActiveRecord::Schema.define(version: 20150219213443) do
     t.integer  "course_id",  limit: 4
     t.integer  "topic_id",   limit: 4
     t.integer  "author_id",  limit: 4
-    t.string   "body",       limit: 255
+    t.text     "body",       limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "submissions", force: :cascade do |t|
-    t.string   "comments",      limit: 255
+    t.text     "comments",      limit: 65535
     t.integer  "user_id",       limit: 4
     t.integer  "assignment_id", limit: 4
     t.datetime "created_at"
@@ -188,12 +189,12 @@ ActiveRecord::Schema.define(version: 20150219213443) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.integer  "replies",        limit: 4,   default: 0
+    t.integer  "replies",        limit: 4,     default: 0
     t.integer  "course_id",      limit: 4
     t.integer  "author_id",      limit: 4
     t.integer  "last_poster_id", limit: 4
     t.string   "name",           limit: 255
-    t.string   "body",           limit: 255
+    t.text     "body",           limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capsule_id",     limit: 4
@@ -236,7 +237,7 @@ ActiveRecord::Schema.define(version: 20150219213443) do
     t.integer  "lecture_id",    limit: 4
     t.string   "file",          limit: 255
     t.string   "youtube_id",    limit: 255
-    t.string   "mediasite_url", limit: 255
+    t.string   "mediasite_url", limit: 500
   end
 
 end

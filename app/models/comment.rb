@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  lecture_id :integer
 #  author_id  :integer
-#  body       :string(255)
+#  body       :string(700)
 #  created_at :datetime
 #  updated_at :datetime
 #
