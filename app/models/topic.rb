@@ -8,7 +8,7 @@
 #  author_id      :integer
 #  last_poster_id :integer
 #  name           :string(255)
-#  body           :string(255)
+#  body           :text(65535)
 #  created_at     :datetime
 #  updated_at     :datetime
 #  capsule_id     :integer

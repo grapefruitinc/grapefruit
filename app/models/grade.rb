@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  points        :float(24)
-#  comments      :string(255)
+#  comments      :text(65535)
 #  assignment_id :integer
 #  user_id       :integer
 #  created_at    :datetime

@@ -6,7 +6,7 @@
 #  course_id  :integer
 #  topic_id   :integer
 #  author_id  :integer
-#  body       :string(255)
+#  body       :text(65535)
 #  created_at :datetime
 #  updated_at :datetime
 #

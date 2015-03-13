@@ -3,7 +3,7 @@
 # Table name: submissions
 #
 #  id            :integer          not null, primary key
-#  comments      :string(255)
+#  comments      :text(65535)
 #  user_id       :integer
 #  assignment_id :integer
 #  created_at    :datetime
