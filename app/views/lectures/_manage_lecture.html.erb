@@ -44,7 +44,7 @@
     <div class="lecture-videos">
       <% if lecture.videos.present? %>
         <div>
-          <h6>lecture videos (<%= link_to "new video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture) %>)</h6>
+          <h6>lecture videos (<%= link_to "new video", new_course_capsule_lecture_video_path(@course, lecture.capsule, lecture), class: "add" %>)</h6>
           <% lecture.videos.each do |video| %>
             <%= render 'videos/manage_video', video: video %>
           <% end %>
