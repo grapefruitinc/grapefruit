@@ -29,14 +29,7 @@
 }
 
 div.main-content{
-    /* hide background on small viewports */
-    @media #{$small} {
-      background:none;
-    }
-    @media #{$medium} {
-      background:none;
-    }
-
+    background-color: #555;
     div.logo{
         @include grid-column(12);
         margin-bottom: 2em;
@@ -49,11 +42,18 @@ div.main-content{
     }
     div.content{
       padding: 1em 15%;
-      @include grid-column(4, $offset: 4);
+      @include grid-column(6, $center: true);
       background-color: #eee;
-      border-bottom-left-radius: 1em;
-      border-bottom-right-radius: 1em;
-      margin-bottom: 3em;
+      min-height: 450px;
+      margin-bottom: 2em;
+      max-width: 28em;
+      @media #{$medium}{
+        @include grid-column(8, $center: true);
+      }
+      @media #{$small} {
+        @include grid-column (12);
+        @include grid-row;
+      }
     }
     div.about-for.content h3{
       text-align: left;
@@ -78,6 +78,10 @@ div.main-content{
       background-image: url(<%= asset_path 'orchard.jpeg' %>);
       background-position: 0% 50%;
       background-size: 100%;
+      @media #{$small} {
+        background-image: none;
+        background-color: #888;
+      }
     }
 
     form.login-form{
