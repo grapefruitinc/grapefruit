@@ -38,11 +38,9 @@ span.instructing{
 
 .course-card {
     @include grid-column(4, $collapse: true);
-    padding: 0em 1em;
+    padding: 1em;
     position: relative;
-    .course-card-name {
-        margin-top: 1rem;
-    }
+    margin-bottom: 2em;
     .course-card-description{
       min-height: 5em;
       color: $grey-text-color;
