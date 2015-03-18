@@ -19,7 +19,7 @@ Use with extends instead of in the markup directly when possible
 .upper {text-transform: uppercase;}
 .hidden,.reveal-hidden{display:none;}
 .visibility-hidden{visibility:hidden;}
-
+.pre{white-space: pre;}
 
 $small: "screen and (max-width: 34rem)";
 $medium: "screen and (max-width: 50rem)";
