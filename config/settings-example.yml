@@ -1,3 +1,6 @@
+instance:
+  name: "My Super Grapefruit"
+  info_url: "http://grapefruit.link"
 youtube:
   username: "YOUTUBE USERNAME"
   password: "YOUTUBE PASSWORD"
@@ -7,7 +10,3 @@ gmail:
   password: "fake_password"
   source_host: "grapefruit.cs.rpi.edu" # example, please change if needed!
   from_name: "The Grapefruit Team"
-org:
-  name: "Rensselaer Polytechnic Institute"
-  short_name: "RPI"
-  urL: "http://rpi.edu"

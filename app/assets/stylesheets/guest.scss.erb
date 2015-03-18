@@ -47,8 +47,13 @@ div.main-content{
           border-color: #aaa;
         }
     }
-    div.about.content, div.contact.content,div.contribute.content{
+    div.content{
       padding: 1em 15%;
+      @include grid-column(4, $offset: 4);
+      background-color: #eee;
+      border-bottom-left-radius: 1em;
+      border-bottom-right-radius: 1em;
+      margin-bottom: 3em;
     }
     div.about-for.content h3{
       text-align: left;
@@ -94,14 +99,10 @@ div.main-content{
 
     div.login-form-container {
       color: white;
-
-      h4 {
-        color: white;
+      background:rgba(255,255,255,0.7);
+      h4{
+        font-weight: strong;
       }
-    }
-
-    div.register{
-        @include grid-column(3, $center: true);
     }
 }
 

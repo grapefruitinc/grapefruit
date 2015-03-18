@@ -22,9 +22,6 @@ Grapefruit::Application.routes.draw do
   get 'tos' => 'guest#tos'
   get 'contact' => 'guest#contact'
   get 'contribute' => 'guest#contribute'
-  get 'students' => 'guest#students'
-  get 'educators' => 'guest#educators'
-  get 'admins' => 'guest#admins'
 
   devise_for :users, :skip => [:sessions, :passwords, :registrations]
 
