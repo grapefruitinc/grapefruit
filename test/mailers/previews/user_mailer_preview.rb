@@ -1,8 +1,8 @@
 class UserMailerPreview < ActionMailer::Preview
-  def to_class
-    UserMailer.to_class(User.first, Course.first, "Sample Subject", "Sample Message")
+  def new_announcement
+    UserMailer.to_class(User.first, User.last, Course.first, "Sample Subject", "Sample Message")
   end
   def new_assignment
-    UserMailer.new_assignment(Course.first, Assignment.first)
+    UserMailer.new_assignment(User.first, Course.first, Assignment.first)
   end
 end
