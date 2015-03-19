@@ -8,8 +8,8 @@ class UserMailer < ActionMailer::Base
     @sender_name = sender.full_name
     @sender_email = sender.email
     @course_name = course.name
-    @course_link = course_path(course)
-    @announcements_link = course_announcements_path(course)
+    @course_link = course_url(course)
+    @announcements_link = course_announcements_url(course)
     @message = message
     course.students.each do |student|
       @student_name = student.display_identifier

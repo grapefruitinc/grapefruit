@@ -1,6 +1,6 @@
 <p>Hey there <%= @student_name %>,</p>
 
-<p>A new assignment was posted in <%= link_to @course.name, course_path(@course) %>:</p>
+<p>A new assignment was posted in <%= link_to @course.name, course_url(@course) %>:</p>
 
 <h3><%= @assignment.name %></h3>
 <p class="grey"><%= @assignment.assignment_type.name %>, <%= @assignment.points %> points</p>
@@ -10,4 +10,4 @@
 <% end %>
 
 <p>For more information and to download any attached files,
-    <%= link_to 'view this assignment online', course_assignment_path(@course, @assignment) %>.</p>
+    <%= link_to 'view this assignment online', course_assignment_url(@course, @assignment) %>.</p>
