@@ -4,27 +4,23 @@ class UserMailer < ActionMailer::Base
 
   layout 'mailer_base'
 
-  def to_class(sender, course, subject, message)
+  def new_announcement(sender, student, course, subject, message)
     @sender_name = sender.full_name
     @sender_email = sender.email
     @course_name = course.name
-    @course_link = course_path(course)
-    @announcements_link = course_announcements_path(course)
+    @course_link = course_url(course)
+    @announcements_link = course_announcements_url(course)
     @message = message
-    course.students.each do |student|
-      @student_name = student.display_identifier
-      mail(to: student.email, subject: subject, reply_to: @sender_email)
-    end
+    @student_name = student.display_identifier
+    mail(to: student.email, subject: subject, reply_to: @sender_email)
   end
 
-  def new_assignment(course, assignment)
+  def new_assignment(student, course, assignment)
     subject = "New Assignment: #{assignment.name}"
     @course = course
     @assignment = assignment
-    course.students.each do |student|
-      @student_name = student.display_identifier
-      mail(to: student.email, subject: subject)
-    end
+    @student_name = student.display_identifier
+    mail(to: student.email, subject: subject)
   end
 
 end
