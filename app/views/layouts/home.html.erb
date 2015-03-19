@@ -39,7 +39,7 @@
               class: ("active" if (@course.present? || params[:controller] == "courses")) %>
           </li><li>
             <%= link_to "Profile", edit_user_registration_path,
-            controllerlass: ("active" if params[:controller] == "devise/registrations") %>
+            class: ("active" if params[:controller] == "devise/registrations") %>
           </li><li>
             <%= link_to "Help", contact_path %>
           </li><li>
@@ -69,7 +69,7 @@
 
 
   <div class="main-content">
-    <% if not content_for?(:home_content) %>
+    <% if !content_for?(:home_content) %>
       <script> var home_standalone = true; </script>
     <% end %>
     <%= content_for?(:home_content) ? yield(:home_content) : yield %>
