@@ -34,9 +34,20 @@
 				<% if assignment.due_day < DateTime.now %>
 					was
 				<% end %>
-				due on <%= assignment.due_day.strftime(DATE_FORMAT_DAY) %>
+				due on
+
+				<%= assignment.due_day.strftime(DATE_FORMAT_DAY) %>
+
+				<% if assignment.due_day > Time.now %>
+		      (due <%= time_ago_in_words(assignment.due_day) %> from now)
+		    <% else %>
+		      (was due <%= time_ago_in_words(assignment.due_day) %> ago)
+		    <% end %>
+
 			<% end %>
 			<br/>
-			<span class="timestamp grey">updated <%= time_ago_in_words(assignment.updated_at) %> ago</span>
+			<span class="timestamp grey">
+				updated <%= time_ago_in_words(assignment.updated_at) %> ago
+			</span>
 	</div>
 </div>
