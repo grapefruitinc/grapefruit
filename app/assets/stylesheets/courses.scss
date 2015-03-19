@@ -329,18 +329,6 @@ span[class*="status"] {
     }
 }
 
-.announcement
-{
-    @include alert(lighten($grapefruit-orange-color, 10%));
-    a{
-        color: white;
-        text-decoration: underline;
-        font-weight: bold;
-    }
-    span.expandable-text{
-        font-weight: normal;
-    }
-}
 
 div.manage{
     @include grid-column(12);

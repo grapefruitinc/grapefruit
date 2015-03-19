@@ -1,26 +1,28 @@
 <% page_title @course.name %>
 
-<div style="margin-top:1em;">
+<% if current_user != @course.instructor %>
+  <div style="margin-top:1em;">
 
-  <% if @course.students.include?(current_user) %>
+    <% if @course.students.include?(current_user) %>
 
-    <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
-      <%= f.hidden_field :course_id, value: @course.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit "Unenroll from this course", class: "button secondary small" %>
+      <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
+        <%= f.hidden_field :course_id, value: @course.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Unenroll from this course", class: "button secondary small" %>
+      <% end %>
+
     <% end %>
 
-  <% end %>
-
-  <% if !@course.students.include?(current_user) && @course.instructor != current_user %>
-    <%= form_for [@course, @course_user] do |f| %>
-      <%= f.hidden_field :course_id, value: @course.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit "Enroll", class: "button small" %>
+    <% if !@course.students.include?(current_user) && @course.instructor != current_user %>
+      <%= form_for [@course, @course_user] do |f| %>
+        <%= f.hidden_field :course_id, value: @course.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Enroll", class: "button small" %>
+      <% end %>
     <% end %>
-  <% end %>
 
-</div>
+  </div>
+<% end %>
 
 <% unless @course.announcements.blank? %>
   <p class="announcement">

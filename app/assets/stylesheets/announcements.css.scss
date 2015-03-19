@@ -1,5 +1,13 @@
-p.announcement{
-  span{
-    white-space: pre;
-  }
+.announcement
+{
+    @include alert(lighten($gina-orange-color, 30%));
+    a{
+        text-decoration: underline;
+        font-weight: bold;
+    }
+    span{
+      @extend .pre;
+      color: #1e1e1e;
+      font-weight: normal;
+    }
 }
