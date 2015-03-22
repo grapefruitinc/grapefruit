@@ -9,7 +9,7 @@ class AssignmentsController < ApplicationController
     if can? :manage, @course
       @assignments = @course.assignments.order("updated_at DESC")
     else
-      @assignments = @course.assignments.where('reveal_day < ?', DateTime.now).order("due_day DESC")
+      @assignments = @course.assignments.where('reveal_day < ?', DateTime.now).order("due_day ASC")
     end
   end
 

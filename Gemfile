@@ -11,9 +11,8 @@ gem 'connection_ninja'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 
-# ZURB Foundation 4.0
 gem "compass-rails"
-gem 'zurb-foundation'
+gem "foundation-rails"
 
 # pickadate.js datepicker
 gem 'pickadate-rails'
