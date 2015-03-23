@@ -26,7 +26,7 @@
 
 <% unless @course.announcements.blank? %>
   <p class="announcement">
-    <%= @course.announcements.last.title %>
+    <strong><%= @course.announcements.last.title %></strong>
     <br>
     <span><%= @course.announcements.last.content %></span>
     <br>

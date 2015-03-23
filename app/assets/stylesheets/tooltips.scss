@@ -4,6 +4,8 @@ $tooltip-text-color: #fff;
 
 .tooltipped {
   position: relative;
+  text-decoration: underline;
+  color: $grey-text-color;
 }
 
 // This is the tooltip bubble
