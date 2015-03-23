@@ -51,13 +51,13 @@ table.assignmentTypeList{
 }
 
 select{
-  line-height: 1.5em;
-  height: 1.5em;
-  font-size: 1.2em;
   -webkit-appearance: menulist-button;
 }
 
 div.assignmentList{
+  h4{
+    font-weight: 400;
+  }
   > div {
     h3{
       display: inline-block;

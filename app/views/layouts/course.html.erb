@@ -1,5 +1,4 @@
 <% content_for :home_content do %>
-
 <div class="page-header-container">
   <div class="page-header">
     <div class="page-header-left">
@@ -65,8 +64,7 @@
   <% else %>
     <aside>
       <% if can? :manage, @course %>
-        <% @back_icon = (request.referer =~ /manage/) ? '&#9664;' : '' %>
-        <%= link_to "#{@back_icon} Content Manager".html_safe, course_manage_path(@course),
+        <%= link_to "Content Manager".html_safe, course_manage_path(@course),
           class: "button coal back" %>
       <% end %>
 
@@ -86,12 +84,9 @@
   <% end %>
 </section>
 
-<% end %> <!-- content_for :home_content -->
-
+<% end %>
 <% content_for :left_sidebar do %>
 <ul class="course-capsule-list course-accordion--mobile">
   <%= render @capsules %>
 </ul>
-<% end %>
-
-<%= render template: 'layouts/home' %>
+<% end %><%= render template: 'layouts/home' %>

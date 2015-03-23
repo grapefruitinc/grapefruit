@@ -8,13 +8,15 @@
 
 <% unless @instructed_courses.empty? %>
   <section>
+    <div class="page-header-full">
       <h3>Courses You Instruct</h3>
-      <%= render @instructed_courses %>
+    </div>
+    <%= render @instructed_courses %>
   </section>
 <% end %>
 
 <section>
-  <div class="page-header">
+  <div class="page-header-full">
     <h3 class="page-header-title">Courses You're Taking</h3>
 
   <% if @enrolled_courses.empty? %>
