@@ -1,7 +1,7 @@
 <% page_title @course.name %>
 
 <% if current_user != @course.instructor %>
-  <div style="margin-top:1em;">
+  <div>
 
     <% if @course.students.include?(current_user) %>
 
@@ -26,7 +26,7 @@
 
 <% unless @course.announcements.blank? %>
   <p class="announcement">
-    <%= @course.announcements.last.title %>
+    <strong><%= @course.announcements.last.title %></strong>
     <br>
     <span><%= @course.announcements.last.content %></span>
     <br>

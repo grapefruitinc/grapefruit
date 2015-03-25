@@ -17,10 +17,14 @@
     <fieldset>
 
       <legend>Contact Information</legend>
-      
+
       <%= f.text_field :name, placeholder: "Name", autofocus: true %>
 
       <%= f.email_field :email, placeholder: "Email Address" %>
+
+      <p>
+        at <strong class="grey"><%= current_user.school_account.name %></strong>
+      </p>
 
     </fieldset>
 
@@ -31,7 +35,7 @@
     <fieldset>
 
       <legend>Change Password <small>(leave blank if you don't want to change it)</small></legend>
-    
+
       <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
 
       <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>

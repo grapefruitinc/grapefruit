@@ -9,7 +9,7 @@
 #  updated_at     :datetime
 #  capsule_id     :integer
 #  description    :text(65535)
-#  live           :boolean          default("0")
+#  live           :boolean          default(FALSE)
 #
 
 class Lecture < ActiveRecord::Base

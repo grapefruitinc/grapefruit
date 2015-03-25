@@ -36,13 +36,10 @@
 				<% end %>
 				due on
 
+				<span class="tooltipped tooltipped-s"
+					aria-label="<% if assignment.due_day > Time.now %>(due <%= time_ago_in_words(assignment.due_day) %> from now)<% else %>(was due <%= time_ago_in_words(assignment.due_day) %> ago)<% end %>">
 				<%= assignment.due_day.strftime(DATE_FORMAT_DAY) %>
-
-				<% if assignment.due_day > Time.now %>
-		      (due <%= time_ago_in_words(assignment.due_day) %> from now)
-		    <% else %>
-		      (was due <%= time_ago_in_words(assignment.due_day) %> ago)
-		    <% end %>
+				</span>
 
 			<% end %>
 			<br/>

@@ -27,6 +27,8 @@
 
     <%= yield(:stylesheets) if content_for?(:stylesheets) %>
 
+    <%= javascript_include_tag "vendor/modernizr" %>
+
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
   </head>

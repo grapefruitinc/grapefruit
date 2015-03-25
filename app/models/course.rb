@@ -17,6 +17,7 @@
 #  credits                    :integer
 #  slug                       :string(255)
 #  problem_set_url            :text(65535)
+#  school_account_id          :integer
 #
 
 class Course < ActiveRecord::Base
@@ -33,6 +34,7 @@ class Course < ActiveRecord::Base
   # Relationships
   # ========================================================
   belongs_to :instructor, class_name: "User"
+  belongs_to :school_account
   has_many :course_users, dependent: :destroy
   has_many :students, class_name: "User", through: :course_users, source: :user
   has_many :capsules, dependent: :destroy

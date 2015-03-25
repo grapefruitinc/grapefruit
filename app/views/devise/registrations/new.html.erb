@@ -18,6 +18,13 @@
 
     <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
 
+    <div id="prefetch-schools">
+      <p class="grey">
+        Type in the name of your school.
+      </p>
+      <input class="typeahead" type="text" name="school_typeahead" placeholder="School name">
+    </div>
+
     <%= f.submit "Create Account", class: 'button' %>
 
     <br/>

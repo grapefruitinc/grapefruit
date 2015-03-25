@@ -192,8 +192,8 @@ $footer-color: #2a2a2a;
 
 // Control header font sizes
 
-$h1-font-size: em-calc(40);
-$h2-font-size: em-calc(33);
+  $h1-font-size: 2rem;
+  $h2-font-size: 1.5rem;
 //$h3-font-size: em-calc(27);
 // $h4-font-size: em-calc(23);
 // $h5-font-size: em-calc(18);
@@ -367,7 +367,7 @@ $h2-font-size: em-calc(33);
 
 // $button-med: em-calc(12);
 // $button-tny: em-calc(7);
-// $button-sml: em-calc(9);
+ $button-sml: .5rem;
 // $button-lrg: em-calc(16);
 
 // We use this to control the display property.

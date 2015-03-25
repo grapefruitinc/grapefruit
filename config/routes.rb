@@ -23,7 +23,7 @@ Grapefruit::Application.routes.draw do
   get 'contact' => 'guest#contact'
   get 'contribute' => 'guest#contribute'
 
-  devise_for :users, :skip => [:sessions, :passwords, :registrations]
+  devise_for :users, skip: [:sessions, :passwords, :registrations]
 
   as :user do
 
@@ -40,7 +40,7 @@ Grapefruit::Application.routes.draw do
 
     # registrations
     get   'join' => 'devise/registrations#new',    as: :new_user_registration
-    post  'join' => 'devise/registrations#create', as: :user_registration
+    post  'join' => 'custom_registration#create', as: :user_registration
     get 'cancel'   => 'devise/registrations#cancel', as: :cancel_user_registration
     get 'settings' => 'devise/registrations#edit',   as: :edit_user_registration
     put 'join' => 'devise/registrations#update', as: :update_user_registration

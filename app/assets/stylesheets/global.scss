@@ -4,6 +4,8 @@ Use with extends instead of in the markup directly when possible
 .thingIWantToBold {@extend .bold;}
 *********/
 
+@import "tooltips";
+
 .large {font-size: 120%;}
 .small {font-size: 60%;}
 .medium {font-size: 80%}
@@ -34,7 +36,7 @@ $full: "screen and (max-width: 90rem)";
  * Default font settings
  */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4{
   font-weight: 300;
 }
 
@@ -44,6 +46,7 @@ h1, h2, h3 {
 
 ul{
   margin-bottom: 0em;
+  margin-left: 0em;
 }
 
 /***************************/
@@ -202,6 +205,7 @@ div#top-flash{
       object {
         width: 110px;
         pointer-events: none;
+        height: 100%;
       }
     }
     @media #{$medium} {
@@ -321,7 +325,8 @@ input[type=text], input[type=email], input[type=password] {
     buttons
 **/
 
-.button {
+.button,
+input[type=submit].button{
     box-shadow: none;
     transition: none;
     border-radius: $global-radius;
@@ -515,4 +520,9 @@ a.coal{
   &:hover{
     background-color: #555;
   }
+}
+
+/* pickadate */
+input.pickadate[readonly]{
+  background-color: #fff;
 }
