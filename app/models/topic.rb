@@ -3,7 +3,7 @@
 # Table name: topics
 #
 #  id             :integer          not null, primary key
-#  replies        :integer          default("0")
+#  replies        :integer          default(0)
 #  course_id      :integer
 #  author_id      :integer
 #  last_poster_id :integer
