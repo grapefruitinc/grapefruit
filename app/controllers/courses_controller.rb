@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = current_user.instructed_courses.build(course_params)
+    @course = current_user.instructed_courses.build(course_params.merge(school_account_id: current_user.school_account_id))
     authorize! :create, @course
     if @course.save
       @first_type = @course.assignment_types.new(name: 'Assignment', drops_lowest: false, default_point_value: 100)

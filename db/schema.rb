@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325041335) do
+ActiveRecord::Schema.define(version: 20150325055218) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -115,8 +115,10 @@ ActiveRecord::Schema.define(version: 20150325041335) do
     t.integer  "credits",                    limit: 4
     t.string   "slug",                       limit: 255
     t.text     "problem_set_url",            limit: 65535
+    t.integer  "school_account_id",          limit: 4
   end
 
+  add_index "courses", ["school_account_id"], name: "index_courses_on_school_account_id", using: :btree
   add_index "courses", ["slug"], name: "index_courses_on_slug", using: :btree
 
   create_table "documents", force: :cascade do |t|
@@ -144,11 +146,6 @@ ActiveRecord::Schema.define(version: 20150325041335) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
-
-  create_table "gf_world_schools", force: :cascade do |t|
-    t.string "name", limit: 150, null: false
-    t.string "url",  limit: 150, null: false
-  end
 
   create_table "grades", force: :cascade do |t|
     t.float    "points",        limit: 24
