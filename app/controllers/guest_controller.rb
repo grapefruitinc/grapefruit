@@ -19,4 +19,7 @@ class GuestController < ApplicationController
   def contribute
   end
 
+  def privacy
+  end
+
 end
