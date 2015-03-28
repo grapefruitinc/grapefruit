@@ -17,15 +17,9 @@
 
 <% unless @assignment.due_day.blank? %>
   <p>
-    Due <strong><%= @assignment.due_day.strftime(DATE_FORMAT_DAY) %></strong>,
+    <strong><%= due_in_words(@assignment) %></strong>,
 
-    which is
-
-    <% if @assignment.due_day > Time.now %>
-      <%= time_ago_in_words(@assignment.due_day) %> from now.
-    <% else %>
-      <%= time_ago_in_words(@assignment.due_day) %> ago.
-    <% end %>
+		<%= @assignment.true_due_time.strftime(DATE_FORMAT_DAY) %> at 11:59 p.m.
 
   </p>
 <% end %>

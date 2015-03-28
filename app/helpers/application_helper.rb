@@ -40,4 +40,9 @@ module ApplicationHelper
     object.errors.full_unique_messages.count
   end
 
+  # gets the help email
+  def help_email
+    "<strong>hello</strong> at <strong>grapefruit.link</strong>".html_safe
+  end
+
 end

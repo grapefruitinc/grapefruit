@@ -22,6 +22,7 @@ Grapefruit::Application.routes.draw do
   get 'tos' => 'guest#tos'
   get 'contact' => 'guest#contact'
   get 'contribute' => 'guest#contribute'
+  get 'privacy' => 'guest#privacy'
 
   devise_for :users, skip: [:sessions, :passwords, :registrations]
 

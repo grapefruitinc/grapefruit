@@ -4,6 +4,12 @@
 
 <% content_for :content do %>
 
+  <script>
+  $(function(){
+    mixpanel.identify("<%= current_user.id %>");
+  });
+  </script>
+
   <div class="top-bar-container">
 
     <%= render 'global/flash' %>

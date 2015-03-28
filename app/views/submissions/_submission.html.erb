@@ -13,9 +13,9 @@
 
     <%= time_ago_in_words(submission.created_at) %> ago
 
-    <% if submission.created_at > submission.assignment.due_day %>
+    <% if submission.created_at > submission.assignment.true_due_time %>
       <span class="alert label">
-        <%= distance_of_time_in_words(submission.created_at, submission.assignment.due_day) %> late!
+        <%= distance_of_time_in_words(submission.created_at, submission.assignment.true_due_time) %> late!
       </span>
     <% end %>
   </div>

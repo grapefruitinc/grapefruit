@@ -31,14 +31,13 @@
 			<span class="points"><%= assignment.points %> point <%= assignment.assignment_type.name %> </span>
 			<% unless can? :manage, @course %>
 				-
-				<% if assignment.due_day < DateTime.now %>
+				<% if assignment.true_due_time < DateTime.now %>
 					was
 				<% end %>
 				due on
 
-				<span class="tooltipped tooltipped-s"
-					aria-label="<% if assignment.due_day > Time.now %>(due <%= time_ago_in_words(assignment.due_day) %> from now)<% else %>(was due <%= time_ago_in_words(assignment.due_day) %> ago)<% end %>">
-				<%= assignment.due_day.strftime(DATE_FORMAT_DAY) %>
+				<span class="tooltipped tooltipped-s" aria-label="(<%= due_in_words(assignment) %>)">
+					<%= assignment.true_due_time.strftime(DATE_FORMAT_DAY) %>
 				</span>
 
 			<% end %>
