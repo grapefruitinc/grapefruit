@@ -38,4 +38,8 @@ class Assignment < ActiveRecord::Base
     grades.where(user_id: user.id).last
   end
 
+  def true_due_time
+    due_day.end_of_day
+  end
+
 end
