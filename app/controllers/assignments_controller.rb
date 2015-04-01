@@ -67,7 +67,7 @@ private
   def send_assignment_email(course, assignment)
     if params[:send_email]
       course.students.each do |student|
-        UserMailer.new_assignment(student, course, assignment).deliver_now
+        UserMailer.new_assignment(student, course, assignment).deliver_later
       end
     end
   end
