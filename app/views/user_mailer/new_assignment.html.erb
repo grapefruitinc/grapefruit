@@ -6,7 +6,7 @@
 <p class="grey"><%= @assignment.assignment_type.name %>, <%= @assignment.points %> points</p>
 
 <% if not @assignment.description.empty? %>
-  <div class="message"> <pre><%= @assignment.description %></pre> </div>
+  <div class="message"><%= @assignment.description %></div>
 <% end %>
 
 <p>For more information and to download any attached files,
