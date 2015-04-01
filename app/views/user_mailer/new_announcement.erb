@@ -2,7 +2,7 @@
 
 <p><strong><%= @sender_name %></strong> sent you a message in <%= link_to @course_name, @course_link %>:</p>
 
-<div class="message"> <pre><%= @message %></pre> </div>
+<div class="message"><%= @message %></div>
 
 <p>For more information, check out the <%= link_to 'announcements page', @announcements_link %> for
   <%= link_to @course_name, @course_link %> or email the sender by replying to this email.</p>
