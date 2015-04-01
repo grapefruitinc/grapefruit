@@ -13,7 +13,7 @@ class AnnouncementsController < ApplicationController
   def send_to_class
     authorize! :manage, @course
     @course.students.each do |student|
-      UserMailer.new_announcement(current_user, student, @course, params[:subject], params[:message]).deliver_now
+      UserMailer.new_announcement(current_user, student, @course, params[:subject], params[:message]).deliver_later
     end
     flash[:success] = "Email sent!"
     redirect_to course_announcements_path(@course)
@@ -32,7 +32,7 @@ class AnnouncementsController < ApplicationController
       flash[:success] = "Announcement created!"
       if(params[:send_email])
         @course.students.each do |student|
-          UserMailer.new_announcement(current_user, student, @course, @announcement.title, @announcement.content).deliver_now
+          UserMailer.new_announcement(current_user, student, @course, @announcement.title, @announcement.content).deliver_later
         end
       end
       redirect_to course_announcements_path(@course)

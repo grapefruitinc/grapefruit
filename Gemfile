@@ -35,6 +35,10 @@ gem 'uglifier', '>= 1.3.0'
 # serialize json objects properly
 gem "active_model_serializers"
 
+# delayed job for queuing
+gem 'delayed_job_active_record'
+gem 'daemons'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -49,6 +53,7 @@ gem 'jquery-turbolinks'
 gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+gem 'capistrano3-delayed-job'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
