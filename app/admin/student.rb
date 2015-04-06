@@ -53,7 +53,10 @@ ActiveAdmin.register User, as: "Student" do
     column :email
     column :sign_in_count
 
-    actions
+    actions do |user|
+      link_to 'Become Student', become_path(user_id: user), method: :post
+    end
+
   end
 
 end
