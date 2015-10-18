@@ -4,9 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{cloud.grapefruit.link}
-role :web, %w{cloud.grapefruit.link}
-role :db,  %w{cloud.grapefruit.link}
+role :app, %w{cloud.grapefruit.school}
+role :web, %w{cloud.grapefruit.school}
+role :db,  %w{cloud.grapefruit.school}
 
 set :deploy_to, '/srv/apps/cloud'
 
@@ -34,7 +34,7 @@ set :deploy_to, '/srv/apps/cloud'
 #
 # And/or per server (overrides global)
 # ------------------------------------
-server 'cloud.grapefruit.link',
+server 'cloud.grapefruit.school',
   user: 'deploy',
   roles: %w{web},
   ssh_options: {
