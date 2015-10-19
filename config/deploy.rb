@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'grapefruit'
-set :repo_url, 'https://github.com/grapefruitdotlink/grapefruit.git'
+set :repo_url, 'https://github.com/grapefruitinc/grapefruit.git'
 
 set :stages, %w(stage1 stage2 production)
 
