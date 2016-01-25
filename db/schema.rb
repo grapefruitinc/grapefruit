@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401205830) do
+ActiveRecord::Schema.define(version: 20160125041409) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150401205830) do
     t.string   "slug",                       limit: 255
     t.text     "problem_set_url",            limit: 65535
     t.integer  "school_account_id",          limit: 4
+    t.string   "instructor_label",           limit: 255
   end
 
   add_index "courses", ["school_account_id"], name: "index_courses_on_school_account_id", using: :btree

@@ -42,7 +42,7 @@ module ApplicationHelper
 
   # gets the help email
   def help_email
-    "<strong>hello</strong> at <strong>grapefruit.link</strong>".html_safe
+    "<strong>hello</strong> at <strong>grapefruit.school</strong>".html_safe
   end
 
 end

@@ -44,7 +44,13 @@
 <%= link_to_textbook_problem_sets(@course) %>
 
 <p>
-  Instructed by <strong><%= @course.instructor.name %></strong> (<%= mail_to @course.instructor.email %>)
+  <% if @course.instructor_label.present? %>
+    <strong>
+      <%= @course.instructor_label %>
+    </strong>
+  <% else %>
+    Instructed by <strong><%= @course.instructor.name %></strong> (<%= mail_to @course.instructor.email %>)
+  <% end %>
 </p>
 
 <p class="description"><%= @course.description %></p>
