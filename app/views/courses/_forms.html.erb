@@ -3,6 +3,13 @@
 <%= f.label :name %>
 <%= f.text_field :name, autofocus: true, placeholder: "The human-readable name for the course." %>
 
+<%= f.label :instructor_label, "Instructor Label Text" %>
+<small>
+  Leave blank to have the default label show. Or customize, e.g. 'Taught by the GU Economics Department'
+</small>
+<%= f.text_field :instructor_label,
+  placeholder: "Instructed by #{@course.instructor.name} (#{@course.instructor.email})" %>
+
 <%= f.label :description %>
 <%= f.text_area :description, rows: 15, style: "height:auto;",
   placeholder: "A description for the course. Remember, you can upload a syllabus later." %>
