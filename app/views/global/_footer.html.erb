@@ -15,8 +15,9 @@
       </nav>
 
       <p class="platform">
-        Grapefruit version <%= GRAPEFRUIT_VERSION_MAJOR %>.<%= GRAPEFRUIT_VERSION_MINOR %>.<%= GRAPEFRUIT_VERSION_PATCH %>+<%= GRAPEFRUIT_BUILD %>
-        @<%= Settings.instance.name %>
+        Grapefruit version <%= GRAPEFRUIT_VERSION_MAJOR %>.<%= GRAPEFRUIT_VERSION_MINOR %>.<%= GRAPEFRUIT_VERSION_PATCH %>
+        <%= "(commit #{GRAPEFRUIT_BUILD})" if GRAPEFRUIT_BUILD.present? %>
+        - <%= Settings.instance.name %>
       </p>
 
     </div>
