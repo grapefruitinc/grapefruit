@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   # Validations
   # ========================================================
-  validates :school_account, presence: { message: " must be selected, and a valid option. Don't see your school? Contact hello@grapefruit.link." }
+  validates :school_account, presence: { message: " must be selected, and a valid option. Don't see your school? Contact hello@grapefruit.school." }
 
   # User Types
   # ========================================================
