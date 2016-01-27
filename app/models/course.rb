@@ -18,6 +18,7 @@
 #  slug                       :string(255)
 #  problem_set_url            :text(65535)
 #  school_account_id          :integer
+#  instructor_label           :string(255)
 #
 
 class Course < ActiveRecord::Base
@@ -33,10 +34,16 @@ class Course < ActiveRecord::Base
 
   # Relationships
   # ========================================================
-  belongs_to :instructor, class_name: "User"
   belongs_to :school_account
+
   has_many :course_users, dependent: :destroy
-  has_many :students, class_name: "User", through: :course_users, source: :user
+  has_many :student_course_users, -> { where role: CourseUser::STUDENT }, class_name: 'CourseUser'
+  has_many :instructor_course_users, -> { where role: CourseUser::INSTRUCTOR }, class_name: 'CourseUser'
+  has_many :assistant_course_users, -> { where role: CourseUser::ASSISTANT }, class_name: 'CourseUser'
+  has_many :students, class_name: 'User', through: :student_course_users, source: :user
+  has_many :instructors, class_name: 'User', through: :instructor_course_users, source: :user
+  has_many :assistants, class_name: 'User', through: :assistant_course_users, source: :user
+
   has_many :capsules, dependent: :destroy
   has_many :lectures, through: :capsules
   has_many :documents, dependent: :destroy

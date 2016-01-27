@@ -7,10 +7,14 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  type       :string(255)
+#  role       :integer          default(0)
 #
 
 class CourseUser < ActiveRecord::Base
+  # constants for role column
+  STUDENT = 0
+  INSTRUCTOR = 1
+  ASSISTANT = 2
 
   belongs_to :user
   belongs_to :course
