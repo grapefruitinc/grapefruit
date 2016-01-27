@@ -4,7 +4,7 @@
     <strong><%= reply.author.name %></strong>
     <% if reply.author == current_user %>
       <strong>(You)</strong>
-    <% elsif reply.author == course.instructor %>
+    <% elsif reply.author.instructs? @course %>
       <p>(course instructor)</p>
     <% elsif reply.author == topic.author %>
       <p>(topic creator)</p>

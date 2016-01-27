@@ -17,7 +17,7 @@
         <strong><%= @topic.author.name %></strong>
         <% if @topic.author == current_user %>
           <strong>(You)</strong>
-        <% elsif @topic.author == @course.instructor %>
+        <% elsif @topic.author.instructs? @course %>
           <p>(course instructor)</p>
         <% elsif @topic.author == @topic.author %>
           <p>(topic creator)</p>

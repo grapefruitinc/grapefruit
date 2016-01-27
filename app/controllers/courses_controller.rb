@@ -62,18 +62,14 @@ class CoursesController < ApplicationController
     redirect_to :back
   end
 
-  def students
-    authorize! :update, @course
-    @students = @course.students
-  end
-
   def manage
     authorize! :manage, @course
     @hide_sidebar = true
   end
 
-  def stats
-    @hide_sidebar = true
+  def people
+    @instructors = @course.instructors
+    @students = @course.students
   end
 
 private

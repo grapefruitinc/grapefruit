@@ -17,7 +17,7 @@
       <%= form_for [@course, @course_user] do |f| %>
         <%= f.hidden_field :course_id, value: @course.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Enroll", class: "button small" %>
+        <%= f.submit "Join this course!", class: "button" %>
       <% end %>
     <% end %>
 
@@ -37,12 +37,7 @@
 <%= link_to_textbook_problem_sets(@course) %>
 
 <span>Instructed by:</span>
-<% @course.instructors.each do |instructor| %>
-  <p>
-    <strong><%= instructor.name %></strong>
-    (<%= mail_to instructor.email %>)
-  </p>
-<% end %>
+<%= render partial: 'users/instructor', collection: @course.instructors %>
 
 <p class="description"><%= @course.description %></p>
 
