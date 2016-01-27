@@ -3,8 +3,8 @@
   <div class="page-header">
     <div class="page-header-left">
       <h2 class="title"><%= link_to @course.name, course_path(@course) %></h2>
-      <% if @course.instructor == current_user %>
-        <p class="description">Instructor</p>
+      <% if current_user.instructs?(@course) %>
+        <p class="description">You instruct this course.</p>
       <% end %>
     </div>
     <div class="page-header-right">

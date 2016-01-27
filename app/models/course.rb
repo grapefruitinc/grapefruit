@@ -94,6 +94,16 @@ class Course < ActiveRecord::Base
     self.assignments.inject(0) { |sum, assignment| sum += assignment.points }
   end
 
+  # the user either instructs, assists with, or is enrolled in the course
+  def has?(user)
+    self.edited_by?(user) || user.enrolled?(self)
+  end
+
+  # the user either instructs or assists with the course
+  def edited_by?(user)
+    user.instructs?(self) || user.assists?(self)
+  end
+
   # Outputting
   # ========================================================
   def seats_left

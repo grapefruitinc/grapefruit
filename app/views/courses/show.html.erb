@@ -1,9 +1,9 @@
 <% page_title @course.name %>
 
-<% if current_user != @course.instructor %>
+<% if !current_user.instructs?(@course) %>
   <div>
 
-    <% if @course.students.include?(current_user) %>
+    <% if current_user.enrolled?(@course) %>
 
       <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
         <%= f.hidden_field :course_id, value: @course.id %>
@@ -13,7 +13,7 @@
 
     <% end %>
 
-    <% if !@course.students.include?(current_user) && @course.instructor != current_user %>
+    <% if !@course.has?(current_user) %>
       <%= form_for [@course, @course_user] do |f| %>
         <%= f.hidden_field :course_id, value: @course.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>

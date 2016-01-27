@@ -67,6 +67,18 @@ class User < ActiveRecord::Base
     (self.grades.joins(:assignment).merge(Assignment.where(course_id: course.id)).sum(:points) / course.perfect_total * 100).round(2).to_s + "%"
   end
 
+  def instructs?(course)
+    course.instructors.include?(self)
+  end
+
+  def assists?(course)
+    course.assistants.include?(self)
+  end
+
+  def enrolled?(course)
+    course.students.include?(self)
+  end
+
   # Output
   # ========================================================
   def display_identifier
