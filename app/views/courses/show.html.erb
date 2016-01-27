@@ -8,7 +8,7 @@
       <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
         <%= f.hidden_field :course_id, value: @course.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Unenroll from this course", class: "button secondary small" %>
+        <%= f.submit "Leave this course", class: "button secondary small" %>
       <% end %>
 
     <% end %>
@@ -34,24 +34,15 @@
   </p>
 <% end %>
 
-<div class="panel callout radius hidden">
-  <p>Welcome! Grapefruit courses have <em>Capsules</em> (like units, or chapters in a textbook) which are then divided into <em>Lectures</em>.</p>
-  <p>On the left sidebar, you'll see an expandable list of the capsules in this course, along with the lectures they contain.
-  While progressing through lectures, you can always go back and view previous content.</p>
-  <p>If this is a Calculus Bridge course, you'll see a link to a Pearson problem set in lectures that include them.</p>
-</div>
-
 <%= link_to_textbook_problem_sets(@course) %>
 
-<p>
-  <% if @course.instructor_label.present? %>
-    <strong>
-      <%= @course.instructor_label %>
-    </strong>
-  <% else %>
-    Instructed by <strong><%= @course.instructor.name %></strong> (<%= mail_to @course.instructor.email %>)
-  <% end %>
-</p>
+<span>Instructed by:</span>
+<% @course.instructors.each do |instructor| %>
+  <p>
+    <strong><%= instructor.name %></strong>
+    (<%= mail_to instructor.email %>)
+  </p>
+<% end %>
 
 <p class="description"><%= @course.description %></p>
 

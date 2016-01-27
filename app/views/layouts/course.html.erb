@@ -4,7 +4,7 @@
     <div class="page-header-left">
       <h2 class="title"><%= link_to @course.name, course_path(@course) %></h2>
       <% if current_user.instructs?(@course) %>
-        <p class="description">You instruct this course.</p>
+        <p class="description">Instructor</p>
       <% end %>
     </div>
     <div class="page-header-right">
