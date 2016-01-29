@@ -12,9 +12,10 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = current_user.instructed_courses.build(course_params.merge(school_account_id: current_user.school_account_id))
+    @course = Course.new(course_params.merge(school_account_id: current_user.school_account_id))
     authorize! :create, @course
     if @course.save
+      @course.add_instructor(current_user)
       @first_type = @course.assignment_types.new(name: 'Assignment', drops_lowest: false, default_point_value: 100)
       @first_type.save
       flash[:success] = "Course created!"
@@ -53,7 +54,7 @@ class CoursesController < ApplicationController
   def destroy
     authorize! :destroy, @course
     @course.destroy
-    redirect_to :back
+    redirect_to root_url
   end
 
   def manage

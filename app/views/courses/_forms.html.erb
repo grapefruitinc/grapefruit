@@ -34,5 +34,9 @@
 <%= f.submit "#{submit_text(@course)} Course", class: "button small" %>
 
 <% if @course.persisted? %>
-  <%= link_to "Destroy Course", "#", class: "button alert small" %>
+<%= link_to 'Delete this course',
+          course_path(@course),
+          data: { confirm: "Are you very sure you want to delete #{@course.name}? This cannot be undone." },
+          method: :delete,
+          class: 'button alert small' %>
 <% end %>

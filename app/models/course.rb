@@ -64,18 +64,39 @@ class Course < ActiveRecord::Base
     ]
   end
 
-  # Student definitions
+  # Helper methods
   # ========================================================
+
   def add_student(student)
     add_students([student])
   end
 
   def add_students(students_to_add)
+    add_users(students_to_add, CourseUser::STUDENT)
+  end
+
+  def add_assistant(assistant)
+    add_assistants([assistant])
+  end
+
+  def add_assistants(assistants_to_add)
+    add_users(assistants_to_add, CourseUser::ASSISTANT)
+  end
+
+  def add_instructor(instructor)
+    add_instructors([instructor])
+  end
+
+  def add_instructors(instructors_to_add)
+    add_users(instructors_to_add, CourseUser::INSTRUCTOR)
+  end
+
+  def add_users(users_to_add, role)
     course_users = []
 
-    students_to_add.each do |student|
-      if (student.valid? && !self.students.include?(student))
-        student_course_users.push CourseUser.new(user_id: student.id, course_id: self.id)
+    users_to_add.each do |user|
+      if user.valid? && !self.has?(user)
+        course_users.push CourseUser.new(user: user, course: self, role: role)
       end
     end
 
@@ -84,6 +105,16 @@ class Course < ActiveRecord::Base
 
   def remove_student(student)
     self.student_course_users.where(user: student).destroy_all
+  end
+
+  def remove_assistant(assistant)
+    self.assistant_course_users.where(user: assistant).destroy_all
+  end
+
+  def remove_instructor(instructor)
+    if self.instructors.count > 1
+      self.instructor_course_users.where(user: instructor).destroy_all
+    end
   end
 
   def course_user(user)
