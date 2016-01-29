@@ -75,7 +75,7 @@ class Course < ActiveRecord::Base
 
     students_to_add.each do |student|
       if (student.valid? && !self.students.include?(student))
-        course_users.push CourseUser.new(user_id: student.id, course_id: self.id)
+        student_course_users.push CourseUser.new(user_id: student.id, course_id: self.id)
       end
     end
 
@@ -83,7 +83,7 @@ class Course < ActiveRecord::Base
   end
 
   def remove_student(student)
-    self.course_users.where(user: student).destroy_all
+    self.student_course_users.where(user: student).destroy_all
   end
 
   def course_user(user)

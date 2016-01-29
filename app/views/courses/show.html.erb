@@ -4,21 +4,18 @@
   <div>
 
     <% if current_user.enrolled?(@course) %>
-
-      <%= form_for [@course, @course_user], html: {method: "delete"} do |f| %>
-        <%= f.hidden_field :course_id, value: @course.id %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Leave this course", class: "button secondary small" %>
-      <% end %>
-
+      <%= link_to 'Leave this course',
+                course_course_user_path(@course, current_user),
+                data: { confirm: "Are you sure you want to leave #{@course.name}?" },
+                method: :delete,
+                class: 'button secondary small' %>
     <% end %>
 
     <% if !@course.has?(current_user) %>
-      <%= form_for [@course, @course_user] do |f| %>
-        <%= f.hidden_field :course_id, value: @course.id %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Join this course!", class: "button" %>
-      <% end %>
+      <%= link_to 'Join this course!',
+                course_course_users_path(@course, user_id: current_user.id),
+                method: 'POST',
+                class: 'button' %>
     <% end %>
 
   </div>

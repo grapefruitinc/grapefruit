@@ -27,7 +27,7 @@
           <li><%= link_to "Assignments & Grading", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 
-        <% if not can? :manage, @course %>
+        <% if (can? :read, @course) && (!can? :manage, @course) %>
           <li><%= link_to "Assignments", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 

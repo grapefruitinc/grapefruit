@@ -31,15 +31,9 @@ class CoursesController < ApplicationController
   def show
     @documents = @course.documents
 
-    @course_user = @course.course_user(current_user)
-    unless @course_user.present?
-      @course_user = CourseUser.new
-    end
-
     @topics = @course.topics.paginate(page: 1, per_page: 5)
 
     @show_unenroll = true
-
   end
 
   def edit
