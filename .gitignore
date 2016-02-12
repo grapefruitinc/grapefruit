@@ -34,3 +34,5 @@
 */*.DS_STORE
 
 /.idea
+
+.byebug_history

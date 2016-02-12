@@ -80,6 +80,7 @@ GEM
       sass (~> 3.4)
       thor
     builder (3.2.2)
+    byebug (8.2.2)
     cancan (1.6.10)
     capistrano (3.4.0)
       i18n
@@ -356,6 +357,7 @@ DEPENDENCIES
   activeadmin!
   activerecord-import (>= 0.4.0)
   annotate
+  byebug
   cancan
   capistrano
   capistrano-rails

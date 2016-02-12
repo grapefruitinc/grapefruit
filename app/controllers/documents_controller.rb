@@ -36,6 +36,10 @@ class DocumentsController < ApplicationController
       redirect_to edit_course_assignment_path(@document.assignment.course, @document.assignment)
     elsif @document.grade
       redirect_to course_assignment_grades_path(@document.grade.assignment.course, @document.grade.assignment)
+    elsif @document.lecture
+      redirect_to course_manage_path(@document.lecture.capsule.course)
+    elsif @document.capsule
+      redirect_to course_manage_path(@document.capsule.course)
     else
       redirect_to course_manage_path(@document.course)
     end
