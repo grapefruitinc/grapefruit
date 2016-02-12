@@ -3,7 +3,7 @@
   <div class="page-header">
     <div class="page-header-left">
       <h2 class="title"><%= link_to @course.name, course_path(@course) %></h2>
-      <% if @course.instructor == current_user %>
+      <% if current_user.instructs?(@course) %>
         <p class="description">Instructor</p>
       <% end %>
     </div>
@@ -17,17 +17,17 @@
       <ul class="course-actions">
 
         <% if can? :read, @course %>
-          <li><%= link_to "Discussion", course_topics_path(@course), class: "button small" %></li>
+          <li><%= link_to 'Discussion', course_topics_path(@course), class: "button small" %></li>
+          <li><%= link_to 'People', course_people_path(@course), class: "button small"%></li>
         <% end %>
 
          <% if can? :manage, @course %>
-          <li><%= link_to "Students", course_students_path(@course), class: "button small"%></li>
-          <li><%= link_to "Stats", course_stats_path(@course), class: "button small"%></li>
+          <br/>
           <li><%= link_to "Content Manager", course_manage_path(@course), class: "button small bold" %></li>
           <li><%= link_to "Assignments & Grading", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 
-        <% if not can? :manage, @course %>
+        <% if (can? :read, @course) && (!can? :manage, @course) %>
           <li><%= link_to "Assignments", course_assignments_path(@course), class: "button small bold" %></li>
         <% end %>
 

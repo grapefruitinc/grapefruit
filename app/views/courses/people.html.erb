@@ -1,0 +1,21 @@
+<section>
+  <h2>People in <%= @course.name %></h2>
+</section>
+
+<section>
+  <h4>Instructors</h4>
+  <%= render partial: 'users/instructor', collection: @course.instructors %>
+</section>
+
+<section>
+  <% unless @students.blank? %>
+    <h4>Students (<%= @students.count %>)</h4>
+    <table>
+      <tbody>
+      <%= render partial: 'users/student', collection: @students, locals: { course: @course } %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="grey">There are no students enrolled in this course.</p>
+  <% end %>
+</section>

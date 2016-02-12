@@ -2,16 +2,21 @@
   <a name="reply-<%= reply.id %>"></a>
   <div class="small-4 column author">
     <strong><%= reply.author.name %></strong>
-    <% if reply.author == current_user %>
-      <strong>(You)</strong>
-    <% elsif reply.author == course.instructor %>
-      <p>(course instructor)</p>
-    <% elsif reply.author == topic.author %>
-      <p>(topic creator)</p>
-    <% end %>
-    <br>
+    <p>
+      <% if reply.author == current_user %>
+        <strong>(You)</strong>
+      <% elsif reply.author.instructs? @course %>
+        <em>Course Instructor</em>
+      <% elsif reply.author.assists? @course %>
+        <em>Course Assistant</em>
+      <% elsif reply.author == topic.author %>
+        <em>Topic Creator</em>
+      <% end %>
+    </p>
     <%= time_ago_in_words(reply.created_at) %> ago<br/>
-    (<%= reply.created_at.strftime("%B %d, %Y") %> at <%= reply.created_at.strftime("%I:%M:%S") %>)
+    <small>
+      <%= reply.created_at.strftime(DATE_FORMAT_DAY) %> at <%= reply.created_at.strftime(DATE_FORMAT_TIME) %>
+    </small>
   </div>
   <div class="small-8 column body">
     <%= reply.body %>

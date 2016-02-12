@@ -18,6 +18,7 @@
 #  slug                       :string(255)
 #  problem_set_url            :text(65535)
 #  school_account_id          :integer
+#  instructor_label           :string(255)
 #
 
 class Course < ActiveRecord::Base
@@ -33,10 +34,16 @@ class Course < ActiveRecord::Base
 
   # Relationships
   # ========================================================
-  belongs_to :instructor, class_name: "User"
   belongs_to :school_account
+
   has_many :course_users, dependent: :destroy
-  has_many :students, class_name: "User", through: :course_users, source: :user
+  has_many :student_course_users, -> { where role: CourseUser::STUDENT }, class_name: 'CourseUser'
+  has_many :instructor_course_users, -> { where role: CourseUser::INSTRUCTOR }, class_name: 'CourseUser'
+  has_many :assistant_course_users, -> { where role: CourseUser::ASSISTANT }, class_name: 'CourseUser'
+  has_many :students, class_name: 'User', through: :student_course_users, source: :user
+  has_many :instructors, class_name: 'User', through: :instructor_course_users, source: :user
+  has_many :assistants, class_name: 'User', through: :assistant_course_users, source: :user
+
   has_many :capsules, dependent: :destroy
   has_many :lectures, through: :capsules
   has_many :documents, dependent: :destroy
@@ -57,18 +64,39 @@ class Course < ActiveRecord::Base
     ]
   end
 
-  # Student definitions
+  # Helper methods
   # ========================================================
+
   def add_student(student)
     add_students([student])
   end
 
   def add_students(students_to_add)
+    add_users(students_to_add, CourseUser::STUDENT)
+  end
+
+  def add_assistant(assistant)
+    add_assistants([assistant])
+  end
+
+  def add_assistants(assistants_to_add)
+    add_users(assistants_to_add, CourseUser::ASSISTANT)
+  end
+
+  def add_instructor(instructor)
+    add_instructors([instructor])
+  end
+
+  def add_instructors(instructors_to_add)
+    add_users(instructors_to_add, CourseUser::INSTRUCTOR)
+  end
+
+  def add_users(users_to_add, role)
     course_users = []
 
-    students_to_add.each do |student|
-      if (student.valid? && !self.students.include?(student))
-        course_users.push CourseUser.new(user_id: student.id, course_id: self.id)
+    users_to_add.each do |user|
+      if user.valid? && !self.has?(user)
+        course_users.push CourseUser.new(user: user, course: self, role: role)
       end
     end
 
@@ -76,7 +104,17 @@ class Course < ActiveRecord::Base
   end
 
   def remove_student(student)
-    self.course_users.where(user: student).destroy_all
+    self.student_course_users.where(user: student).destroy_all
+  end
+
+  def remove_assistant(assistant)
+    self.assistant_course_users.where(user: assistant).destroy_all
+  end
+
+  def remove_instructor(instructor)
+    if self.instructors.count > 1
+      self.instructor_course_users.where(user: instructor).destroy_all
+    end
   end
 
   def course_user(user)
@@ -85,6 +123,16 @@ class Course < ActiveRecord::Base
 
   def perfect_total
     self.assignments.inject(0) { |sum, assignment| sum += assignment.points }
+  end
+
+  # the user either instructs, assists with, or is enrolled in the course
+  def has?(user)
+    self.edited_by?(user) || user.enrolled?(self)
+  end
+
+  # the user either instructs or assists with the course
+  def edited_by?(user)
+    user.instructs?(self) || user.assists?(self)
   end
 
   # Outputting

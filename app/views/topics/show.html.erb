@@ -7,7 +7,7 @@
 <% if current_user == @topic.author %>
   <p>You created this topic.</p>
 <% else %>
-  <p>Started by: <%= @topic.author.name %> (<%= mail_to @course.instructor.email %>)</p>
+  <p>Started by: <%= @topic.author.name %> (<%= mail_to @topic.author.email %>)</p>
 <% end %>
 
 <div class="forum">
@@ -15,16 +15,22 @@
     <div class="row topic">
       <div class="small-4 column author">
         <strong><%= @topic.author.name %></strong>
-        <% if @topic.author == current_user %>
-          <strong>(You)</strong>
-        <% elsif @topic.author == @course.instructor %>
-          <p>(course instructor)</p>
-        <% elsif @topic.author == @topic.author %>
-          <p>(topic creator)</p>
-        <% end %>
-        <br/>
+        <p>
+          <% if @topic.author == current_user %>
+            <strong>(You)</strong>
+          <% elsif @topic.author.instructs? @course %>
+            <em>Course Instructor</em>
+          <% elsif @topic.author.assists? @course %>
+            <em>Course Assistant</em>
+          <% elsif @topic.author == @topic.author %>
+            <em>Topic Creator</em>
+          <% end %>
+        </p>
         <%= time_ago_in_words(@topic.created_at) %> ago<br/>
-        (<%= @topic.created_at.strftime("%B %d, %Y") %> at <%= @topic.created_at.strftime("%I:%M:%S") %>)
+        <br/>
+        <small>
+          <%= @topic.created_at.strftime(DATE_FORMAT_DAY) %> at <%= @topic.created_at.strftime(DATE_FORMAT_TIME) %>
+        </small>
         <% if can? :manage, @course %>
           <br/><br/>
           <%= link_to "delete topic",
@@ -47,7 +53,7 @@
   <%= will_paginate @replies %>
 </div>
 
-<h4>Reply to <%= @topic.name %></h4>
+<h4>Reply to "<%= @topic.name %>"</h4>
 
 <%= form_for [@course, @topic, @reply] do |f| %>
   <a name="reply"></a>

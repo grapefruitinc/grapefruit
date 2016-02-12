@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <strong><%= student.full_name %></strong>
+  </td>
+  <td>
+    <%= mail_to student.email %>
+  </td>
+  <td>
+    <% if can? :manage, course %>
+      <%= link_to "Remove From Course",
+                course_course_user_path(@course, student),
+                data: { confirm: "Are you sure you want to remove #{student.name} from #{@course.name}?" },
+                method: :delete %>
+    <% end %>
+  </td>
+</p>

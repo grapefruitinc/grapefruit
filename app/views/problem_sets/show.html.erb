@@ -9,7 +9,7 @@
 
 <h2><%= @problem_set.name %></h2>
 
-<% if current_user == @course.instructor %>
+<% if course.edited_by?(current_user) %>
 <%= link_to "Edit Problem Set", edit_course_capsule_problem_set_path(@course, @capsule, @problem_set), class: "button small" %>
 <% end %>
 

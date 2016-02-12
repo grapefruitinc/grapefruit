@@ -31,14 +31,17 @@ class User < ActiveRecord::Base
 
   # Relationships
   # ========================================================
-  has_many :instructed_courses, class_name: "Course", foreign_key: "instructor_id"
-
   has_many :course_users, dependent: :destroy
-  has_many :student_courses, class_name: "Course", through: :course_users, source: :course, dependent: :destroy
+  has_many :student_course_users, -> { where role: CourseUser::STUDENT }, class_name: 'CourseUser'
+  has_many :instructor_course_users, -> { where role: CourseUser::INSTRUCTOR }, class_name: 'CourseUser'
+  has_many :assistant_course_users, -> { where role: CourseUser::ASSISTANT }, class_name: 'CourseUser'
+  has_many :student_courses, class_name: 'Course', through: :student_course_users, source: :course
+  has_many :instructor_courses, class_name: 'Course', through: :instructor_course_users, source: :course
+  has_many :assistant_courses, class_name: 'Course', through: :assistant_course_users, source: :course
 
-  has_many :replies, foreign_key: "author_id"
-  has_many :topics, foreign_key: "author_id"
-  has_many :grades, foreign_key: "user_id"
+  has_many :replies, foreign_key: 'author_id'
+  has_many :topics, foreign_key: 'author_id'
+  has_many :grades, foreign_key: 'user_id'
 
   belongs_to :school_account
 
@@ -49,11 +52,11 @@ class User < ActiveRecord::Base
   # User Types
   # ========================================================
   def self.unassigned
-    User.where.not(id: includes(:student_courses)).where.not(id: includes(:instructed_courses))
+    User.where.not(id: includes(:student_courses)).where.not(id: includes(:instructor_courses))
   end
 
   def self.instructors
-    joins(:instructed_courses).uniq
+    joins(:instructor_courses).uniq
   end
 
   def self.students
@@ -62,6 +65,18 @@ class User < ActiveRecord::Base
 
   def grade_for_course(course)
     (self.grades.joins(:assignment).merge(Assignment.where(course_id: course.id)).sum(:points) / course.perfect_total * 100).round(2).to_s + "%"
+  end
+
+  def instructs?(course)
+    course.instructors.include?(self)
+  end
+
+  def assists?(course)
+    course.assistants.include?(self)
+  end
+
+  def enrolled?(course)
+    course.students.include?(self)
   end
 
   # Output
