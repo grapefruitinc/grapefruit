@@ -20,6 +20,8 @@ gem 'pickadate-rails'
 # config for configuraiton files and YAML
 gem 'rails_config'
 
+gem 'byebug'
+
 # devise for authentication
 gem 'devise'
 
