@@ -53,9 +53,8 @@ Grapefruit::Application.routes.draw do
   resources :courses do
 
     get 'iframe'
-    get 'students'
+    get 'people'
     get 'manage'
-    get 'stats'
 
     get 'gradelist' => 'grades#gradelist'
 

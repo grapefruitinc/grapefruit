@@ -30,7 +30,7 @@
 	<%= render 'documents/documents', container: @assignment, documents: @assignment.documents %>
 </p>
 
-<% unless @course.instructor == current_user %>
+<% if current_user.enrolled? @course %>
 
 	<div>
 		<%= link_to 'Upload Submission for Assignment',

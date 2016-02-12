@@ -3,13 +3,6 @@
 <%= f.label :name %>
 <%= f.text_field :name, autofocus: true, placeholder: "The human-readable name for the course." %>
 
-<%= f.label :instructor_label, "Instructor Label Text" %>
-<small>
-  Leave blank to have the default label show. Or customize, e.g. 'Taught by the GU Economics Department'
-</small>
-<%= f.text_field :instructor_label,
-  placeholder: "Instructed by #{@course.instructor.name} (#{@course.instructor.email})" %>
-
 <%= f.label :description %>
 <%= f.text_area :description, rows: 15, style: "height:auto;",
   placeholder: "A description for the course. Remember, you can upload a syllabus later." %>
@@ -41,5 +34,9 @@
 <%= f.submit "#{submit_text(@course)} Course", class: "button small" %>
 
 <% if @course.persisted? %>
-  <%= link_to "Destroy Course", "#", class: "button alert small" %>
+<%= link_to 'Delete this course',
+          course_path(@course),
+          data: { confirm: "Are you very sure you want to delete #{@course.name}? This cannot be undone." },
+          method: :delete,
+          class: 'button alert small' %>
 <% end %>

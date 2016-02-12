@@ -30,7 +30,7 @@
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     can :manage, Course do |course|
-      course.instructor == user
+      user.instructs?(course)
     end
 
     cannot :create, Course
@@ -38,47 +38,47 @@
     can :create, Course if user.can_create_courses == true
 
     can :read, Course do |course|
-      user.student_courses.include? course
+      user.enrolled?(course) || user.assists?(course)
     end
 
     can :manage, Capsule do |capsule|
-      capsule.course.instructor == user
+      capsule.course.edited_by?(user)
     end
 
     can :manage, Lecture do |lecture|
-      lecture.capsule.course.instructor == user
+      lecture.capsule.course.edited_by?(user)
     end
 
     can :read, Lecture do |lecture|
-      lecture.capsule.course.instructor == user or (user.student_courses.include? lecture.capsule.course)
+      lecture.capsule.course.has?(user)
     end
 
     can :manage, ProblemSet do |problem_set|
-      problem_set.capsule.course.instructor == user
+      problem_set.capsule.course.edited_by?(user)
     end
 
     can :manage, Assignment do |assignment|
-      assignment.course.instructor == user
+      assignment.course.edited_by?(user)
     end
 
     can :manage, Document do |document|
       if document.assignment
-        document.assignment.course.instructor == user
+        document.assignment.course.edited_by?(user)
       elsif document.submission
         false
       elsif document.grade
-        document.grade.assignment.course.instructor == user
+        document.grade.assignment.course.edited_by?(user)
       elsif document.course
-        document.course.instructor == user
+        document.course.edited_by?(user)
       elsif document.capsule
-        document.capsule.course.instructor == user
+        document.capsule.course.edited_by?(user)
       else
-        document.lecture.capsule.course.instructor == user
+        document.lecture.capsule.course.edited_by?(user)
       end
     end
 
     can :manage, Topic do |topic|
-      topic.course.instructor == user or (user.student_courses.include? topic.course)
+      topic.course.has?(user)
     end
 
   end

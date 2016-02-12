@@ -1,10 +1,11 @@
 class HomeController < ApplicationController
-  
+
   layout "home"
 
   def dashboard
-    @instructed_courses = current_user.instructed_courses
-    @enrolled_courses = current_user.student_courses
+    @student_courses = current_user.student_courses
+    @instructor_courses = current_user.instructor_courses
+    @assistant_courses = current_user.assistant_courses
   end
 
   def management_state
@@ -18,5 +19,5 @@ class HomeController < ApplicationController
     end
     render text: "error"
   end
-  
+
 end

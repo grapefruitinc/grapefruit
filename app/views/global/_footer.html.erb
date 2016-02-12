@@ -9,14 +9,14 @@
           <li><%= link_to 'About', about_url %></li>
           <li><%= link_to 'Contact', contact_url %></li>
           <li><%= link_to 'Contribute', contribute_url %></li>
-          <li><%= link_to 'Changelog', CHANGELOG_URL, target: "_blank" %></li>
           <li><%= link_to 'Privacy Policy', privacy_url %></li>
         </ul>
       </nav>
 
       <p class="platform">
-        Grapefruit version <%= GRAPEFRUIT_VERSION_MAJOR %>.<%= GRAPEFRUIT_VERSION_MINOR %>.<%= GRAPEFRUIT_VERSION_PATCH %>+<%= GRAPEFRUIT_BUILD %>
-        @<%= Settings.instance.name %>
+        Grapefruit version <%= GRAPEFRUIT_VERSION_MAJOR %>.<%= GRAPEFRUIT_VERSION_MINOR %>.<%= GRAPEFRUIT_VERSION_PATCH %>
+        <%= "(commit #{GRAPEFRUIT_BUILD})" if GRAPEFRUIT_BUILD.present? %>
+        - <%= Settings.instance.name %>
       </p>
 
     </div>

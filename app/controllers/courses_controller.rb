@@ -12,9 +12,10 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = current_user.instructed_courses.build(course_params.merge(school_account_id: current_user.school_account_id))
+    @course = Course.new(course_params.merge(school_account_id: current_user.school_account_id))
     authorize! :create, @course
     if @course.save
+      @course.add_instructor(current_user)
       @first_type = @course.assignment_types.new(name: 'Assignment', drops_lowest: false, default_point_value: 100)
       @first_type.save
       flash[:success] = "Course created!"
@@ -31,15 +32,9 @@ class CoursesController < ApplicationController
   def show
     @documents = @course.documents
 
-    @course_user = @course.course_user(current_user)
-    unless @course_user.present?
-      @course_user = CourseUser.new
-    end
-
     @topics = @course.topics.paginate(page: 1, per_page: 5)
 
     @show_unenroll = true
-
   end
 
   def edit
@@ -59,12 +54,7 @@ class CoursesController < ApplicationController
   def destroy
     authorize! :destroy, @course
     @course.destroy
-    redirect_to :back
-  end
-
-  def students
-    authorize! :update, @course
-    @students = @course.students
+    redirect_to root_url
   end
 
   def manage
@@ -72,14 +62,15 @@ class CoursesController < ApplicationController
     @hide_sidebar = true
   end
 
-  def stats
-    @hide_sidebar = true
+  def people
+    @instructors = @course.instructors
+    @students = @course.students
   end
 
 private
 
   def course_params
-    params.require(:course).permit(:name, :instructor_label, :description, :subject, :course_number,
+    params.require(:course).permit(:name, :description, :subject, :course_number,
                                    :course_registration_number, :semester, :year,
                                    :spots_available, :credits,
                                    :problem_set_url)
