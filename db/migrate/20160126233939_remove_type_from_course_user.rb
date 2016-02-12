@@ -1,5 +1,7 @@
 class RemoveTypeFromCourseUser < ActiveRecord::Migration
   def change
-    remove_column :course_users, :type
+    if column_exists? :course_users, :type
+      remove_column :course_users, :type
+    end
   end
 end
