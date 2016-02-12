@@ -34,7 +34,9 @@
 <%= link_to_textbook_problem_sets(@course) %>
 
 <span>Instructed by:</span>
-<%= render partial: 'users/instructor', collection: @course.instructors %>
+<p>
+  <%= render partial: 'users/instructor', collection: @course.instructors %>
+</p>
 
 <p class="description"><%= @course.description %></p>
 
