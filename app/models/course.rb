@@ -4,7 +4,6 @@
 #
 #  id                         :integer          not null, primary key
 #  name                       :string(255)
-#  instructor_id              :integer
 #  created_at                 :datetime
 #  updated_at                 :datetime
 #  description                :text(65535)
@@ -18,7 +17,6 @@
 #  slug                       :string(255)
 #  problem_set_url            :text(65535)
 #  school_account_id          :integer
-#  instructor_label           :string(255)
 #
 
 class Course < ActiveRecord::Base

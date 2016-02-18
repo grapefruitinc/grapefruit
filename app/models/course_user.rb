@@ -11,11 +11,14 @@
 #
 
 class CourseUser < ActiveRecord::Base
+  
   # constants for role column
   STUDENT = 0
   INSTRUCTOR = 1
   ASSISTANT = 2
 
+  # Relationships
+  # ========================================================
   belongs_to :user
   belongs_to :course
 

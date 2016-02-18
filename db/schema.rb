@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127010640) do
+ActiveRecord::Schema.define(version: 20160218030447) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -147,7 +147,10 @@ ActiveRecord::Schema.define(version: 20160127010640) do
     t.integer  "assignment_id", limit: 4
     t.integer  "submission_id", limit: 4
     t.integer  "grade_id",      limit: 4
+    t.integer  "group_id",      limit: 4
   end
+
+  add_index "documents", ["group_id"], name: "index_documents_on_group_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -170,6 +173,25 @@ ActiveRecord::Schema.define(version: 20160127010640) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "group_users", force: :cascade do |t|
+    t.integer  "group_id",       limit: 4
+    t.integer  "course_user_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "group_users", ["course_user_id"], name: "index_group_users_on_course_user_id", using: :btree
+  add_index "group_users", ["group_id"], name: "index_group_users_on_group_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "course_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "groups", ["course_id"], name: "index_groups_on_course_id", using: :btree
 
   create_table "lectures", force: :cascade do |t|
     t.string   "name",           limit: 255
@@ -211,7 +233,10 @@ ActiveRecord::Schema.define(version: 20160127010640) do
     t.integer  "assignment_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id",      limit: 4
   end
+
+  add_index "submissions", ["group_id"], name: "index_submissions_on_group_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.integer  "replies",        limit: 4,     default: 0

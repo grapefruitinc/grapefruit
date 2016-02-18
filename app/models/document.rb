@@ -13,6 +13,7 @@
 #  assignment_id :integer
 #  submission_id :integer
 #  grade_id      :integer
+#  group_id      :integer
 #
 
 class Document < ActiveRecord::Base
@@ -33,5 +34,6 @@ class Document < ActiveRecord::Base
   belongs_to :submission
   belongs_to :assignment
   belongs_to :grade
+  belongs_to :group
 
 end
