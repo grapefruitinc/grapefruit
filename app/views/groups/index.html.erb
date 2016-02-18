@@ -1,0 +1,17 @@
+<section>
+  <h2>Groups in <%= @course.name %></h2>
+</section>
+
+<section>
+  <% unless @groups.blank? %>
+    <h4>Groups (<%= @groups.count %>)</h4>
+
+    <%= render partial: 'groups/group', collection: @groups, locals: { course: @course } %>
+  <% else %>
+    <p class="grey">There are no groups in this course.</p>
+  <% end %>
+</section>
+
+<section>
+  <%= link_to 'Create Groups', new_course_group_path, class: 'button' %>
+</section>

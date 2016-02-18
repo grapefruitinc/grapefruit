@@ -49,6 +49,7 @@ class Course < ActiveRecord::Base
   has_many :assignments, dependent: :destroy
   has_many :assignment_types, dependent: :destroy
   has_many :announcements, dependent: :destroy
+  has_many :groups, dependent: :destroy
 
   # Friendly_id definitions
   # ========================================================
@@ -124,6 +125,7 @@ class Course < ActiveRecord::Base
   end
 
   # the user either instructs, assists with, or is enrolled in the course
+  # TODO: this is expensive
   def has?(user)
     self.edited_by?(user) || user.enrolled?(self)
   end

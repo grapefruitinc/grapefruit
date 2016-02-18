@@ -1,0 +1,13 @@
+<div class='small-6 medium-4 columns end'>
+  <div class='panel'>
+    <strong><%= group.name %></strong>
+
+    <div class='row'>
+      <% group.course_users.includes(:user).each do |course_user| %>
+        <div class='small-6 columns panel end'>
+          <%= course_user.user.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

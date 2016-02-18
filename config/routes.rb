@@ -94,6 +94,8 @@ Grapefruit::Application.routes.draw do
 
     resources :announcements, except: [:show]
 
+    resources :groups
+
     get 'new_to_class' => 'announcements#new_to_class'
     post 'send_to_class' => 'announcements#send_to_class'
 
