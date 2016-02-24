@@ -33,11 +33,25 @@ class Group < ActiveRecord::Base
   end
 
   def modify_group_users(course_user_ids)
+    new_group_users = []
+    course_user_ids = course_user_ids.map(&:to_i)
     current_ids = group_users.all.pluck(:course_user_id)
 
     new_ids = course_user_ids - group_users.all.pluck(:course_user_id)
     removed_ids = current_ids - course_user_ids
 
+    new_ids.each do |course_user_id|
+      new_group_users.push GroupUser.new(course_user_id: course_user_id, group: self)
+    end
+    
+    GroupUser.import new_group_users, validate: false
+
+    removed_ids.each do |course_user_id|
+      GroupUser.where(course_user_id: course_user_id, group_id: self.id).first.destroy
+    end
+
+    puts "current_ids #{current_ids}"
+    puts "sent_ids #{course_user_ids}"
     puts "new_ids #{new_ids}"
     puts "removed_ids #{removed_ids}"
   end

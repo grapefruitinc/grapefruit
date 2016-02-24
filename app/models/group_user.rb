@@ -11,6 +11,15 @@
 
 class GroupUser < ActiveRecord::Base
   
+  # Validations
+  # ============================================================================
+  validates :course_user_id,
+    presence: true,
+    uniqueness: {
+      scope: :group_id,
+      message: 'is already in this group.'
+    }
+
   # Relationships
   # ========================================================
   belongs_to :group
