@@ -19,16 +19,27 @@ class Group < ActiveRecord::Base
   # Helper methods
   # ========================================================
 
-  def add_course_users(course_users_to_add)
+  # Expects an array of course_user_ids to add to the group
+  def add_group_users(course_user_ids)
     new_group_users = []
 
-    course_users_to_add - group_users.all.pluck(:course_user_id)
+    course_user_ids - group_users.all.pluck(:course_user_id)
 
-    course_users_to_add.each do |course_user_id|
+    course_user_ids.each do |course_user_id|
       new_group_users.push GroupUser.new(course_user_id: course_user_id, group: self)
     end
 
     GroupUser.import new_group_users, validate: false
+  end
+
+  def modify_group_users(course_user_ids)
+    current_ids = group_users.all.pluck(:course_user_id)
+
+    new_ids = course_user_ids - group_users.all.pluck(:course_user_id)
+    removed_ids = current_ids - course_user_ids
+
+    puts "new_ids #{new_ids}"
+    puts "removed_ids #{removed_ids}"
   end
 
   def remove_student(course_user_id)

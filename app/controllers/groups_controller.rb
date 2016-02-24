@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :get_course
+  before_filter :get_group, only: [:edit, :update, :destroy]
 
   layout "course"
   
@@ -18,11 +19,29 @@ class GroupsController < ApplicationController
     authorize! :manage, @course
 
     if @group.save
-      @group.add_course_users(params[:students].split(','))
+      @group.add_group_users(params[:students].split(','))
       flash[:success] = "Group created!"
       redirect_to course_groups_path(@course)
     else
       render "new"
+    end
+  end
+
+  def edit
+    authorize! :manage, @course
+    @students = @course.student_course_users.includes(:user).map { |s| { course_user_id: s.id, name: s.user.name } }
+    @group_users = @group.group_users.map { |s| s.course_user_id }
+  end
+
+  def update
+    authorize! :manage, @course
+
+    if @group.update_attributes(group_params)
+      @group.modify_group_users(params[:students].split(','))
+      flash[:success] = "Group updated!"
+      redirect_to course_groups_path(@course)
+    else
+      render "edit"
     end
   end
 
@@ -48,6 +67,14 @@ class GroupsController < ApplicationController
   # end
 
 private
+
+  def get_group
+    @group = Group.find(params[:group_id] || params[:id])
+    unless @group.present?
+      flash[:error] = "Invalid group!"
+      redirect_to root_path
+    end
+  end
 
   def group_params
     params.require(:group).permit(:name)

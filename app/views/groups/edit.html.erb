@@ -1,0 +1,23 @@
+<% page_title "Editing #{@group.name}" %>
+
+<div class="landing">
+  <%= link_to '&larr; cancel to groups'.html_safe, course_groups_path(@course), class: 'button secondary small' %>
+
+  <div class="description">
+    <h3>Editing Group: <%= @group.name %></h3>
+  </div>
+
+  <div class="login">
+    <%= form_for [@course, @group] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.text_field :name, placeholder: "Gold Team", autofocus: true %>
+
+      <%= text_field_tag :students, nil, class: 'students-selectize', data: { students: @students.to_json, group_users: @group_users.to_json } %>
+
+      <%#= select_tag :students, "<option>David</option><option>Test</option>".html_safe, class: 'students-selectize' %>
+      <br />
+      <div><%= f.submit "Create Group", class: "button small" %></div>
+    <% end %>
+  </div>
+</div>

@@ -1,13 +1,24 @@
 <div class='small-6 medium-4 columns end'>
   <div class='panel'>
     <strong><%= group.name %></strong>
-
+    
     <div class='row'>
       <% group.course_users.includes(:user).each do |course_user| %>
-        <div class='small-6 columns panel end'>
+        <div class='small-6 columns end'>
           <%= course_user.user.name %>
         </div>
       <% end %>
+    </div>
+    
+    <br>
+
+    <div class='row'>
+      <%= link_to 'Edit', edit_course_group_path(@course, group), class: "button small"%>
+      <%= link_to 'Delete',
+          [@course, group],
+          confirm: ("Are you sure you want to delete this group?"),
+          method: :delete,
+          class: "button small alert" %>
     </div>
   </div>
 </div>
