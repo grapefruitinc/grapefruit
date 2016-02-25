@@ -45,6 +45,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    authorize! :manage, @course
+    @group.destroy
+    flash[:success] = "Group deleted!"
+    redirect_to course_groups_path(@course)
+  end
+
   # def create
   #   @student = User.find(params[:user_id])
 

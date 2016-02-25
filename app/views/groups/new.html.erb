@@ -13,7 +13,7 @@
 
       <%= f.text_field :name, placeholder: "Gold Team", autofocus: true %>
 
-      <%= text_field_tag :students, nil, class: 'students-selectize', data: { students: @students.to_json } %>
+      <%= text_field_tag :students, nil, class: 'students-selectize', data: { students: @students.to_json }, placeholder: 'begin typing students\' names' %>
 
       <%#= select_tag :students, "<option>David</option><option>Test</option>".html_safe, class: 'students-selectize' %>
       <br />
