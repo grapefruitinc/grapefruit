@@ -15,6 +15,8 @@ class Group < ActiveRecord::Base
   # ============================================================================
   validates :name, presence: true
 
+  # Relationships
+  # ============================================================================
   belongs_to :course
   
   has_many :group_users, dependent: :destroy

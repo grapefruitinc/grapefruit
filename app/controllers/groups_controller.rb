@@ -9,21 +9,24 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = @course.groups.new
     authorize! :manage, @course
+    @group = @course.groups.new
+
     @students = @course.student_course_users.includes(:user).map { |s| { course_user_id: s.id, name: s.user.name } }
   end
 
   def create
-    @group = @course.groups.new(group_params)
     authorize! :manage, @course
+    @group = @course.groups.new(group_params)
 
     if @group.save
       @group.add_group_users(params[:students].split(','))
       flash[:success] = "Group created!"
       redirect_to course_groups_path(@course)
     else
-      render "new"
+      @students = @course.student_course_users.includes(:user).map { |s| { course_user_id: s.id, name: s.user.name } }
+      @group_users = params[:students].split(',') if params[:students]
+      render :new
     end
   end
 
@@ -41,7 +44,7 @@ class GroupsController < ApplicationController
       flash[:success] = "Group updated!"
       redirect_to course_groups_path(@course)
     else
-      render "edit"
+      render :edit
     end
   end
 

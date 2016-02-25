@@ -21,7 +21,7 @@ class GroupUser < ActiveRecord::Base
     }
 
   # Relationships
-  # ========================================================
+  # ============================================================================
   belongs_to :group
   belongs_to :course_user
 
