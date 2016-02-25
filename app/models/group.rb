@@ -11,6 +11,10 @@
 
 class Group < ActiveRecord::Base
 
+  # Validations
+  # ============================================================================
+  validates :name, presence: true
+
   belongs_to :course
   
   has_many :group_users, dependent: :destroy
@@ -43,7 +47,7 @@ class Group < ActiveRecord::Base
     new_ids.each do |course_user_id|
       new_group_users.push GroupUser.new(course_user_id: course_user_id, group: self)
     end
-    
+
     GroupUser.import new_group_users, validate: false
 
     removed_ids.each do |course_user_id|
